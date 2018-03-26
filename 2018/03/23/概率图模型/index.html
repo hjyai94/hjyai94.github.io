@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y|">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-26T10:06:03.239Z">
+<meta property="og:updated_time" content="2018-03-26T10:08:29.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
 <meta name="twitter:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y|">
@@ -309,7 +309,7 @@
 显然只要某个图的独立性关机集合是I(P)的子集，其对应的图就是I-Map，所以I-Map有很多个，只有当I(G)=I(P)时，对应的图可以等价的表示这个概率分布，G就叫做P的P-Map(Perfect-Map)。</p>
 <h2>独立性</h2>
 <h3>局部马尔科夫独立性</h3>
-<p>记$ P_a $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_X_i $。G满足如下的条件独立性论断$I_l(G)$：$ X_i ⊥ NonDescendants_X_i | P_a_xi:\forall i$，也就是说在给定父节点的情况下，子节点间相互独立。</p>
+<p>记$ Pa_xi $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_Xi $。G满足如下的条件独立性论断$I_l(G)$：$ X_i ⊥ NonDescendants_Xi | Pa_xi:\forall i$，也就是说在给定父节点的情况下，子节点间相互独立。</p>
 <h1>马尔科夫网络</h1>
 
       
