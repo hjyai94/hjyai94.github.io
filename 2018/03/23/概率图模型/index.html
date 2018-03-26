@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y|">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-26T10:37:55.827Z">
+<meta property="og:updated_time" content="2018-03-26T10:41:54.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
 <meta name="twitter:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y|">
@@ -305,7 +305,7 @@
 <h2>贝叶斯网的链式法则</h2>
 <p>$$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$</p>
 <h2>I-Map和P-Map</h2>
-<p>令P为X上的分布，I(P)是满足$ (X ⊥ Y|Z) $的独立性断言的集合。I(G)表示图G上独立性关系的集合，如果$ I(G) \subseteq  I(Q) $，则可成G为P的I-Map。
+<p>令P为X上的分布，I(P)是满足$ (X ⊥ Y|Z) $的独立性断言的集合。I(G)表示图G上独立性关系的集合，如果$ I(G) \subseteq  I(P) $，则可成G为P的I-Map。
 显然只要某个图的独立性关机集合是I(P)的子集，其对应的图就是I-Map，所以I-Map有很多个，只有当I(G)=I(P)时，对应的图可以等价的表示这个概率分布，G就叫做P的P-Map(Perfect-Map)。</p>
 <h2>独立性</h2>
 <h3>局部马尔科夫独立性</h3>
@@ -350,6 +350,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/26/123/" rel="prev" title="123">
+                123 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -430,7 +434,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
