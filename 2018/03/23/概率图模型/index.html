@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i\mid Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T13:12:39.596Z">
+<meta property="og:updated_time" content="2018-03-27T13:14:15.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
 <meta name="twitter:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i\mid Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X">
@@ -323,11 +323,11 @@
 <li>Common Cause $ X \leftarrow Z \to Y $：有效当且仅当Z不可观。</li>
 </ul>
 <ul>
-<li>Common Effect $ X \to Z \leftarrow Y $：有效当且仅当Z（或者是其他后代）可观。
-与d-分离想对应的独立性的集合用I(G)表示：
-$$I(G)={(X ⊥ Y\mid Z):d-sep_G(X;Y\mid Z)} $$
-上面的集合也叫做全局马尔科夫的独立性。</li>
+<li>Common Effect $ X \to Z \leftarrow Y $：有效当且仅当Z（或者是其他后代）可观。</li>
 </ul>
+<p>与d-分离想对应的独立性的集合用I(G)表示：
+$$I(G)={(X ⊥ Y\mid Z):d-sep_G(X;Y\mid Z)} $$
+上面的集合也叫做全局马尔科夫的独立性。</p>
 <h2>可靠性与完备性</h2>
 <ul>
 <li>d-分离的可靠性与贝叶斯网络因子分离定理有关,如果分布P根据G因子分解，那么，$I(G)\subseteq I(P)$。</li>
