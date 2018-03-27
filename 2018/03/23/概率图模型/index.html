@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y|">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T01:19:04.205Z">
+<meta property="og:updated_time" content="2018-03-27T01:22:02.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
 <meta name="twitter:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y|">
@@ -312,12 +312,16 @@
 <p>记$ Pa_{x_i} $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_{X_i} $。G满足如下的条件独立性论断$I_l(G)$：$ X_i ⊥ NonDescendants_{X_i}  | Pa_{x_i}:\forall i$，也就是说在给定父节点的情况下，子节点间相互独立。</p>
 <h3>全局马尔科夫独立性</h3>
 <p>全局的马尔科夫独立性与d-分离有关，如果在给定Z的情况下，节点X和Y独立，则X和Y是D-separation。</p>
-<p>迹是三个变量相连的路径，比如X，Y，Z。迹有三种形式：
--（+*） Causal Trail $ X \to Z \to Y &amp; :有效当且仅当Z没有观察到
-. Evidential Trail% $ X \leftarrow Z \leftarrow Y &amp; :</p>
+<p>迹是三个变量相连的路径，比如X，Y，Z。迹有三种形式：</p>
 <ul>
-<li>Common Cause $ X \leftarrow Z \to Y &amp;</li>
-<li>Common Effect $ X \to Z \leftarrow Y &amp;</li>
+<li>Causal Trail $ X \to Z \to Y $ :有效当且仅当Z没有观察到</li>
+</ul>
+<ul>
+<li>Evidential Trail% $ X \leftarrow Z \leftarrow Y $ :</li>
+</ul>
+<ul>
+<li>Common Cause $ X \leftarrow Z \to Y $</li>
+<li>Common Effect $ X \to Z \leftarrow Y $</li>
 </ul>
 <h1>马尔科夫网络</h1>
 
