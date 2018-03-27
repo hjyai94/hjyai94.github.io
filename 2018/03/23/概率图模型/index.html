@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) ">
+<meta name="description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i\mid Parents(X_">
 <meta name="keywords" content="概率图模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="概率图模型">
 <meta property="og:url" content="http://yoursite.com/2018/03/23/概率图模型/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y\">
+<meta property="og:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i\mid Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T09:37:38.342Z">
+<meta property="og:updated_time" content="2018-03-27T09:39:40.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
-<meta name="twitter:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X ⊥ Y\">
+<meta name="twitter:description" content="贝叶斯网络Bayesian Network 贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则 $$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i\mid Parents(X_i)) $$ I-Map和P-Map 令P为X上的分布，I(P)是满足$ (X">
 
 
 
@@ -303,7 +303,7 @@
         <h1>贝叶斯网络Bayesian Network</h1>
 <p>贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。</p>
 <h2>贝叶斯网的链式法则</h2>
-<p>$$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i|Parents(X_i)) $$</p>
+<p>$$ P(X_1, X_2, ..., X_n) = \Pi_{i=1:n}P(X_i\mid Parents(X_i)) $$</p>
 <h2>I-Map和P-Map</h2>
 <p>令P为X上的分布，I(P)是满足$ (X ⊥ Y\mid Z) $的独立性断言的集合。I(G)表示图G上独立性关系的集合，如果$ I(G) \subseteq  I(P) $，则可成G为P的I-Map。
 显然只要某个图的独立性关机集合是I(P)的子集，其对应的图就是I-Map，所以I-Map有很多个，只有当I(G)=I(P)时，对应的图可以等价的表示这个概率分布，G就叫做P的P-Map(Perfect-Map)。</p>
