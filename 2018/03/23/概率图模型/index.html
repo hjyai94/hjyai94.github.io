@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="贝叶斯网络Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i))">
+<meta name="description" content="贝叶斯网络 Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)">
 <meta name="keywords" content="概率图模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="概率图模型">
 <meta property="og:url" content="http://yoursite.com/2018/03/23/概率图模型/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="贝叶斯网络Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$ I-Map和P-Map令P为X上的分布，$I(P)$是满足$(X&amp;per">
+<meta property="og:description" content="贝叶斯网络 Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$ I-Map和P-Map令P为X上的分布，$I(P)$是满足$(X&amp;pe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-28T06:02:28.631Z">
+<meta property="og:image" content="https://github.com/hjyai94/Blog/blob/master/source/uploads/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B-%E6%97%A0%E5%90%91%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-03-28T07:30:11.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图模型">
-<meta name="twitter:description" content="贝叶斯网络Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$ I-Map和P-Map令P为X上的分布，$I(P)$是满足$(X&amp;per">
+<meta name="twitter:description" content="贝叶斯网络 Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。 贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$ I-Map和P-Map令P为X上的分布，$I(P)$是满足$(X&amp;pe">
+<meta name="twitter:image" content="https://github.com/hjyai94/Blog/blob/master/source/uploads/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B-%E6%97%A0%E5%90%91%E5%9B%BE.png">
 
 
 
@@ -360,10 +362,10 @@
       
 
       
-        <h1 id="贝叶斯网络Bayesian-Network"><a href="#贝叶斯网络Bayesian-Network" class="headerlink" title="贝叶斯网络Bayesian Network"></a>贝叶斯网络Bayesian Network</h1><p>贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。</p>
+        <h1 id="贝叶斯网络-Bayesian-Network"><a href="#贝叶斯网络-Bayesian-Network" class="headerlink" title="贝叶斯网络 Bayesian Network"></a>贝叶斯网络 Bayesian Network</h1><p>贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的关系。</p>
 <h2 id="贝叶斯网的链式法则"><a href="#贝叶斯网的链式法则" class="headerlink" title="贝叶斯网的链式法则"></a>贝叶斯网的链式法则</h2><p>$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$</p>
 <h2 id="I-Map和P-Map"><a href="#I-Map和P-Map" class="headerlink" title="I-Map和P-Map"></a>I-Map和P-Map</h2><p>令P为X上的分布，$I(P)$是满足$(X&perp; Y\mid Z)$的独立性断言的集合。I(G)表示图G上独立性关系的集合，如果$ I(G) \subseteq  I(P) $，则可成G为P的I-Map。<br>显然只要某个图的独立性关机集合是I(P)的子集，其对应的图就是I-Map，所以I-Map有很多个，只有当I(G)=I(P)时，对应的图可以等价的表示这个概率分布，G就叫做P的P-Map(Perfect-Map)。</p>
-<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="局部马尔科夫独立性"><a href="#局部马尔科夫独立性" class="headerlink" title="局部马尔科夫独立性"></a>局部马尔科夫独立性</h3><p>记$ Pa_{x_i} $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_{X_i} $。G满足如下的条件独立性论断$I_l(G)$：$ X_i &perp; NonDescendants_{X_i}  | Pa_{x_i}:\forall i$，也就是说在给定父节点的情况下，子节点间相互独立。</p>
+<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="局部马尔科夫独立性"><a href="#局部马尔科夫独立性" class="headerlink" title="局部马尔科夫独立性"></a>局部马尔科夫独立性</h3><p>记$ Pa_{x_i} $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_{X_i} $。G满足如下的条件独立性论断$I_l(G)$：$ X_i &perp; NonDescendants_{X_i}\mid Pa_{x_i}:\forall i$，也就是说在给定父节点的情况下，子节点间相互独立。</p>
 <h3 id="全局马尔科夫独立性"><a href="#全局马尔科夫独立性" class="headerlink" title="全局马尔科夫独立性"></a>全局马尔科夫独立性</h3><p>全局的马尔科夫独立性与d-分离有关，如果在给定Z的情况下，节点X和Y独立，则X和Y是D-separation。</p>
 <p>迹是三个变量相连的路径，比如X，Y，Z。迹有三种形式：</p>
 <ul>
@@ -385,7 +387,8 @@
 <li>G是一个贝叶斯网络结构的图，如果给定Z时X和Y不是在图G中d-分离的，那么X和Y在某些图G上的因子分解分布P中相互依赖。</li>
 <li>对于几乎所有的在G上的因子分解的分布P，$I(P)=I(G)$。几乎所有指的是对于参数化条件概率空间中除了测度为0的分布。</li>
 </ul>
-<h1 id="马尔科夫网络-Markov-Network"><a href="#马尔科夫网络-Markov-Network" class="headerlink" title="马尔科夫网络 Markov Network"></a>马尔科夫网络 Markov Network</h1><p>上面是有向图模型，又叫做贝叶斯网络，下面我们来看一下无向图模型，也被叫做马尔科夫网。</p>
+<h1 id="马尔科夫网络-Markov-Network"><a href="#马尔科夫网络-Markov-Network" class="headerlink" title="马尔科夫网络 Markov Network"></a>马尔科夫网络 Markov Network</h1><p>上面是有向图模型，又叫做贝叶斯网络，下面我们来看一下无向图模型，也被叫做马尔科夫网。<br>贝叶斯网如下的式子，如下的式子必须待用马尔科夫网。<br>$$A &perp; C\mid {B,D}, B &perp; D\mid {A,B}$$<br><img src="https://github.com/hjyai94/Blog/blob/master/source/uploads/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt=""></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a></p>
 
       
     </div>
@@ -570,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贝叶斯网络Bayesian-Network"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯网络Bayesian Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯网的链式法则"><span class="nav-number">1.1.</span> <span class="nav-text">贝叶斯网的链式法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Map和P-Map"><span class="nav-number">1.2.</span> <span class="nav-text">I-Map和P-Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独立性"><span class="nav-number">1.3.</span> <span class="nav-text">独立性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部马尔科夫独立性"><span class="nav-number">1.3.1.</span> <span class="nav-text">局部马尔科夫独立性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局马尔科夫独立性"><span class="nav-number">1.3.2.</span> <span class="nav-text">全局马尔科夫独立性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可靠性与完备性"><span class="nav-number">1.4.</span> <span class="nav-text">可靠性与完备性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔科夫网络-Markov-Network"><span class="nav-number">2.</span> <span class="nav-text">马尔科夫网络 Markov Network</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贝叶斯网络-Bayesian-Network"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯网络 Bayesian Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯网的链式法则"><span class="nav-number">1.1.</span> <span class="nav-text">贝叶斯网的链式法则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Map和P-Map"><span class="nav-number">1.2.</span> <span class="nav-text">I-Map和P-Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独立性"><span class="nav-number">1.3.</span> <span class="nav-text">独立性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#局部马尔科夫独立性"><span class="nav-number">1.3.1.</span> <span class="nav-text">局部马尔科夫独立性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局马尔科夫独立性"><span class="nav-number">1.3.2.</span> <span class="nav-text">全局马尔科夫独立性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可靠性与完备性"><span class="nav-number">1.4.</span> <span class="nav-text">可靠性与完备性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔科夫网络-Markov-Network"><span class="nav-number">2.</span> <span class="nav-text">马尔科夫网络 Markov Network</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
