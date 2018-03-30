@@ -366,7 +366,8 @@
             <h1 id="贝叶斯网络-Bayesian-Network"><a href="#贝叶斯网络-Bayesian-Network" class="headerlink" title="贝叶斯网络 Bayesian Network"></a>贝叶斯网络 Bayesian Network</h1><p>贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的因果关系。</p>
 <h2 id="贝叶斯网的链式法则"><a href="#贝叶斯网的链式法则" class="headerlink" title="贝叶斯网的链式法则"></a>贝叶斯网的链式法则</h2><p>$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$</p>
 <h2 id="I-Map和P-Map"><a href="#I-Map和P-Map" class="headerlink" title="I-Map和P-Map"></a>I-Map和P-Map</h2><p>令P为X上的分布，$I(P)$是满足$(X&perp; Y\mid Z)$的独立性断言的集合。I(G)表示图G上独立性关系的集合，如果$ I(G) \subseteq  I(P) $，则可成G为P的I-Map。<br>显然只要某个图的独立性关机集合是I(P)的子集，其对应的图就是I-Map，所以I-Map有很多个，只有当I(G)=I(P)时，对应的图可以等价的表示这个概率分布，G就叫做P的P-Map(Perfect-Map)。</p>
-<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="局部马尔科夫独立性"><a href="#局部马尔科夫独立性" class="headerlink" title="局部马尔科夫独立性"></a>局部马尔科夫独立性</h3><p>记$ Pa_{x_i} $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_{X_i} $。G满足如下的条件独立性论断$I_l(G)$：$ X_i &perp; NonDescendants_{X_i}\mid Pa_{x_i}:\forall i$，也就是说在给定父节点的情况下，子节点间相互独立。</p>
+<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="局部马尔科夫独立性"><a href="#局部马尔科夫独立性" class="headerlink" title="局部马尔科夫独立性"></a>局部马尔科夫独立性</h3><p>记$ Pa_{x_i} $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_{X_i} $。G满足如下的条件独立性论断$I_l(G)$：$ X_i &perp; NonDescendants_{X_i}\mid Pa_{x_i}:\forall i$，也就是说在</p>
+<p>给定父节点的情况下，子节点间相互独立。</p>
 <h3 id="全局马尔科夫独立性"><a href="#全局马尔科夫独立性" class="headerlink" title="全局马尔科夫独立性"></a>全局马尔科夫独立性</h3><p>全局的马尔科夫独立性与d-分离有关，如果在给定Z的情况下，节点X和Y独立，则X和Y是D-separation。</p>
 <p>迹是三个变量相连的路径，比如X，Y，Z。迹有三种形式：</p>
 <ul>
@@ -391,9 +392,12 @@
 <h1 id="马尔科夫网络-Markov-Network"><a href="#马尔科夫网络-Markov-Network" class="headerlink" title="马尔科夫网络 Markov Network"></a>马尔科夫网络 Markov Network</h1><p>上面是有向图模型，又叫做贝叶斯网络，下面我们来看一下无向图模型，也被叫做马尔科夫网。<br>如下的式子必须使用马尔科夫网：<br>$$A \perp C\mid \lbrace B, D \rbrace, B \perp D\mid \lbrace A, B\rbrace$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B-%E6%97%A0%E5%90%91%E5%9B%BE.jpg" alt=""><br>clique就是指的强连通的团，通常翻译为团，每个团会定义一个势函数(potential function)。<br>无向图模型可以通过一个给定的无向图来表示概率分布$P(X_1,…X_n)$，每一个在图H中的团$c\in C$代表一组正势函数$\psi_c$，比如：<br>$$P(X_1, …, X_n)=\frac{1}{Z}\prod_{c\in C}\psi_c(X_c)$$</p>
 <p>其中Z是配分函数(partition function)，是一个归一化的常数：<br>$$Z=\sum_{X_1, …, X_n}\prod_{c\in C}\psi_c(X_c)$$</p>
 <h2 id="全局马尔科夫独立性-1"><a href="#全局马尔科夫独立性-1" class="headerlink" title="全局马尔科夫独立性"></a>全局马尔科夫独立性</h2><p>如果在给定节点集B时，任意两个节点A和C中的节点之间没有路径，那么则称B在图H中分离A和B。<br>如果对于任意不连接的A，B，C，比如B分离A和C，也就说在给定C的情况下，A和C独立，那么该概率分布满足全局马尔科夫独立性。<br>$$I(H)=\lbrace A \perp C\mid B:sep_H(A;C\mid B)\rbrace$$</p>
-<h3 id="完备性"><a href="#完备性" class="headerlink" title="完备性"></a>完备性</h3><p>如果P是在图H上的吉布斯分布，那么H是P的I-Map。</p>
-<p>###　可靠性</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.</p>
+<h3 id="完备性"><a href="#完备性" class="headerlink" title="完备性"></a>完备性</h3><p>H是一个马尔科夫网结构，如果在给定Z时，X与Y在图H中不可分离，则在给定Z时，X与Y在因子分解的分布中存在依赖关系。</p>
+<h3 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h3><ul>
+<li>P为X上的正分布，而H为X上的一个马尔科夫网结构。如果P是在图H上的吉布斯分布，那么H是P的I-Map。</li>
+<li>P为X上的分布，而H为X上的一个马尔科夫网结构。如果H是P的一个I-Map，则P是可以再H上分解的一个吉布斯分布。</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>周志华. 机器学习[M]. 清华大学出版社, 2016.</p>
 
           
         
