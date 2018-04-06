@@ -383,8 +383,28 @@
       
         
           
-            <h1 id="不知道啥题目"><a href="#不知道啥题目" class="headerlink" title="不知道啥题目"></a>不知道啥题目</h1><p>精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>[3] 周志华. 机器学习[M]. 清华大学出版社, 2016.<br>[4] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第4讲视频以及笔记，参考[2]中第9章，参考[3]中第14章，参考[4]中第3章。</p>
+            <h1 id="精确推断"><a class="markdownIt-Anchor" href="#精确推断"></a> 精确推断</h1>
+<p>精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。</p>
+<p>精确推断有以下算法：</p>
+<ul>
+<li>变量消除</li>
+<li>消息传递</li>
+<li>团树</li>
+</ul>
+<p>近似推断有一下算法：</p>
+<ul>
+<li>随机模拟</li>
+<li>马尔可夫链的蒙特卡罗方法</li>
+<li>变分算法</li>
+</ul>
+<p>本文主要主要是针对精确推断算法中的变量消除算法，计算变量的边际分布或条件分布是一个NP难问题，会随着极大团的增长呈指数增长。近似推断是在较低的时间复杂度下，或者原问题的近似解，这种方法更有一般的实用性。</p>
+<h2 id="变量消除"><a class="markdownIt-Anchor" href="#变量消除"></a> 变量消除</h2>
+<h1 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h1>
+<p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>
+[2] Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>
+[3] 周志华. 机器学习[M]. 清华大学出版社, 2016.<br>
+[4] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>
+注：本文主要参考[1]中第4讲视频以及笔记，参考[2]中第9章，参考[3]中第14章，参考[4]中第3章。</p>
 
           
         
@@ -2129,3 +2149,5 @@
 
 </body>
 </html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
