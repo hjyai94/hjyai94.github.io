@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。">
+<meta name="description" content="变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。 Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。$$m_{ji}(">
 <meta name="keywords" content="概率图模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="massage-passing">
 <meta property="og:url" content="http://yoursite.com/2018/04/18/massage-passing/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。">
+<meta property="og:description" content="变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。 Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-18T03:42:34.466Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png">
+<meta property="og:updated_time" content="2018-04-22T02:22:25.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="massage-passing">
-<meta name="twitter:description" content="elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。">
+<meta name="twitter:description" content="变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。 Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png">
 
 
 
@@ -380,7 +382,11 @@
       
 
       
-        <p>elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。</p>
+        <h1 id="变量消除的缺点"><a href="#变量消除的缺点" class="headerlink" title="变量消除的缺点"></a>变量消除的缺点</h1><p>elimination algorihthm中会有clique中重复使用的情况，massage passing将重复使用的clique保留下来，这样可以减少运算复杂度。</p>
+<h1 id="Elimination-on-a-tree"><a href="#Elimination-on-a-tree" class="headerlink" title="Elimination on a tree"></a>Elimination on a tree</h1><p>将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。<br>$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\prod_{k\in N(j)\j} m_{kj}(x_j))$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png" alt=""><br>$m_{ji}(x_i)$能够表示从$x_j$到$x_i$的置信。</p>
+<h1 id="Two-pass-Algorithm"><a href="#Two-pass-Algorithm" class="headerlink" title="Two-pass Algorithm"></a>Two-pass Algorithm</h1><p>算法的实施的具体步骤，确定一个根节点，从其他节点中手机信息到这个根节点，然后回到分布的信息。直到某一节点中包含了除却继续传播节点的所有信息，这样就计算信息，然后传播到剩下的节点。</p>
+<p># </p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第5讲视频以及笔记，参考[2]中第4章。</p>
 
       
     </div>
@@ -475,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -550,6 +565,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量消除的缺点"><span class="nav-number">1.</span> <span class="nav-text">变量消除的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elimination-on-a-tree"><span class="nav-number">2.</span> <span class="nav-text">Elimination on a tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-pass-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Two-pass Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
