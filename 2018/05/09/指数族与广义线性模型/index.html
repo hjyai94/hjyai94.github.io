@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%A2%91%E7%8E%87%E5%AD%A6%E6%B4%BE%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E6%B4%BE.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F.png">
-<meta property="og:updated_time" content="2018-05-10T09:23:45.200Z">
+<meta property="og:updated_time" content="2018-05-10T13:45:44.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指数族与广义线性模型">
 <meta name="twitter:description" content="指数族将随机变量X写成指数族的形式：$$p(X=x;\eta)=h(x)exp(\eta^T T(x)-A(\eta))$$其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。 例子指数族可以包括许多的例子，比如高斯分布，伯努利分布">
@@ -404,9 +404,8 @@
 </ol>
 <h3 id="充分统计量"><a href="#充分统计量" class="headerlink" title="充分统计量"></a>充分统计量</h3><p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%A2%91%E7%8E%87%E5%AD%A6%E6%B4%BE%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E6%B4%BE.png" alt=""><br>从贝叶斯的观点出发：如果T具备了我们预测参数$\theta$的所有信息（即T是充分统计量），那么$\theta \perp X \mid T \Rightarrow P(\theta \mid X, T)=P(\theta\mid T)$。<br>从频率学派的角度出发：如果T已知的用来产生数据的参数，那么$ X \perp \theta \mid T \Rightarrow P(X\mid T;\theta) = P(X\mid T) $<br>从马尔科夫随机场的角度进行考虑：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F.png" alt=""></p>
 <h2 id="贝叶斯"><a href="#贝叶斯" class="headerlink" title="贝叶斯"></a>贝叶斯</h2><p>重新从贝叶斯的角度出发，写出给定自然参数的似然函数，我们选择了一个自然参数先验，然后计算出自然参数的后验概率。<br>比如：<br>$$ p(x\mid \eta) \propto exp(\eta^ T T(x) - A(\eta))$$<br>$$ p(\eta) \propto exp(\xi^T T(\eta) - A(\xi)) $$<br>$$ p(\eta\mid x, \xi) \propto exp(\eta^T T(x) + \xi^T T(\eta) + A(\eta) + A(\xi)) $$<br>如果$\eta = T(\eta)$ ，那么后验概率变为：<br>$$ p(\eta\mid x, \xi) \propto exp(T(\eta)(T(x) + \xi)+ A(\eta) + A(\xi)) $$<br>当$ \eta = T(\eta)$ ，我们指定$\eta ~exponentialFamily$，这是先验就是共轭先验。</p>
-<h1 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h1><p>广义线性模型可以将分类和回归问题进行统一，使用相同的统计框架。<br>假定：<br>$$ Y \sim exponentialFamily $$<br>$$ \eta = \psi(\mu=f(\xi = \theta^T x)) $$<br>其中Y是响应，x是固定输入，$\theta$是需要学习的参数，f（响应函数，response function），$\psi$增加了一定的灵活性，f经常被设定为$\psi^{-1}$（canonical response function）。</p>
-<h2 id="广义线性模型的批学习"><a href="#广义线性模型的批学习" class="headerlink" title="广义线性模型的批学习"></a>广义线性模型的批学习</h2><p>考虑通过求导的方法来解决最小二乘问题，就是使代价函数达到极小：<br>$$ J(\theta) = \frac{1}{2} <em> \Sigma_{i=1}^n (x_i^T\theta - y_i)^2 = \frac{1}{2}</em> (X\theta-y) $$<br>$x_i$表示第i个输入样本，$y_i$表示第i个输出样本。<br>对$J(\theta)$求一阶导并令其为零，可以得到取得极小值时的$\theta$。<br>$$ \triangledown J(\theta) = X^T X\theta - X^T y = 0 \Rightarrow \theta^* = (X^T X)^{-1} X^T y $$</p>
-<p>6</p>
+<h1 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h1><p>广义线性模型可以将分类和回归问题进行统一，使用相同的统计框架。<br>假定：<br>$$ Y \sim exponentialFamily $$<br>$$ \eta = \psi(\mu=f(\xi = \theta^T x)) $$<br>其中Y是响应，x是固定输入，$\theta$是需要学习的参数，$f$（响应函数，response function），$\psi$增加了一定的灵活性，f经常被设定为$\psi^{-1}$（canonical response function）。</p>
+<h2 id="广义线性模型的批学习"><a href="#广义线性模型的批学习" class="headerlink" title="广义线性模型的批学习"></a>广义线性模型的批学习</h2><p>考虑通过求导的方法来解决最小二乘问题，就是使代价函数达到极小：<br>$$ J(\theta) = \frac{1}{2} <em> \Sigma_{i=1}^n (x_i^T\theta - y_i)^2 = \frac{1}{2}</em> (X\theta-y) $$<br>$x_i$表示第i个输入样本，$y_i$表示第i个输出样本。<br>对$J(\theta)$求一阶导并令其为零，可以得到取得极小值时的$\theta$。<br>$$ \triangledown J(\theta) = X^T X\theta - X^T y = 0 \Rightarrow \theta^* = (X^T X)^{-1} X^T y $$<br>使用牛顿法进行迭代寻找最优解，牛顿法更新参数更新准则：<br>$$ \theta^{t+1} = \theta^t - H^{-1}\triangledown J(\theta) $$</p>
 
       
     </div>
