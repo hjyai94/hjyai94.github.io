@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="概率图模型,贝叶斯网络学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="完全可观的图模型学习图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据中或者网络的拓扑结构。 最大似然在信息论上的解释可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。\begin{equation}\begin{split} ">
+<meta name="keywords" content="概率图模型,贝叶斯网络学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可观贝叶斯网络中的学习问题">
+<meta property="og:url" content="http://yoursite.com/2018/05/12/可观贝叶斯网络中的学习问题/index.html">
+<meta property="og:site_name" content="HJY">
+<meta property="og:description" content="完全可观的图模型学习图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据中或者网络的拓扑结构。 最大似然在信息论上的解释可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。\begin{equation}\begin{split} l(\theta_G,G;D)&amp;amp;=log\ p(D\mid \theta">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-15T03:50:26.955Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="可观贝叶斯网络中的学习问题">
+<meta name="twitter:description" content="完全可观的图模型学习图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据中或者网络的拓扑结构。 最大似然在信息论上的解释可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。\begin{equation}\begin{split} l(\theta_G,G;D)&amp;amp;=log\ p(D\mid \theta">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'HR62QHMRVP',
+      apiKey: '5003cc57039452aa0e152bdb9198ed17',
+      indexName: 'dev_NAME',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/12/可观贝叶斯网络中的学习问题/"/>
+
+
+
+
+
+  <title>可观贝叶斯网络中的学习问题 | HJY</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">昨夜西风凋碧树，独上高楼望尽天涯路。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/可观贝叶斯网络中的学习问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">可观贝叶斯网络中的学习问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-12T15:37:27+08:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="完全可观的图模型学习"><a href="#完全可观的图模型学习" class="headerlink" title="完全可观的图模型学习"></a>完全可观的图模型学习</h1><p>图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据中或者网络的拓扑结构。</p>
+<h2 id="最大似然在信息论上的解释"><a href="#最大似然在信息论上的解释" class="headerlink" title="最大似然在信息论上的解释"></a>最大似然在信息论上的解释</h2><p>可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。<br>\begin{equation}\begin{split} l(\theta_G,G;D)&amp;=log\ p(D\mid \theta_G,G) (Joint Likelilood)\\<br>&amp; = log\ p\prod_n(\prod_i p(x_{n,i}\mid x_{n,\pi_{i(G)}}, \theta_{i\mid \pi_{i(G)}})  (BN Factorization  Rule)\\<br>&amp; = \Sigma_i(\Sigma_n log\ p(x_{n,i}\mid x_{n,\pi_{i(G)}}, \theta_{i\mid \pi_{i(G)}}))\\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \frac{count(x_i,x_{\pi_{i(G)}})}{M} log\ p(x_i\mid x_{\pi_{i(G)}}, \theta_{i\mid \pi(G)}))  \\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ p(x_i\mid x_{\pi_{i(G)}}, \theta_{i\mid \pi(G)}))  \\<br>\end{split}\end{equation}</p>
+<p>这里的H表示变量状态，概率分布$p(x_i)$用计数函数取代（count function）。$(x_i,x_{\pi{i(G)}}$包括了所随机变量的值。<br>继续对上面的式子进行推导：<br>\begin{equation}\begin{split} l(\theta_G,G;D)&amp;=M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ p(x_i\mid x_{\pi_{i(G)}}, \theta_{i\mid \pi(G)}))  \\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ \frac{p(x_i, x_{\pi_{i(G)}}\mid \theta_{i\mid \pi_{(G)}})}  {\hat{p}(x_i, x_{\pi_{i(G)}})}\frac{\hat{p}(x_i)}{\hat{p}(x_i)})\\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ \frac{p(x_i, x_{\pi_{i(G)}}, \theta_{i\mid \pi_{(G)}})} {\hat{p}(x_i, x_{\pi_{i(G)}})\hat{p}(x_i)}) - M\ \Sigma_i\Sigma_{x_i} - \hat{p}(x_i)log\ \hat{p}(x_i)\\<br>&amp; = M\ \Sigma_i\hat{I}(x_i,x_{\pi_{i(G)}}) - M\ \Sigma_i\hat{H}(x_i) \\<br>\end{split}\end{equation}<br>这样可以将最大似然估计分成两个部分，第一个部分是所有节点的互信息，第二部分是每个节点的熵。可以得出这样的结论，如果我们确定结构式树结构（每个节点只有一个父节点），那么基于最大似然估计下，我们可以获得一个最优的树。</p>
+<h1 id="Chow-Liu-算法"><a href="#Chow-Liu-算法" class="headerlink" title="Chow-Liu 算法"></a>Chow-Liu 算法</h1><p>目标函数可以写成：<br>$$ l(\theta_G,G;D) = M\ \Sigma_i\hat{I}(x_i,x_{\pi_{i(G)}}) - M\ \Sigma_i\hat{H}(x_i)  $$<br>将上式后面各个变量的熵去掉，因为变量的熵与树的结构无关，上式化简为：<br>\begin{equation}\begin{split} C(G) &amp;= M\ \Sigma_i\hat{I}(x_i,x_{\pi_{i(G)}}) \\<br>&amp;= M\ \Sigma_i\hat{I}(x_i,x_j) \\<br>\end{split}\end{equation}<br>我们只需要计算经验分布（empirical distribution）和每对节点的互信息（mutual information）就可以了。经验分布可以通过数据直接数出来，下面是计算每对节点$x_i$和$x_j$之间的经验分布和互信息。<br>$$ \hat{p}(X_i, X_j) = \frac{count(x_i, x_j)}{M} $$<br>$$ \hat{I}(X_i, X_j) = \Sigma_{x_i, x_j}\hat{p}(x_i, x_j)log\ \frac{\hat{p}(x_i, x_j)}{\hat{p}(x_i)\hat{p}(x_j)} $$<br>我们定义一个有节点$x_1, x_2, x_3, …,x_n$的图，指定图的边$(i, j)$的权值为$\hat{I}(X_i, X_j)$。Chow-Liu算法可以计算最大权重生成树。挑选任意节点作为根节点，然后使用宽度优先算法（breadth-first-search）来决定方向。</p>
+<h1 id="对于完全可观的给定结构的参数学习"><a href="#对于完全可观的给定结构的参数学习" class="headerlink" title="对于完全可观的给定结构的参数学习"></a>对于完全可观的给定结构的参数学习</h1><p>假定图结构固定，从N个独立同分布的样本集中进行参数估计$D = \lbrace x_1, x_2, x_3, …, x_N\rbrace$。一般来说，每个训练样本$x_n = x_{n, 1}, x_{n,2}, …, x_{n,M}$是M维的向量，对应于每个节点。下面介绍几个常见用于参数估计的分布。</p>
+<h2 id="多项式模型"><a href="#多项式模型" class="headerlink" title="多项式模型"></a>多项式模型</h2><p>对于N个独立同分布的样本，采用unit basis vectors表示，$x_n = (x_{n,1}, x_{n,2}, …, x_{n,K})$，其中$x_{n,k}=\lbrace 0, 1 \rbrace $， $\Sigma_{k=1}^K x_{n, k} $。这种表示方法将事件抽离出来，不考虑事件本身的意义，关注事件发生与否。数据集$D = \lbrace x_1, x_2, x_3, …, x_N\rbrace$的似然函数为：<br>$$ L(\theta\mid D) = P(x_1, x_2, …, x_N\mid \theta) = \prod_{n=1}^N P(x_n\mid \theta) = \prod_k \theta_k^{n_k} $$<br>$$ l(\theta\mid D) = log\ \prod_k \theta_k^{n_k}  = \Sigma_k n_k log\ \theta_k $$<br>因为存在着等式约束$\Sigma_{k=1}^K x_{n,k} = 1$，所以需要在$l(\theta\mid D)$中加入Lagarange乘子。<br>$$ \hat{l}(\theta\mid D) = \Sigma_k n_k log\ \theta_k + \lambda(1 - \Sigma_{k=1}^K x_{n,k}) $$<br>对$\theta_k$求偏导并令其为零：<br>$$ \hat{\theta}_{k,MLE} = \frac{n_k}{N} $$<br>或者$$ \hat{\theta}_{k,MLE} = \frac{1}{N}\Sigma_n x_{n,k}$$<br>此外，$\bar{n} = {n_1, n_2, …, n_K}$和$n_k = \Sigma_n x_{n,k}$是数据集D的充分统计量。</p>
+<h2 id="贝叶斯参数估计"><a href="#贝叶斯参数估计" class="headerlink" title="贝叶斯参数估计"></a>贝叶斯参数估计</h2><p>贝叶斯参数估计就是通过贝叶斯定理，利用先验概率分布来推测出后验概率分布，所以先验概率分布对于贝叶斯参数估计方法来说非常的重要，下面介绍两种常见的先验。</p>
+<h3 id="狄利克雷先验-Dirichlet-Prior"><a href="#狄利克雷先验-Dirichlet-Prior" class="headerlink" title="狄利克雷先验(Dirichlet Prior)"></a>狄利克雷先验(Dirichlet Prior)</h3><p>Dirichlet Prior由一组超参数$\alpha_1, \alpha_2, …,\alpha_N$来定义。Dirichlet分布如下：<br>$$ P(\theta) = \frac{\Gamma(\Sigma_k \alpha_k)}{\prod_k \Gamma(\Sigma_k \alpha_k)} \prod_k \theta_k^{\alpha_k-1} = C(\alpha)\prod_k \theta_k^{\alpha_k-1} $$<br>其中$C(\alpha)$是正则化参数，后验概率可以写成如下形式：<br>$$ P(\theta\mid x_1, x_2, …, x_N) = \frac{P(x_1, x_2,…, x_N\mid \theta)P(\theta)}{P(x_1, x_2, …, x_N)} \propto \prod_k \theta_k^{\alpha_k + n_k -1} $$<br>因为后验概率与先验概率形式相同，所以被叫做共轭先验。也就是说，只要先验是Dirichlet分布，那么后验就必定是Dirichlet分布。<br>基于这一特性，就有了序列贝叶斯更新算法。由Dirichlet先验分布$P(\vec{\theta}\mid \vec{\alpha}) = Dir(\vec{\theta}\mid \vec{\alpha})$，后验更新为$P(\vec{\theta}\mid \vec{\alpha},\vec{n’}) = Dir(\vec{\theta}\mid \vec{\alpha}, \vec{n’})$，之后通过$N’$个样本，可以获得充分统计量$\vec{n’}$，后验变成：<br>$$ P(\vec{\theta}\mid \vec{\alpha},\vec{n’}, \vec{n’’}) = Dir(\vec{\theta}\mid \vec{\alpha}, \vec{n’}, \vec{n’’}) $$<br>观测另外$N’’$数据有充分统计量$\vec{n’’}$。这样序列化的处理数据方式和批处理是等价的。Dirichlet主要的缺点是一维的分布，不能处理多维的分布，对于多维有对数正态先验。</p>
+<h3 id="对数正态先验"><a href="#对数正态先验" class="headerlink" title="对数正态先验"></a>对数正态先验</h3><p>对数正态先验相比于Dirichlet拥有更加丰富的分布性质。下面是对数先验的定义：<br>$$ \theta \sim LN_K(\mu, \Sigma) $$ $$ \gamma \sim N_{K-1}(\mu, \Sigma)\ \ \  \gamma_K = 0 $$  $$\theta_i \sim \lbrace \gamma_i - log(1 + \Sigma_{i=1}^{K-1} e^{\gamma_i}) $$<br>对数配分函数 $ C(\gamma) = log(1 + \Sigma_{i=1}^{K-1} e^{\gamma_i}) $<br>对数正态先验可以获得更好的协方差结构的性质，但是它不是共轭先验。</p>
+<h3 id="多元正态分布的参数估计"><a href="#多元正态分布的参数估计" class="headerlink" title="多元正态分布的参数估计"></a>多元正态分布的参数估计</h3><p>高斯分布的概率密度函数为：<br>$$p(X; \mu,\Sigma)=\frac{1}{(2\pi)^{n/2}\Sigma^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>可以对$\mu$和$\Sigma$进行最大似然估计：<br>$$ \mu_{MLE} = \frac{1}{N}\Sigma_n x_n $$<br>$$ \Sigma_{MLE} = \frac{1}{N}\Sigma_n (x_n - \mu_{MLE})(x_n - \mu_{MLE})^T $$<br>我们需要主要到当$\Sigma$不是满秩的时候，其也不是可逆的。贝叶斯估计的优势在于贝叶斯估计具有先验知识，或者是先验是共轭的，这样就可以进行序列化的处理，类似于批处理的方式。<br>特别的，当$\mu$未知，$\sigma$已知时：<br>$$ p(\mu) = (2\pi\tau^2)^{-1/2} exp\lbrace -(\mu - \mu_0)^2 /2\tau^2 \rbrace $$<br>联合概率分布为：<br>$$ P(x,\mu) = (2\pi\tau^2)^{-1/2} exp\lbrace -(\mu - \mu_0)^2 /2\tau^2 \rbrace * (2\pi\sigma^2)^{-N/2} exp\lbrace -\frac{1}{2\sigma^2}\Sigma_{n=1}^N (x_n - \mu)^2 \rbrace $$<br>后验概率即为：<br>$$ P(\mu\mid X) = (2\pi\tilde{\sigma}^2)^{-N/2} exp\lbrace -\frac{1}{2\tilde{\sigma}^2} (\mu - \tilde{\mu})^2 \rbrace $$<br>其中$\mu = \frac{N/\sigma^2}{N/\sigma^2 + 1/\tau} \bar{x} + \frac{1/\tau}{N/\sigma^2 + 1/\tau}\mu_0 $和$ \tilde{\sigma}^2 = (\frac{N}{\sigma^2} + \frac{1}{\tau^2})^{-1} $<br>后验均值是先验和极大似然估计的凸组合，权值与噪声水平成正比。<br>后验$1/\tilde{\sigma}^2$是先验$1/\tau^2$与每个观测数据对于$1/\sigma^2$的影响。</p>
+<h2 id="最大似然估计用于一般的贝叶斯网络"><a href="#最大似然估计用于一般的贝叶斯网络" class="headerlink" title="最大似然估计用于一般的贝叶斯网络"></a>最大似然估计用于一般的贝叶斯网络</h2><p>如果我们假定每个条件概率密度参数是全局独立的，所有的节点是可观的，那么对数似然函数可以分解为如下的形式：<br>$$ l(\theta; D) = log\ p(D\mid \theta) = \Sigma_i(\Sigma_n log\ p(x_{n,i} \mid x_{n,\pi_i}, \theta_i)) $$<br>对于独立同分布的数据似然函数为：<br>$$ p(D\mid \theta) = \prod_n p(x_n\mid \theta) $$</p>
+<h3 id="最大似然估计用于离散形式的贝叶斯网络"><a href="#最大似然估计用于离散形式的贝叶斯网络" class="headerlink" title="最大似然估计用于离散形式的贝叶斯网络"></a>最大似然估计用于离散形式的贝叶斯网络</h3><p>假定每个条件概率分布都可以用一个表格来表示，其中$\theta_{ijk} = P(X_i = j\mid x_{\pi_i} = k)$，然后充分统计量就是所有可能的状态的和$ n_{ijk} = \Sigma_n x_{n,i}^j x_{n,{\pi_i}}^k $，对数似然函数写成：<br>$$ l(\theta; \mid D) = log\prod_{i,j,k}\theta_{ijk}^{n_{ijk}} = \Sigma_{i,j,k}n_{i,j,k} log\ \theta_{i,j,k} $$<br>其中$\Sigma_j \theta_{ijk} = 1$，使用拉格朗日乘数法可以得出结果：<br>$$ \theta_{ijk}^{ML} = \frac{n_{ijk}}{\Sigma_{j’} n_{ij’k}} $$</p>
+<h2 id="贝叶斯参数估计-1"><a href="#贝叶斯参数估计-1" class="headerlink" title="贝叶斯参数估计"></a>贝叶斯参数估计</h2><ul>
+<li>全局独立性 $p(\theta_m\mid G) = \prod_{i=1}^M p(\theta_i \mid G)$</li>
+<li><p>局部独立性 $p(\theta_i\mid G) = \prod_{j=1}^{q_i} p(\theta_{x_i^k\mid x_{\pi_i^j}} \mid G)$<br>全局参数独立性指的是每个节点间的参数是独立的，局部参数独立性指的是节点的参数在其父节点不同的情况下独立。</p>
+</li>
+<li><p>离散的有向无环图模型满足$x_i\mid x_{\pi_i}^j \sim Multi(\theta)$，同时Dirichlet先验为$p(\theta) = C(\alpha)\prod_k \theta_k^{\alpha_k - 1}$。</p>
+</li>
+<li>高斯有向无环图模型满足$x_i\mid x_{\pi_i}^j \sim Normal(\mu,\Sigma)$，正态Wishart先验为：<br>$$ p(\mu\mid v,\alpha_{\mu},W) = Normal(v,(\alpha_{\mu}W)^{-1}) $$<br>$$ p(W\mid \alpha_w,T) = c(n, \alpha_w)|T|^{\alpha_w /2}|W|^{(\alpha_w -n-1)/2} exp \lbrace\frac{1}{2}tr\lbrace TW \rbrace\rbrace $$<br>其中$W = \Sigma^{-1}$。</li>
+</ul>
+<p>##　马尔科夫链转移矩阵<br>考虑一个时不变的一阶马尔科夫链，初始状态概率向量为$\pi_k = P(X_1^K = 1)$，状态转移矩阵$A_{ij} = P(X_t^j = 1\mid x_{t-1}^i = 1)$。联合概率为：<br>$$ P(X_{1:T\mid \theta}) = P(x_1\mid \pi)\prod_{t=2}^T P(X_t\mid X_{t-1})$$<br>对数似然函数为：<br>$$ l(\theta;D) = \Sigma_n log\ p(x_{n,1}\mid \pi) + \Sigma_n\Sigma_{t=2}^T log\ P(x_{n,t}\mid x_{n,t-1,A}) $$<br>A是随机矩阵并且$\Sigma_j A_{ij}$，所以$A_{ij}$的最大似然估计是从$i$到$j$转移的分式：<br>$$ A_{ij}^{ML} = \frac{\Psi(i\rightarrow j)}{\Psi(i\rightarrow <em> )} = \frac{\Sigma_n\Sigma_{t=2}^T x_{n,t-1}^i x_{n,t}^j}{\Sigma_n\Sigma_{t=2}^T x_{n,t-1}^i} $$<br>上面的方法有一个稀疏的问题，当$i\rightarrow j$没有出现时，$A_{ij}=0$，那么即将出现的单词对$i\rightarrow j$概率为零。可以使用下面的方法进行解决：<br>$$ \tilde{A}_{i\rightarrow </em> } = \lambda\eta_t + (1 - \lambda) A_{i\rightarrow * }^{ML} $$</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/概率图模型/" rel="tag"># 概率图模型</a>
+          
+            <a href="/tags/贝叶斯网络学习/" rel="tag"># 贝叶斯网络学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/09/指数族与广义线性模型/" rel="next" title="指数族与广义线性模型">
+                <i class="fa fa-chevron-left"></i> 指数族与广义线性模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="HJY" />
+            
+              <p class="site-author-name" itemprop="name">HJY</p>
+              <p class="site-description motion-element" itemprop="description">HJY的装逼小站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/hjyai94" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#完全可观的图模型学习"><span class="nav-number">1.</span> <span class="nav-text">完全可观的图模型学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最大似然在信息论上的解释"><span class="nav-number">1.1.</span> <span class="nav-text">最大似然在信息论上的解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chow-Liu-算法"><span class="nav-number">2.</span> <span class="nav-text">Chow-Liu 算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对于完全可观的给定结构的参数学习"><span class="nav-number">3.</span> <span class="nav-text">对于完全可观的给定结构的参数学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式模型"><span class="nav-number">3.1.</span> <span class="nav-text">多项式模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯参数估计"><span class="nav-number">3.2.</span> <span class="nav-text">贝叶斯参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#狄利克雷先验-Dirichlet-Prior"><span class="nav-number">3.2.1.</span> <span class="nav-text">狄利克雷先验(Dirichlet Prior)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数正态先验"><span class="nav-number">3.2.2.</span> <span class="nav-text">对数正态先验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多元正态分布的参数估计"><span class="nav-number">3.2.3.</span> <span class="nav-text">多元正态分布的参数估计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大似然估计用于一般的贝叶斯网络"><span class="nav-number">3.3.</span> <span class="nav-text">最大似然估计用于一般的贝叶斯网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最大似然估计用于离散形式的贝叶斯网络"><span class="nav-number">3.3.1.</span> <span class="nav-text">最大似然估计用于离散形式的贝叶斯网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯参数估计-1"><span class="nav-number">3.4.</span> <span class="nav-text">贝叶斯参数估计</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
