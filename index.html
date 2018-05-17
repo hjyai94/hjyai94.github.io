@@ -290,6 +290,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/可观无向图模型中的学习问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/17/可观无向图模型中的学习问题/" itemprop="url">可观无向图模型中的学习问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T10:58:53+08:00">
+                2018-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="最大似然结构学习"><a class="markdownIt-Anchor" href="#最大似然结构学习"></a> 最大似然结构学习</h1>
+<h1 id="连续型马尔科夫随机场"><a class="markdownIt-Anchor" href="#连续型马尔科夫随机场"></a> 连续型马尔科夫随机场</h1>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/12/可观贝叶斯网络中的学习问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,7 +526,7 @@
       
         
           
-            <h1 id="完全可观的图模型学习"><a href="#完全可观的图模型学习" class="headerlink" title="完全可观的图模型学习"></a>完全可观的图模型学习</h1><p>图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据中或者网络的拓扑结构。</p>
+            <h1 id="完全可观的图模型学习"><a href="#完全可观的图模型学习" class="headerlink" title="完全可观的图模型学习"></a>完全可观的图模型学习</h1><p>图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据学习网络的拓扑结构。</p>
 <h2 id="最大似然在信息论上的解释"><a href="#最大似然在信息论上的解释" class="headerlink" title="最大似然在信息论上的解释"></a>最大似然在信息论上的解释</h2><p>可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。<br>\begin{equation}\begin{split} l(\theta_G,G;D)&amp;=log\ p(D\mid \theta_G,G) (Joint Likelilood)\\<br>&amp; = log\ p\prod_n(\prod_i p(x_{n,i}\mid x_{n,\pi_{i(G)}}, \theta_{i\mid \pi_{i(G)}})  (BN Factorization  Rule)\\<br>&amp; = \Sigma_i(\Sigma_n log\ p(x_{n,i}\mid x_{n,\pi_{i(G)}}, \theta_{i\mid \pi_{i(G)}}))\\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \frac{count(x_i,x_{\pi_{i(G)}})}{M} log\ p(x_i\mid x_{\pi_{i(G)}}, \theta_{i\mid \pi(G)}))  \\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ p(x_i\mid x_{\pi_{i(G)}}, \theta_{i\mid \pi(G)}))  \\<br>\end{split}\end{equation}</p>
 <p>这里的H表示变量状态，概率分布$p(x_i)$用计数函数取代（count function）。$(x_i,x_{\pi{i(G)}}$包括了所随机变量的值。<br>继续对上面的式子进行推导：<br>\begin{equation}\begin{split} l(\theta_G,G;D)&amp;=M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ p(x_i\mid x_{\pi_{i(G)}}, \theta_{i\mid \pi(G)}))  \\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ \frac{p(x_i, x_{\pi_{i(G)}}\mid \theta_{i\mid \pi_{(G)}})}  {\hat{p}(x_i, x_{\pi_{i(G)}})}\frac{\hat{p}(x_i)}{\hat{p}(x_i)})\\<br>&amp; = M\ \Sigma_i(\Sigma_{x_i,x_{\pi_{i(G)}}} \hat{p}(x_i, x_{\pi_{i(G)}}) log\ \frac{p(x_i, x_{\pi_{i(G)}}, \theta_{i\mid \pi_{(G)}})} {\hat{p}(x_i, x_{\pi_{i(G)}})\hat{p}(x_i)}) - M\ \Sigma_i\Sigma_{x_i} - \hat{p}(x_i)log\ \hat{p}(x_i)\\<br>&amp; = M\ \Sigma_i\hat{I}(x_i,x_{\pi_{i(G)}}) - M\ \Sigma_i\hat{H}(x_i) \\<br>\end{split}\end{equation}<br>这样可以将最大似然估计分成两个部分，第一个部分是所有节点的互信息，第二部分是每个节点的熵。可以得出这样的结论，如果我们确定结构式树结构（每个节点只有一个父节点），那么基于最大似然估计下，我们可以获得一个最优的树。</p>
 <h1 id="Chow-Liu-算法"><a href="#Chow-Liu-算法" class="headerlink" title="Chow-Liu 算法"></a>Chow-Liu 算法</h1><p>目标函数可以写成：<br>$$ l(\theta_G,G;D) = M\ \Sigma_i\hat{I}(x_i,x_{\pi_{i(G)}}) - M\ \Sigma_i\hat{H}(x_i)  $$<br>将上式后面各个变量的熵去掉，因为变量的熵与树的结构无关，上式化简为：<br>\begin{equation}\begin{split} C(G) &amp;= M\ \Sigma_i\hat{I}(x_i,x_{\pi_{i(G)}}) \\<br>&amp;= M\ \Sigma_i\hat{I}(x_i,x_j) \\<br>\end{split}\end{equation}<br>我们只需要计算经验分布（empirical distribution）和每对节点的互信息（mutual information）就可以了。经验分布可以通过数据直接数出来，下面是计算每对节点$x_i$和$x_j$之间的经验分布和互信息。<br>$$ \hat{p}(X_i, X_j) = \frac{count(x_i, x_j)}{M} $$<br>$$ \hat{I}(X_i, X_j) = \Sigma_{x_i, x_j}\hat{p}(x_i, x_j)log\ \frac{\hat{p}(x_i, x_j)}{\hat{p}(x_i)\hat{p}(x_j)} $$<br>我们定义一个有节点$x_1, x_2, x_3, …,x_n$的图，指定图的边$(i, j)$的权值为$\hat{I}(X_i, X_j)$。Chow-Liu算法可以计算最大权重生成树。挑选任意节点作为根节点，然后使用宽度优先算法（breadth-first-search）来决定方向。</p>
@@ -403,7 +546,39 @@
 </li>
 <li>高斯有向无环图模型满足$x_i\mid x_{\pi_i}^j \sim Normal(\mu,\Sigma)$，正态Wishart先验为：<br>$$ p(\mu\mid v,\alpha_{\mu},W) = Normal(v,(\alpha_{\mu}W)^{-1}) $$<br>$$ p(W\mid \alpha_w,T) = c(n, \alpha_w)|T|^{\alpha_w /2}|W|^{(\alpha_w -n-1)/2} exp \lbrace\frac{1}{2}tr\lbrace TW \rbrace\rbrace $$<br>其中$W = \Sigma^{-1}$。</li>
 </ul>
-<p>##　马尔科夫链转移矩阵<br>考虑一个时不变的一阶马尔科夫链，初始状态概率向量为$\pi_k = P(X_1^K = 1)$，状态转移矩阵$A_{ij} = P(X_t^j = 1\mid x_{t-1}^i = 1)$。联合概率为：<br>$$ P(X_{1:T\mid \theta}) = P(x_1\mid \pi)\prod_{t=2}^T P(X_t\mid X_{t-1})$$<br>对数似然函数为：<br>$$ l(\theta;D) = \Sigma_n log\ p(x_{n,1}\mid \pi) + \Sigma_n\Sigma_{t=2}^T log\ P(x_{n,t}\mid x_{n,t-1,A}) $$<br>A是随机矩阵并且$\Sigma_j A_{ij}$，所以$A_{ij}$的最大似然估计是从$i$到$j$转移的分式：<br>$$ A_{ij}^{ML} = \frac{\Psi(i\rightarrow j)}{\Psi(i\rightarrow <em> )} = \frac{\Sigma_n\Sigma_{t=2}^T x_{n,t-1}^i x_{n,t}^j}{\Sigma_n\Sigma_{t=2}^T x_{n,t-1}^i} $$<br>上面的方法有一个稀疏的问题，当$i\rightarrow j$没有出现时，$A_{ij}=0$，那么即将出现的单词对$i\rightarrow j$概率为零。可以使用下面的方法进行解决：<br>$$ \tilde{A}_{i\rightarrow </em> } = \lambda\eta_t + (1 - \lambda) A_{i\rightarrow * }^{ML} $$</p>
+<p>##　马尔科夫链转移矩阵<br>考虑一个时不变的一阶马尔科夫链，初始状态概率向量为$\pi_k = P(X_1^K = 1)$，状态转移矩阵$A_{ij} = P(X_t^j = 1\mid x_{t-1}^i = 1)$。联合概率为：<br>$$ P(X_{1:T\mid \theta}) = P(x_1\mid \pi)\prod_{t=2}^T P(X_t\mid X_{t-1})$$<br>对数似然函数为：<br>$$ l(\theta;D) = \Sigma_n log\ p(x_{n,1}\mid \pi) + \Sigma_n\Sigma_{t=2}^T log\ P(x_{n,t}\mid x_{n,t-1,A}) $$<br>A是随机矩阵并且$\Sigma_j A_{ij}$，所以$A_{ij}$的最大似然估计是从$i$到$j$转移的分式：<br>$$ A_{ij}^{ML} = \frac{\Psi(i\rightarrow j)}{\Psi(i\rightarrow \star)} = \frac{\Sigma_n\Sigma_{t=2}^T x_{n,t-1}^i x_{n,t}^j}{\Sigma_n\Sigma_{t=2}^T x_{n,t-1}^i} $$</p>
+<p>上面的方法有一个稀疏的问题，当$i\rightarrow j$没有出现时，$A_{ij}=0$，那么即将出现的单词对$i\rightarrow j$概率为零。可以使用下面的方法进行解决：<br>$$ \tilde{A}_{i\rightarrow \star} = \lambda\eta_t + (1 - \lambda) A_{i\rightarrow \star}^{ML} $$</p>
+<h2 id="隐马尔科夫模型"><a href="#隐马尔科夫模型" class="headerlink" title="隐马尔科夫模型"></a>隐马尔科夫模型</h2><ul>
+<li>两个状态之间转移的可能性$P(y_t^j = 1\mid y_{t-1}^i = 1) = a_{i,j}$或者$P(y_t\mid y_{t-1} = 1)\sim Multinomial(a_{i,1}, a_{i,2}, …, a_{i,M})$。</li>
+<li>开始概率$P(y_1) \sim Multinomial(\pi_1, \pi_2,…, \pi_M)$。</li>
+<li>每个y向x的传播概率$P(x_t\mid y_t^i = 1)\sim Multinomial(b_{i,1}, b_{i,2}, …, b_{i,K})$。</li>
+</ul>
+<p>给定$x=x_1,…,x_N$对实际的状态路径已知，定义如下：<br>$A_{ij} = \Psi$状态转移在y上从$i\rightarrow j$<br>$B_{ik} = \Psi $状态i在y中影响在x中的k<br>$\theta$的最大似然估计：<br>$$a_{ij}^{ML} = \frac{\Psi(i\rightarrow j)} {\Psi(i\rightarrow \star)} = \frac{A_{ij}}{\Sigma_j A_{ij}}$$<br>$$ b_{ik}^{ML} = \frac{\Psi(i\rightarrow \star)}{\Psi(i\rightarrow \star)} = \frac{B_{ij}}{\Sigma_k B_{ik}} $$</p>
+<p>对于样本较小的情况下，采用伪计数。<br>$A_{ij} = \Psi$状态转移在$y+R_{ij$}$上从$i\rightarrow j$<br>$B_{ik} = \Psi$状态i在$y$中影响在$x+S_{ik}$中的k<br>$R_{ij}$，$S_{ij}$是伪计数，体现了我们对先验信息的信任。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>对于完全可观的贝叶斯网络，可以进行分解，所以学习问题可以进行分解。</p>
+<ul>
+<li>结构学习<ul>
+<li>Chow Liu 算法</li>
+<li>近邻选择</li>
+</ul>
+</li>
+<li>在概率图的单个节点上进行学习-密度估计：指数族分布<ul>
+<li>一般的离散分布</li>
+<li>一般的连续分布</li>
+<li>共轭先验</li>
+</ul>
+</li>
+<li>两个节点进行学习：广义线性模型<ul>
+<li>条件概率密度估计</li>
+<li>分类</li>
+</ul>
+</li>
+<li>更多的节点<ul>
+<li>利用局部的性质</li>
+</ul>
+</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>注：本文主要参考[1]中第7讲视频以及笔记。</p>
 
           
         
@@ -576,7 +751,7 @@
 <li>广义线性模型是图模型的实际应用中的重要组成部分。</li>
 <li>要选择合适的独立性以及合适的先验。</li>
 </ul>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>注：本文主要参考[1]中第8讲视频以及笔记。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>注：本文主要参考[1]中第6讲视频以及笔记。</p>
 
           
         
@@ -1700,6 +1875,28 @@
 <li>monmentarily<br>in a short</li>
 <li>ready for</li>
 </ul>
+<h1 id="englishpod-C0064"><a href="#englishpod-C0064" class="headerlink" title="englishpod_C0064"></a>englishpod_C0064</h1><ul>
+<li>sleep with</li>
+<li>confess<br>you tell a secret that you are hiding</li>
+<li>overwhelm</li>
+<li>jelousy</li>
+<li>jerk<br>stupid and mean person</li>
+<li>bastard</li>
+<li>bun in the oven<br>pregnant</li>
+<li>I can’t help myself</li>
+<li>come into the picture<br>appear into one’s life</li>
+<li>cheerleading squad<br>啦啦队</li>
+</ul>
+<h1 id="englishpod-C0065"><a href="#englishpod-C0065" class="headerlink" title="englishpod_C0065"></a>englishpod_C0065</h1><ul>
+<li>technical acument</li>
+<li>excel</li>
+<li>head</li>
+<li>struggle</li>
+<li>punctual<br>punctuality</li>
+<li>adress<br>deal with</li>
+<li>fit</li>
+<li>acumen<br>the ability to think clearly and make good decisions</li>
+</ul>
 <p>#</p>
 
           
@@ -2228,155 +2425,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/30/GAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/30/GAN/" itemprop="url">GAN（生成对抗网络）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T15:01:17+08:00">
-                2018-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>生成对抗网络（Generative Adersarial nets），基本思想就是同步训练生成模型G和判别模型D，<br>生成模型G服从数据分布，判别模型D用来判断样本是来自于生成模型G还是训练数据。</p>
-<p>完全可以编成一段相声，从南边来了一个生成模型生成数据，从北边来了一个鉴别模型鉴别数据，<br>生成模型拼命生成数据不让鉴别模型鉴别数据，鉴别模型偏要鉴别生成模型生成的数据。</p>
-<h1 id="Refercence"><a href="#Refercence" class="headerlink" title="Refercence"></a>Refercence</h1><p>Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair, S., … &amp; Bengio, Y. (2014). Generative adversarial nets. In Advances in neural information processing systems (pp. 2672-2680).</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2426,7 +2479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2448,7 +2501,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
