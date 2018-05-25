@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%A2%91%E7%8E%87%E5%AD%A6%E6%B4%BE%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E6%B4%BE.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F.png">
-<meta property="og:updated_time" content="2018-05-15T11:11:56.814Z">
+<meta property="og:updated_time" content="2018-05-17T03:16:39.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指数族与广义线性模型">
 <meta name="twitter:description" content="指数族将随机变量X写成指数族的形式：$$p(X=x;\eta)=h(x)exp(\eta^T T(x)-A(\eta))$$其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。 例子指数族可以包括许多的例子，比如高斯分布，伯努利分布">
@@ -386,7 +386,7 @@
       
         <h1 id="指数族"><a href="#指数族" class="headerlink" title="指数族"></a>指数族</h1><p>将随机变量X写成指数族的形式：<br>$$p(X=x;\eta)=h(x)exp(\eta^T T(x)-A(\eta))$$<br>其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>指数族可以包括许多的例子，比如高斯分布，伯努利分布，多项式分布等。</p>
-<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>令向量$X\in R^k$<br>$$p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}\Sigma^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>$$=\frac{1}{(2\pi)^{k/2}} exp\lbrace -\frac{1}{2} tr(\Sigma^{-1}x x^T) + \mu^T \Sigma^{-1}x^T- \frac{1}{2}\mu^T \Sigma^{-1}\mu - log|\Sigma|\rbrace$$<br>对应的指数族表示：<br>$$\eta = [\Sigma^{-1}\mu; -\frac{1}{2}vec(\Sigma^{-1})]$$  $$ T(x)=[x;vec(xx^T)]$$  $$ A(\eta)=\frac{1}{2} \mu^T \Sigma^{-1} \mu + log|\Sigma| $$  $$ h(x)= \frac{1} { {2\pi}^{k/2} } $$</p>
+<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>令向量$X\in R^k$<br>$$p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}|\Sigma|^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>$$=\frac{1}{(2\pi)^{k/2}} exp\lbrace -\frac{1}{2} tr(\Sigma^{-1}x x^T) + \mu^T \Sigma^{-1}x^T- \frac{1}{2}\mu^T \Sigma^{-1}\mu - log|\Sigma|\rbrace$$<br>对应的指数族表示：<br>$$\eta = [\Sigma^{-1}\mu; -\frac{1}{2}vec(\Sigma^{-1})]$$  $$ T(x)=[x;vec(xx^T)]$$  $$ A(\eta)=\frac{1}{2} \mu^T \Sigma^{-1} \mu + log|\Sigma| $$  $$ h(x)= \frac{1} { {2\pi}^{k/2} } $$</p>
 <h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>$$ p(x;\phi) $$  $$ = \phi^x(1-\phi)^{1-x} $$  $$ = exp(log(\phi^x(1-\phi)^{1-x}) $$  $$ = exp(log(\phi^x)+log((1-\phi)^{1-x})) $$  $$ = exp(xlog(\phi) + (1-x)log(1-\phi)) $$  $$ = exp(xlog(\frac{\phi}{1-\phi})+log(1-\phi))$$<br>对应于指数族：<br>$$ \eta = log(\frac{\phi}{1-\phi}) $$  $$ T(x) = x $$  $$ A(\eta) = -log(1-\phi) $$  $$ h(x) = 1 $$</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>很多的分布可以看做是指数族：单变量高斯分布（the univariate Gaussian)，泊松分布（Poisson）， 多项分布（multinomial），线性回归（linear regression），伊辛模型（Ising model），受限波尔兹曼机机（restricted Boltzmann machines），还有条件随机场（contional random field，CRFs）。</p>
 <h4 id="条件随机场"><a href="#条件随机场" class="headerlink" title="条件随机场"></a>条件随机场</h4><p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png" alt=""><br>条件随机场是基于上面图的无向图模型，势函数是定义在成对输出上面的。<br>$$ p_\theta(y\mid x)=\frac{1}{Z(x)}exp(\Sigma_{e\in E,k} \lambda_k f_k(e,y\mid_e, x) + \Sigma_{v\in V,k} \mu_k g_k(v,y\mid_v, x))$$<br>其中$f_k$和$g_k$是固定的，$g_k$是波尔顶点特征，$f_k$是波尔边特征。</p>
@@ -539,7 +539,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

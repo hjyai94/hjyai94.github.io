@@ -290,6 +290,125 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/18/论文总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/18/论文总结/" itemprop="url">论文总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-18T19:21:20+08:00">
+                2018-05-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/可观无向图模型中的学习问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,8 +502,34 @@
       
         
           
-            <h1 id="最大似然结构学习"><a class="markdownIt-Anchor" href="#最大似然结构学习"></a> 最大似然结构学习</h1>
-<h1 id="连续型马尔科夫随机场"><a class="markdownIt-Anchor" href="#连续型马尔科夫随机场"></a> 连续型马尔科夫随机场</h1>
+            <h1 id="最大似然结构学习"><a href="#最大似然结构学习" class="headerlink" title="最大似然结构学习"></a>最大似然结构学习</h1><h2 id="连续型马尔科夫随机场"><a href="#连续型马尔科夫随机场" class="headerlink" title="连续型马尔科夫随机场"></a>连续型马尔科夫随机场</h2><p>给定高斯图模型，我们可以用一个伊辛模型来呈现。<br>$$p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}|\Sigma|^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>下面令$\mu=0$和$Q=\Sigma_{-1}$，高斯模型可以写成：<br>$$p(x\mid \mu,Q)=\frac{|Q|^{1/2}} {(2\pi)^{k/2}}exp \lbrace  -\frac{1}{2}()\Sigma_i q_{ii} (x_i)^2 - \Sigma_{i&lt;j} q_{ij} x_i x_j) \rbrace$$<br>我们将上式指数中的第一部分看做是定义在节点上的势函数，第二部分是定义在比边上的势函数，也就是说等同于一个伊辛模型。<br>$$ P(x\mid \Theta) = exp\ (\Sigma_{i\in V} \theta_{ii}^t x_{d,j} + \Sigma_{(i,j)\in E} x_{d,i}x_{d,j} - A(\Theta)) $$</p>
+<h2 id="稀疏图模型"><a href="#稀疏图模型" class="headerlink" title="稀疏图模型"></a>稀疏图模型</h2><p>协方差矩阵有一个重要的性质是：当$\Sigma_{i,j}=0$有$x_i\perp x_j$；逆协方差矩阵（精确矩阵）的对应的性质为：当$\Sigma_{i,j}^{-1}=0$时$x_i\perp x_j\mid x_{-ij}$。<br>如果出现$p \gg n$时，得不到最大似然估计，这是我们使用近邻选择得方法，增加惩罚函数来学习稀疏的图模型。<br>近邻选择可以看做是伊辛模型。<br>$$ P(x\mid \Theta) = exp\ (\Sigma_{i\in V} \theta_{ii}^t x_{d,j} + \Sigma_{(i,j)\in E} x_{d,i}x_{d,j} - A(\Theta)) $$</p>
+<h1 id="最大似然估计"><a href="#最大似然估计" class="headerlink" title="最大似然估计"></a>最大似然估计</h1><h2 id="似然条件"><a href="#似然条件" class="headerlink" title="似然条件"></a>似然条件</h2><p>有向图中，对数似然可以分解为一组和的形式，每个对应于一个子节点对应其父节点。无向图中，对数似然并不能分解，因为Z是包含了所有的参数的函数。<br>$$ p(x) = \frac{1}{Z} \prod_{c\in C} \psi_c{x_c}, Z = \Sigma_x \prod_{c\in C} \psi_c(x_c) $$<br>我们需要通过推测来学习参数。我们获得了输入数据的充分统计量，计数。<br>$$total\ count:m(x) = \Sigma_n \delta(x, x_n)$$  $$cliqu\ count:m(x_c) = \Sigma_{x_{V\setminus c}} m(x)$$<br>似然函数为：<br>$$p(D\mid \theta) = \prod_n \prod_x p(x\mid \theta)^{\delta(x,x_n)}$$</p>
+<p>\begin{equation}\begin{split} log\ p(D\mid \theta)&amp;=\Sigma_n \Sigma_x \delta(x,x_n)log\ p(x\mid \theta\\<br>l &amp; = \Sigma_x m(x)log(\frac{1}{Z}\prod_c \pi_c(x_c))\\<br>&amp; = \Sigma_c \Sigma_{x_c}m(x_c)log\ \psi_c(x_c) - N log\ Z \\<br>\end{split}\end{equation}<br>上式的两个部分对$\psi_c(x_c)$求导：<br>第一项：<br>$$ \frac{\partial l_1}{\partial \psi_c(x_c)} = m(x_c)/\psi_c(x_c) $$<br>第二项：<br>\begin{equation}\begin{split} \frac{\partial log\ Z}{\partial \psi_c(x_c)} &amp; = \frac{1}{Z} \frac{\partial}{\partial\psi_c(x_c)}(\Sigma_{\tilde{x} } \prod_{d} \psi_d(\tilde x_d))\\<br>&amp; = \frac{1}{Z} \Sigma_{\tilde{x}}\delta(\tilde x_c, x_c)\frac{\partial}{\partial \psi_c(x_c)}(\prod_{d} \psi_d(\tilde x_d) \\<br>&amp; =  \Sigma_{\tilde x}\delta(\tilde x_c, x_c) \frac{1}{\psi_c(\tilde x_c)} \frac{1}{Z} \prod_d \psi_d(\tilde x_d)\\<br>&amp; = \frac{1}{\psi_c (x_c)}\Sigma_{\tilde x} \delta(\tilde x_c, x_c) p(\tilde x)  \\<br>&amp; = \frac{x_c}{\psi_c (x_c)}<br>\end{split}\end{equation}</p>
+<p>令导数为零，有：$\frac{\partial l}{\partial \psi_c(x_c)} = \frac{m(x_c)}{\psi_c(x_c)} - N\frac{p(x_c)}{\psi_c(x_c)} = 0$，从结果可以看出，模型的边缘概率密度等于观测的边缘概率密度。<br>$$ p_{MLE}^{\star} (x_c) = \frac{m(x_c)}{N} = \tilde p(x_c) $$<br>但是结果并没有给出似然参数的估计方法，只是给出了必须满足的条件。</p>
+<h2 id="可分解模型"><a href="#可分解模型" class="headerlink" title="可分解模型"></a>可分解模型</h2><p>对于可分解的模型，势函数可以定义于最大团上，团势函数的最大似然等价于经验边际。因此最大似然可以通过检查得到。基于势函数的表示似然$p(x)=\frac{\prod_c \psi_c(x_c)}{\prod_s \psi_s(x_s)}$，其中c是最大团，s是最大团分离的因子。为了计算团势，将他们等同于经验边际。分离因子必须分解为几个邻居，那么$Z=1$。</p>
+<h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p>考虑链$X_1-X_2-X_3$，有团$(x_1, x_2),(x_2, x_3)$，分离因子$x_2$。<br>$$ \tilde p_{MLE}(x_1, x_2, x_3) = \frac{\tilde p(x_1, x_2)\tilde p(x_2, x_3)}{\tilde p(x_2)} $$<br>$$ \tilde{\psi}_{12}^{MLE}(x_1, x_2) = \tilde p(x_1, x_2) $$<br>$$ \tilde{\psi}_{23}^{MLE}(x_2, x_3) = \frac{\tilde p(x_2, x_3)}{\tilde p(x_2)}= \tilde p(x_2\mid x_3) $$</p>
+<h3 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h3><p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%97%A0%E5%90%91%E5%9B%BE%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1.png" alt=""><br>团$(x_1, x_2, x_3),(x_2, x_3, x_4)$，分离因子$x_2,x_3$<br>$$ \tilde p_{MLE}(x_1, x_2, x_3, x_4) = \frac{\tilde p(x_1, x_2, x_3)\tilde p(x_2, x_3, x_4)}{\tilde p(x_2, x_3)} $$<br>$$ \tilde{\psi}_{123}^{MLE}(x_1, x_2,x_3) = \frac{\tilde p(x_1, x_2, x_3)}{\tilde p(x_2, x_33)}= \tilde p(x_1\mid x_2, x_3) $$<br>$$ \tilde{\psi}_{234}^{MLE}(x_2, x_3, x_4) =  \tilde p(x_2, x_3, x_4) $$</p>
+<h2 id="不可分离模型-IPF和GIS"><a href="#不可分离模型-IPF和GIS" class="headerlink" title="不可分离模型-IPF和GIS"></a>不可分离模型-IPF和GIS</h2><p>如果一个图是不可分离的，也就是说势函数不能以最大团定义，我们不能将经验边际等价于势函数的似然。</p>
+<h3 id="Tabular-Cique-Potentials-IPF"><a href="#Tabular-Cique-Potentials-IPF" class="headerlink" title="Tabular Cique Potentials-IPF"></a>Tabular Cique Potentials-IPF</h3><p>如果团势函数是表格形式或者可以使用简介的参数模型表示，那么我们可以使用IPF来求最大似然估计。<br>从上面的似然函数导数：<br>$$\frac{\partial l}{\partial \psi_c(x_c)} = \frac{m(x_c)}{\psi_c(x_c)} - N\frac{p(x_c)}{\psi_c(x_c)} = 0$$<br>我们可以得到：<br>$$ \frac{\tilde p(x_c)}{\psi_c(x_c)} = \frac{p(x_c)}{\psi_c(x_c)} $$<br>因为$\psi_c$隐性的出现了模型边际$p(x_c)$中，所以在点$\psi_c$上存在等式关系，所以直接解出$\psi_c$是非常困难的，因为其出现在了等式两边。<br>我们将$\psi_c$在右边固定，然后在左边解出，循环所有的团，进行下面的迭代：<br>$$ \psi_c^{(t+1)}(x_c) = \psi_c^{(t)}(x_c)\frac{\tilde p(x_c)}{p^{(t)}(x_c)} $$<br>上面的算法可以看做是坐标上升算法，其中的坐标就是势团的参数。因此在每一步中，似然函数的值会增加，这样就可以收敛到全局极大值。这个算法童谣可以被看做是最小化观测数据的分布与模型分布的KL散度(交叉熵),只有当模型是可分解的。<br>$$ max\ l \Leftrightarrow KL(\tilde p(x)\mid \mid p(x\mid\theta))=\Sigma_x \tilde p(x)log\frac{\tilde p(x)}{p(x\mid \theta)} $$</p>
+<p>\begin{equation}\begin{split} KL(q(x_a, x_b)\mid \mid p(x_a, x_b)) &amp;= \Sigma_{x_a, x_b}q(x_a)q(x_b\mid x_a)log\frac{q(x_a)q(x_b\mid x_a)}{p(x_a)p(x_b\mid x_a)}\\<br>&amp;= \Sigma_{x_a, x_b}q(x_a)q(x_b\mid x_a)log\frac{q(x_a)}{p(x_a)} + \Sigma_{x_a, x_b}q(x_a)q(x_b\mid x_a)log\frac{q(x_b\mid x_a)}{p(x_b\mid x_a)}\\<br>&amp;= KL(1(x_aq)\mid\mid p(x_a)) + \Sigma_x q(x_a)KL(q(x_b\mid x_a)\mid\mid p(x_b\mid x_a))\\<br>\end{split}\end{equation}<br>将上面两个式子合并：<br>$$ KL(\tilde p(x)\mid\mid p(x\theta)) = KL(\tilde p(x_c)\mid \mid p(x_c\theta)) + \Sigma_{x_a}\tilde p(x_c)KL(\tilde p(x_{-c})\mid\mid p(x_{-c}\mid x_c)) $$<br>从上面的式子可以看出，改变团势$\psi$并不会改变条件分布，所以对上式中第二项不会产生影响。<br>为了最小化第一项，和IPF的方法一样，我们将边际分布逼近观测分布。<br>可以将IPF解释为：保存原有的条件分布$p^{(t)}(x_{-c}\mid x_c)$，用观测数据分布取代原有的边际分布。</p>
+<h3 id="Feature-based-Clique-Potentials"><a href="#Feature-based-Clique-Potentials" class="headerlink" title="Feature-based Clique Potentials"></a>Feature-based Clique Potentials</h3><p>当团势不能用表格表达时，或者更加一般的来说，获得团势是指数级的推测难度，必须要从有限的数据中学习指数个参数。我们可以将团变小，但是这样需要更多的独立性假设，并且改变了图模型结构。另外一种方法是不改变模型结构，使用更加一般的团势的参数。这被叫做基于特征的方法。<br>特征是对于一般的设定为空，对于少数特别的设定会有高低之分。每个特征函数都能变成小团势，然后将小团势乘起来就可以得到团势了。<br>例如，一个团势$\psi(x_1, x_2, x_3)$：<br>$$ \psi_c(x_a, x_2, x_3) = e^{\theta_{ing}f_{ing}}\times e^{\theta_{?ed}f_{?ed}} \times … = exp\lbrace \Sigma_{k=1}^T \theta_k f_k(c_1, c_2, c_3)\rbrace $$<br>每个特征都有一个权重$\theta_k$，它可以用增加或者减少团势的概率。<br>团上的边际分布就是一个广义指数族：<br>$$ p(c_1, c_2, c_3) \propto exp(\theta_{ing}f_{ing}(x_1, x_2, x_3) + \theta_{?ed}f_{?ed}(x_1, x_2, x_3) + …) $$<br>一般来说，特征可能是重叠的，没有限制的显示因子或者任意团变量的子集：<br>$$ \psi_c(x_c) = exp\lbrace \Sigma_{i\in I_c} \theta_k f_k(x_{c_i})\rbrace $$<br>我们可以将团势向前面一样乘起来：<br>$$ p(x) = \frac{1}{Z(\theta)}\psi_c (x_c) = \frac{1}{Z(\theta)}exp\lbrace \Sigma_c\Sigma_{i\in I_c} \theta_k f_k(x_{c_i})\rbrace $$<br>可以简化为：<br>$$ p(x) = \frac{1}{Z(\theta)}exp(\Sigma_i \theta_i f_i(x_{c_i})) $$<br>这就是指数族模型，特征值就是充分统计量。</p>
+<h2 id="Gerneralized-Iterative-Scaling-GIS"><a href="#Gerneralized-Iterative-Scaling-GIS" class="headerlink" title="Gerneralized Iterative Scaling - GIS"></a>Gerneralized Iterative Scaling - GIS</h2><p>基于之前的概率函数，我们想通过一个算法求最大概率，然后有了GIS。<br>我们首先不是考虑直接优化目标，而是处理目标函数的下界。<br>\begin{equation}\begin{split} \tilde l(\theta;D) &amp;= l(\theta;D)/N \\<br>&amp;= \frac{1}{N}\Sigma_n log\ p(x_n\mid \theta) \\<br>&amp;= \Sigma_x \tilde p(x)log\ p(x\mid \theta) \\<br>&amp;= \Sigma_x \tilde p(x)\Sigma_i \theta_i f_i(x) - log\ Z(\theta) \\<br>&amp;\geqslant \Sigma_x \tilde p(x)\Sigma_i \theta_i f_i(x) - \frac{Z(\theta)}{Z(\theta^{(t)})} - log Z(\theta^{(t)}) + 1 \\<br>\end{split}\end{equation}</p>
+<p>因为对数函数有一个线性上界：$log\ Z(\theta)\leqslant \mu Z(\theta) - log\ \mu - 1$<br>定义：$\Delta\theta_i^{(t)} = \theta_i-\theta_i^{(t)} $<br>\begin{equation}\begin{split}\tilde l(\theta;D) &amp;\geqslant \Sigma_x \tilde p(x)\Sigma_i \theta_i f_i(x) - \frac{Z(\theta)}{Z(\theta^{(t)})} - log Z(\theta^{(t)}) + 1 \\<br>&amp;= \Sigma_i \theta_i \Sigma_x \tilde p(x)f_i(x) - \frac{1}{Z(\theta^{(t)})}\Sigma_x exp(\Sigma_i \theta_i^{(t)} f_i(x))exp(\Sigma_i \Delta\theta_i^{(t)}f_i(x)) - log\ Z(\theta^{(t)}) + 1\\<br>&amp;= \Sigma_i \theta_i \Sigma_x \tilde p(x)f_i(x) - \Sigma_x p(x\mid \theta^{(x)})exp(\Sigma_i \Delta\theta_i^{(t)} f_i(x)) - log\ Z(\theta^{(t)}) + 1\\<br>\end{split}\end{equation}</p>
+<p>假定$f_i(x) \geqslant,\Sigma_i f_i(x) = 1$，使用杰西不等式，$exp(\Sigma_i \pi_i x_i)\leqslant \Sigma_i \pi_i exp(x_i)$有：<br>$$ \tilde l(\theta;D) \geqslant \Sigma_i \theta_i \Sigma_x \tilde p(x)f_i(x) - \Sigma_x p(x\mid \theta^{(x)})\Sigma_i f_i(x)exp(\Delta\theta_i^{(t)}) - log\ Z(\theta^{(t)}) + 1 $$<br>令上面式子的右边等于$\Delta(\theta)$。<br>求偏导令其为零：<br>$$ \frac{\partial \Lambda}{\partial \theta_i} = \Sigma_x \tilde p(x)f_i(x) - exp(\Delta\theta_i^{(t)})\Sigma_x p(x\mid \theta^{(t)})f_i(x) = 0$$<br>$$ e^{\Delta\theta_i^{(t)}} = \frac{\Sigma_x \tilde p(x)f_i)(x)}{\Sigma_x p(x\mid \theta^{(t)})f_i(x)}= \frac{\Sigma_x \tilde p(x)f_i)(x)}{\Sigma_x p^{(t)}(x)f_i(x)}Z(\theta^{(t)}) $$<br>更新准则：<br>$$ \theta_i^{(t+1)} = \theta_i^{(t)} + \Delta\theta_i^{(t)} \Rightarrow p^{(t+1)}(x)=p^{(t)}(x)\prod_i e^{\Delta\theta_i^{(t)}} $$<br>\begin{equation}\begin{split} p^{(t+1)}(x) &amp;= \frac{p^{(t)}(x)}{Z(\theta^{(t)})}\prod_i (\frac{\Sigma_x \tilde p(x)f_i)(x)}{\Sigma_x p^{(t)}(x)f_i(x)}Z(\theta^{(t)}))^{f_i(x)} \\<br>&amp;= \frac{p^{(t)}(x)}{Z(\theta^{(t)})}\prod_i (\frac{\Sigma_x \tilde p(x)f_i)(x)}{\Sigma_x p^{(t)}(x)f_i(x)})^{f_i(x)}(Z(\theta^{(t)}))^{\Sigma_i f_i(x)} \\<br>&amp;= p^{(t)}(x)\prod_i (\frac{\Sigma_x \tilde p(x)f_i)(x)}{\Sigma_x p^{(t)}(x)f_i(x)})^{f_i(x)} \\<br>\end{split}\end{equation}</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="IPF"><a href="#IPF" class="headerlink" title="IPF"></a>IPF</h2><p>IPF是无向图模型求最大似然的一般方法。</p>
+<ul>
+<li>对$\psi_c$在每个团上一个固定的等式，坐标上升。</li>
+<li>在最大团边际空间上进行I-projection</li>
+<li>需要势函数完全的参数化</li>
+<li>必须要以最大团描述</li>
+<li>对于完全可分的模型，变成一次算法</li>
+</ul>
+<h2 id="GIS"><a href="#GIS" class="headerlink" title="GIS"></a>GIS</h2><ul>
+<li>要以基于特征的势函数描述</li>
+<li>GIS是IPF的特殊形式，GIS的团势是建立在特征值配置上的。</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>注：本文主要参考[1]中第8讲视频以及笔记。</p>
 
           
         
@@ -722,7 +867,7 @@
           
             <h1 id="指数族"><a href="#指数族" class="headerlink" title="指数族"></a>指数族</h1><p>将随机变量X写成指数族的形式：<br>$$p(X=x;\eta)=h(x)exp(\eta^T T(x)-A(\eta))$$<br>其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。</p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>指数族可以包括许多的例子，比如高斯分布，伯努利分布，多项式分布等。</p>
-<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>令向量$X\in R^k$<br>$$p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}\Sigma^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>$$=\frac{1}{(2\pi)^{k/2}} exp\lbrace -\frac{1}{2} tr(\Sigma^{-1}x x^T) + \mu^T \Sigma^{-1}x^T- \frac{1}{2}\mu^T \Sigma^{-1}\mu - log|\Sigma|\rbrace$$<br>对应的指数族表示：<br>$$\eta = [\Sigma^{-1}\mu; -\frac{1}{2}vec(\Sigma^{-1})]$$  $$ T(x)=[x;vec(xx^T)]$$  $$ A(\eta)=\frac{1}{2} \mu^T \Sigma^{-1} \mu + log|\Sigma| $$  $$ h(x)= \frac{1} { {2\pi}^{k/2} } $$</p>
+<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>令向量$X\in R^k$<br>$$p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}|\Sigma|^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>$$=\frac{1}{(2\pi)^{k/2}} exp\lbrace -\frac{1}{2} tr(\Sigma^{-1}x x^T) + \mu^T \Sigma^{-1}x^T- \frac{1}{2}\mu^T \Sigma^{-1}\mu - log|\Sigma|\rbrace$$<br>对应的指数族表示：<br>$$\eta = [\Sigma^{-1}\mu; -\frac{1}{2}vec(\Sigma^{-1})]$$  $$ T(x)=[x;vec(xx^T)]$$  $$ A(\eta)=\frac{1}{2} \mu^T \Sigma^{-1} \mu + log|\Sigma| $$  $$ h(x)= \frac{1} { {2\pi}^{k/2} } $$</p>
 <h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>$$ p(x;\phi) $$  $$ = \phi^x(1-\phi)^{1-x} $$  $$ = exp(log(\phi^x(1-\phi)^{1-x}) $$  $$ = exp(log(\phi^x)+log((1-\phi)^{1-x})) $$  $$ = exp(xlog(\phi) + (1-x)log(1-\phi)) $$  $$ = exp(xlog(\frac{\phi}{1-\phi})+log(1-\phi))$$<br>对应于指数族：<br>$$ \eta = log(\frac{\phi}{1-\phi}) $$  $$ T(x) = x $$  $$ A(\eta) = -log(1-\phi) $$  $$ h(x) = 1 $$</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>很多的分布可以看做是指数族：单变量高斯分布（the univariate Gaussian)，泊松分布（Poisson）， 多项分布（multinomial），线性回归（linear regression），伊辛模型（Ising model），受限波尔兹曼机机（restricted Boltzmann machines），还有条件随机场（contional random field，CRFs）。</p>
 <h4 id="条件随机场"><a href="#条件随机场" class="headerlink" title="条件随机场"></a>条件随机场</h4><p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png" alt=""><br>条件随机场是基于上面图的无向图模型，势函数是定义在成对输出上面的。<br>$$ p_\theta(y\mid x)=\frac{1}{Z(x)}exp(\Sigma_{e\in E,k} \lambda_k f_k(e,y\mid_e, x) + \Sigma_{v\in V,k} \mu_k g_k(v,y\mid_v, x))$$<br>其中$f_k$和$g_k$是固定的，$g_k$是波尔顶点特征，$f_k$是波尔边特征。</p>
@@ -1897,6 +2042,171 @@
 <li>fit</li>
 <li>acumen<br>the ability to think clearly and make good decisions</li>
 </ul>
+<h1 id="englishpod-C0067"><a href="#englishpod-C0067" class="headerlink" title="englishpod_C0067"></a>englishpod_C0067</h1><ul>
+<li>wingman</li>
+<li>tired</li>
+<li>foul</li>
+<li>kick off</li>
+<li>out of bounds</li>
+<li>throw in</li>
+<li>offside</li>
+<li>on the brink of<br>at a critical point</li>
+<li>no question about it<br>no doubt</li>
+<li>by a mile</li>
+<li>penalty kick<br>a kick against only the goalkeepwe as a reward for a foul</li>
+</ul>
+<h1 id="englishpod-C0068"><a href="#englishpod-C0068" class="headerlink" title="englishpod_C0068"></a>englishpod_C0068</h1><ul>
+<li>irrefutable</li>
+<li>flaw</li>
+<li>systemetic<br>following the certain order</li>
+<li>extensive research</li>
+<li>conclusive evidence<br>final decision</li>
+<li>investigative approch</li>
+<li>definite conclusion</li>
+<li>oblivious to<br>unware or don’t know</li>
+<li>proposterous<br>crazy, foolish, or silly</li>
+</ul>
+<h1 id="englishpod-C0069"><a href="#englishpod-C0069" class="headerlink" title="englishpod_C0069"></a>englishpod_C0069</h1><ul>
+<li>picky</li>
+<li>yolk<br>egg yolk<br>the white</li>
+<li>sunny side up</li>
+<li>fried egg</li>
+<li>soft boiled egg</li>
+<li>hard boiled egg</li>
+<li>egg and soilders</li>
+<li>scrible eggs</li>
+<li>feel like<br>have desire to do</li>
+<li>drive me crazy<br>make you angry</li>
+<li>muffin<br>a small break or cake people usually eat for breakfast</li>
+</ul>
+<h1 id="englishpod-F0070"><a href="#englishpod-F0070" class="headerlink" title="englishpod_F0070"></a>englishpod_F0070</h1><ul>
+<li>lingerie</li>
+<li>awkward</li>
+<li>granny panties</li>
+<li>sleepwear</li>
+<li>nighties<br>silky nighties</li>
+<li>undies</li>
+<li>mortifying<br>extremely embarassing</li>
+<li>get the hell out of here<br>leave</li>
+<li>get this over with</li>
+</ul>
+<h1 id="englishpod-C0071"><a href="#englishpod-C0071" class="headerlink" title="englishpod_C0071"></a>englishpod_C0071</h1><ul>
+<li>on tap<br>beer served from a barrel; not in a bottle or can</li>
+<li>happy hour</li>
+<li>pint</li>
+<li>appetizer<br>a small dish served before meal</li>
+<li>what about<br>be used in making suggestions</li>
+</ul>
+<h1 id="englishopod-C0072"><a href="#englishopod-C0072" class="headerlink" title="englishopod_C0072"></a>englishopod_C0072</h1><ul>
+<li>preoccupied<br>worried</li>
+<li>direct impact</li>
+<li>resent<br>find something very insulting</li>
+<li>beat around the bush<br>avoid saying something by about other things<br>come out with it</li>
+</ul>
+<h1 id="englishpod-C0073"><a href="#englishpod-C0073" class="headerlink" title="englishpod_C0073"></a>englishpod_C0073</h1><ul>
+<li>pinkie</li>
+<li>the ring finger</li>
+<li>the middle finger<br>giving the middle finger</li>
+<li>index finger</li>
+<li>thumb</li>
+<li>abide<br>live</li>
+</ul>
+<h1 id="englishpod-C0074"><a href="#englishpod-C0074" class="headerlink" title="englishpod_C0074"></a>englishpod_C0074</h1><ul>
+<li>famished<br>very hungry</li>
+<li>sexist</li>
+<li>dumbass</li>
+<li>moron<br>someone is stupid</li>
+<li>tool<br>useless</li>
+<li>chill</li>
+<li>scream</li>
+<li>what the hell</li>
+</ul>
+<h1 id="englishpod-C0075"><a href="#englishpod-C0075" class="headerlink" title="englishpod_C0075"></a>englishpod_C0075</h1><ul>
+<li>toothache</li>
+<li>x-ray</li>
+<li>swollen</li>
+<li>cavity<br>a hole in a tooth</li>
+<li>crown<br>the part of the tooth which can be seen</li>
+<li>filling</li>
+<li>what seems to be the problem?<br>what’s wrong?</li>
+</ul>
+<h1 id="englishpod-C0076"><a href="#englishpod-C0076" class="headerlink" title="englishpod_C0076"></a>englishpod_C0076</h1><ul>
+<li>plus add<br>minus<br>times<br>devided by</li>
+<li>square root</li>
+<li>teacher’s pet<br>suck up</li>
+<li>smarty pants<br>for children</li>
+<li>konw it all</li>
+</ul>
+<h1 id="englishpod-C0077"><a href="#englishpod-C0077" class="headerlink" title="englishpod_C0077"></a>englishpod_C0077</h1><ul>
+<li>jam on the breaks</li>
+<li>spin out<br>(a car)slides and makes a turn rapidly in an uncontrolled way</li>
+<li>the pace car</li>
+<li>cleanup crew<br>the construction crew</li>
+<li>to tow</li>
+<li>my partner in crime<br>a person you always do things together with</li>
+<li>a close one</li>
+<li>stretch<br>the final time period</li>
+</ul>
+<h1 id="englishpod-E0078"><a href="#englishpod-E0078" class="headerlink" title="englishpod_E0078"></a>englishpod_E0078</h1><ul>
+<li>brutality<br>violent treatment or behavior</li>
+<li>important aspect</li>
+<li>genesis</li>
+<li>comprehend</li>
+<li>appalling<br>terrible, horrible, shocking</li>
+<li>hostility<br>the attitde of treating something as enemy</li>
+<li>drastic<br>sudden and severe</li>
+<li>constitute<br>form, consist</li>
+<li>fire into<br>shoot guns into a place</li>
+</ul>
+<h1 id="englishpod-B0079"><a href="#englishpod-B0079" class="headerlink" title="englishpod_B0079"></a>englishpod_B0079</h1><ul>
+<li>spacecraft</li>
+<li>break through</li>
+<li>settle this</li>
+<li>accelerate</li>
+<li>no loger be</li>
+<li>once and for all</li>
+<li>obscure</li>
+</ul>
+<h1 id="englishpod-C0080"><a href="#englishpod-C0080" class="headerlink" title="englishpod_C0080"></a>englishpod_C0080</h1><ul>
+<li>show up</li>
+<li>stalk<br>follow someone for a long time</li>
+<li>nut job</li>
+<li>get worked up</li>
+<li>soul mate</li>
+<li>over nothing<br>no reason</li>
+<li>not a day goes by</li>
+<li>no matter what</li>
+</ul>
+<h1 id="englishpod-B0081"><a href="#englishpod-B0081" class="headerlink" title="englishpod_B0081"></a>englishpod_B0081</h1><ul>
+<li>trim<br>a short cut of hair to make one look clean</li>
+<li>fancy</li>
+<li>silky<br>silk hair</li>
+<li>grow out</li>
+<li>don’t just stand there</li>
+<li>take a little off the top<br>take a little off the side</li>
+<li>curly</li>
+<li>a million bucks<br>very good. To look great</li>
+<li>sideburns<br>hari thar grows on the sides of man</li>
+<li>fluffy<br>soft  </li>
+</ul>
+<h1 id="englishpod-C0082"><a href="#englishpod-C0082" class="headerlink" title="englishpod_C0082"></a>englishpod_C0082</h1><ul>
+<li>creature</li>
+<li>break free</li>
+<li>kidnapper</li>
+<li>rapist</li>
+<li>rape</li>
+<li>lemme see your eyes<br>let me see your eyes<br>gimme - give me</li>
+<li>make it out<br>able to escape or flee</li>
+</ul>
+<h1 id="englishpod-C0083"><a href="#englishpod-C0083" class="headerlink" title="englishpod_C0083"></a>englishpod_C0083</h1><ul>
+<li>ATM<br>automatic teller machine</li>
+<li>the local authority</li>
+<li>slot</li>
+<li>digit</li>
+<li>withdraw</li>
+<li>transfer money</li>
+<li>pound key<br>the push botton marked with #</li>
+</ul>
 <p>#</p>
 
           
@@ -2282,149 +2592,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/git使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/01/git使用/" itemprop="url">git使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T09:20:45+08:00">
-                2018-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>创建新的仓库 <code>git init</code><br>从服务器上克隆库 <code>git clone 路径</code><br>添加和提交<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="literal">master</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"first commit"</span></span><br><span class="line">git push origin <span class="literal">master</span></span><br></pre></td></tr></table></figure></p>
-<p>基本可以用来保存文件和从服务器上面下载代码，后面的还没有用到，用到再往这篇博客上面加。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2479,7 +2646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
