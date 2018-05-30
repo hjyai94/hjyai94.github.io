@@ -383,7 +383,12 @@
       
         
           
-            <h1 id="混合高斯模型"><a href="#混合高斯模型" class="headerlink" title="混合高斯模型"></a>混合高斯模型</h1>
+            <h1 id="混合高斯模型"><a href="#混合高斯模型" class="headerlink" title="混合高斯模型"></a>混合高斯模型</h1><p>$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$<br>其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。<br>对于完全可观的独立同分布，对数似然可以分解为和的形式。<br>$$ l_c(\theta;D) = log p(x,z\mid \theta) = log p(z\mid \theta_z) + log p(z\mid z, \theta_x) $$<br>因为因变量的存在，所有的变量会通过边缘概率耦合在一起。<br>因为对数里面有和的形式，解决有一定的困难，这样促使我们想到EM算法。</p>
+<h1 id="K-Means"><a href="#K-Means" class="headerlink" title="K-Means"></a>K-Means</h1><p>给定数据集$(x_1, x_2, …, x_n)$，每个观测量都是d维的向量。k-means的目的是将n个观测量分成k个集合，在给定$z= \lbrace z_1, z_2, …, z_n \rbrace $。为了最小化组内平方和，我们随机的初始化类别向量，然后交替进行两步，知道收敛。</p>
+<ul>
+<li>E 步：将每个观测分配到聚类中，是组内平方和最小。直观上来看就是讲数据点分配到最近的中心。<br>$$ z_i^{(t)} = argmin_k (x_i - \mu_k^{(t)})^T\Sigma_k^{-1^{(t)}}(x_i - u_k^{(t)}) $$</li>
+</ul>
+
           
         
       
@@ -2413,7 +2418,27 @@
 </ul>
 <h1 id="englishpod-D0090"><a href="#englishpod-D0090" class="headerlink" title="englishpod_D0090"></a>englishpod_D0090</h1><ul>
 <li>spy</li>
-<li></li>
+<li>come clean<br>confess</li>
+<li>renource</li>
+<li>approach someone</li>
+<li>claim</li>
+<li>vow<br>make a strong promise</li>
+<li>whereabouts<br>the approximate place, where a person or thing is</li>
+<li>I haven’t been completely honest with you</li>
+<li>I wasn’t supposed to<br>I shouldn’t</li>
+<li>bureau</li>
+<li>millennium<br>1000 years</li>
+<li>renowned<br>well known</li>
+</ul>
+<h1 id="englishpod-D0091"><a href="#englishpod-D0091" class="headerlink" title="englishpod_D0091"></a>englishpod_D0091</h1><ul>
+<li>constellation<br>a particular shape formed by a group of stars</li>
+<li>consequence<br>negative results</li>
+<li>downdfall<br>failure</li>
+<li>anguish<br>angry, aggressive, wanting to fight</li>
+<li>a wonder</li>
+<li>what gives you the right to</li>
+<li>to play God </li>
+<li>who are to</li>
 </ul>
 <p>#</p>
 

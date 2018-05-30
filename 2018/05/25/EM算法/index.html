@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="混合高斯模型">
+<meta name="description" content="混合高斯模型$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。对于完全可观的独立同分布，对数似然可以分解为和的形式。$$ l_c(\the">
 <meta name="keywords" content="概率图模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EM算法">
 <meta property="og:url" content="http://yoursite.com/2018/05/25/EM算法/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="混合高斯模型">
+<meta property="og:description" content="混合高斯模型$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。对于完全可观的独立同分布，对数似然可以分解为和的形式。$$ l_c(\theta;D) = log p(x,z\mid \theta) = log p(z\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-29T08:55:41.510Z">
+<meta property="og:updated_time" content="2018-05-30T01:53:09.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
-<meta name="twitter:description" content="混合高斯模型">
+<meta name="twitter:description" content="混合高斯模型$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。对于完全可观的独立同分布，对数似然可以分解为和的形式。$$ l_c(\theta;D) = log p(x,z\mid \theta) = log p(z\">
 
 
 
@@ -380,7 +380,12 @@
       
 
       
-        <h1 id="混合高斯模型"><a href="#混合高斯模型" class="headerlink" title="混合高斯模型"></a>混合高斯模型</h1>
+        <h1 id="混合高斯模型"><a href="#混合高斯模型" class="headerlink" title="混合高斯模型"></a>混合高斯模型</h1><p>$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$<br>其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。<br>对于完全可观的独立同分布，对数似然可以分解为和的形式。<br>$$ l_c(\theta;D) = log p(x,z\mid \theta) = log p(z\mid \theta_z) + log p(z\mid z, \theta_x) $$<br>因为因变量的存在，所有的变量会通过边缘概率耦合在一起。<br>因为对数里面有和的形式，解决有一定的困难，这样促使我们想到EM算法。</p>
+<h1 id="K-Means"><a href="#K-Means" class="headerlink" title="K-Means"></a>K-Means</h1><p>给定数据集$(x_1, x_2, …, x_n)$，每个观测量都是d维的向量。k-means的目的是将n个观测量分成k个集合，在给定$z= \lbrace z_1, z_2, …, z_n \rbrace $。为了最小化组内平方和，我们随机的初始化类别向量，然后交替进行两步，知道收敛。</p>
+<ul>
+<li>E 步：将每个观测分配到聚类中，是组内平方和最小。直观上来看就是讲数据点分配到最近的中心。<br>$$ z_i^{(t)} = argmin_k (x_i - \mu_k^{(t)})^T\Sigma_k^{-1^{(t)}}(x_i - u_k^{(t)}) $$</li>
+</ul>
+
       
     </div>
     
@@ -564,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#混合高斯模型"><span class="nav-number">1.</span> <span class="nav-text">混合高斯模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#混合高斯模型"><span class="nav-number">1.</span> <span class="nav-text">混合高斯模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K-Means"><span class="nav-number">2.</span> <span class="nav-text">K-Means</span></a></li></ol></div>
             
 
           </div>
