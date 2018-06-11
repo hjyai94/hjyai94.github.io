@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="简介不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。 高斯图模型高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：$$ p(x\mid \mu, \Sigma) = \frac{1}{(2\pi)^{n/2}|\Sigm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-11T06:51:00.454Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png">
+<meta property="og:updated_time" content="2018-06-11T07:43:20.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高斯图模型图和伊辛图模型">
 <meta name="twitter:description" content="简介不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。 高斯图模型高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：$$ p(x\mid \mu, \Sigma) = \frac{1}{(2\pi)^{n/2}|\Sigm">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png">
 
 
 
@@ -383,8 +385,14 @@
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。</p>
 <h1 id="高斯图模型"><a href="#高斯图模型" class="headerlink" title="高斯图模型"></a>高斯图模型</h1><p>高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：<br>$$ p(x\mid \mu, \Sigma) = \frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}}exp[-\frac{1}{2}(x-\mu)^T \Sigma^{-T}(x-\mu)] $$<br>其中$\mu$是均值，$\Sigma$是协方差矩阵。令$\mu=0$和精度矩阵为$Q=\Sigma^{-1}$，有：<br>$$ p(x_1, x_2, …, x_p\mid \mu=0, Q) = \frac{|Q|^{1/2}}{(2\pi)^{n/2}}exp[-\frac{1}{2}\sum_i q_{ii}(x_i)^2 - \sum_{i&lt;j}q_{ij}x_ix_j] $$<br>这就是条件随机场，定义于成对边和节点上。</p>
 <h1 id="协方差矩阵与精度矩阵"><a href="#协方差矩阵与精度矩阵" class="headerlink" title="协方差矩阵与精度矩阵"></a>协方差矩阵与精度矩阵</h1><p>协方差矩阵有一个重要的性质是：当$\Sigma_{i,j}=0$有$x_i\perp x_j$；逆协方差矩阵（精度矩阵）的对应的性质为：当$\Sigma_{i,j}^{-1}=0$时$x_i\perp x_j\mid x_{-ij}$。</p>
-<h1 id="利用LASSO进行网络学习"><a href="#利用LASSO进行网络学习" class="headerlink" title="利用LASSO进行网络学习"></a>利用LASSO进行网络学习</h1><h2 id="LASSO回归"><a href="#LASSO回归" class="headerlink" title="LASSO回归"></a>LASSO回归</h2><p>对于网络结构的学习，我们通常是假设网络是稀疏的。LASSO回归可以用于网络的近邻选择，去除不必要的节点之间的连接。<br>$$\hat{\beta}<em>1 = argmin</em>{\beta_1}\parallel Y - X\beta_1\parallel^2 + \lambda\parallel\beta_1\parallel_1$$</p>
-<p>$$\hat{\beta}<em>1 = argmin</em>{\beta_1}$$</p>
+<h1 id="利用LASSO进行网络学习"><a href="#利用LASSO进行网络学习" class="headerlink" title="利用LASSO进行网络学习"></a>利用LASSO进行网络学习</h1><h2 id="LASSO回归"><a href="#LASSO回归" class="headerlink" title="LASSO回归"></a>LASSO回归</h2><p>对于网络结构的学习，我们通常是假设网络是稀疏的。LASSO回归可以用于网络的近邻选择，去除不必要的节点之间的连接。<br>$$\hat{\beta_1} = argmin_{\beta_1}\parallel Y - X\beta_1\parallel^2 + \lambda\parallel\beta_1\parallel_1$$<br>其中，$\beta_1$是节点1的参数，Y是是对节点1的独立观测值。<br>具体过程如图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png" alt=""></p>
+<h2 id="理论条件"><a href="#理论条件" class="headerlink" title="理论条件"></a>理论条件</h2><ul>
+<li>Dependency Condition: Relevant Covariates are not overly dependent</li>
+<li>Incoherence Condition: Large number of irrelevant covariates can’t be too correlated with relevant covariates</li>
+<li>Strong concentration bounds: Sample quantities coverge to expected values quickly</li>
+</ul>
+<h1 id="时变网络"><a href="#时变网络" class="headerlink" title="时变网络"></a>时变网络</h1><h2 id="KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression"><a href="#KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression" class="headerlink" title="KELLER: Kernel Weightd $L_1$-regularized logistic Regression"></a>KELLER: Kernel Weightd $L_1$-regularized logistic Regression</h2><p>对时变网络的结构进行估计，可以采用KELLER的方法解决：<br>$$ \hat{\theta_i^t} = argmain_{\theta_i^t}l_w(\theta_i^t) + \lambda_1\parallel\theta_t^t \parallel_1 $$<br>其中$l_w(\theta_i^t) = \sum_{t’=1}^T w(x^{t’}; x^t)log\ P(x_i^{t’}\mid x_{-i}^x^{t’}, \theta_i^t)$。权值$w(x^{t’}; x^t)$决定了在时间$t’$和$t$之间的关系，我们可以将其建模为一个分布(如下图)。<br><img src="" alt=""><br>给定时间$t^{\ast}$，权值可以写成：<br>$$ w_t(t^{\ast}) = \frac{K_{h_n}(t-t^{\ast})}{\sigma_{t’\in T^n} K_{h_n}(t’-t^{\ast})} $$<br>对于一些平滑的核$K_{h_n}$。</p>
+<h2 id="TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression"><a href="#TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression" class="headerlink" title="TESLA: Temporally Smoothed $L_1$-regularized logistic regression"></a>TESLA: Temporally Smoothed $L_1$-regularized logistic regression</h2><p>TESLA对于一个节点的参数优化是基于所有的时间步的：<br>$$ \hat{\theta_i^T}, …, \hat{\theta_i^T} = argmin\sum_{i=1}^T l_{avg}(\theta_i^t) + \lambda_1 \sum_{t=1}^T \parallel\theta_{-1}^t \parallel_1 + \lambda_2\sum_{t=1}^T \parallel \theta_i^t - \theta_i^{t-1} \parallel $$<br>其中，$l_{avg}(\theta_i^t) = \frac{1}{N^t}\sum_{d=1}^{N^t} log\ P(x_{d,i}^t\mid x_{d, -i}^t, \theta_i^t) $是条件对数似然。不同于KELLER，当节点数达到5000时，这里我们不需要平滑Kernels，这里可以接受突变。</p>
 
       
     </div>
@@ -569,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高斯图模型"><span class="nav-number">2.</span> <span class="nav-text">高斯图模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协方差矩阵与精度矩阵"><span class="nav-number">3.</span> <span class="nav-text">协方差矩阵与精度矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用LASSO进行网络学习"><span class="nav-number">4.</span> <span class="nav-text">利用LASSO进行网络学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LASSO回归"><span class="nav-number">4.1.</span> <span class="nav-text">LASSO回归</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高斯图模型"><span class="nav-number">2.</span> <span class="nav-text">高斯图模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协方差矩阵与精度矩阵"><span class="nav-number">3.</span> <span class="nav-text">协方差矩阵与精度矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用LASSO进行网络学习"><span class="nav-number">4.</span> <span class="nav-text">利用LASSO进行网络学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LASSO回归"><span class="nav-number">4.1.</span> <span class="nav-text">LASSO回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论条件"><span class="nav-number">4.2.</span> <span class="nav-text">理论条件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时变网络"><span class="nav-number">5.</span> <span class="nav-text">时变网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression"><span class="nav-number">5.1.</span> <span class="nav-text">KELLER: Kernel Weightd $L_1$-regularized logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression"><span class="nav-number">5.2.</span> <span class="nav-text">TESLA: Temporally Smoothed $L_1$-regularized logistic regression</span></a></li></ol></li></ol></div>
             
 
           </div>
