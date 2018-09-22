@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。 Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。$$m_{ji}(">
+<meta name="description" content="变量消除的缺点 elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。  Elimination on a tree 将从i开始的变量消除记作mji(xi)m_{ji}(x_i)mji​(xi​)，并且是x">
 <meta name="keywords" content="概率图模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="message-passing">
 <meta property="og:url" content="http://yoursite.com/2018/04/18/message-passing/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。 Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\">
+<meta property="og:description" content="变量消除的缺点 elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。  Elimination on a tree 将从i开始的变量消除记作mji(xi)m_{ji}(x_i)mji​(xi​)，并且是xix_ixi​的函数。 m_{ji}(x_i)=\sum_{x_j}(\psi">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png">
 <meta property="og:updated_time" content="2018-06-03T03:30:26.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="message-passing">
-<meta name="twitter:description" content="变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。 Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\">
+<meta name="twitter:description" content="变量消除的缺点 elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。  Elimination on a tree 将从i开始的变量消除记作mji(xi)m_{ji}(x_i)mji​(xi​)，并且是xix_ixi​的函数。 m_{ji}(x_i)=\sum_{x_j}(\psi">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png">
 
 
@@ -382,10 +382,20 @@
       
 
       
-        <h1 id="变量消除的缺点"><a href="#变量消除的缺点" class="headerlink" title="变量消除的缺点"></a>变量消除的缺点</h1><p>elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。</p>
-<h1 id="Elimination-on-a-tree"><a href="#Elimination-on-a-tree" class="headerlink" title="Elimination on a tree"></a>Elimination on a tree</h1><p>将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。<br>$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\prod_{k\in N(j)\j} m_{kj}(x_j))$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png" alt=""><br>$m_{ji}(x_i)$能够表示从$x_j$到$x_i$的置信。</p>
-<h1 id="Two-pass-Algorithm"><a href="#Two-pass-Algorithm" class="headerlink" title="Two-pass Algorithm"></a>Two-pass Algorithm</h1><p>算法的实施的具体步骤，确定一个根节点，从其他节点中收集信息到这个根节点，然后回到分布的信息。直到某一节点中包含了除却继续传播节点的所有信息，这样就计算信息，然后传播到剩下的节点。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第5讲视频以及笔记，参考[2]中第4章。</p>
+        <h1 id="变量消除的缺点"><a class="markdownIt-Anchor" href="#变量消除的缺点"></a> 变量消除的缺点</h1>
+<p>elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。</p>
+<h1 id="elimination-on-a-tree"><a class="markdownIt-Anchor" href="#elimination-on-a-tree"></a> Elimination on a tree</h1>
+<p>将从i开始的变量消除记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>m</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">m_{ji}(x_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base"><span class="mord"><span class="mord mathit">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight" style="margin-right:0.05724em;">j</span><span class="mord mathit mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mclose">)</span></span></span></span>，并且是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span>的函数。</p>
+m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\prod_{k\in N(j)\j} m_{kj}(x_j))
+
+<p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png" alt=""><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>m</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">m_{ji}(x_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base"><span class="mord"><span class="mord mathit">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight" style="margin-right:0.05724em;">j</span><span class="mord mathit mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mclose">)</span></span></span></span>能够表示从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">x_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"></span></span></span></span></span></span></span></span>到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">x_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span></span></span></span>的置信。</p>
+<h1 id="two-pass-algorithm"><a class="markdownIt-Anchor" href="#two-pass-algorithm"></a> Two-pass Algorithm</h1>
+<p>算法的实施的具体步骤，确定一个根节点，从其他节点中收集信息到这个根节点，然后回到分布的信息。直到某一节点中包含了除却继续传播节点的所有信息，这样就计算信息，然后传播到剩下的节点。</p>
+<h1 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h1>
+<p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>
+[2] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>
+注：本文主要参考[1]中第5讲视频以及笔记，参考[2]中第4章。</p>
 
       
     </div>
@@ -395,6 +405,30 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>非常感谢各位老板投喂！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -531,7 +565,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -574,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量消除的缺点"><span class="nav-number">1.</span> <span class="nav-text">变量消除的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Elimination-on-a-tree"><span class="nav-number">2.</span> <span class="nav-text">Elimination on a tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Two-pass-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Two-pass Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量消除的缺点"><span class="nav-number">1.</span> <span class="nav-text"> 变量消除的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#elimination-on-a-tree"><span class="nav-number">2.</span> <span class="nav-text"> Elimination on a tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#two-pass-algorithm"><span class="nav-number">3.</span> <span class="nav-text"> Two-pass Algorithm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text"> 参考文献</span></a></li></ol></div>
             
 
           </div>
