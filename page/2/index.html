@@ -290,6 +290,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/EM算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/25/EM算法/" itemprop="url">EM算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-25T19:45:46+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="混合高斯模型"><a href="#混合高斯模型" class="headerlink" title="混合高斯模型"></a>混合高斯模型</h1><p>$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$<br>其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。<br>对于完全可观的独立同分布，对数似然可以分解为和的形式。<br>$$ l_c(\theta;D) = log p(x,z\mid \theta) = log p(z\mid \theta_z) + log p(z\mid z, \theta_x) $$<br>因为隐变量的存在，所有的变量会通过边缘概率耦合在一起。<br>因为对数里面有和的形式，解决有一定的困难，这样促使我们想到EM算法。</p>
+<h1 id="K-Means"><a href="#K-Means" class="headerlink" title="K-Means"></a>K-Means</h1><p>给定数据集$(x_1, x_2, …, x_n)$，每个观测量都是d维的向量。k-means的目的是将n个观测量分成k个集合，在给定$z= \lbrace z_1, z_2, …, z_n \rbrace $。为了最小化组内平方和，我们随机的初始化类别向量，然后交替进行两步，知道收敛。</p>
+<ul>
+<li>E步：将每个观测分配到聚类中，是组内平方和最小。直观上来看就是讲数据点分配到最近的中心。<br>$$ z_i^{(t)} = argmin_k (x_i - \mu_k^{(t)})^T\Sigma_k^{-1^{(t)}}(x_i - u_k^{(t)}) $$</li>
+<li>M步：重新计算中心值。<br>$$ \mu_k^{(t+1)} = \frac{\Sigma_i \delta(z_i^{(t)}, k)x_i} {\Sigma_i \delta(z_i^{(t)}, k)} $$<br>可以这么来理解EM，每个聚类可以看做具有相同的分布，比如$p(x_i\mid z_i = k)~N(x_i\mid \mu_k, \Sigma_kl) $我们希望可以学习到每个分布的参数$\mu_k$和$\Sigma$。</li>
+</ul>
+<h1 id="EM-算法"><a href="#EM-算法" class="headerlink" title="EM 算法"></a>EM 算法</h1><p>EM算法可以有效地迭代计算存在隐变量的最大似然估计。在最大似然估计值中，我们希望能够估计出对于每个观测数据最有可能的参数。<br>期望完全对数似然函数：<br>$$ \langle l_c(\theta;x,z)\rangle = \Sigma_n\langle logp(z_n\mid \pi)\rangle_{p(z\mid x)} + \frac{1}{2}\Sigma_n\Sigma_k\langle z_n^k\rangle((x_n - \mu_k)^T\Sigma_K^{-1}(x_n-\mu_k)+log|\sigma_k|+C) $$</p>
+<p>EM算法是利用迭代地方式最大化$\langle l_c(\theta;x,z)\rangle$。在E步中，我们利用当前参数估计量计算隐变量的充分估计量。<br>$$ \tau_n^{k(t)} = \langle z_n^k\rangle_{q(t)} = p(zn^k = 1\mid x,\mu^{(t)},\Sigma^{(t)}) = \frac{\pi_k^{(t)}N(x_n\mid \mu_k^{(t)},\Sigma_k^{(t)})} {\Sigma_i \pi_i^{(t)}N(x_n\mid \mu_k^{(t)},\Sigma_k^{(t)})}$$<br>在M步中，使用期望值来计算参数期望的最大值。<br>\begin{equation}\begin{split} \pi_k &amp;= \Sigma_n \langle z_n^k \rangle_{q^{(t)}}/N = \Sigma_n \tau_n^{k(t)}/N = \langle n_k \rangle /N\\<br>\mu_k^{(t+1)} &amp;= \frac{\Sigma_n \tau_n^{k(t)}x_n}{\Sigma_n \tau_n^{k(t)}}\\<br>\Sigma_k^{(t+1)} &amp;= \frac{\Sigma_n \tau_n^{k(t)}(x_n-\mu_k^{(t+1)})(x_n-\mu_k^{(t+1)})^T}{\Sigma_n \tau_n^{(k(t))}}\\<br>\end{split}\end{equation}</p>
+<h1 id="比较K-means和EM"><a href="#比较K-means和EM" class="headerlink" title="比较K-means和EM"></a>比较K-means和EM</h1><p>EM算法类似于K-means处理混合高斯模型，对于K-means，在E步中，我们制定每个聚类点，在M中我们假定每个点属于一个聚类重新计算聚类点。在EM算法中，我们使用概率的方式指定点为聚类点，在M步中，我们假定每个点数一个聚类以概率的重新计算聚类中心。</p>
+<h1 id="EM算法理论依据"><a href="#EM算法理论依据" class="headerlink" title="EM算法理论依据"></a>EM算法理论依据</h1><p>X记作观测变量，Z记作隐变量集，分布模型为$p(x,z\mid \theta)$。<br>如果Z是可观的我们定义对数似然函数为：$ l_c(\theta;x,z) = log\ p(x,z\mid \theta) $。对于Z是可观的，我们最大化完全对数似然。<br>然而，当Z不可观时，我们必须最大化边际似然，也就是不完全对数似然函数。<br>$$ l_c(\theta;x) = log\ p(x\mid \theta) = log\Sigma_z p(x,z\theta) $$<br>我们必须将不完全对数似然解耦，因为对数里面具有和的形式。<br>为了解决这个问题，我们引入了平均分布$q(z\mid x)$来取代z的随机性。期望完全对数似然可以定义为：<br>$$ \langle l_c(\theta;x,z)\rangle_q = \Sigma_z q(z\mid x,\theta)log\ p(x,z\mid \theta) $$<br>根据杰西不等式：<br>\begin{equation}\begin{split} l(\theta;x) &amp;= log\ p(x\theta) \\<br>&amp;= log \Sigma_z p(x,z\mid \theta) \\<br>&amp;= log \Sigma_z q(z\mid x)\frac{p(x,z\mid \theta)}{q(z\mid x)} \\<br>&amp;\geqslant \Sigma_z q(z\mid x)log \frac{p(x,z\mid \theta)}{q(z\mid x)} \\<br>\end{split}\end{equation}<br>$$ l(\theta;x) \geqslant \langle l_c(\theta;x,z)\rangle_q + H_q $$<br>固定数据x，定义一个函数叫做自由能：<br>$$ F(q,\theta) = \Sigma_z q(z\mid x) log\frac{p(x,z\mid \theta)}{q(z\mid x)} \leq l(\theta;x)$$<br>这样EM算法等同于在F上进行坐标上升法：</p>
+<ul>
+<li>E步：$q^{t+1} = argmax_q F(q,\theta^t) $</li>
+<li>M步：$\theta^{t+1} = argmax_{\theta} F(q^{t+1},\theta^t)$<br>$q^{t+1}(z\mid x)$是隐变量在给定数据和参数下的后验分布。$q^{t+1}=argmax_q F(q,\theta^t)=p(z\mid x,\theta^t) $<br>证明：这样的设置可以保证$l(\theta;x)\geqslant F(q,\theta)$<br>\begin{equation}\begin{split} F(p(z\mid x,\theta^t), \theta^t) &amp;= \Sigma_z q(z\mid x) log\frac{p(x,z\mid \theta)}{q(z\mid x)}\\<br>&amp;= \Sigma_z q(z\mid x) log\ p(x\mid \theta^t) \\<br>&amp;= log\ p(x\mid \theta^t) \\<br>&amp;= l(\theta^t;x) \\<br>\end{split}\end{equation}<br>同样可以用变分微分来表示：<br>$$ l(\theta;x) - F(q,\theta) = KL(q||p(z\mid x, \theta)) $$<br>在不失一般性的情况下，我们可以将$p(x,z\mid \theta)$定义为广义指数族分布：<br>$$ p(x,z\mid \theta) = \frac{1}{Z(\theta)} h(x,z) exp \lbrace \Sigma_i \theta_i f_i(x,z) \rbrace $$<br>如果$p(X\mid Z)$是广义线性模型，那么$f_i(x,z)=\eta_i^T(z)\xi_i(x) $。<br>在$q^{t+1}=p(z\mid x,\theta^t)$下，期望完全对数似然为：<br>\begin{equation}\begin{split} \langle l_c(\theta;x,z)\rangle_{q^{t+1}} &amp;= \Sigma_z q(z\mid x,\theta^t)log\ p(x,z\mid \theta^t) - A(\theta) \\<br>&amp;= \Sigma_i \theta_i^t \langle f_i(x,z)\rangle_{q(z\mid x, \theta^t)} - A(\theta) \\<br>&amp;= \Sigma_i \theta_i^t \langle \eta_i(z)\rangle_{q(z\mid x, \theta^t)}\eta_i(x) - A(\theta) \\<br>\end{split}\end{equation}<br>下面分析EM算法的M步，M步可以看做是最大化期望对数似然：<br>\begin{equation}\begin{split} F(q,\theta) &amp;= \Sigma_z q(z\mid x) log\frac{p(x,z\mid \theta)}{q(z\mid x)} \\<br>&amp;= \Sigma_z q(z\mid x)log\ p(x,z\mid \theta) - \Sigma_z q(z\mid x)log\ q(z\mid x) \\<br>&amp;= \langle l_c(\theta;x, z) \rangle_q + H_q<br>\end{split}\end{equation}<br>这样将自由能分解成两个部分，第一部分是期望完全对数似然，第二部分是熵，并且与变量$\theta$无关，这样最大自由能就等价于最大化期望完全对数似然。<br>$$ \theta^{t+1} = argmax_{\theta} \langle l_c(\theta;x,z)\rangle_{q^{t+1}} = argmax_{\theta} \Sigma_z q(z\mid x)log\ p(x,z\mid \theta) $$<br>在最优的$q^{t+1}$的情况下，这样就等同于解决标准的完全可观模型$p(x,z\mid \theta)$的最大似然问题，用$p(z\mid x, \theta)$取代包含z的充分统计量。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>EM算法是一种对隐变量模型最大似然函数的一种方法，将比较难以解决的问题分解为两步：</p>
+<ol>
+<li>基于当前参数和可观数据对隐变量进行估计。</li>
+<li>基于观测数据和隐变量对参数做极大似然估计。</li>
+</ol>
+<ul>
+<li>EM算法好的方面<ul>
+<li>没有学习率参数</li>
+<li>自动限制参数</li>
+<li>低维速度快</li>
+<li>每代都可以确保调高似然</li>
+</ul>
+</li>
+<li>不好的方面<ul>
+<li>会陷入局部极优</li>
+<li>比共轭梯度慢，特别是接近收敛时</li>
+<li>需要代价高的推测过程</li>
+<li>是一种最大似然或者最大后验的方法</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/18/论文总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2561,194 +2737,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/23/概率图模型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/23/概率图模型/" itemprop="url">概率图模型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T16:35:46+08:00">
-                2018-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="贝叶斯网络-Bayesian-Network"><a href="#贝叶斯网络-Bayesian-Network" class="headerlink" title="贝叶斯网络 Bayesian Network"></a>贝叶斯网络 Bayesian Network</h1><p>贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的因果关系。</p>
-<h2 id="贝叶斯网的链式法则"><a href="#贝叶斯网的链式法则" class="headerlink" title="贝叶斯网的链式法则"></a>贝叶斯网的链式法则</h2><p>$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid Parents(X_i)) $$</p>
-<h2 id="I-Map和P-Map"><a href="#I-Map和P-Map" class="headerlink" title="I-Map和P-Map"></a>I-Map和P-Map</h2><p>令P为X上的分布，$I(P)$是满足$(X&perp; Y\mid Z)$的独立性断言的集合。I(G)表示图G上独立性关系的集合，如果$ I(G) \subseteq  I(P) $，则可成G为P的I-Map。<br>显然只要某个图的独立性关机集合是I(P)的子集，其对应的图就是I-Map，所以I-Map有很多个，只有当I(G)=I(P)时，对应的图可以等价的表示这个概率分布，G就叫做P的P-Map(Perfect-Map)。</p>
-<h2 id="独立性"><a href="#独立性" class="headerlink" title="独立性"></a>独立性</h2><h3 id="局部马尔科夫独立性"><a href="#局部马尔科夫独立性" class="headerlink" title="局部马尔科夫独立性"></a>局部马尔科夫独立性</h3><p>记$ Pa_{x_i} $是图G中$ X_i $的父节点，将图G中不是$X_i$后代的子节点变量记为$ NonDescendants_{X_i} $。G满足如下的条件独立性论断$I_l(G)$：$ X_i &perp; NonDescendants_{X_i}\mid Pa_{x_i}:\forall i$，也就是说在</p>
-<p>给定父节点的情况下，子节点间相互独立。</p>
-<h3 id="全局马尔科夫独立性"><a href="#全局马尔科夫独立性" class="headerlink" title="全局马尔科夫独立性"></a>全局马尔科夫独立性</h3><p>全局的马尔科夫独立性与d-分离有关，如果在给定Z的情况下，节点X和Y独立，则X和Y是D-separation。</p>
-<p>迹是三个变量相连的路径，比如X，Y，Z。迹有三种形式：</p>
-<ul>
-<li>Causal Trail $ X \to Z \to Y $: 有效当且仅当Z不可观。</li>
-</ul>
-<ul>
-<li>Evidential Trail $X \leftarrow Z \leftarrow Y$: 有效当且仅当Z不可观。</li>
-</ul>
-<ul>
-<li>Common Cause $X \leftarrow Z \to Y$：有效当且仅当Z不可观。</li>
-</ul>
-<ul>
-<li>Common Effect $ X \to Z \leftarrow Y $：有效当且仅当Z（或者是其他后代）可观。</li>
-</ul>
-<p>与d-分离想对应的独立性的集合用I(G)表示：<br>$$I(G)=\lbrace(X &perp; Y\mid Z):d-sep_G(X;Y\mid Z)\rbrace $$<br>上面的集合也叫做全局马尔科夫的独立性。</p>
-<h2 id="可靠性与完备性"><a href="#可靠性与完备性" class="headerlink" title="可靠性与完备性"></a>可靠性与完备性</h2><ul>
-<li>d-分离的可靠性与贝叶斯网络因子分离定理有关,如果分布P根据G因子分解，那么，$I(G)\subseteq I(P)$。</li>
-<li>对于任意的分布P根据G因子分解，如果$ (X &perp; Y|Z) \in I(P)$，那么就有$dsep_G(X; Y\mid Z)\in I(P)$</li>
-<li>G是一个贝叶斯网络结构的图，如果给定Z时X和Y不是在图G中d-分离的，那么X和Y在某些图G上的因子分解分布P中相互依赖。</li>
-<li>对于几乎所有的在G上的因子分解的分布P，$I(P)=I(G)$。几乎所有指的是对于参数化条件概率空间中除了测度为0的分布。</li>
-</ul>
-<h1 id="马尔科夫网络-Markov-Network"><a href="#马尔科夫网络-Markov-Network" class="headerlink" title="马尔科夫网络 Markov Network"></a>马尔科夫网络 Markov Network</h1><p>上面是有向图模型，又叫做贝叶斯网络，下面我们来看一下无向图模型，也被叫做马尔科夫网。<br>如下的式子必须使用马尔科夫网：<br>$$A \perp C\mid \lbrace B, D \rbrace, B \perp D\mid \lbrace A, B\rbrace$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B-%E6%97%A0%E5%90%91%E5%9B%BE.jpg" alt=""><br>clique就是指的强连通的团，通常翻译为团，每个团会定义一个势函数(potential function)。<br>无向图模型可以通过一个给定的无向图来表示概率分布$P(X_1,…X_n)$，每一个在图H中的团$c\in C$代表一组正势函数$\psi_c$，比如：<br>$$P(X_1, …, X_n)=\frac{1}{Z}\prod_{c\in C}\psi_c(X_c)$$</p>
-<p>其中Z是配分函数(partition function)，是一个归一化的常数：<br>$$Z=\sum_{X_1, …, X_n}\prod_{c\in C}\psi_c(X_c)$$</p>
-<h2 id="全局马尔科夫独立性-1"><a href="#全局马尔科夫独立性-1" class="headerlink" title="全局马尔科夫独立性"></a>全局马尔科夫独立性</h2><p>如果在给定节点集B时，任意两个节点A和C中的节点之间没有路径，那么则称B在图H中分离A和B。<br>如果对于任意不连接的A，B，C，比如B分离A和C，也就说在给定C的情况下，A和C独立，那么该概率分布满足全局马尔科夫独立性。<br>$$I(H)=\lbrace A \perp C\mid B:sep_H(A;C\mid B)\rbrace$$</p>
-<h3 id="完备性"><a href="#完备性" class="headerlink" title="完备性"></a>完备性</h3><p>H是一个马尔科夫网结构，如果在给定Z时，X与Y在图H中不可分离，则在给定Z时，X与Y在因子分解的分布中存在依赖关系。</p>
-<h3 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h3><ul>
-<li>P为X上的正分布，而H为X上的一个马尔科夫网结构。如果P是在图H上的吉布斯分布，那么H是P的I-Map。</li>
-<li>P为X上的分布，而H为X上的一个马尔科夫网结构。如果H是P的一个I-Map，则P是可以再H上分解的一个吉布斯分布。</li>
-</ul>
-<h2 id="局部马尔科夫独立性-1"><a href="#局部马尔科夫独立性-1" class="headerlink" title="局部马尔科夫独立性"></a>局部马尔科夫独立性</h2><p>H=(V,E)是一个马尔科夫网，与H相关的成对独立性定义如下：<br>$$I_P(H)=\lbrace (X \perp Y \mid V-\lbrace X, Y\rbrace):X-Y\notin H\rbrace$$<br>对于给定的图H=(V,E),X在H中的马尔科夫毯$$MB_H(X)$$定义为X在H中的近邻。与H相关的局部独立性定义如下：<br>$$I_l(H)=\lbrace(X \perp V-\lbrace X\rbrace -MB_{H}(X)\mid MB_{H}(X)):X\in V\rbrace$$</p>
-<h2 id="局部马尔科夫性与全局马尔科夫性的联系"><a href="#局部马尔科夫性与全局马尔科夫性的联系" class="headerlink" title="局部马尔科夫性与全局马尔科夫性的联系"></a>局部马尔科夫性与全局马尔科夫性的联系</h2><p>$$P\models I_l(H)\Rightarrow P\models I_P(H)$$  $$P=I(H)\Rightarrow P\models I_l(H)$$  $$P&gt;0\  and\  P\models I_p(H) \Rightarrow P\models I(H)$$<br>推论：对于一个正分布P，全局、局部和成对独立性是等价的。</p>
-<h2 id="团-cliques"><a href="#团-cliques" class="headerlink" title="团(cliques)"></a>团(cliques)</h2><p>团是一个完全子图(complete graph)，最大团是最大可能的完全子图。最大的团记作max-clique，不是最大的团记作sub-cliques。</p>
-<h2 id="对数线性模型"><a href="#对数线性模型" class="headerlink" title="对数线性模型"></a>对数线性模型</h2><p>$$P(X_1,…,X_n)=\frac{1}{Z} exp[-\sum_{i=1}^k \omega_c(X_c)]$$</p>
-<h2 id="Perfect-Maps"><a href="#Perfect-Maps" class="headerlink" title="Perfect Maps"></a>Perfect Maps</h2><p>只要分布的分离特性与独立特性一致，马尔科夫网就可以是分布的一个P-Map。然而，就像是贝叶斯网，不是所有的分布都能用无向图来表示。实际上，无向图和有向图不恩能够完全的表达分布的空间。</p>
-<h2 id="模型实例"><a href="#模型实例" class="headerlink" title="模型实例　"></a>模型实例　</h2><h3 id="波尔兹曼机"><a href="#波尔兹曼机" class="headerlink" title="波尔兹曼机"></a>波尔兹曼机</h3><p>波尔兹曼机的连接方式如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/波尔兹曼机示意图.png" alt=""><br>波尔兹曼机是一个全连接的图，每条无向边表示一对依赖关系，节点是二值变量。<br>上图的联合概率分布如下：<br>$$<br>P(x_1, x_2, x_3, x_4)=\frac{1}{Z}exp\lbrace \sum_{i,j}\phi_{ij}(x_i, x_j)\rbrace<br>=\frac{1}{Z}exp\lbrace\sum_{i,j}\theta_{ij}x_ix_j+\sum_i\alpha_i x_i + C \rbrace<br>=\frac{1}{Z}exp\lbrace(x-\mu)^T\Theta(x-\mu)\rbrace<br>$$</p>
-<h3 id="受限波尔兹曼机"><a href="#受限波尔兹曼机" class="headerlink" title="受限波尔兹曼机"></a>受限波尔兹曼机</h3><p>受限波尔兹曼机通常有很多层构成，每个层中有两个子层，一个隐藏层，另一个是可见层。RBM的概率分布函数：<br>$$P(x,h\mid \theta)=exp\lbrace\sum_i\theta_i\phi_i(x_i)+\sum_j\theta_j\phi_j(h_j)+\sum_{i,j}\theta_{i,j}\phi_{i,j}(x_i,h_j)-A(\theta)\rbrace$$<br>RBM的因子是边际相关的，在给定可观的节点的情况下因子是条件独立的。可以进行迭代吉布斯采样。</p>
-<h3 id="条件随机场"><a href="#条件随机场" class="headerlink" title="条件随机场"></a>条件随机场</h3><p>条件随机场是一种判别式的无向图模型，通过观测序列得到标记序列。CRF并没有假定各个特征值之间的独立性，概率分布如下：<br>$$P_\theta(y\mid x)=\frac{1}{Z}exp\lbrace \sum_{e\in E,k}\lambda_k f_k(e,y\mid_e,s)+\sum_{v\in V,k}\mu_k g_k(v,y\mid_v,x)\rbrace$$<br>其中，x是观测序列(数据序列)，y是标记序列，v是标记随机变量集V的顶点，e是来自边集E的边。k是特证序号，$f_k$是固定的二值特征函数，$g_k$是给定的二值顶点特征。$\theta=(\lambda_1, …, \lambda_n;\mu_1, …, \mu_n)$是需要估计的参数$y\mid_e$是由e定义的y的集合，$y\mid_v$是由v定义的y的集合。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%9D%A1%E4%BB%B6%E7%8B%AC%E7%AB%8B%E5%9C%BA.png" alt=""></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>无向图模型表明了变量间的相互关系（relatedness），而不是因果关系（causality）。</li>
-<li>无向图可以定义联合或者独立分布。</li>
-</ul>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>周志华. 机器学习[M]. 清华大学出版社, 2016.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2803,7 +2791,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2814,7 +2802,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2825,7 +2813,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
