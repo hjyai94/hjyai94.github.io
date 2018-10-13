@@ -290,6 +290,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/高斯图模型图和伊辛图模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/10/高斯图模型图和伊辛图模型/" itemprop="url">高斯图模型图和伊辛图模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T11:01:03+08:00">
+                2018-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。</p>
+<h1 id="高斯图模型"><a href="#高斯图模型" class="headerlink" title="高斯图模型"></a>高斯图模型</h1><p>高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：<br>$$ p(x\mid \mu, \Sigma) = \frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}}exp[-\frac{1}{2}(x-\mu)^T \Sigma^{-T}(x-\mu)] $$<br>其中$\mu$是均值，$\Sigma$是协方差矩阵。令$\mu=0$和精度矩阵为$Q=\Sigma^{-1}$，有：<br>$$ p(x_1, x_2, …, x_p\mid \mu=0, Q) = \frac{|Q|^{1/2}}{(2\pi)^{n/2}}exp[-\frac{1}{2}\sum_i q_{ii}(x_i)^2 - \sum_{i&lt;j}q_{ij}x_ix_j] $$<br>这就是条件随机场，定义于成对边和节点上。</p>
+<h1 id="协方差矩阵与精度矩阵"><a href="#协方差矩阵与精度矩阵" class="headerlink" title="协方差矩阵与精度矩阵"></a>协方差矩阵与精度矩阵</h1><p>协方差矩阵有一个重要的性质是：当$\Sigma_{i,j}=0$有$x_i\perp x_j$；逆协方差矩阵（精度矩阵）的对应的性质为：当$\Sigma_{i,j}^{-1}=0$时$x_i\perp x_j\mid x_{-ij}$。</p>
+<h1 id="利用LASSO进行网络学习"><a href="#利用LASSO进行网络学习" class="headerlink" title="利用LASSO进行网络学习"></a>利用LASSO进行网络学习</h1><h2 id="LASSO回归"><a href="#LASSO回归" class="headerlink" title="LASSO回归"></a>LASSO回归</h2><p>对于网络结构的学习，我们通常是假设网络是稀疏的。LASSO回归可以用于网络的近邻选择，去除不必要的节点之间的连接。<br>$$\hat{\beta_1} = argmin_{\beta_1}\parallel Y - X\beta_1\parallel^2 + \lambda\parallel\beta_1\parallel_1$$<br>其中，$\beta_1$是节点1的参数，Y是是对节点1的独立观测值。<br>具体过程如图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png" alt=""></p>
+<h2 id="理论条件"><a href="#理论条件" class="headerlink" title="理论条件"></a>理论条件</h2><ul>
+<li>Dependency Condition: Relevant Covariates are not overly dependent</li>
+<li>Incoherence Condition: Large number of irrelevant covariates can’t be too correlated with relevant covariates</li>
+<li>Strong concentration bounds: Sample quantities coverge to expected values quickly</li>
+</ul>
+<h1 id="时变网络"><a href="#时变网络" class="headerlink" title="时变网络"></a>时变网络</h1><h2 id="KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression"><a href="#KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression" class="headerlink" title="KELLER: Kernel Weightd $L_1$-regularized logistic Regression"></a>KELLER: Kernel Weightd $L_1$-regularized logistic Regression</h2><p>对时变网络的结构进行估计，可以采用KELLER的方法解决：<br>$$ \hat{\theta_i^t} = argmain_{\theta_i^t}l_w(\theta_i^t) + \lambda_1\parallel\theta_t^t \parallel_1 $$<br>其中$l_w(\theta_i^t) = \sum_{t’=1}^T w(x^{t’}; x^t)log\ P(x_i^{t’}\mid x_{-i} x^{t’}, \theta_i^t)$。权值$w(x^{t’}; x^t)$决定了在时间$t’$和$t$之间的关系，我们可以将其建模为一个分布(如下图)。<br><img src="" alt=""><br>给定时间$t^{\ast}$，权值可以写成：<br>$$ w_t(t^{\ast}) = \frac{K_{h_n}(t-t^{\ast})}{\sigma_{t’\in T^n} K_{h_n}(t’-t^{\ast})} $$<br>对于一些平滑的核$K_{h_n}$。</p>
+<h2 id="TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression"><a href="#TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression" class="headerlink" title="TESLA: Temporally Smoothed $L_1$-regularized logistic regression"></a>TESLA: Temporally Smoothed $L_1$-regularized logistic regression</h2><p>TESLA对于一个节点的参数优化是基于所有的时间步的：<br>$$ \hat{\theta_i^T}, …, \hat{\theta_i^T} = argmin\sum_{i=1}^T l_{avg}(\theta_i^t) + \lambda_1 \sum_{t=1}^T \parallel\theta_{-1}^t \parallel_1 + \lambda_2\sum_{t=1}^T \parallel \theta_i^t - \theta_i^{t-1} \parallel $$<br>其中，$l_{avg}(\theta_i^t) = \frac{1}{N^t}\sum_{d=1}^{N^t} log\ P(x_{d,i}^t\mid x_{d, -i}^t, \theta_i^t) $是条件对数似然。不同于KELLER，当节点数达到5000时，这里我们不需要平滑Kernels，这里可以接受突变。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/HMM和CRF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1709,1045 +1861,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/10/EnglishPod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/10/EnglishPod/" itemprop="url">EnglishPod</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-10T16:33:23+08:00">
-                2018-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="englishpod-B0001"><a href="#englishpod-B0001" class="headerlink" title="englishpod_B0001"></a>englishpod_B0001</h1><ul>
-<li>I’m still working on it.<br>I still need more time.</li>
-<li>complimentray<br>free</li>
-<li>I’ll go with.<br>I’ll take. I’ll choose.</li>
-<li>grab<br>get quickly</li>
-</ul>
-<h1 id="englishpod-B0002"><a href="#englishpod-B0002" class="headerlink" title="englishpod_B0002"></a>englishpod_B0002</h1><ul>
-<li>headache</li>
-<li>sore throat<br>it hurts</li>
-<li>runny nose</li>
-<li>feverish<br>feeling your body being very hot.</li>
-<li>quite ill<br>very sick</li>
-<li>come down with flu<br>I’m coming with cold.Begining to feel sick.</li>
-<li>calling in  sick<br>You call to your office,and you are sick and won’t go to work.</li>
-<li>take the day off</li>
-</ul>
-<h1 id="englishpod-C0003"><a href="#englishpod-C0003" class="headerlink" title="englishpod_C0003"></a>englishpod_C0003</h1><ul>
-<li>I have the reservation under the name</li>
-<li>mix up<br>confusion</li>
-<li>overbooked<br>full</li>
-<li>complimentray upgrade<br>free</li>
-</ul>
-<h1 id="englishpod-C0004"><a href="#englishpod-C0004" class="headerlink" title="englishpod_C0004"></a>englishpod_C0004</h1><ul>
-<li>resources<br>money</li>
-<li>understaffed<br>not enough people to do the job</li>
-<li>the timing is just not right<br>it is not the right now</li>
-<li>weight off my sholders<br>remove pressure or stress</li>
-<li>give me a hand<br>help out</li>
-<li>keep our cost down<br>to not to spend much money</li>
-<li>intern<br>实习生</li>
-</ul>
-<h1 id="englishpod-C0005"><a href="#englishpod-C0005" class="headerlink" title="englishpod_C0005"></a>englishpod_C0005</h1><ul>
-<li>unbelievable<br>something is amazing</li>
-<li>a mile long<br>this line is really long</li>
-<li>there is no way<br>it is not possible</li>
-<li>cut in line<br>somebody get in front of you</li>
-</ul>
-<h1 id="englishpod-C0006"><a href="#englishpod-C0006" class="headerlink" title="englishpod_C0006"></a>englishpod_C0006</h1><ul>
-<li>road trip<br>the car is packed. everything you need is in the car</li>
-<li>fill up the tank.</li>
-<li>we got all our bases coverd</li>
-<li>let’s get going</li>
-</ul>
-<h1 id="englishpod-C0007"><a href="#englishpod-C0007" class="headerlink" title="englishpod_C0007"></a>englishpod_C0007</h1><ul>
-<li>computer virus</li>
-<li>froze<br>stopping working</li>
-<li>infective file</li>
-<li>up to date</li>
-<li>I’ll be right there/down/out</li>
-<li>It turns out that</li>
-</ul>
-<h1 id="englishpod-C0008"><a href="#englishpod-C0008" class="headerlink" title="englishpod_C0008"></a>englishpod_C0008</h1><ul>
-<li>in a bit of hurry</li>
-<li>contact details</li>
-<li>slip my mind</li>
-<li>around there</li>
-<li>I’m terrible with names/faces</li>
-</ul>
-<h1 id="englishpd-C0009"><a href="#englishpd-C0009" class="headerlink" title="englishpd_C0009"></a>englishpd_C0009</h1><ul>
-<li>inconsiderate<br>not thinking about other’s feeling</li>
-<li>keep it down</li>
-<li>not such a big deal</li>
-<li>not a big problem</li>
-<li>switch it off</li>
-<li>I can’t hear a thing</li>
-</ul>
-<h1 id="englishpod-C0010"><a href="#englishpod-C0010" class="headerlink" title="englishpod_C0010"></a>englishpod_C0010</h1><ul>
-<li>drive sales</li>
-<li>promotion</li>
-<li>match the competitor</li>
-<li>in the market<br>in the insustry</li>
-<li>It’ll never fly<br>it won’t work</li>
-</ul>
-<h1 id="englishpod-C0011"><a href="#englishpod-C0011" class="headerlink" title="englishpod_C0011"></a>englishpod_C0011</h1><ul>
-<li>weird<br>strange  odd</li>
-<li>housewarming</li>
-<li>a bad feeling</li>
-<li>kicked me out<br>force me to leave</li>
-<li>creep me out<br>make me feel uncomfortable</li>
-<li>scared and</li>
-<li>I don’t know if you heard<br>gossip</li>
-<li>fill me in<br>give me information</li>
-<li>you scared the heck out of me</li>
-</ul>
-<h1 id="englishpod-C0012"><a href="#englishpod-C0012" class="headerlink" title="englishpod_C0012"></a>englishpod_C0012</h1><ul>
-<li>such a mess</li>
-<li>chore</li>
-<li>tidy up</li>
-<li>spotless<br>一尘不染</li>
-<li>mall<br>many stores in there</li>
-<li>grocery<br>grocery list<br>grocery shopping</li>
-<li>I’m in the middle of something now.</li>
-<li>I’ll be there in a second</li>
-</ul>
-<h1 id="englishpod-C0013"><a href="#englishpod-C0013" class="headerlink" title="englishpod_C0013"></a>englishpod_C0013</h1><ul>
-<li>expenses</li>
-<li>through the roof<br>off the charts</li>
-<li>expenditure</li>
-<li>out of control</li>
-<li>go over</li>
-<li>profit and loss statement</li>
-</ul>
-<h1 id="englishpod-B0014"><a href="#englishpod-B0014" class="headerlink" title="englishpod_B0014"></a>englishpod_B0014</h1><ul>
-<li>recession</li>
-<li>broke</li>
-<li>loan</li>
-<li>mortgage<br>a loan to help you buy an apartment</li>
-<li>hit me pretty hard</li>
-<li>tuition</li>
-<li>can I help you?<br>what can I do for you?</li>
-<li>I’m sorry to trouble you</li>
-<li>on top of that</li>
-<li>data debt date</li>
-</ul>
-<h1 id="englishpod-C0015"><a href="#englishpod-C0015" class="headerlink" title="englishpod_C0015"></a>englishpod_C0015</h1><ul>
-<li>knock over<br>slip something down</li>
-<li>explode</li>
-<li>familiar</li>
-<li>coincidence</li>
-<li>I feel terrible<br>please accept my apologies</li>
-<li>I don’t mean knocking over</li>
-</ul>
-<h1 id="englishpod-B0016"><a href="#englishpod-B0016" class="headerlink" title="englishpod_B0016"></a>englishpod_B0016</h1><ul>
-<li>step on it<br>speed up slow down<br>go fast</li>
-<li>have a fit<br>get angry</li>
-<li>cut through<br>go through</li>
-<li>short cut<br>take a short way</li>
-<li>make a left/right<br>make a u turn</li>
-<li>take a side street<br>take the freeway</li>
-</ul>
-<h1 id="englishpod-B0017"><a href="#englishpod-B0017" class="headerlink" title="englishpod_B0017"></a>englishpod_B0017</h1><ul>
-<li>groom<br>man</li>
-<li>bride<br>woman</li>
-<li>It’s about time<br>finally at last</li>
-<li>aisle</li>
-<li>bridemaids</li>
-<li>flower girl</li>
-<li>ring bearer</li>
-<li>niece nephew</li>
-<li>gorgeous<br>beautiful</li>
-<li>get married</li>
-<li>priest</li>
-</ul>
-<h1 id="englishpod-D0018"><a href="#englishpod-D0018" class="headerlink" title="englishpod_D0018"></a>englishpod_D0018</h1><ul>
-<li>bankrupt</li>
-<li>bail out</li>
-<li>injustice</li>
-<li>outrage</li>
-<li>break out<br>to begin suddenlly</li>
-<li>have the nerve to<br>dare to do</li>
-<li>financial</li>
-</ul>
-<h1 id="englishpod-C0019"><a href="#englishpod-C0019" class="headerlink" title="englishpod_C0019"></a>englishpod_C0019</h1><ul>
-<li>eggnog</li>
-<li>vehicle<br>car</li>
-<li>lawer</li>
-<li>appoint<br>choose</li>
-<li>sleigh</li>
-<li>step out<br>step out the vehicle</li>
-<li>get a load of<br>look at</li>
-<li>Don’t take the tone with me</li>
-<li>invoice<br>发票</li>
-</ul>
-<h1 id="englishpod-B0020"><a href="#englishpod-B0020" class="headerlink" title="englishpod_B0020"></a>englishpod_B0020</h1><ul>
-<li>struggle<br>try real hard</li>
-<li>blurry<br>not clear</li>
-<li>prescription</li>
-<li>20-20 vision<br>Perfect eyesight</li>
-<li>far sighted<br>near sighted</li>
-<li>make out<br>see clearly</li>
-<li>as blind as a bat</li>
-<li>what seems to be the problem</li>
-<li>head on<br>head on over<br>head on in</li>
-</ul>
-<h1 id="englishpod-C0021"><a href="#englishpod-C0021" class="headerlink" title="englishpod_C0021"></a>englishpod_C0021</h1><ul>
-<li>VP<br>the vice president</li>
-<li>fortune 500 company</li>
-<li>implement</li>
-<li>policy</li>
-<li>oversee</li>
-<li>go on about him</li>
-<li>How’s going?</li>
-<li>what do you do for a living?</li>
-</ul>
-<h1 id="englishpod-C0022"><a href="#englishpod-C0022" class="headerlink" title="englishpod_C0022"></a>englishpod_C0022</h1><ul>
-<li>candy canes</li>
-<li>booked</li>
-<li>speeding<br>go too fast</li>
-<li>impounded<br>held by the police<br>take your car to car jail</li>
-<li>ruined<br>destoried</li>
-<li>backup<br>help</li>
-</ul>
-<h1 id="englishpod-B0023"><a href="#englishpod-B0023" class="headerlink" title="englishpod_B0023"></a>englishpod_B0023</h1><ul>
-<li>financial adviser</li>
-<li>available</li>
-<li>double check<br>check it again</li>
-<li>sheduled<br>book it at that time</li>
-<li>booked solid</li>
-</ul>
-<h1 id="englishpod-B0024"><a href="#englishpod-B0024" class="headerlink" title="englishpod_B0024"></a>englishpod_B0024</h1><ul>
-<li>food po<br>not a good thing</li>
-<li>allergic<br>It make you sick</li>
-<li>check out<br>look at</li>
-<li>be</li>
-<li>not all that crazy about</li>
-<li>tasty<br>delicious</li>
-<li>in the mood for<br>have a desire</li>
-<li>Do  you have any suggentions/ideas?</li>
-<li>I reconmend giving it a try.<br>You’ve got to give a try.</li>
-<li>platter</li>
-<li>decor<br>decoration</li>
-</ul>
-<h1 id="englishpod-D0025"><a href="#englishpod-D0025" class="headerlink" title="englishpod_D0025"></a>englishpod_D0025</h1><ul>
-<li>converage</li>
-<li>pain de<br>scary</li>
-<li>critical<br>important</li>
-<li>outbreak</li>
-<li>forcast<br>predict</li>
-<li>Let’s move to the next order of business.<br>come up<br>move on</li>
-<li>head up<br>take charge of</li>
-<li>I’ll leave it to you.</li>
-<li>contingency plan<br>a plan that prepares for a situation where things go wrong</li>
-<li>vaccine<br>疫苗</li>
-</ul>
-<h1 id="englishpod-B0026"><a href="#englishpod-B0026" class="headerlink" title="englishpod_B0026"></a>englishpod_B0026</h1><ul>
-<li>eating habits<br>the regular way you eat</li>
-<li>junk food</li>
-<li>transform</li>
-<li>I’m stuffed</li>
-<li>stick to it<br>keep doing it</li>
-<li>I mean it.<br>I’m serious.</li>
-<li>cut out</li>
-<li>wait and see</li>
-</ul>
-<h1 id="englishpod-B0027"><a href="#englishpod-B0027" class="headerlink" title="englishpod_B0027"></a>englishpod_B0027</h1><ul>
-<li>vacation day</li>
-<li>overseas</li>
-<li>unpaid leave</li>
-<li>notice</li>
-<li>Do you have a second?<br>Do you have a minute/sec?</li>
-<li>Would you be OK with that?<br>will it be OK with that?</li>
-<li>I was just wondering<br>I was just hoping that</li>
-</ul>
-<h1 id="englishpod-C0028"><a href="#englishpod-C0028" class="headerlink" title="englishpod_C0028"></a>englishpod_C0028</h1><ul>
-<li>relieved</li>
-<li>pick me up<br>come and get me</li>
-<li>ordinary</li>
-<li>make it up to you</li>
-<li>my treat</li>
-<li>twist of fate</li>
-</ul>
-<h1 id="englishpod-E0029"><a href="#englishpod-E0029" class="headerlink" title="englishpod_E0029"></a>englishpod_E0029</h1><ul>
-<li>merging market<br>developing</li>
-<li>turmoil<br>a state of confusion</li>
-<li>proposed</li>
-<li>hit up<br>ask for money</li>
-<li>inevitable</li>
-</ul>
-<h1 id="englishpod-C0030"><a href="#englishpod-C0030" class="headerlink" title="englishpod_C0030"></a>englishpod_C0030</h1><ul>
-<li>thoughtful</li>
-<li>give me the creeps<br>make me feel uncomfortable</li>
-<li>rope me into something</li>
-<li>appetite<br>strong desire for food</li>
-<li>get to know someone</li>
-<li>why on earth</li>
-</ul>
-<h1 id="englishpod-B0031"><a href="#englishpod-B0031" class="headerlink" title="englishpod_B0031"></a>englishpod_B0031</h1><ul>
-<li>reshedule<br>change for another day or time</li>
-<li>inconvenience</li>
-<li>postpone<br>delay</li>
-<li>can not make it<br>can’t do something</li>
-<li>this thing comes up</li>
-</ul>
-<h1 id="englishpod-C0032"><a href="#englishpod-C0032" class="headerlink" title="englishpod_C0032"></a>englishpod_C0032</h1><ul>
-<li>chequing account</li>
-<li>savings account</li>
-<li>transaction</li>
-<li>balance</li>
-<li>overdraft</li>
-<li>debit card</li>
-<li>I’ll get you to</li>
-<li>I need your insurace number.</li>
-<li>If you could sign here?</li>
-</ul>
-<h1 id="englishpod-B0033"><a href="#englishpod-B0033" class="headerlink" title="englishpod_B0033"></a>englishpod_B0033</h1><ul>
-<li>foul</li>
-<li>ref</li>
-<li>free throw</li>
-<li>make a shot<br>to successful</li>
-<li>3 pointer shot</li>
-<li>travel<br>take more than two steps with the ball</li>
-<li>screw up<br>to make a mistake</li>
-<li>beer run<br>to go and get a beer</li>
-</ul>
-<h1 id="englishpod-D0034"><a href="#englishpod-D0034" class="headerlink" title="englishpod_D0034"></a>englishpod_D0034</h1><ul>
-<li>swear in<br>swore in</li>
-<li>oath<br>a promise</li>
-<li>deliver<br>say a speech</li>
-<li>who’s who</li>
-<li>palpable</li>
-<li>in a word</li>
-<li>go down in history</li>
-<li>my fellow Americans<br>dear</li>
-</ul>
-<h1 id="englishpod-C0035"><a href="#englishpod-C0035" class="headerlink" title="englishpod_C0035"></a>englishpod_C0035</h1><ul>
-<li>a good fit<br>suitable for the job</li>
-<li>performance</li>
-<li>unreliable<br>reliable</li>
-<li>productive</li>
-<li>work ethic</li>
-<li>coach<br>train</li>
-<li>the bottom of line<br>the most important point</li>
-<li>overall</li>
-<li>perfectly good</li>
-</ul>
-<h1 id="englishpod-B0036"><a href="#englishpod-B0036" class="headerlink" title="englishpod_B0036"></a>englishpod_B0036</h1><ul>
-<li>get a hold</li>
-<li>stand me up<br>fail to keep the appointment to meet someone</li>
-<li>priority</li>
-<li>heading<br>going</li>
-<li>Do you have any idea how</li>
-<li>I heard it before</li>
-<li>take a break<br>stop their relationship</li>
-<li>decency<br>polite or moral bahavior</li>
-<li>get your priorities straight<br>realize what is more important</li>
-</ul>
-<h1 id="englishpod-C0037"><a href="#englishpod-C0037" class="headerlink" title="englishpod_C0037"></a>englishpod_C0037</h1><ul>
-<li>dumping<br>水饺</li>
-<li>firecracker</li>
-<li>set off</li>
-<li>I can’t wait to</li>
-<li>I bet</li>
-<li>red envelope</li>
-<li>mahjong</li>
-</ul>
-<h1 id="englishpod-C0038"><a href="#englishpod-C0038" class="headerlink" title="englishpod_C0038"></a>englishpod_C0038</h1><ul>
-<li>vehicle</li>
-<li>sedan<br>a car with four doors</li>
-<li>gas mileage<br>the amount of gas used per mile</li>
-<li>airbags</li>
-<li>brake</li>
-<li>reinforce<br>make stronger</li>
-<li>I’m just browsing</li>
-<li>sleep on it<br>to think about it</li>
-</ul>
-<h1 id="englishpod-B0039"><a href="#englishpod-B0039" class="headerlink" title="englishpod_B0039"></a>englishpod_B0039</h1><ul>
-<li>heard</li>
-<li>fill me in<br>tell me about something</li>
-<li>career path</li>
-<li>In  his early 30s</li>
-</ul>
-<h1 id="englishpod-B0040"><a href="#englishpod-B0040" class="headerlink" title="englishpod_B0040"></a>englishpod_B0040</h1><ul>
-<li>on board<br>welcome to the company</li>
-<li>about to</li>
-<li>instead<br>in the  place of</li>
-<li>intrepret</li>
-</ul>
-<h1 id="englishpod-C0041"><a href="#englishpod-C0041" class="headerlink" title="englishpod_C0041"></a>englishpod_C0041</h1><ul>
-<li>posses</li>
-<li>survival</li>
-<li>defend<br>protect</li>
-<li>rough<br>hard</li>
-<li>at all costs<br>no matter what</li>
-<li>stand in one’s way</li>
-</ul>
-<h1 id="englishpod-B0042"><a href="#englishpod-B0042" class="headerlink" title="englishpod_B0042"></a>englishpod_B0042</h1><ul>
-<li>deadline</li>
-<li>extension</li>
-<li>run into<br>run into some problem</li>
-<li>delay</li>
-<li>be under control</li>
-<li>put this off</li>
-<li>press kit<br>groups of photos, documents, articals, and information about company given to reporters, newspapers,magazines,etc.</li>
-<li>finalize<br>finish</li>
-</ul>
-<h1 id="englishpod-C0043"><a href="#englishpod-C0043" class="headerlink" title="englishpod_C0043"></a>englishpod_C0043</h1><ul>
-<li>visa<br>签证</li>
-<li>sponsor</li>
-<li>invitation letter</li>
-<li>ties</li>
-<li>financially independent</li>
-</ul>
-<h1 id="englishpod-B0044"><a href="#englishpod-B0044" class="headerlink" title="englishpod_B0044"></a>englishpod_B0044</h1><ul>
-<li>barely even</li>
-<li>catch the news<br>hear the news</li>
-<li>by the way</li>
-<li>take the stairs</li>
-<li>do you happen to<br>by chance</li>
-</ul>
-<h1 id="englishpod-C0045"><a href="#englishpod-C0045" class="headerlink" title="englishpod_C0045"></a>englishpod_C0045</h1><ul>
-<li>on a break</li>
-<li>seeing someone<br>dating or going out with someone</li>
-<li>cheat on</li>
-<li>mess this up</li>
-<li>immature  </li>
-<li>selfish</li>
-<li>everything is going to work out just fine.</li>
-<li>pull yourself together<br>calm down</li>
-<li>It’s going to be alright.</li>
-</ul>
-<h1 id="englishpod-D0046"><a href="#englishpod-D0046" class="headerlink" title="englishpod_D0046"></a>englishpod_D0046</h1><ul>
-<li>CPR</li>
-<li>BP<br>blood pressure</li>
-<li>hook up</li>
-<li>out of woods<br>free from danger</li>
-<li>defibrillator</li>
-</ul>
-<h1 id="englishpod-C0048"><a href="#englishpod-C0048" class="headerlink" title="englishpod_C0048"></a>englishpod_C0048</h1><ul>
-<li>ticket scalper<br>黄牛</li>
-<li>prestigious<br>being respected and admired for being successful or important</li>
-<li>float</li>
-<li>once in the lifetime</li>
-<li>good thing</li>
-<li>no kidding<br>I totally agree with you</li>
-</ul>
-<h1 id="englishpod-C0049"><a href="#englishpod-C0049" class="headerlink" title="englishpod_C0049"></a>englishpod_C0049</h1><ul>
-<li>concert</li>
-<li>hottest</li>
-<li>fine then</li>
-<li>I was wondering can I<br>Do you think<br>would you mind</li>
-</ul>
-<h1 id="englishpod-C0050"><a href="#englishpod-C0050" class="headerlink" title="englishpod_C0050"></a>englishpod_C0050</h1><ul>
-<li>appetite</li>
-<li>poison</li>
-<li>points<br>suggestions</li>
-<li>aroma<br>special smell</li>
-<li>bitter</li>
-<li>pass out<br>become unconscious</li>
-<li>make yourself at home</li>
-</ul>
-<h1 id="englishpod-C0051"><a href="#englishpod-C0051" class="headerlink" title="englishpod_C0051"></a>englishpod_C0051</h1><ul>
-<li>price range</li>
-<li>shop around</li>
-<li>pricey</li>
-<li>a better deal</li>
-<li>That’s my best offer.<br>That’s my last offer.</li>
-<li>exclusive<br>not common, unique</li>
-</ul>
-<h1 id="englishpod-C0052"><a href="#englishpod-C0052" class="headerlink" title="englishpod_C0052"></a>englishpod_C0052</h1><ul>
-<li>medium<br>12 inch<br>larger</li>
-<li>pepperoni<br>a spicy sausage usually on pizza</li>
-<li>olives</li>
-<li>extra cheese</li>
-<li>ham</li>
-<li>pineapple</li>
-<li>thin crust</li>
-<li>would you like</li>
-</ul>
-<h1 id="englishpod-C0053"><a href="#englishpod-C0053" class="headerlink" title="englishpod_C0053"></a>englishpod_C0053</h1><ul>
-<li>head chef<br>the main cook</li>
-<li>cuisine</li>
-<li>peel<br>remove the outside</li>
-<li>chop</li>
-<li>stir<br>mix</li>
-<li>butcher</li>
-<li>butter</li>
-<li>in the weeds<br>you are really busy</li>
-<li>run low on<br>not something left</li>
-<li>do really well</li>
-</ul>
-<h1 id="englishpod-C0054"><a href="#englishpod-C0054" class="headerlink" title="englishpod_C0054"></a>englishpod_C0054</h1><ul>
-<li>blaze<br>fire</li>
-<li>in the middle of nowhere</li>
-<li>first thing in the morning</li>
-<li>everything seems to be order</li>
-</ul>
-<h1 id="englishpod-C0055"><a href="#englishpod-C0055" class="headerlink" title="englishpod_C0055"></a>englishpod_C0055</h1><ul>
-<li>puck</li>
-<li>key game</li>
-<li>finals</li>
-<li>face-off</li>
-<li>goalie<br>saver</li>
-<li>breakaway</li>
-</ul>
-<h1 id="englishpod-C0056"><a href="#englishpod-C0056" class="headerlink" title="englishpod_C0056"></a>englishpod_C0056</h1><ul>
-<li>fill in</li>
-<li>replicas</li>
-<li>tap</li>
-<li>map out</li>
-<li>screw it up</li>
-<li>lose your cool</li>
-</ul>
-<h1 id="englishpod-C0057"><a href="#englishpod-C0057" class="headerlink" title="englishpod_C0057"></a>englishpod_C0057</h1><ul>
-<li>malfunction</li>
-<li>ASAP<br>as soon as possible</li>
-<li>practical joke</li>
-<li>never mind</li>
-<li>out of to</li>
-<li>on your way up</li>
-<li>break down<br>break in<br>break out</li>
-<li>toner<br>ink used in a printer or photocopier</li>
-</ul>
-<h1 id="englishpod-C0058"><a href="#englishpod-C0058" class="headerlink" title="englishpod_C0058"></a>englishpod_C0058</h1><ul>
-<li>turbulence</li>
-<li>flight crew</li>
-<li>bumpy ride</li>
-<li>fasten<br>fasten your seat belt</li>
-<li>lavatory</li>
-<li>stow</li>
-<li>refrain</li>
-<li>remain seated</li>
-<li>patch</li>
-<li>suspend<br>stop for a short time</li>
-</ul>
-<h1 id="englishpod-E0059"><a href="#englishpod-E0059" class="headerlink" title="englishpod_E0059"></a>englishpod_E0059</h1><ul>
-<li>CRM<br>custom relationship manager</li>
-<li>custom designed<br>custom built house</li>
-<li>core values</li>
-<li>undisputed<br>the is no doubt</li>
-<li>growth oppotunity</li>
-<li>read up</li>
-<li>unleash potential</li>
-<li>resonate</li>
-</ul>
-<h1 id="englishpod-C0060"><a href="#englishpod-C0060" class="headerlink" title="englishpod_C0060"></a>englishpod_C0060</h1><ul>
-<li>drag</li>
-<li>tie somebody up</li>
-<li>fools</li>
-<li>fell for it</li>
-<li>the cat is out of the bag<br>the truth is out</li>
-<li>pretend</li>
-<li>gullible<br>easily beliving something that is not true, eaily fooled</li>
-</ul>
-<h1 id="englishpod-C0061"><a href="#englishpod-C0061" class="headerlink" title="englishpod_C0061"></a>englishpod_C0061</h1><ul>
-<li>sail</li>
-<li>anchor</li>
-<li>doggy-paddling<br>swim like a dog</li>
-<li>breast stroke</li>
-<li>backstroke</li>
-<li>take a dip</li>
-<li>for a little while</li>
-</ul>
-<h1 id="englishpod-C0062"><a href="#englishpod-C0062" class="headerlink" title="englishpod_C0062"></a>englishpod_C0062</h1><ul>
-<li>major<br>main subject</li>
-<li>minor</li>
-<li>course of study</li>
-<li>track<br>path</li>
-<li>hence</li>
-<li>pursued<br>to chase</li>
-<li>strive<br>to try real hard</li>
-<li>breadth</li>
-<li>implement</li>
-<li>postgraduate<br>masters or PH.D;</li>
-<li>initiative<br>倡议</li>
-<li>churn rate<br>客户流失率</li>
-<li>coordinate<br>协调</li>
-</ul>
-<h1 id="englishpod-C0063"><a href="#englishpod-C0063" class="headerlink" title="englishpod_C0063"></a>englishpod_C0063</h1><ul>
-<li>certainly</li>
-<li>may I take your name?</li>
-<li>monmentarily<br>in a short</li>
-<li>ready for</li>
-</ul>
-<h1 id="englishpod-C0064"><a href="#englishpod-C0064" class="headerlink" title="englishpod_C0064"></a>englishpod_C0064</h1><ul>
-<li>sleep with</li>
-<li>confess<br>you tell a secret that you are hiding</li>
-<li>overwhelm</li>
-<li>jelousy</li>
-<li>jerk<br>stupid and mean person</li>
-<li>bastard</li>
-<li>bun in the oven<br>pregnant</li>
-<li>I can’t help myself</li>
-<li>come into the picture<br>appear into one’s life</li>
-<li>cheerleading squad<br>啦啦队</li>
-</ul>
-<h1 id="englishpod-C0065"><a href="#englishpod-C0065" class="headerlink" title="englishpod_C0065"></a>englishpod_C0065</h1><ul>
-<li>technical acument</li>
-<li>excel</li>
-<li>head</li>
-<li>struggle</li>
-<li>punctual<br>punctuality</li>
-<li>adress<br>deal with</li>
-<li>fit</li>
-<li>acumen<br>the ability to think clearly and make good decisions</li>
-</ul>
-<h1 id="englishpod-C0067"><a href="#englishpod-C0067" class="headerlink" title="englishpod_C0067"></a>englishpod_C0067</h1><ul>
-<li>wingman</li>
-<li>tired</li>
-<li>foul</li>
-<li>kick off</li>
-<li>out of bounds</li>
-<li>throw in</li>
-<li>offside</li>
-<li>on the brink of<br>at a critical point</li>
-<li>no question about it<br>no doubt</li>
-<li>by a mile</li>
-<li>penalty kick<br>a kick against only the goalkeepwe as a reward for a foul</li>
-</ul>
-<h1 id="englishpod-C0068"><a href="#englishpod-C0068" class="headerlink" title="englishpod_C0068"></a>englishpod_C0068</h1><ul>
-<li>irrefutable</li>
-<li>flaw</li>
-<li>systemetic<br>following the certain order</li>
-<li>extensive research</li>
-<li>conclusive evidence<br>final decision</li>
-<li>investigative approch</li>
-<li>definite conclusion</li>
-<li>oblivious to<br>unware or don’t know</li>
-<li>proposterous<br>crazy, foolish, or silly</li>
-</ul>
-<h1 id="englishpod-C0069"><a href="#englishpod-C0069" class="headerlink" title="englishpod_C0069"></a>englishpod_C0069</h1><ul>
-<li>picky</li>
-<li>yolk<br>egg yolk<br>the white</li>
-<li>sunny side up</li>
-<li>fried egg</li>
-<li>soft boiled egg</li>
-<li>hard boiled egg</li>
-<li>egg and soilders</li>
-<li>scrible eggs</li>
-<li>feel like<br>have desire to do</li>
-<li>drive me crazy<br>make you angry</li>
-<li>muffin<br>a small break or cake people usually eat for breakfast</li>
-</ul>
-<h1 id="englishpod-F0070"><a href="#englishpod-F0070" class="headerlink" title="englishpod_F0070"></a>englishpod_F0070</h1><ul>
-<li>lingerie</li>
-<li>awkward</li>
-<li>granny panties</li>
-<li>sleepwear</li>
-<li>nighties<br>silky nighties</li>
-<li>undies</li>
-<li>mortifying<br>extremely embarassing</li>
-<li>get the hell out of here<br>leave</li>
-<li>get this over with</li>
-</ul>
-<h1 id="englishpod-C0071"><a href="#englishpod-C0071" class="headerlink" title="englishpod_C0071"></a>englishpod_C0071</h1><ul>
-<li>on tap<br>beer served from a barrel; not in a bottle or can</li>
-<li>happy hour</li>
-<li>pint</li>
-<li>appetizer<br>a small dish served before meal</li>
-<li>what about<br>be used in making suggestions</li>
-</ul>
-<h1 id="englishopod-C0072"><a href="#englishopod-C0072" class="headerlink" title="englishopod_C0072"></a>englishopod_C0072</h1><ul>
-<li>preoccupied<br>worried</li>
-<li>direct impact</li>
-<li>resent<br>find something very insulting</li>
-<li>beat around the bush<br>avoid saying something by about other things<br>come out with it</li>
-</ul>
-<h1 id="englishpod-C0073"><a href="#englishpod-C0073" class="headerlink" title="englishpod_C0073"></a>englishpod_C0073</h1><ul>
-<li>pinkie</li>
-<li>the ring finger</li>
-<li>the middle finger<br>giving the middle finger</li>
-<li>index finger</li>
-<li>thumb</li>
-<li>abide<br>live</li>
-</ul>
-<h1 id="englishpod-C0074"><a href="#englishpod-C0074" class="headerlink" title="englishpod_C0074"></a>englishpod_C0074</h1><ul>
-<li>famished<br>very hungry</li>
-<li>sexist</li>
-<li>dumbass</li>
-<li>moron<br>someone is stupid</li>
-<li>tool<br>useless</li>
-<li>chill</li>
-<li>scream</li>
-<li>what the hell</li>
-</ul>
-<h1 id="englishpod-C0075"><a href="#englishpod-C0075" class="headerlink" title="englishpod_C0075"></a>englishpod_C0075</h1><ul>
-<li>toothache</li>
-<li>x-ray</li>
-<li>swollen</li>
-<li>cavity<br>a hole in a tooth</li>
-<li>crown<br>the part of the tooth which can be seen</li>
-<li>filling</li>
-<li>what seems to be the problem?<br>what’s wrong?</li>
-</ul>
-<h1 id="englishpod-C0076"><a href="#englishpod-C0076" class="headerlink" title="englishpod_C0076"></a>englishpod_C0076</h1><ul>
-<li>plus add<br>minus<br>times<br>devided by</li>
-<li>square root</li>
-<li>teacher’s pet<br>suck up</li>
-<li>smarty pants<br>for children</li>
-<li>konw it all</li>
-</ul>
-<h1 id="englishpod-C0077"><a href="#englishpod-C0077" class="headerlink" title="englishpod_C0077"></a>englishpod_C0077</h1><ul>
-<li>jam on the breaks</li>
-<li>spin out<br>(a car)slides and makes a turn rapidly in an uncontrolled way</li>
-<li>the pace car</li>
-<li>cleanup crew<br>the construction crew</li>
-<li>to tow</li>
-<li>my partner in crime<br>a person you always do things together with</li>
-<li>a close one</li>
-<li>stretch<br>the final time period</li>
-</ul>
-<h1 id="englishpod-E0078"><a href="#englishpod-E0078" class="headerlink" title="englishpod_E0078"></a>englishpod_E0078</h1><ul>
-<li>brutality<br>violent treatment or behavior</li>
-<li>important aspect</li>
-<li>genesis</li>
-<li>comprehend</li>
-<li>appalling<br>terrible, horrible, shocking</li>
-<li>hostility<br>the attitde of treating something as enemy</li>
-<li>drastic<br>sudden and severe</li>
-<li>constitute<br>form, consist</li>
-<li>fire into<br>shoot guns into a place</li>
-</ul>
-<h1 id="englishpod-B0079"><a href="#englishpod-B0079" class="headerlink" title="englishpod_B0079"></a>englishpod_B0079</h1><ul>
-<li>spacecraft</li>
-<li>break through</li>
-<li>settle this</li>
-<li>accelerate</li>
-<li>no loger be</li>
-<li>once and for all</li>
-<li>obscure</li>
-</ul>
-<h1 id="englishpod-C0080"><a href="#englishpod-C0080" class="headerlink" title="englishpod_C0080"></a>englishpod_C0080</h1><ul>
-<li>show up</li>
-<li>stalk<br>follow someone for a long time</li>
-<li>nut job</li>
-<li>get worked up</li>
-<li>soul mate</li>
-<li>over nothing<br>no reason</li>
-<li>not a day goes by</li>
-<li>no matter what</li>
-</ul>
-<h1 id="englishpod-B0081"><a href="#englishpod-B0081" class="headerlink" title="englishpod_B0081"></a>englishpod_B0081</h1><ul>
-<li>trim<br>a short cut of hair to make one look clean</li>
-<li>fancy</li>
-<li>silky<br>silk hair</li>
-<li>grow out</li>
-<li>don’t just stand there</li>
-<li>take a little off the top<br>take a little off the side</li>
-<li>curly</li>
-<li>a million bucks<br>very good. To look great</li>
-<li>sideburns<br>hari thar grows on the sides of man</li>
-<li>fluffy<br>soft  </li>
-</ul>
-<h1 id="englishpod-C0082"><a href="#englishpod-C0082" class="headerlink" title="englishpod_C0082"></a>englishpod_C0082</h1><ul>
-<li>creature</li>
-<li>break free</li>
-<li>kidnapper</li>
-<li>rapist</li>
-<li>rape</li>
-<li>lemme see your eyes<br>let me see your eyes<br>gimme - give me</li>
-<li>make it out<br>able to escape or flee</li>
-</ul>
-<h1 id="englishpod-C0083"><a href="#englishpod-C0083" class="headerlink" title="englishpod_C0083"></a>englishpod_C0083</h1><ul>
-<li>ATM<br>automatic teller machine</li>
-<li>the local authority</li>
-<li>slot</li>
-<li>digit</li>
-<li>withdraw</li>
-<li>transfer money</li>
-<li>pound key<br>the push botton marked with #</li>
-</ul>
-<h1 id="englishpod-B0084"><a href="#englishpod-B0084" class="headerlink" title="englishpod_B0084"></a>englishpod_B0084</h1><ul>
-<li>pharmacy<br>medicine</li>
-<li>milligram</li>
-<li>price check</li>
-<li>prescription</li>
-<li>capsule</li>
-<li>tablet</li>
-<li>overdose</li>
-<li>eye drop</li>
-<li>be sure not to</li>
-<li>get a price check</li>
-</ul>
-<h1 id="englishpod-B0085"><a href="#englishpod-B0085" class="headerlink" title="englishpod_B0085"></a>englishpod_B0085</h1><ul>
-<li>the national anthem</li>
-<li>pitcher<br>throw the ball</li>
-<li>wind up</li>
-<li>line drive<br>a hit that travels low along the baseline     </li>
-<li>scramble</li>
-<li>up at bat<br>get ready to hit the ball</li>
-<li>strike</li>
-<li>curve ball</li>
-</ul>
-<h1 id="englishpod-C0086"><a href="#englishpod-C0086" class="headerlink" title="englishpod_C0086"></a>englishpod_C0086</h1><ul>
-<li>landlord<br>the owner of house</li>
-<li>tenant<br>the person that rents a house</li>
-<li>renovate<br>make a new again</li>
-<li>airy<br>spacious so that air moves freely</li>
-<li>square footage</li>
-<li>applicance</li>
-<li>gas range<br>a stove that uses to cook</li>
-<li>prefessional greed</li>
-<li>spaciou<br>latge; having lots of space</li>
-<li>walk-in closet<br>a room containedf in a bedroom for storing clothes</li>
-<li>en suit bathroom<br>a bathroom within the main bedroom</li>
-</ul>
-<h1 id="englishpod-B0087"><a href="#englishpod-B0087" class="headerlink" title="englishpod_B0087"></a>englishpod_B0087</h1><ul>
-<li>unidentified ship</li>
-<li>seach party</li>
-<li>a deep voice</li>
-<li>offentic</li>
-<li>wig<br>artificial hair</li>
-<li>under attack<br>under fire</li>
-<li>sustain<br>damage</li>
-<li>the nature of</li>
-<li>warp drive</li>
-</ul>
-<h1 id="englishpod-B0088"><a href="#englishpod-B0088" class="headerlink" title="englishpod_B0088"></a>englishpod_B0088</h1><ul>
-<li>here’s the thing<br>give somebody some information</li>
-<li>I can’t take it anymore</li>
-<li>Are you serious?</li>
-<li>have guts to<br>courage</li>
-<li>just two of us<br>just three of us</li>
-<li>give me a shot<br>give me an oppotunity</li>
-<li>pros and cons<br>good things and bad things about a person</li>
-</ul>
-<h1 id="englishpod-C0089"><a href="#englishpod-C0089" class="headerlink" title="englishpod_C0089"></a>englishpod_C0089</h1><ul>
-<li>piece of luggage</li>
-<li>carryon luggage</li>
-<li>overhead compa</li>
-<li>how am I be supposed to</li>
-<li>There’s nothing I can do</li>
-<li>next to nothing<br>very cheap</li>
-</ul>
-<h1 id="englishpod-D0090"><a href="#englishpod-D0090" class="headerlink" title="englishpod_D0090"></a>englishpod_D0090</h1><ul>
-<li>spy</li>
-<li>come clean<br>confess</li>
-<li>renource</li>
-<li>approach someone</li>
-<li>claim</li>
-<li>vow<br>make a strong promise</li>
-<li>whereabouts<br>the approximate place, where a person or thing is</li>
-<li>I haven’t been completely honest with you</li>
-<li>I wasn’t supposed to<br>I shouldn’t</li>
-<li>bureau</li>
-<li>millennium<br>1000 years</li>
-<li>renowned<br>well known</li>
-</ul>
-<h1 id="englishpod-D0091"><a href="#englishpod-D0091" class="headerlink" title="englishpod_D0091"></a>englishpod_D0091</h1><ul>
-<li>constellation<br>a particular shape formed by a group of stars</li>
-<li>consequence<br>negative results</li>
-<li>downdfall<br>failure</li>
-<li>anguish<br>angry, aggressive, wanting to fight</li>
-<li>a wonder</li>
-<li>what gives you the right to</li>
-<li>to play God</li>
-<li>who are you to</li>
-</ul>
-<h1 id="englishpod-C0095"><a href="#englishpod-C0095" class="headerlink" title="englishpod_C0095"></a>englishpod_C0095</h1><ul>
-<li>in ages</li>
-<li>run into</li>
-<li>freak out</li>
-<li>stare</li>
-<li>shriek<br>screaming in a very high voice</li>
-<li>catch up with<br>learn about recent past events</li>
-<li>hilarious</li>
-</ul>
-<h1 id="englishpod-C0096"><a href="#englishpod-C0096" class="headerlink" title="englishpod_C0096"></a>englishpod_C0096</h1><ul>
-<li>pad</li>
-<li>far out</li>
-<li>crash</li>
-<li>split</li>
-<li>dig it<br>appreciate, like</li>
-<li>throw a bash<br>party<br>host a party</li>
-<li>take care of business</li>
-<li>happening scene<br>an extremely exciting moment</li>
-<li>peace out<br>see you later</li>
-<li>groovy<br>really cool</li>
-</ul>
-<h1 id="englishpod-D0097"><a href="#englishpod-D0097" class="headerlink" title="englishpod_D0097"></a>englishpod_D0097</h1><ul>
-<li>weather forcast</li>
-<li>shower<br>a short time rain</li>
-<li>scattered shower</li>
-<li>hover around<br>stay near a certain level or place</li>
-<li>temperature</li>
-<li>isolated downpour</li>
-<li>gust<br>strong, sudden increase in wind speed</li>
-<li>sleet<br>a mix of rain and snow</li>
-<li>cold front</li>
-<li>It’s going to a tough one</li>
-<li>mixed bag<br>a collection of different kinds of things</li>
-<li>cloud cover<br>the amount of sky that is covered with cloud</li>
-<li>partly-cloudy skies<br>having some cloud and some sun</li>
-</ul>
-<h1 id="englishpod-C0098"><a href="#englishpod-C0098" class="headerlink" title="englishpod_C0098"></a>englishpod_C0098</h1><ul>
-<li>the bar exam<br>the exam to qualify as a lawer</li>
-<li>flatter</li>
-<li>I love what you have done with your hair</li>
-<li>get his look from his mother</li>
-<li>by the way</li>
-<li>You haven’t aged a day<br>you haven’t gotten older</li>
-<li>obnoxious<br>really annoying</li>
-</ul>
-<h1 id="englishpod-E0099"><a href="#englishpod-E0099" class="headerlink" title="englishpod_E0099"></a>englishpod_E0099</h1><ul>
-<li>depict</li>
-<li>portrayal</li>
-<li>what’s your impression of the film?</li>
-<li>lack</li>
-<li>rightfully<br>according to law</li>
-<li>erudite<br>having a lot of knowledge</li>
-<li>fable<br>beauriful story about animals that has moral or lesson</li>
-<li>eternal<br>lasting forever</li>
-<li>accusation<br>action of caliming something is wrong</li>
-<li>plagiarism<br>practice of copying other’s ideas</li>
-<li>enchanting<br>attractive, holding one’s attention</li>
-<li>grim<br>unpleasant</li>
-<li>linear<br>moving in logical way, from start to end</li>
-<li>cliche<br>something that is to often used so that it loses meaning or importance</li>
-<li>time-honoured<br>something that survives the testing of time</li>
-</ul>
-<h1 id="englishpod-C0100"><a href="#englishpod-C0100" class="headerlink" title="englishpod_C0100"></a>englishpod_C0100</h1><ul>
-<li>If your don’t mind me saying so.</li>
-<li>Don’t get me wrong</li>
-<li>sure thing</li>
-<li>born and raised</li>
-<li>nosy<br>too interested in others’ private matters</li>
-<li>the good old U.S of A<br>the United States</li>
-</ul>
-<p>#</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2802,7 +1915,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2824,7 +1937,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
