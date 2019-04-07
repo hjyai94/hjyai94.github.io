@@ -292,6 +292,298 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/07/Papers1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/07/Papers1/" itemprop="url">Papers1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T16:24:07+08:00">
+                2019-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/科研/" itemprop="url" rel="index">
+                    <span itemprop="name">科研</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本文整理了最近看的论文，主要方向是脑肿瘤分割，由论文链接，论文出发点，以及论文的创新点构成。</p>
+<h1 id="Densely-Connected-Convolutional-Networks"><a href="#Densely-Connected-Convolutional-Networks" class="headerlink" title="Densely Connected Convolutional Networks"></a>Densely Connected Convolutional Networks</h1><p><a href="https://arxiv.org/pdf/1608.06993.pdf" target="_blank" rel="noopener">Huang G, Liu Z, Van Der Maaten L, et al. Densely connected convolutional networks[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 4700-4708.</a></p>
+<h2 id="Standpoint"><a href="#Standpoint" class="headerlink" title="Standpoint"></a>Standpoint</h2><p>Recent work has shown that convolutional networks can be substantially deeper, more accurate, and efficient to train if they contain shorter connections between layers close to the input and those close to the output.</p>
+<h2 id="Innovation"><a href="#Innovation" class="headerlink" title="Innovation"></a>Innovation</h2><p>Design densely connected convolutional networks with shorter connections.</p>
+<h1 id="DRINet-for-Medical-Image-Segmenation"><a href="#DRINet-for-Medical-Image-Segmenation" class="headerlink" title="DRINet for Medical Image Segmenation"></a>DRINet for Medical Image Segmenation</h1><p><a href="https://ieeexplore.ieee.org/abstract/document/8357580" target="_blank" rel="noopener">Chen L, Bentley P, Mori K, et al. DRINet for medical image segmentation[J]. IEEE transactions on medical imaging, 2018, 37(11): 2453-2462.</a></p>
+<h2 id="Standpoint-1"><a href="#Standpoint-1" class="headerlink" title="Standpoint"></a>Standpoint</h2><p>These convolution layers learn representative features of input images and construct segmentation based on the features. However, the features learned by standard convolution layers are not distinctive when the differences among different categoriesare subtle in terms of intensity, location,shape, and size.</p>
+<h2 id="Innovation-1"><a href="#Innovation-1" class="headerlink" title="Innovation"></a>Innovation</h2><p>A novel combination of the dense connections with the inception structure to address segmentation problems. The use of dense connection blocks, residual inception blocks, and the unpooling blocks achieve high performance while maintaining computational efficiency;</p>
+<h1 id="Autofocus-Layer-for-Semantic-Segmentation"><a href="#Autofocus-Layer-for-Semantic-Segmentation" class="headerlink" title="Autofocus Layer for Semantic Segmentation"></a>Autofocus Layer for Semantic Segmentation</h1><p><a href="https://arxiv.org/pdf/1805.08403.pdf" target="_blank" rel="noopener">Qin Y, Kamnitsas K, Ancha S, et al. Autofocus layer for semantic segmentation[C]//International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, Cham, 2018: 603-611.</a></p>
+<h2 id="Standpoint-2"><a href="#Standpoint-2" class="headerlink" title="Standpoint"></a>Standpoint</h2><p>For high performance, segmentation algorithms are required to use multi-scale context [6], while still aiming for pixel-level accuracy. Multi-scale processing provides detailed cues, such as texture information of a structure, combined with contextual information, such as a structure’s surroundings, which can facilitate decisions that are ambiguous when based only on local context.</p>
+<h2 id="Innovation-2"><a href="#Innovation-2" class="headerlink" title="Innovation"></a>Innovation</h2><p>They propose the autofocus convolutional layer for semantic segmentation with the objective of enhancing the capabilities of neural networks for multi-scale processing. Autofocus layers adaptively change the size of the e_ective receptive field based on the processed context to generate more powerful features. This is achieved by parallelising mul-tiple convolutional layers with di_erent dilation rates, combined by an attention mechanism that learns to focus on the optimal scales driven by context.</p>
+<h1 id="Efficient-Brain-Tumor-Segmentation-with-Multiscale-Two-Pathway-Group-Conventional-Neural-Networks"><a href="#Efficient-Brain-Tumor-Segmentation-with-Multiscale-Two-Pathway-Group-Conventional-Neural-Networks" class="headerlink" title="Efficient Brain Tumor Segmentation with Multiscale Two-Pathway-Group Conventional Neural Networks"></a>Efficient Brain Tumor Segmentation with Multiscale Two-Pathway-Group Conventional Neural Networks</h1><p><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8481481" target="_blank" rel="noopener">Razzak I, Imran M, Xu G. Efficient brain tumor segmentation with multiscale two-pathway-group conventional neural networks[J]. IEEE journal of biomedical and health informatics, 2018.</a></p>
+<h2 id="Standpoint-3"><a href="#Standpoint-3" class="headerlink" title="Standpoint"></a>Standpoint</h2><ol>
+<li><p>Manual segmentation of the brain tumors for cancerdiagnosis from MRI images is a difficult, tedious and timeconsuming task. The accuracy and the robustness of brain tumor segmentation, therefore, are crucial for the diagnosis, treatment planning, and treatment outcome evaluation.</p>
+</li>
+<li><p>Traditional methods of Deep learning such as Convolutional Neural Networks require a large amount of annotated data to learn from, which is often difficult to obtain in the medical domain.</p>
+</li>
+</ol>
+<h2 id="Innovation-3"><a href="#Innovation-3" class="headerlink" title="Innovation"></a>Innovation</h2><p>They describe a new model Two-Pathway-Group CNN architecture for brain tumor segmentation, which exploits local features and global contextual features simultaneously.</p>
+<h1 id="Efficient-Multi-scale-3D-CNN-with-Fully-Connected-CRF-for-Accurate-Brain-lesion-Segmentation"><a href="#Efficient-Multi-scale-3D-CNN-with-Fully-Connected-CRF-for-Accurate-Brain-lesion-Segmentation" class="headerlink" title="Efficient Multi-scale 3D CNN with Fully Connected CRF for Accurate Brain lesion Segmentation"></a>Efficient Multi-scale 3D CNN with Fully Connected CRF for Accurate Brain lesion Segmentation</h1><p><a href="https://pdf.sciencedirectassets.com/272154/1-s2.0-S1361841516X00084/1-s2.0-S1361841516301839/main.pdf?x-amz-security-token=AgoJb3JpZ2luX2VjEFoaCXVzLWVhc3QtMSJHMEUCIQCsuiUnmXyD1We5Tahtd1Ldmgji9yslyjwGHfhjWGrTiQIgZI2%2BSICLI%2BYwirHiDv%2FTGDXrqzMMTAnO5VipOujh940q2gMIIxACGgwwNTkwMDM1NDY4NjUiDOhYw6AGmMFoYimUsiq3A%2FnJoakde5OPvuBW9NTk4RD1uQJfiKzq5%2FdL8VVSGt0uujA4qFZjyFNLFImg8WtHa8N72KURPf%2F%2FlECf7quq6thriQ0IWcKRggEmnVyrb5S75twqjs9lMB8wJAS42NwKBogUAnv7a%2FKHlyI8bYvJvCYZfvrlvFkwfoqPN0pvd9qRc22UwUp0osCTlucrynSxWlDakHV20ZOyw985%2FS8ERhfyMNmK%2B3poagUKTzXbwy1oA8CJ8njLfuV7uNiL2GXJrWnv4XD%2FrS7R%2BedMGzNCK%2Fel7pAff6%2B5Q6Mzd4%2FmtnA9UYvyGCJiY4qOlxib%2FG8oFexAZohS20ZIqgpWg4BUz%2FG5%2BqWxHxPB6htlq503UBMvXYqp86NIZ7%2B2tbZ7bKWr7Lj27885H0t6YEQjB4Bec0wVQLnEfpo4vI2b0zxlItdgpALLT9XuYog9rBvCa6G943RX4qA5wO0MtkZl3mcTqgDpImX7qsYnhY9cZWWgOqxYiNX0ksUDoggLES6QI9s1XVaKh4fd0bTQ%2BF9kBw8s%2BJ%2FaVU1TwFWWLJDHmMPwL6ZUV6bvMdmjPcG6aFz3lru8gPARpK0YlmQwu6Ol5QU6tAFf7vS%2B1BXojpfdrukDGETT2BJQlXwWYhY%2F4SH2PnmzSW%2BOWqFiVeuSGtpzWetonvYspUAAt9zO24zb0Ap2SSIzKn8Zd6qnzjEZzI8rLe3i9CmoZ%2BlfC41rZvNeYEqxWapay%2F8ygSZUDYTvHj93Vj4eFdu1uHVL5Tm2vFs8ukNDDlS6hdp3Zk3UaM1QfDkLksa8fEjCwFldyOdIcfhoykJHNM8%2FpdBmA%2Ffqz%2FBk7HaV8kgtL9Y%3D&amp;AWSAccessKeyId=ASIAQ3PHCVTYQ3ZV253X&amp;Expires=1554601073&amp;Signature=OeSwkuAFTu2MZ2agSyHzQz7OZww%3D&amp;hash=0185f4d47582fa2a2ee2c35cf986b0fd9e15d14bd40721c8e67816d7851da17e&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S1361841516301839&amp;tid=spdf-b5e3157c-b347-43ad-bbd6-0d660c93b8f7&amp;sid=2a768add952a0346b77ac6a49311fd650ab7gxrqa&amp;type=client" target="_blank" rel="noopener">Kamnitsas K, Ledig C, Newcombe V F J, et al. Efficient multi-scale 3D CNN with fully connected CRF for accurate brain lesion segmentation[J]. Medical image analysis, 2017, 36: 61-78.</a></p>
+<h2 id="Standpoint-4"><a href="#Standpoint-4" class="headerlink" title="Standpoint"></a>Standpoint</h2><p> The heterogeneous appearance of lesions including the large variability in location, size, shape and frequency make it difficult to devise effective segmentation rules. It is thus highly non-trivial to delineate contu- sions, oedema and haemorrhages in TBI, or sub-components of brain tumours such as proliferating cells and necrotic core.</p>
+<h2 id="Innovation-4"><a href="#Innovation-4" class="headerlink" title="Innovation"></a>Innovation</h2><p> They  propose a dual pathway, 11-layers deep, three-dimensional Convolutional Neural Network for the challenging task of brain lesion segmentation. </p>
+<h1 id="HyperDense-Net-A-Hyper-densely-Connected-CNN-for-Multi-modal-Image-Segmentation"><a href="#HyperDense-Net-A-Hyper-densely-Connected-CNN-for-Multi-modal-Image-Segmentation" class="headerlink" title="HyperDense-Net: A Hyper-densely Connected CNN for Multi-modal Image Segmentation"></a>HyperDense-Net: A Hyper-densely Connected CNN for Multi-modal Image Segmentation</h1><p><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8515234" target="_blank" rel="noopener">Dolz J, Gopinath K, Yuan J, et al. HyperDense-Net: A hyper-densely connected CNN for multi-modal image segmentation[J]. IEEE transactions on medical imaging, 2018.</a></p>
+<h2 id="Standpoint-5"><a href="#Standpoint-5" class="headerlink" title="Standpoint"></a>Standpoint</h2><p>Dense connections have attracted substantial attention in computer vision because they facilitate gradient flow and implicit deep supervision during training. Particularly, DenseNet, which connects each layer to every other layer in a feed-forward fashion, has shown impressive performances in natural image classification tasks.</p>
+<h2 id="Innovation-5"><a href="#Innovation-5" class="headerlink" title="Innovation"></a>Innovation</h2><p>They propose HyperDenseNet, a 3D fully convolutional neural network that extends the definition of dense connectivity to multi-modal segmentation problems. Each imaging modality has a path, and dense connections occur not only between the pairs of layers within the same path, but also between those across different paths.</p>
+<h1 id="A-Deep-Learning-model-integrating-FCNNs-and-CRFs-for-brain-tumor-segmentation"><a href="#A-Deep-Learning-model-integrating-FCNNs-and-CRFs-for-brain-tumor-segmentation" class="headerlink" title="A Deep Learning model integrating FCNNs and CRFs for brain tumor segmentation"></a>A Deep Learning model integrating FCNNs and CRFs for brain tumor segmentation</h1><p><a href="https://pdf.sciencedirectassets.com/272154/1-s2.0-S1361841517X0008X/1-s2.0-S136184151730141X/main.pdf?x-amz-security-token=AgoJb3JpZ2luX2VjEFsaCXVzLWVhc3QtMSJHMEUCIQCmFiL2ekwH7KF8z%2Fc0vWR0Ac9yL8K5oGv5DOeBI7VJhQIgfy%2FpbMeHw7IWu30Pc%2FGwfPGxvuI5Calk%2Bgjx2fm5U8wq2gMIJBACGgwwNTkwMDM1NDY4NjUiDIGTbcyCi60TQJ8PRyq3A1%2Fzz%2B3VHHOekK%2FJw6MU%2FZqrd9oySC4b6nKbDevYilRhqIjYFRKlF1Ij0YgzO2xl2qPCJA1Luoh3fIm4CfQomsuNh0vwUU4VcwwTOdRKW4Biycm5IxXEePAh2xuIUSBB%2B%2BRbOIwmmHKraKf8UaAlFLz%2FxDHEPqk%2Ft8WllncOm3fus26FVvSt6tBpAiUmIlWi%2B8a%2BiJ6GF61aZBjlsGbZhDHS%2BtsTXMdRysCnSdGTClkKbVshva2YJUU7dM%2BqzxrrGCTCDCFYq%2Fo%2FCszl%2BTV%2BperpIIltFrMZdVk1g%2FnAmD35O%2Bsgk1V4iQiYrdXAvCcNO1Vt7gmaTg8k4lZjXacSw52vrDW76YcU%2FOWq7BYkFB8v3CTeIH0pPvvDmLRbSOYt7HmYWMuSTR5AS5DgrJvY2al3UczqOK8rYSN4qcu5GdgNa7fzvQaouXF2SHQ%2FVj9sH8agALf0MbOzTOH43EadU5ATM8X3JYwWEh9bP7mPor3cQm1VHvDz0Eq9NtduHt2r9EYQ0nqR22AmBAfSYbaf1yz55k6bwUtqukP5IJm6BCeeaVbaz9zB0rVbAHdUCh3tgnqsds%2Fvlf4wy7%2Bl5QU6tAFpdYJnVeDFfg8QKDDpZ9fcsFs5bdMoGPRaU8hY495aNV4QleUmufJAirYtZvSZAQbZGelsALa1gT7OwuMDACZ76e3FyfsRjc9sgQIWXy73%2FvnbUIiSAH%2F0BUiE0Sfq%2FXB2gzShepFEjd1nIf9nrzmKl8TLiMxWQm%2F7txg8Y4ndrsBnq1YWoYn9nkg6MF4a5Hy6M4W2hBk%2FOq1MpN1%2Bh20l%2FhkH%2BUDkInb5ni4zsRTuPDTvgi0%3D&amp;AWSAccessKeyId=ASIAQ3PHCVTYRA73P2UO&amp;Expires=1554605840&amp;Signature=mupLWqHKaKQuDReHsSReahixCgc%3D&amp;hash=d7e362b71f1842d8657ac4a022fe9b558190b5ecd29082efd89e41cda056cd25&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S136184151730141X&amp;tid=spdf-ff9d6147-ba0b-4dfc-b397-32911281b48b&amp;sid=2a768add952a0346b77ac6a49311fd650ab7gxrqa&amp;type=client" target="_blank" rel="noopener">Zhao X, Wu Y, Song G, et al. A deep learning model integrating FCNNs and CRFs for brain tumor segmentation[J]. Medical image analysis, 2018, 43: 98-111</a></p>
+<h2 id="Standpoint-6"><a href="#Standpoint-6" class="headerlink" title="Standpoint"></a>Standpoint</h2><p>Accurate and reliable brain tumor segmentation is a critical component in cancer diagnosis, treatment planning, and treatment outcome evaluation.</p>
+<h2 id="Innovation-6"><a href="#Innovation-6" class="headerlink" title="Innovation"></a>Innovation</h2><p>Build upon successful deep learning techniques, a novel brain tumor segmentation method is developed by integrating fully convolutional neural networks (FCNNs) and Conditional Random Fields (CRFs) in a unified framework to obtain segmentation results with appearance and spatial consistency.</p>
+<h1 id="U-Net-Convolutional-Networks-for-Biomedical-Image-Segmentation"><a href="#U-Net-Convolutional-Networks-for-Biomedical-Image-Segmentation" class="headerlink" title="U-Net: Convolutional Networks for Biomedical Image Segmentation"></a>U-Net: Convolutional Networks for Biomedical Image Segmentation</h1><p><a href="https://arxiv.org/pdf/1505.04597.pdf" target="_blank" rel="noopener">Ronneberger O, Fischer P, Brox T. U-net: Convolutional networks for biomedical image segmentation[C]//International Conference on Medical image computing and computer-assisted intervention. Springer, Cham, 2015: 234-241.</a></p>
+<h2 id="Standpoint-7"><a href="#Standpoint-7" class="headerlink" title="Standpoint"></a>Standpoint</h2><p>There is large consent that successful training of deep networks requires many thousand annotated training samples.</p>
+<h2 id="Innovation-7"><a href="#Innovation-7" class="headerlink" title="Innovation"></a>Innovation</h2><p>In this paper, we present a network and training strategy that relies on the strong use of data augmentation to use the available annotated samples more efficiently.</p>
+<h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>This is architecture is very useful in many medical image segmentation task, so is it the best architecture?</p>
+<p>The novel architecture is not emphasized in this paper, but this paper propose U-Net that has been a popular network architecture.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/private-jupyter-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/22/private-jupyter-server/" itemprop="url">private_jupyter_server</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-22T14:16:40+08:00">
+                2019-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/Brain-tumor-segmentation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -363,10 +655,8 @@
       
         
           
-            <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
-<p>本人一直研究脑肿瘤分割，脑肿瘤分割对于患者的后续治疗以及对疾病的检测有着重要的意义，同时也是人工智能处理医学图像的重要方向之一。目前开源的代码都比较复杂，不适合入门研究，另外 Pytorch 作为一个容易上手的深度学习框架，具有很强的灵活性，适合新手或者是科研工作者，所以本文的代码将使用深度学习框架 Pytorch1.0 和 Python3.6 进行编程构建卷积神经网络来进行脑肿瘤分割。卷积神经网络不仅在自然图像而且在医学图像在内的其他图像都有着广泛地应用。另外，卷积神经网络广泛地应用于图像的分类，检测等计算机视觉任务中。</p>
-<h1 id="数据"><a class="markdownIt-Anchor" href="#数据"></a> 数据</h1>
-<p>我们这里使用 BraTs2015 的部分数据集，数据集可以从<a href="https://github.com/yaq007/Autofocus-Layer" target="_blank" rel="noopener">这里下载</a>，完整的BraTs2015 数据集可以在这里<a href="https://www.smir.ch/BRATS/Start2015" target="_blank" rel="noopener">注册下载</a>。</p>
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本人一直研究脑肿瘤分割，脑肿瘤分割对于患者的后续治疗以及对疾病的检测有着重要的意义，同时也是人工智能处理医学图像的重要方向之一。目前开源的代码都比较复杂，不适合入门研究，另外 Pytorch 作为一个容易上手的深度学习框架，具有很强的灵活性，适合新手或者是科研工作者，所以本文的代码将使用深度学习框架 Pytorch1.0 和 Python3.6 进行编程构建卷积神经网络来进行脑肿瘤分割。卷积神经网络不仅在自然图像而且在医学图像在内的其他图像都有着广泛地应用。另外，卷积神经网络广泛地应用于图像的分类，检测等计算机视觉任务中。</p>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p>我们这里使用 BraTs2015 的部分数据集，数据集可以从<a href="https://github.com/yaq007/Autofocus-Layer" target="_blank" rel="noopener">这里下载</a>，完整的BraTs2015 数据集可以在这里<a href="https://www.smir.ch/BRATS/Start2015" target="_blank" rel="noopener">注册下载</a>。</p>
 <p>本文使用的数据集共有20例样本用于训练，54例样本用于测试(可自行调整)，每个样本中共有4个模态的数据和Mask和真值数据，其中4个模态分别为FLAIR， T1，T1c，T2。真值数据共有5个标签：</p>
 <ul>
 <li>label 1: necrosis</li>
@@ -381,38 +671,17 @@
 <li>Enhance tumor: label 4</li>
 <li>Tumor core: 1, 3, 4</li>
 </ul>
-<p>BraTs2015 使用 Dice 作为评价指标，这个评价指标主要是衡量预测结果与真值之间重叠部分。 Dice 的公式计算如下：</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mi>i</mi><mi>c</mi><mi>e</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>T</mi><mi>P</mi></mrow><mrow><mn>2</mn><mi>T</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>P</mi><mo>+</mo><mi>F</mi><mi>N</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Dice = \frac{2 TP}{2TP + FP + FN} 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36033em;"></span><span class="strut bottom" style="height:2.1296600000000003em;vertical-align:-0.7693300000000001em;"></span><span class="base"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord mathit">i</span><span class="mord mathit">c</span><span class="mord mathit">e</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mord rule" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.15em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.2em;"><svg width="400em" height="0.2em" viewbox="0 0 400000 200" preserveaspectratio="xMinYMin slice"><path d="M0 80H400000 v40H0z M0 80H400000 v40H0z"/></svg></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mord mathit" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-<h2 id="可视化"><a class="markdownIt-Anchor" href="#可视化"></a> 可视化</h2>
-<p>前面我们知道 BraTs 2015 共有4个模态的数据，下面我们介绍两个能够在程序中读取医学图像的包：SimpleITK 和 Nibabel。SimpleITK能够读取的格式更加多，具体可以参考 SimpleITK 的文档。</p>
-<h3 id="simpleitk"><a class="markdownIt-Anchor" href="#simpleitk"></a> SimpleITK</h3>
-<p>SimpleITK 读取医学图像示例代码：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SimpleITK as sitk</span><br><span class="line"><span class="built_in">image</span> = sitk.ReadImage(<span class="string">'image.nii'</span>)</span><br><span class="line"><span class="built_in">image</span> = sitk.GetArrayFromImage(<span class="built_in">image</span>)</span><br></pre></td></tr></table></figure>
-<p>SimpleITK 读取的图片维度是通道优先的，所以图像的维度的第1位是医学图像的维数。另外我还使用到了 SimpleITK 将输出预测结果保存为医学图像格式，这部分代码如下：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">image</span> = sitk.GetImageFromArray(<span class="built_in">image</span>)</span><br><span class="line">sitk.WriteImage(<span class="built_in">image</span>, <span class="string">'image.mha'</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="nibabel"><a class="markdownIt-Anchor" href="#nibabel"></a> Nibabel</h3>
-<p>Nibabel 读取医学图像示例代码：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nibabel as nib </span><br><span class="line"><span class="built_in">image</span> = nib.load(<span class="string">'image.nii.gz'</span>).get_fdata()</span><br><span class="line"><span class="built_in">image</span> = <span class="built_in">image</span>.transpse(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p>不同于 SimpleITK， Nibabel 读取图像的维度的通道数位于最后 1 位，但是 Nibabel 将图像旋转了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn><msup><mn>0</mn><mo>∘</mo></msup></mrow><annotation encoding="application/x-tex">90^{\circ}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.674115em;"></span><span class="strut bottom" style="height:0.674115em;vertical-align:0em;"></span><span class="base"><span class="mord">9</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.674115em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∘</span></span></span></span></span></span></span></span></span></span></span></span>，可以使用上面代码的第三行旋转为一般维数分布方式。比如脑图中，如果不旋转变换转变 Nibabel 读取的方式，脑图就是横着的。</p>
-<h3 id="3d-slicer-可视化"><a class="markdownIt-Anchor" href="#3d-slicer-可视化"></a> 3D Slicer 可视化</h3>
-<p>SimpleITK 和 Nibabel 是可以在程序中读取医学图像的包，灵活性不强，另外不适合了解医学图像的基本特性，下面我们使用 3D Slicer 来可视化我们的医学图像数据。</p>
-<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_coronal.png" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/t1_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_coronal.png" alt=""></div></div></div></div>
-<p>上图中，第一行为 FLAIR 模态，从左到有依次为横断面(Axis plane)，矢状面(Sagittal plane)，冠状面(Coronal plane)，第二行为 T1 模态，从左到右顺序与 FLAIR 相同，另外两个模态因为篇幅的关系不做具体地展示。下面是脑图的 mask 和手工分割肿瘤的真值(可以看做是金标准，但是个人认为还是有区别的)：</p>
-<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_coronal.png" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_coronal.png" alt=""></div></div></div></div>
-<p>本人使用的数据库来自于项目[2] 中，具体如何得到的 mask 数据并不是很清楚，不过通过 3D slicer 可以手工生成mask数据，这里时间有限，不准备写了。上图中第二行是三个维度的真值图，其中外围浅蓝色为剔除肿瘤之外的区域(label 0)，绿色为 edema(label 2)，红色为 enhance tumor(label 4)，深蓝色区域为 necrosis(label 1)，黄色区域为 non-enhance tumor(label 3)。注：这里使用的 Brats 2015 采用了这5个标签，之后的该数据集进行了调整，将non-enhncing 和 necrosis 合并为 label 1。</p>
-<h1 id="模型"><a class="markdownIt-Anchor" href="#模型"></a> 模型</h1>
-<p>本文使用卷积神经网络，主要结构参考[1]中的结构，不同之处在于为了方便理解，我们只是用了一条通道。模型如下图所示：<br>
-<img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/brain_tumor_segmentation_model.png" alt=""><br>
-训练使用交叉熵作为损失函数，利用 RMSprop 作为优化器，学习率设为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mi>e</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">1e-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord">1</span><span class="mord mathit">e</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">3</span></span></span></span>，可以对学习率随着epoch进行调整，这里没有改变，读者可以根据自己的想法进行调整。具体代码可以在我的github[3]中查看，喜欢记得点个小星星。</p>
-<h1 id="训练与测试"><a class="markdownIt-Anchor" href="#训练与测试"></a> 训练与测试</h1>
-<p>训练部分采用随机裁剪图片大小为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mn>5</mn><mo>×</mo><mn>7</mn><mn>5</mn><mo>×</mo><mn>7</mn><mn>5</mn></mrow><annotation encoding="application/x-tex">75\times75\times75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord">7</span><span class="mord">5</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">7</span><span class="mord">5</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">7</span><span class="mord">5</span></span></span></span> ，输入到神经网络中，最后得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mn>7</mn><mo>×</mo><mn>4</mn><mn>7</mn><mo>×</mo><mn>4</mn><mn>7</mn></mrow><annotation encoding="application/x-tex">47\times47\times47</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord">4</span><span class="mord">7</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">4</span><span class="mord">7</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">4</span><span class="mord">7</span></span></span></span> (因为卷积中没有采用padding，所以出现了输出小于输入的情况)。测试部分使用完全大小的图像 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>4</mn><mn>0</mn><mo>×</mo><mn>2</mn><mn>4</mn><mn>0</mn><mo>×</mo><mn>2</mn><mn>2</mn><mn>5</mn></mrow><annotation encoding="application/x-tex">240 \times 240 \times 225</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord">2</span><span class="mord">4</span><span class="mord">0</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mord">4</span><span class="mord">0</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mord">2</span><span class="mord">5</span></span></span></span>，输入到网络中得到大小为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>1</mn><mn>2</mn><mo>×</mo><mn>2</mn><mn>1</mn><mn>2</mn><mo>×</mo><mn>1</mn><mn>9</mn><mn>7</mn></mrow><annotation encoding="application/x-tex">212 \times 212 \times 197</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base"><span class="mord">2</span><span class="mord">1</span><span class="mord">2</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">2</span><span class="mord">1</span><span class="mord">2</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mord rule" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mord">9</span><span class="mord">7</span></span></span></span>，因为脑图的边缘是无效的信息，所以输出的大小与输入和真值维度不一致，不会有影响，只需要补全就行了。</p>
-<h1 id="结果"><a class="markdownIt-Anchor" href="#结果"></a> 结果</h1>
-<p>最后网络在三个子区域的分割指标 Dice 为：Whole score 0.6764， Enhancing tumor 0.4478, Tumor core 0.4819，这个结果并不是非常的好，读者如需更高准确度的分割结果，可以调整测试时候的输入图像的维数，将其保持为与训练时输入的图像维数一致，另外可以参考最新的脑肿瘤分割的工作，对代码进行改进。</p>
-<h1 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h1>
-<p>[1] Kamnitsas K, Ledig C, Newcombe V F J, et al. Efficient multi-scale 3D CNN with fully connected CRF for accurate brain lesion segmentation[J]. Medical image analysis, 2017, 36: 61-78.<br>
-[2] <a href="https://github.com/yaq007/Autofocus-Layer" target="_blank" rel="noopener">https://github.com/yaq007/Autofocus-Layer</a><br>
-[3] <a href="https://github.com/hjyai94/Half_Pathway_DeepMedic" target="_blank" rel="noopener">https://github.com/hjyai94/Half_Pathway_DeepMedic</a></p>
+<p>BraTs2015 使用 Dice 作为评价指标，这个评价指标主要是衡量预测结果与真值之间重叠部分。 Dice 的公式计算如下：<br>$$ Dice = \frac{2 TP}{2TP + FP + FN} $$</p>
+<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><p>前面我们知道 BraTs 2015 共有4个模态的数据，下面我们介绍两个能够在程序中读取医学图像的包：SimpleITK 和 Nibabel。SimpleITK能够读取的格式更加多，具体可以参考 SimpleITK 的文档。</p>
+<h3 id="SimpleITK"><a href="#SimpleITK" class="headerlink" title="SimpleITK"></a>SimpleITK</h3><p>SimpleITK 读取医学图像示例代码：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> SimpleITK as sitk</span><br><span class="line"><span class="built_in">image</span> = sitk.ReadImage(<span class="string">'image.nii'</span>)</span><br><span class="line"><span class="built_in">image</span> = sitk.GetArrayFromImage(<span class="built_in">image</span>)</span><br></pre></td></tr></table></figure></p>
+<p>SimpleITK 读取的图片维度是通道优先的，所以图像的维度的第1位是医学图像的维数。另外我还使用到了 SimpleITK 将输出预测结果保存为医学图像格式，这部分代码如下：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">image</span> = sitk.GetImageFromArray(<span class="built_in">image</span>)</span><br><span class="line">sitk.WriteImage(<span class="built_in">image</span>, <span class="string">'image.mha'</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Nibabel"><a href="#Nibabel" class="headerlink" title="Nibabel"></a>Nibabel</h3><p>Nibabel 读取医学图像示例代码：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nibabel as nib </span><br><span class="line"><span class="built_in">image</span> = nib.load(<span class="string">'image.nii.gz'</span>).get_fdata()</span><br><span class="line"><span class="built_in">image</span> = <span class="built_in">image</span>.transpse(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
+<p>不同于 SimpleITK， Nibabel 读取图像的维度的通道数位于最后 1 位，但是 Nibabel 将图像旋转了 $90^{\circ}$，可以使用上面代码的第三行旋转为一般维数分布方式。比如脑图中，如果不旋转变换转变 Nibabel 读取的方式，脑图就是横着的。</p>
+<h3 id="3D-Slicer-可视化"><a href="#3D-Slicer-可视化" class="headerlink" title="3D Slicer 可视化"></a>3D Slicer 可视化</h3><p>SimpleITK 和 Nibabel 是可以在程序中读取医学图像的包，灵活性不强，另外不适合了解医学图像的基本特性，下面我们使用 3D Slicer 来可视化我们的医学图像数据。<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_coronal.png" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/t1_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_coronal.png" alt=""></div></div></div></div><br>上图中，第一行为 FLAIR 模态，从左到有依次为横断面(Axis plane)，矢状面(Sagittal plane)，冠状面(Coronal plane)，第二行为 T1 模态，从左到右顺序与 FLAIR 相同，另外两个模态因为篇幅的关系不做具体地展示。下面是脑图的 mask 和手工分割肿瘤的真值(可以看做是金标准，但是个人认为还是有区别的)：<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_coronal.png" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_coronal.png" alt=""></div></div></div></div><br>本人使用的数据库来自于项目[2] 中，具体如何得到的 mask 数据并不是很清楚，不过通过 3D slicer 可以手工生成mask数据，这里时间有限，不准备写了。上图中第二行是三个维度的真值图，其中外围浅蓝色为剔除肿瘤之外的区域(label 0)，绿色为 edema(label 2)，红色为 enhance tumor(label 4)，深蓝色区域为 necrosis(label 1)，黄色区域为 non-enhance tumor(label 3)。注：这里使用的 Brats 2015 采用了这5个标签，之后的该数据集进行了调整，将non-enhncing 和 necrosis 合并为 label 1。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>本文使用卷积神经网络，主要结构参考[1]中的结构，不同之处在于为了方便理解，我们只是用了一条通道。模型如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/brain_tumor_segmentation_model.png" alt=""><br>训练使用交叉熵作为损失函数，利用 RMSprop 作为优化器，学习率设为 $1e-3$，可以对学习率随着epoch进行调整，这里没有改变，读者可以根据自己的想法进行调整。具体代码可以在我的github[3]中查看，喜欢记得点个小星星。</p>
+<h1 id="训练与测试"><a href="#训练与测试" class="headerlink" title="训练与测试"></a>训练与测试</h1><p>训练部分采用随机裁剪图片大小为 $75\times75\times75$ ，输入到神经网络中，最后得到$47\times47\times47$ (因为卷积中没有采用padding，所以出现了输出小于输入的情况)。测试部分使用完全大小的图像 $240 \times 240 \times 225$，输入到网络中得到大小为$212 \times 212 \times 197$，因为脑图的边缘是无效的信息，所以输出的大小与输入和真值维度不一致，不会有影响，只需要补全就行了。</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>最后网络在三个子区域的分割指标 Dice 为：Whole score 0.6764， Enhancing tumor 0.4478, Tumor core 0.4819，这个结果并不是非常的好，读者如需更高准确度的分割结果，可以调整测试时候的输入图像的维数，将其保持为与训练时输入的图像维数一致，另外可以参考最新的脑肿瘤分割的工作，对代码进行改进。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Kamnitsas K, Ledig C, Newcombe V F J, et al. Efficient multi-scale 3D CNN with fully connected CRF for accurate brain lesion segmentation[J]. Medical image analysis, 2017, 36: 61-78.<br>[2] <a href="https://github.com/yaq007/Autofocus-Layer" target="_blank" rel="noopener">https://github.com/yaq007/Autofocus-Layer</a><br>[3] <a href="https://github.com/hjyai94/Half_Pathway_DeepMedic" target="_blank" rel="noopener">https://github.com/hjyai94/Half_Pathway_DeepMedic</a></p>
 
           
         
@@ -845,7 +1114,7 @@
 <h3 id="一元势"><a href="#一元势" class="headerlink" title="一元势"></a>一元势</h3><p>一元势包含了每个像素对应的类别，这些可以来自随机森林或者是深度神经网络的softmax。这里，我们共有两个类别，一个是前景，一个是背景，这里大小设置为$400\times 512$。我们建立了两个二维的高斯分布，并且平面显示。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> multivariate_normal</span><br><span class="line"></span><br><span class="line">H, W, NLABELS = <span class="number">400</span>, <span class="number">512</span>, <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This creates a gaussian blob...</span></span><br><span class="line">pos = np.stack(np.mgrid[<span class="number">0</span>:H, <span class="number">0</span>:W], axis=<span class="number">2</span>)</span><br><span class="line">print(pos.shape)</span><br><span class="line">rv = multivariate_normal([H//<span class="number">2</span>, W//<span class="number">2</span>], (H//<span class="number">4</span>)*(W//<span class="number">4</span>))</span><br><span class="line">probs = rv.pdf(pos)</span><br><span class="line">print(probs.shape)</span><br><span class="line"><span class="comment"># ...which we project into the range [0.4, 0.6]</span></span><br><span class="line">probs = (probs-probs.min()) / (probs.max()-probs.min())</span><br><span class="line">probs = <span class="number">0.5</span> + <span class="number">0.2</span> * (probs<span class="number">-0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The first dimension needs to be equal to the number of classes.</span></span><br><span class="line"><span class="comment"># Let's have one "foreground" and one "background" class.</span></span><br><span class="line"><span class="comment"># So replicate the gaussian blob but invert it to create the probability</span></span><br><span class="line"><span class="comment"># of the "background" class to be the opposite of "foreground".</span></span><br><span class="line">probs = np.tile(probs[np.newaxis,:,:],(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>))</span><br><span class="line">probs[<span class="number">1</span>,:,:] = <span class="number">1</span> - probs[<span class="number">0</span>,:,:]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Let's have a look:</span></span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>); plt.imshow(probs[<span class="number">0</span>,:,:]); plt.title(<span class="string">'Foreground probability'</span>); plt.axis(<span class="string">'off'</span>); plt.colorbar();</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>); plt.imshow(probs[<span class="number">1</span>,:,:]); plt.title(<span class="string">'Background probability'</span>); plt.axis(<span class="string">'off'</span>); plt.colorbar();</span><br></pre></td></tr></table></figure>
 <p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/output_9_1.png" alt="output_9_1.png"></p>
-<h3 id="使用一元势进行推断"><a href="#使用一元势进行推断" class="headerlink" title="使用一元势进行推断"></a>使用一元势进行推断</h3><p>这里我们可以使用一元势进行推断，也就是说这里我们不考虑像素间的相互关联。这样做并不是很好的推断，但是可以这么做。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Inference without pair-wise terms</span></span><br><span class="line">U = unary_from_softmax(probs)  <span class="comment"># note: num classes is first dim</span></span><br><span class="line">d = dcrf.DenseCRF2D(W, H, NLABELS)</span><br><span class="line">d.setUnaryEnergy(U)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run inference for 10 iterations</span></span><br><span class="line">Q_unary = d.inference(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The Q is now the approximate posterior, we can get a MAP estimate using argmax.</span></span><br><span class="line">map_soln_unary = np.argmax(Q_unary, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Unfortunately, the DenseCRF flattens everything, so get it back into picture form.</span></span><br><span class="line">map_soln_unary = map_soln_unary.reshape((H,W))</span><br><span class="line"><span class="comment"># And let's have a look.</span></span><br><span class="line">plt.imshow(map_soln_unary); plt.axis(<span class="string">'off'</span>); plt.title(<span class="string">'MAP Solution without pairwise terms'</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用一元势进行推断"><a href="#使用一元势进行推断" class="headerlink" title="使用一元势进行推断"></a>使用一元势进行推断</h3><p>这里我们可以使用一元势进行推断，也就是说这里我们不考虑像素间的相互关联。这样做并不是很好的推断，但是可以这么做。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Inference without pair-wise terms</span></span><br><span class="line">U = unary_from_softmax(probs)  <span class="comment"># <span class="doctag">note:</span> num classes is first dim</span></span><br><span class="line">d = dcrf.DenseCRF2D(W, H, NLABELS)</span><br><span class="line">d.setUnaryEnergy(U)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run inference for 10 iterations</span></span><br><span class="line">Q_unary = d.inference(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># The Q is now the approximate posterior, we can get a MAP estimate using argmax.</span></span><br><span class="line">map_soln_unary = np.argmax(Q_unary, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Unfortunately, the DenseCRF flattens everything, so get it back into picture form.</span></span><br><span class="line">map_soln_unary = map_soln_unary.reshape((H,W))</span><br><span class="line"><span class="comment"># And let's have a look.</span></span><br><span class="line">plt.imshow(map_soln_unary); plt.axis(<span class="string">'off'</span>); plt.title(<span class="string">'MAP Solution without pairwise terms'</span>);</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2/output_12_0.png" alt="output_12_0.png"></p>
 <h3 id="二元势"><a href="#二元势" class="headerlink" title="二元势"></a>二元势</h3><p>图像处理中，我们经常使用像素间的双边关系，也就是说，我们认为有相似颜色的或者是相似的位置的像素认为是同一类。下面我们建立这样的双边关系。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">NCHAN=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create simple image which will serve as bilateral.</span></span><br><span class="line"><span class="comment"># Note that we put the channel dimension last here,</span></span><br><span class="line"><span class="comment"># but we could also have it be the first dimension and</span></span><br><span class="line"><span class="comment"># just change the `chdim` parameter to `0` further down.</span></span><br><span class="line">img = np.zeros((H,W,NCHAN), np.uint8)</span><br><span class="line">img[H//<span class="number">3</span>:<span class="number">2</span>*H//<span class="number">3</span>,W//<span class="number">4</span>:<span class="number">3</span>*W//<span class="number">4</span>,:] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">plt.imshow(img[:,:,<span class="number">0</span>]); plt.title(<span class="string">'Bilateral image'</span>); plt.axis(<span class="string">'off'</span>); plt.colorbar();</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the pairwise bilateral term from the above image.</span></span><br><span class="line"><span class="comment"># The two `s&#123;dims,chan&#125;` parameters are model hyper-parameters defining</span></span><br><span class="line"><span class="comment"># the strength of the location and image content bilaterals, respectively.</span></span><br><span class="line">pairwise_energy = create_pairwise_bilateral(sdims=(<span class="number">10</span>,<span class="number">10</span>), schan=(<span class="number">0.01</span>,), img=img, chdim=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pairwise_energy now contains as many dimensions as the DenseCRF has features,</span></span><br><span class="line"><span class="comment"># which in this case is 3: (x,y,channel1)</span></span><br><span class="line">img_en = pairwise_energy.reshape((<span class="number">-1</span>, H, W))  <span class="comment"># Reshape just for plotting</span></span><br><span class="line">plt.figure(figsize=(<span class="number">15</span>,<span class="number">5</span>))</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>); plt.imshow(img_en[<span class="number">0</span>]); plt.title(<span class="string">'Pairwise bilateral [x]'</span>); plt.axis(<span class="string">'off'</span>); plt.colorbar();</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>); plt.imshow(img_en[<span class="number">1</span>]); plt.title(<span class="string">'Pairwise bilateral [y]'</span>); plt.axis(<span class="string">'off'</span>); plt.colorbar();</span><br><span class="line">plt.subplot(<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>); plt.imshow(img_en[<span class="number">2</span>]); plt.title(<span class="string">'Pairwise bilateral [c]'</span>); plt.axis(<span class="string">'off'</span>); plt.colorbar();</span><br></pre></td></tr></table></figure>
@@ -1633,324 +1902,6 @@ Accuracy of truck : 62 %
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/26/汇报list/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/26/汇报list/" itemprop="url">汇报list</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-26T16:43:47+08:00">
-                2018-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工作/" itemprop="url" rel="index">
-                    <span itemprop="name">工作</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="2018-9-10"><a href="#2018-9-10" class="headerlink" title="2018.9.10"></a>2018.9.10</h1><p>暑假期间学习和看的论文：<br>学习内容：</p>
-<ol>
-<li>计算视觉CS131，完成了所有的homework的代码，然后传到了我的github上了。<a href="https://github.com/hjyai94/CS131_homework" target="_blank" rel="noopener">https://github.com/hjyai94/CS131_homework</a></li>
-<li>计算机视觉CS231看了一点，还没有看完。</li>
-<li>最近在看的深度学习和贝叶斯方法结合的一门课(<a href="http://deepbayes.ru/)，实现了一个EM算法去除噪声的代码。" target="_blank" rel="noopener">http://deepbayes.ru/)，实现了一个EM算法去除噪声的代码。</a></li>
-</ol>
-<p>看的论文：<br>[1] Deep Learning Markov Random Field for Semantic Segmentation<br>[2] Single Image Haze Removal Method Using Conditional Random Fields<br>[3] DehazeNet: An End-to-End System for Single Image Haze Removal</p>
-<h1 id="2018-9-27"><a href="#2018-9-27" class="headerlink" title="2018.9.27"></a>2018.9.27</h1><p>最近看多模态的课，然后那个课上有一些论文作为阅读材料，最近主要看这些论文。</p>
-<p>[1] Zeiler M D, Fergus R. Visualizing and understanding convolutional networks[C]//European conference on computer vision. Springer, Cham, 2014: 818-833.</p>
-<ol>
-<li>卷积神经网络确实可以学到层级的特征。</li>
-<li>卷积核和步长越大，网络中保存的信息就越少。</li>
-</ol>
-<p>[2] Frome A, Corrado G S, Shlens J, et al. Devise: A deep visual-semantic embedding model[C]//Advances in neural information processing systems. 2013: 2121-2129.<br>这篇文章就是用图像和文本来做分类的问题，就是利用一个视觉模型加上一个文本模型，对于超出训练集的样本也能给出比较好的分类。</p>
-<p>[3] Kulkarni T D, Whitney W F, Kohli P, et al. Deep convolutional inverse graphics network[C]//Advances in neural information processing systems. 2015: 2539-2547.<br>有两个层Encoder和Decoder,在两层之间增加了一个Graphics code，用来表示图片的变化，比如姿态、角度。</p>
-<p>[4] Andrew G, Arora R, Bilmes J, et al. Deep canonical correlation analysis[C]//International Conference on Machine Learning. 2013: 1247-1255.<br>将两个神经网络看成两个非线性函数，分别来处理两个模态的数据，最大化网络输出的典型相关性。</p>
-<h1 id="2018-10-11"><a href="#2018-10-11" class="headerlink" title="2018.10.11"></a>2018.10.11</h1><p>多模态医学图像分析<br>论文：<br>[1] Baltruaitis T, Ahuja C, Morency L P. Multimodal machine learning: A survey and taxonomy[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2018.<br>这是一篇综述多模态机器学习的综述文章，我画了这篇文章的思维导图。<br> <img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/Multimodal%20Machine%20Learning.gif" alt=""></p>
-<p>[2] Cheng X, Zhang L, Zheng Y. Deep similarity learning for multimodal medical images[J]. Computer Methods in Biomechanics and Biomedical Engineering: Imaging &amp; Visualization, 2018, 6(3): 248-252.<br>用了一个所谓的Stacked Denosing Autoencoder 来预训练DNN，用了一个5层的全连接神经网络，将不同模态在第四层输出的差作为相似性矩阵。</p>
-<p>[3] Zhang Z, Yang L, Zheng Y. Translating and segmenting multimodal medical volumes with cycle-and shape-consistency generative adversarial network[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2018: 9242-9251.<br>利用GAN合成数据来提高分割性能，不过GAN合成的数据的分布与实际数据分布是接近的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/典型相关性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/典型相关性/" itemprop="url">典型相关性(Canonical Correlation Analysis)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T16:50:32+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>给定带有有限距的随机变量的列向量$X = (x_1, …, x_n)^T$和$Y = (y_1, …, y_m)^T$，我们可以定义互协方差矩阵$\Sigma_{XY} = cov(X, Y)$，为$n\times m$的矩阵，其中$(i, j)$是协方差矩阵$cov(x_i, y_j)$。实际上，我们可以基于$X$和$Y$的采样数据来估计协方差矩阵。<br>典型相关性(Canonical Correlation Analysis)是求出向量$a$和$b$使得随机变量$a^T X$和$b^T Y$的相关性$\rho = corr(a^T X, b^T Y)$最大。随机变量$U = a^T X$和$V = b^T Y$是第一对典型变量。然后寻求一个依然最大化相关但与第一对典型不相关的向量；这样就得到了第二对典型变量。这个步骤会进行$min\lbrace m, n\rbrace$。</p>
-<h1 id="典型相关性"><a href="#典型相关性" class="headerlink" title="典型相关性"></a>典型相关性</h1><ol>
-<li><p>学习两个线性映射，每个线性映射对应于一组数据，使得两组数据最大相关性。<br>\begin{equation}\begin{split} (u^{\star}, v^{\star}) &amp;= argmax_{u, v} corr(u^T X, v^T Y) \\<br>&amp;= argmax_{u, v} \frac{cov(u^T X, v^T Y)}{\sqrt{var(u^T X) var(v^T Y)}} \\<br>&amp;= argmax_{u, v} \frac{u^T E(X Y^T)v}{\sqrt{u^T E(X X^T) u v^T E(Y Y^T) v}} \\<br>&amp;= argmax_{u, v} \frac{u^T \Sigma_{XY} v}{\sqrt{u^T \Sigma_{XX} u v^T \Sigma_{YY} v}} \\<br>\end{split}\end{equation}</p>
-</li>
-<li><p>我们希望获得多个映射矩阵，同时多个线性映射对是相互正交的。<br>$$ u_{(i)}^T \Sigma_{XY} v_{(j)} = u_{(j)}^T \Sigma_{XY} v_{(i)} = 0\  \text {for}\ i\neq j$$<br>$$ U\Sigma_{XY}V = tr(U\Sigma_{XY} V) $$<br>其中$U = [u_1, u_2, …, u_k]$和$V = [v_1, v_2, …, v_k] $。<br>$$(U^{\star}, V^{\star}) = argmax_{U, V}\frac{tr(U^T\Sigma_{XY} V)}{\sqrt{U^T\Sigma_{XX} U} \sqrt{V^T \Sigma_{YY} V}}$$</p>
-</li>
-<li><p>因为上式中分子分布增大相同的倍数，优化目标的结果不变，所以我们采用类似$SVM$中类似的优化方法，固定分母，优化分子，具体转化为[2]：<br>\begin{cases}<br>argmax_{U, V} = U^T\Sigma_{XY} V \\<br>\text{s.t.}\ U^T \Sigma_{XX} U = I, V^T \Sigma_{YY} V= I \\<br>\end{cases}<br>这样就变成了有约束的最优化问题，可以使用拉格朗日乘子法，也可以采用$SVD$分解的方法。</p>
-</li>
-</ol>
-<ul>
-<li>拉格朗日乘子法<br>$$ L = tr(U^T \Sigma_{XY} V) - \alpha  (U^T \Sigma_{XX} U - I)  - \beta (V^T \Sigma_{YY} V - I) $$<br>对$U$和$V$分别求偏导并令其为0：<br>\begin{cases}<br>\Sigma_{XY} V = 2\alpha \Sigma_{XX} U \\<br>\Sigma_{XY}^T U = 2 \beta \Sigma_{YY} V \\<br>\end{cases}</li>
-</ul>
-<p>对上式分别左乘$U^T$和$V^T$，可以得出$2\alpha = 2\beta = U^T \Sigma_{XY} V $<br>将前面的式子再分别左乘$\Sigma_{XX}^{-1}$和$\Sigma_{YY}^{-1}$，然后通过分别消除变量可以得出下面的结果：<br>$$ \Sigma_{XX}\Sigma_{XY}\Sigma_{YY}^{-1}\Sigma^T_{XY}U = \lambda U $$<br>$$ \Sigma_{YY}\Sigma_{XY}\Sigma_{XX}^{-1}\Sigma^T_{XY}V = \lambda V $$<br>其中$$\lambda = 4\alpha \beta $$<br>只要求出对应特征值最大的特征向量，这样就解出$U$和$V$。</p>
-<ul>
-<li>SVD<br>令$ U = \Sigma_{XX}^{-\frac{1}{2}} u$，$V = \Sigma_{YY}^{-\frac{1}{2}} v $。<br>由$U^T \Sigma_{XX} U = I$和$ V^T \Sigma_{YY} V= I$，可以得出：$ u^T u = I $ $v^T v = I $<br>将原本的最优化问题转化为这样的形式：<br>\begin{cases}<br>argmax_{u, v} = u^T\Sigma_{XX}^{-\frac{1}{2}} \Sigma_{XY} \Sigma_{YY}^{-\frac{1}{2}} v \\<br>\text{s.t.}\ u^T u = I, v^T v = I  \\<br>\end{cases}<br>使用$SVD$就是通过最大化对应的奇异值的特征向量，就是对应的$u$和$v$的结果。<br>$$ T = \Sigma_{XX}^{-\frac{1}{2}}\Sigma_{XY} \Sigma_{YY}^{-\frac{1}{2}}  $$<br>$$ (U^{\star}, V^{\star}) = (\Sigma_{XX}^{-\frac{1}{2}}U_{SVD}, \Sigma_{YY}^{-\frac{1}{2}} V_{SVD}) $$</li>
-</ul>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1] <a href="https://zh.wikipedia.org/wiki/典型相关" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/典型相关</a><br>[2] <a href="https://blog.csdn.net/Mbx8X9u/article/details/78824216" target="_blank" rel="noopener">https://blog.csdn.net/Mbx8X9u/article/details/78824216</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2005,7 +1956,7 @@ Accuracy of truck : 62 %
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2016,7 +1967,7 @@ Accuracy of truck : 62 %
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2027,7 +1978,7 @@ Accuracy of truck : 62 %
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
