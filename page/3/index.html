@@ -292,6 +292,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/HMM和CRF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/31/HMM和CRF/" itemprop="url">HMM和CRF</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-31T09:49:19+08:00">
+                2018-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="隐马尔可夫模型"><a href="#隐马尔可夫模型" class="headerlink" title="隐马尔可夫模型"></a>隐马尔可夫模型</h1><p>隐马尔可夫模型如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B.png" alt=""></p>
+<h2 id="公式表达"><a href="#公式表达" class="headerlink" title="公式表达"></a>公式表达</h2><p>对于隐马尔可夫模型，通常有三组参数：<br>$$ trasition\ probability\ matrix\ A: p(y_t^j = 1\mid y_{t-1}^i=1)=a_{i,j} $$   $$ initial\ probability: p(y_1)\sim Multinomial(\pi_1, \pi_2, …, \pi_M) $$    $$ emission\ probabilies: p(x_t\mid y_t^i)\sim Multinomial(b_{i,1}, b_{i,2}, …, b_{i,K}) $$</p>
+<h2 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h2><ul>
+<li><p>前向算法<br>$$ \alpha_t^k \equiv\mu_{t-1\rightarrow}(k)=P(x_1, x_2, …, x_t, y_t^k=1) $$<br>$$ \alpha_t^k = p(x_t\mid y_t^k=1)\sum_i \alpha_{t-1}^ia_{i,k} $$</p>
+</li>
+<li><p>后向算法<br>$$ \beta_t^k \equiv \mu_{t\leftarrow t+1}(k)=P(x_{t+1}, …, x_T\mid y_t^k=1) $$<br>$$ \beta_t^k = \sum_i a_{k,i}p(x_{t+1}\mid y_{t+1}^i = 1)\beta_{t+1}^i $$</p>
+</li>
+</ul>
+<p>对于给定观测值下的任意隐变量状态，可以同过点乘前向和后向信息得到。<br>$$ \gamma_t^i = p(y_t^i = 1\mid x_{1:T})\propto \alpha_t^i\beta_t^i =\sum_j \xi_t^{i,j} $$<br>其中有定义：<br>\begin{equation}\begin{split} \xi_t^{i,j} &amp;= p(y_t^i=1,y_{t-1}^j=1, x_{1:T}) \\<br>&amp;\propto \mu_{t-1\rightarrow t}(y_t^i=1)\mu_{t\leftarrow t+1}(y_{t+1}^i=1)p(x_{x+1}\mid y_{t+1})p(y_{t+1}\mid y_t) \\<br>&amp;= \alpha_t^i\beta_{t+1}^j a_{i,j} p(x_{t+1}\mid y_{t+1}^i=1) \\<br>\end{split}\end{equation}<br>具体推导可以参考Youtube上徐亦达老师关于HMM的视频，主要思路就是message passing，运用一些迭代地技巧，可以先从最小的下标开始推导，这样比较容易发现规律，类似于数学归纳法。<br>在Matlab中可以将公式用向量表示，这样方便处理。<br>\begin{equation}\begin{split} &amp;B_t(i)=p(x_t\mid y_t^i=1)\\<br>&amp; A(i,j)=p(y_{t+1}^j=1\mid y_t^i=1) \\<br>&amp; \alpha_t = (A^T\alpha_{t-1}).\ast B_t \\<br>&amp; \beta_t = A(\beta_{t+1}.\ast B_{t+1}) \\<br>&amp; \xi_t = (\alpha_t(\beta_{t+1}.\ast B_{t+1})^T).\ast A  \\<br>&amp; \gamma_t = \alpha_t.\ast \beta_t \\<br>\end{split}\end{equation}</p>
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><p>当我们知道实际状态路径时，监督学习并不是一件困难的事情(trival)，我们只需要数出转移概率和发射概率的实例就可以得到最大似然估计。<br>$$ a_{ij}^{ML} = \frac{\sum_n\sum_{t=2}^T y_{n,t-1}^i y_{n,t}^j}{\sum_n\sum_{t=2}^T y_{n,t-1}^i} $$<br>$$ b_{ik}^{ML} = \frac{\sum_n\sum_{t=2}^T y_{n,t}^i x_{n,t}^k}{\sum_n\sum_{t=2}^T y_{n,t}^i} $$<br>使用了伪计数的方式，可以避免零概率的出现。对于不是多项分布的情况，特别是高斯分布，我们可以利用采样的方法计算均值和方差。</p>
+<h3 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h3><p>当隐状态不可观的时候，可以使用Baum Welch算法进行处理完全对数似然函数，这一算法就是EM算法对HMM的求解方法。似然函数可以写成：<br>$$ l_c(\theta;x,y)=lop\ p(x,y)=log\prod_n (p(y_{n,1})\prod_{t=1}^T p(y_{n,t}\mid y_{n,t-1})\prod_{t=1}^T p(x_{n,t}\mid y_{n,t})) $$<br>完全对数似然期望是：<br>$$ \langle l_c(\theta;x,y)\rangle = \sum_n (\langle y_{n,1}^i \rangle_{p(y_{n,1}\mid x_n)}log\ \pi_i) + \sum_n\sum_{t=2}^T (\langle y_{n,t-1}^i y_{n,t}^j\rangle_{p(y_{n,t-1},y_{n,t}\mid x_n)}log\ a_{i,j}) + \sum_n\sum_{t=1}^T (x_{n,t}^k\langle y_{n,t}^i\rangle_{p(y_{n,t}\mid x_n)}log\ b_{i,k}) $$</p>
+<ul>
+<li>E步：<br>$$ \gamma_{n,t}^i = \langle  y_{n,t}^i\rangle = p(y_{n,t}^i = 1\mid x_n) $$    $$ \xi_{n,t}^{i,j} = \langle y_{n,t-1}^i y_{n,t}^j\rangle = p(y_{n,t-1}^i=1, y_{n,t}^j=1\mid x_n) $$</li>
+<li>M步：<br>$$ \pi_i=\frac{\sum_n \gamma_{n,1}^i}{N}, a_{i,j}=\frac{\sum_n\xi_{n,t}^{i,j}} {\sum_n\sum_{t=1}^{i,j} \gamma_{n,t}^i},  b_{ik}=\frac{\sum_N\sum_{t=1}^T \gamma_{n,t}^i x_{n,t}^k} {\sum_n\sum_{t=1}^{T-1}\gamma_{n,t}^i} $$</li>
+</ul>
+<h3 id="HMM的缺点"><a href="#HMM的缺点" class="headerlink" title="HMM的缺点"></a>HMM的缺点</h3><p>HMM的缺点也是HMM的最要特征，就是每个观测值只与一个隐状态相关，与其他状态都无关。另外就是预测目标函数与学习目标函数不一致，HMM学习状态和观测值的联合概率$P(Y,X)$，但是我们的预测要求是需要条件概率$P(Y\mid X)$，通过这样的考虑，有了一个新的模型MEMM。</p>
+<h1 id="MEMM"><a href="#MEMM" class="headerlink" title="MEMM"></a>MEMM</h1><h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h2><p>MEMM结构如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/MEMM.png" alt=""><br>MEMM的主要特点是，模型中的每个状态都与所有的观测值相关，同时模型是一个判别模型。<br>$$ P(y_{1:n}\mid x_{1:n}) = \prod_{i=1}^{n} P(y_i\mid y_{i-1},x_{1:n}) = \prod_{i=1}^n \frac{exp(W^T f(y_i,y_{i-1}, x_{1:n}))}{Z(y_{i-1}, x_{1:n})} $$</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>MEMM存在着标注偏置的问题(label bias preblem)，主要是因为状态转移的路径多少的问题，MEMM中的状态倾向于转移到转移状态路径少的状态，因为转移路径少的状态总能提供较大的转移概率。</p>
+<h1 id="CRF"><a href="#CRF" class="headerlink" title="CRF"></a>CRF</h1><p>一个比较好的方法解决上面的问题就是改变原来的概率转移的方式，用势函数取代概率来表征局部的信息。</p>
+<h2 id="模型结构-1"><a href="#模型结构-1" class="headerlink" title="模型结构"></a>模型结构</h2><p>CRF结构如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png" alt=""><br>\begin{equation}\begin{split} P(Y\mid X) &amp;= \frac{1}{Z(X)}\prod_{i=1}^n \phi(y_i,y_{i-1},X) \\<br>&amp;= \frac{1}{Z(X, \lambda, \mu)}exp(\sum_{i=1}^T(\sum_k \lambda_k f_k(y_i, y_{i-1}, X) + \sum_l \mu_l g_l(y_i, X))) \\<br>\end{split}\end{equation}<br>其中，$Z(X,\lambda, \mu)=\sum_y exp(\sum_{i=1}(\sum_k \lambda_k f_k(y_i, y_{i-1}, X) + \sum_l \mu_l g_l (y_i, X))) $，可以看出其中的正规因子是全局的，并不是局部的，这样就保证了对局部信息的处理具有全局一致性。</p>
+<p>##　推断<br>所谓的推断问题就是在CRF给定参数$\lambda$和$\mu$，我们可以找到$y^{\ast}$使得$P(y\mid x)$最大。<br>$$ y^{\ast} = argmax_y exp(\sum_{i=1}^n (\sum_k \lambda_k f_k (y_i, y_{i-1}, X) + \sum_l \mu_l g_l (y_i, X))) $$<br>因为Z与y无关，最大值与y无关。为了解决优化问题，我们可以使用最大积算法在CRF上，这样类似了Viteerbi算法在HMM上的应用。</p>
+<h2 id="学习-1"><a href="#学习-1" class="headerlink" title="学习"></a>学习</h2><p>尽管整个图都是可观的，CRF的学习问题仍然是比较难于解决的。原因是学习中需要进行推断。给定训练集$\lbrace x_d, y_d\rbrace_{d=1}^N$，寻找到最优的$\lambda^{\ast}$和$\mu^{\ast}$。<br>\begin{equation}\begin{split} \lambda^{\ast}, \mu^{\ast} &amp;= argmax_{\lambda, \mu}\prod_{d=1}^N P(y_d\mid x_d, \lambda, \mu) \\<br>&amp;= argmax_{\lambda, \mu}\prod_{d=1}^N \frac{1}{Z(x_d, \lambda, \mu)}exp(\sum_{i=1}^n (\lambda^T f(y_{d, i} y_{d, i-1}, x_d) + \mu^T g(y_{d,i}, x_d))) \\<br>&amp;= argmax_{\lambda, \mu}\sum_{d=1}^T (\sum_{i=1}^n(\lambda^T f(y_{d,i}, y_{d, i-1}) + \mu^T g(y_{d, i}, x_d)) - log\ Z(x_d, \lambda, \mu)) \\<br>\end{split}\end{equation}<br>对$\lambda$求偏导：<br>$$ \Delta_{\lambda}L(\lambda, \mu) = \sum_{d=1}^N(\sum_{i=1}^n f(y_{d, i}, y_{d, i-1}, x_d) - \sum_y (P(y\mid x_d) \sum_{i=1}^n f(y_{d, i}, y_{d, i-1}, x_d))) $$<br>从上式中可以看出第一项是特征值，第二项是特征值的期望，另外对数判分函数以指数族的形式呈现时，其梯度是特征值的期望。<br>解决上面的式子需要处理指数级数量的数据求和，我们可以利用message passing算法来计算对势，这样得到一个闭环的形式。<br>\begin{equation}\begin{split} \sum_y (P(y\mid x_d)\sum_{i=1}^n f(y_i, y_{i-1}, x_d)) &amp;= \sum_{i=1}^n(\sum_y f(y_i, y_{i-1}, x_d) P(y\mid x_d)) \\<br>&amp;= \sum_{i=1}^n(\sum_{y_i, y_{i-1}} f(y_i, y_{i-1}, x_d) P(y_i, y_{i-1}\mid x_d)) \\<br>\end{split}\end{equation}<br>这样意味着，学习过程中包含有推断过程，通过message passing算法，学习过程只需要多项式时间久可以完成。<br>下面使用校准势来计算特征期望：<br>\begin{equation}\begin{split} \Delta_{\lambda}L(\lambda, \mu) &amp;= \sum_{d=1}^N(\sum_{i=1}^n f(y_{d, i}, y_{d, i-1}, x_d) - \sum_y (P(y\mid x_d) \sum_{i=1}^n f(y_{d, i}, y_{d, i-1}, x_d)))  \\<br>&amp;= \sum_{d=1}^N(\sum_{i=1}^n f(y_{d,i}, y_{d,i-1】， x_d} - \sum_{y_i, y_{i-1}}\alpha’(y_i, y_{i-1}) f(y_d, y_{d, i-1}, x_d))) \\<br>\end{split}\end{equation}<br>其中$\alpha’(y_i, y_{i-1}, x_d) = P(y_i, y_{i-1}\mid x_d)$。我们可以使用梯度上升法学习参数。<br>$$ \lambda^{(t+1)} = \lambda^{(t)} + \eta\Delta_{\lambda}L(\lambda^{(t)}, \mu^{(t)}) $$     $$ \mu^{(t+1)} = \mu^{(t)} + \eta\Delta_{\mu}L(\lambda^{(t)}, \mu^{(t)}) $$<br>在实际中，我们会加入正则项来提高参数的泛化能力。<br>$$ \lambda^{\ast}, \mu^{\ast} = argmax_{\lambda, \mu}\sum_{d=1}^N log\ P(y_d\mid x_d, \lambda, \mu) - \frac{1}{2\sigma^2} (\lambda^T \lambda + \mu^T\mu) $$<br>第二项叫做高斯先验，因为我们想让$\lambda^{\ast},\mu^{\ast}$趋近于0,这样可以减少特征值的数量。第二项也能叫做拉普拉斯先验，在条件概率中，我们不想看到零概率出现，因为零概率是病态的。梯度上升法收敛速度较慢，以使用共轭梯度法和拟牛顿法来加快速度。<br>从经验的表现来看，CRF比HMM和MEMM有所提升，特别是当非局部的影响明显时。虽然提升不够明显，但是CRF为一系列的问题的解决提供了很好的范例。CRF的另一优点是能够让使用者灵活的自己设计随机特征。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>EM算法适应于处理存在隐变量的最大似然估计问题。</li>
+<li>GMM和HMM被用于对静态和动态混合模型建模。</li>
+<li>实现HMM主要需要处理的问题是，学习，推断和最大似然。推断可以通过前向和后向算法(变量去除)实现；最大似然问题可以通过Viterbi算法(最大积)实现；学习问题可以通过直接最大似然后者EM算法解决。</li>
+<li>HMM具有十分强的马尔科夫性。HMM只能获得局部的关系，对于HMM的扩展MEMM，MEMM可以获得状态和全部可观序列之间的显性关系。但是，MEMM存在着标注偏置的问题。</li>
+<li>CRF是部分有向的模型，其中转态之间是无向的，CRF使用全局的正规项克服了MEMM的标注偏置的问题。对于线性链式CRF，精确推断并不是困难的。推断问题可以通过最大积算法通过junction tree解决。学习问题可以通过梯度上升来解决最大似然。</li>
+<li>具有任意图结构的CRF，精确推断就是比较困难的事情，这时就需要近似推断了，比如：采样，变分推断，loopy belief propagation。</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] Wallach H M. Conditional random fields: An introduction[J]. Technical Reports (CIS), 2004: 22.<br>注：本文主要参考[1]中第12讲视频以及笔记。另外，本文中公式的和全部采用\sum，本文之前使用的都是\Sigma，后面也会使用\sum。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/EM算法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2578,167 +2750,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/变量消除/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/03/变量消除/" itemprop="url">变量消除</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T11:02:58+08:00">
-                2018-04-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="精确推断"><a href="#精确推断" class="headerlink" title="精确推断"></a>精确推断</h1><p>精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。</p>
-<p>精确推断有以下算法：</p>
-<ul>
-<li>变量消除</li>
-<li>消息传递</li>
-<li>团树</li>
-</ul>
-<p>近似推断有一下算法：</p>
-<ul>
-<li>随机模拟</li>
-<li>马尔可夫链的蒙特卡罗方法</li>
-<li>变分算法</li>
-</ul>
-<p>本文主要主要是针对精确推断算法中的变量消除算法，计算变量的边际分布或条件分布是一个NP难问题，会随着极大团的增长呈指数增长。近似推断是在较低的时间复杂度下，或者原问题的近似解，这种方法更有一般的实用性。</p>
-<h2 id="变量消除"><a href="#变量消除" class="headerlink" title="变量消除"></a>变量消除</h2><h3 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h3><p>考虑如下的有向图概率图模型，图中共有五个变量：A,B,C,D,E。如果我们假定每个变量有n个值，那么直接的概率描述就是联合概率密度，那么复杂度为$n^5$。如果我们计算$P(E=e)$，那么我们就要计算：<br>$$P(e)=\sum_{a,b,c,d}P(a,b,c,d,e)$$<br>可是这个计算过程需要对另外四个变量求和(边际化)，那么就需要$n^4$的复杂度。</p>
-<p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E7%A4%BA%E4%BE%8B-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt=""></p>
-<p>我们可以将上面的联合概率密度$P(a,b,c,d,e)$进行因式分解：<br>$$P(e)=\sum_{a,b,c,d}P(a,b,c,d,e)=\sum_{a,b,c,d}P(a)P(b\mid a)P(c\mid b)P(d\mid c)P(e\mid d)$$<br>假设推断目标是计算边缘概率密度P(e)，那么P(c|b)，P(d|c)，P(e|d)与a无关，将P(a)和P(b|a)的乘积相加。<br>$$P(e)=\sum_{a,b,c,d}P(a)P(b\mid a)P(c\mid b)P(d\mid c)P(e\mid d)$$   $$=\sum_{b,c,d}P(c\mid b)P(d\mid c)P(e\mid d)\sum_a P(a)P(b\mid a)$$    $$=\sum_{b,c,d}P(c\mid b)P(d\mid c)P(e\mid d)P(b)$$<br>下面按照b,c,d的顺序进行求和，最后可以得到$P(e)=\sum_d P(e\mid d)P(d)$。使用该方法可以一次减少一个变量。每次只需要执行$O(n^2)$操作，最终复杂度为$O(kn^2)$。</p>
-<h3 id="在HMM上进行变量消除"><a href="#在HMM上进行变量消除" class="headerlink" title="在HMM上进行变量消除"></a>在HMM上进行变量消除</h3><p>参考[4]中笔记对于该例的介绍，主要是利用当前变量相关变量和非相关的变量进行变量消除，每步消除一个变量，最终复杂度为$O(Tn^2)$，其中T表示变量的个数。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B.png" alt=""></p>
-<h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>考虑如下的无向图概率图链模型，总共有五个变量A,B,C，D，E，计算联合概率密度P(e)。<br>$$ P(e)=\sum_{a,b,c,d}\frac{1}{Z}\phi(a,b)\phi(b,c)\phi(c,d)\phi(d,e)$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt=""><br>具体计算方法同有向图相似，超级长的公式，不想打，下面用截图来表示。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%97%A0%E5%90%91%E5%9B%BE%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B.png" alt=""><br>最后通过正则化可以获得最终的概率：<br>$$P(e)=\frac{m_d(e)}{\sum_e m_d(e)}$$</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>[3] 周志华. 机器学习[M]. 清华大学出版社, 2016.<br>[4] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第4讲视频以及笔记，参考[2]中第9章，参考[3]中第14章，参考[4]中第3章。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2793,7 +2804,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
