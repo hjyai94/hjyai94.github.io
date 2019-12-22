@@ -398,11 +398,8 @@
       
         
           
-           完全可观的图模型学习
-图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据学习网络的拓扑结构。
- 最大似然在信息论上的解释
-可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。
-\begin{equation}
+          完全可观的图模型学习图模型学习的目的是在给定独立的样本集的情况下找到合适的的贝叶斯网络，这里的学习（learning）表示对参数的估计或者是从数据学习网络的拓扑结构。
+最大似然在信息论上的解释可以这样理解，将对数似然函数在数据上的和，转变为在变量状态上的和。\begin{equation}\begi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -552,11 +549,7 @@
       
         
           
-           指数族
-将随机变量X写成指数族的形式：
-p(X=x;η)=h(x)exp(ηTT(x)−A(η))p(X=x;\eta)=h(x)exp(\eta^T T(x)-A(\eta))
-p(X=x;η)=h(x)exp(ηTT(x)−A(η))
-其中：η\etaη是自然参数向量（natural para
+          指数族将随机变量X写成指数族的形式：$$p(X=x;\eta)=h(x)exp(\eta^T T(x)-A(\eta))$$其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（lo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -706,10 +699,7 @@ p(X=x;η)=h(x)exp(ηTT(x)−A(η))
       
         
           
-           频率学派和贝叶斯学派
-频率学派：观测数据是随机变量，参数是未知但确定的；
-贝叶斯学派：观测数据是已知的，参数是随机变量。
-
+          频率学派和贝叶斯学派频率学派：观测数据是随机变量，参数是未知但确定的；贝叶斯学派：观测数据是已知的，参数是随机变量。
 
           
           <!--noindex-->
@@ -860,8 +850,7 @@ p(X=x;η)=h(x)exp(ηTT(x)−A(η))
       
         
           
-          感知机主要是解决了与非问题，输入是二值的0或者1，后来出现了Sigmoid。解决了感知机只能处理与非问题，将输出变为0~1之间，这样就有了神经网络。下面的文章非常的通俗易懂，可以一看。
-http://neuralnetworksanddeeplearning.com/chap1.html#learn
+          感知机主要是解决了与非问题，输入是二值的0或者1，后来出现了Sigmoid。解决了感知机只能处理与非问题，将输出变为0~1之间，这样就有了神经网络。下面的文章非常的通俗易懂，可以一看。http://neuralnetworksanddeeplearning.com/chap1.html#learni
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1011,10 +1000,8 @@ http://neuralnetworksanddeeplearning.com/chap1.html#learn
       
         
           
-           变量消除的缺点
-elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。
- Elimination on a tree
-将从i开始的变量消除记作mji(xi)m_{ji}(x_i)mji
+          变量消除的缺点elimination algorihthm中会有clique中重复使用的情况，message passing将重复使用的clique保留下来，这样可以减少运算复杂度。
+Elimination on a tree将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1164,18 +1151,13 @@ elimination algorihthm中会有clique中重复使用的情况，message passing�
       
         
           
-           englishpod_B0001
+          englishpod_B0001
+I’m still working on it.I still need more time.
+complimentrayfree
+I’ll go with.I’ll take. I’ll choose.
+grabget quickly
 
-I’m still working on it.
-I still need more time.
-complimentray
-free
-I’ll go with.
-I’ll take. I’ll choose.
-grab
-get quickly
-
- englis
+englishpod_B0
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1325,8 +1307,7 @@ get quickly
       
         
           
-           精确推断
-精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。
+          精确推断精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。
 精确推断有以下算法：
 
 变量消除
@@ -1339,7 +1320,7 @@ get quickly
 马尔可夫链的蒙特卡罗方法
 变分算法
 
-本文
+本文主要
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1489,10 +1470,8 @@ get quickly
       
         
           
-           贝叶斯网络 Bayesian Network
-贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的因果关系。
- 贝叶斯网的链式法则
-P(X1,X2,...,Xn)=Πi=1:nP(Xi∣Parents(Xi))P(X_
+          贝叶斯网络 Bayesian Network贝叶斯网络是概率图模型的一种结构，通过有向无环图来表示模型中的关联性。在特定的图结构中，节点表示随机变量，有向边表示相连的变量之间的因果关系。
+贝叶斯网的链式法则$$ P(X_1, X_2, …, X_n) = \Pi_{i=1:n}P(X_i \mid 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1642,11 +1621,8 @@ P(X1,X2,...,Xn)=Πi=1:nP(Xi∣Parents(Xi))P(X_
       
         
           
-          创建新的仓库 git init
-从服务器上克隆库 git clone 路径
-添加和提交
-1234git pull origin mastergit add .git commit -m "first commit"git push origin master
-基本可以用来保存文件和从服务器上面下载代
+          创建新的仓库 git init从服务器上克隆库 git clone 路径添加和提交1234git pull origin mastergit add .git commit -m "first commit"git push origin master
+基本可以用来保存文件和从服务器上面下载代码，后
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1796,10 +1772,8 @@ P(X1,X2,...,Xn)=Πi=1:nP(Xi∣Parents(Xi))P(X_
       
         
           
-          生成对抗网络（Generative Adersarial nets），基本思想就是同步训练生成模型G和判别模型D，
-生成模型G服从数据分布，判别模型D用来判断样本是来自于生成模型G还是训练数据。
-完全可以编成一段相声，从南边来了一个生成模型生成数据，从北边来了一个鉴别模型鉴别数据，
-生成模型拼命生成
+          生成对抗网络（Generative Adersarial nets），基本思想就是同步训练生成模型G和判别模型D，生成模型G服从数据分布，判别模型D用来判断样本是来自于生成模型G还是训练数据。
+完全可以编成一段相声，从南边来了一个生成模型生成数据，从北边来了一个鉴别模型鉴别数据，生成模型拼命生成数据
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1918,7 +1892,7 @@ P(X1,X2,...,Xn)=Πi=1:nP(Xi∣Parents(Xi))P(X_
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

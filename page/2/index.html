@@ -399,8 +399,7 @@
         
           
           最近经常使用到之前写的对医学图像进行可视化，下面我将这部分代码和相关内容整理成该博客，分成一下三个部分，第一部分是医学图像的格式，第二部分是医学图像的读取，第三部分是医学图像的可视化。
- 医学图像格式
-医学图像常见的有6种主要格式，分别为DICOM(医学数字成像和通讯)、NIFTI(神经影像信息技术
+医学图像格式医学图像常见的有6种主要格式，分别为DICOM(医学数字成像和通讯)、NIFTI(神经影像信息技术)、
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -550,8 +549,7 @@
       
         
           
-           准备在博客中新开一个分类，这个分类将记录一些实现的代码，又从别人那里借鉴来的，或者是自己写的之类的。
-
+          准备在博客中新开一个分类，这个分类将记录一些实现的代码，又从别人那里借鉴来的，或者是自己写的之类的。
           
           <!--noindex-->
           <div class="post-button text-center">
@@ -701,10 +699,8 @@
       
         
           
-           写在前面的话
-最近，十分困惑条件随机场是如何工作的，为什么可以加在卷积神经网络的后面作为后处理的部分。虽然理论部分前面的博客也有写过，做过一些总结，不过因为没有实现过代码，所以仍有困惑解决不了，每念至此，心绪不宁，遂作此文，以供参考。
- 具体实现
-本文将实现全连接随机场对非RGB的图像进行分割，主
+          写在前面的话最近，十分困惑条件随机场是如何工作的，为什么可以加在卷积神经网络的后面作为后处理的部分。虽然理论部分前面的博客也有写过，做过一些总结，不过因为没有实现过代码，所以仍有困惑解决不了，每念至此，心绪不宁，遂作此文，以供参考。
+具体实现本文将实现全连接随机场对非RGB的图像进行分割，主要参考文
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -855,8 +851,7 @@
         
           
           很久没有推导过公式了，感觉水平退步显著，今日看变分推断内容，看到了计算两个高斯分布间的KL散度，下面我自己推导了一下。
- 高斯分布间的KL散度
-现有先验分布pθ(z)=N(0,I)p_{\theta}(z) = \boldsymbol{N}(0, \boldsymbol{I})pθ​(z)=N(0,
+高斯分布间的KL散度现有先验分布$p_{\theta}(z) = \boldsymbol{N}(0, \boldsymbol{I})$，后验分布$q_{\phi}(\boldsym
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1007,8 +1002,7 @@
         
           
           今天在网上看了一些读取MRI文件的方法，中文的博客并不是很多，另外很多并不适合我的文件格式，本文主要是针对MRI中采用NIFTI(.nii.g其中gz是压缩文件)格式的文件，并进行可视化分析。
- NIBabel
-NIBabel是一个常见的读写神经医学文件的python库，包括ANALYZE, GIF
+NIBabelNIBabel是一个常见的读写神经医学文件的python库，包括ANALYZE, GIFTI
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1158,10 +1152,8 @@ NIBabel是一个常见的读写神经医学文件的python库，包括ANALYZE, G
       
         
           
-           写在前面的话
-本文主要是基于Pytorch给出的官方Tutorial，然后我按照自己的喜好编辑成Jupyter文档，后转成本博客，用来作为自己的日常参照材料。
- Pytorch
-Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习更加简单，比较适合科研型的或者是实现一些想法的入门级选手。
+          写在前面的话本文主要是基于Pytorch给出的官方Tutorial，然后我按照自己的喜好编辑成Jupyter文档，后转成本博客，用来作为自己的日常参照材料。
+PytorchPytorch给我的感觉是：它是基于更高级的封装，实现深度学习更加简单，比较适合科研型的或者是实现一些想法的入门级选手。Tens
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1311,14 +1303,9 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           多模态机器学习
-下面是我参考文章[1]总结出来多模态机器学习中存在的挑战，以及目前所使用的方法的思维导图。
-
- 多模态医学图像数据集
-
-
-脑肿瘤分割数据集
-[1] Menze B H, Jakab A, Bauer S, et al. The multimodal brain tumor imag
+          多模态机器学习下面是我参考文章[1]总结出来多模态机器学习中存在的挑战，以及目前所使用的方法的思维导图。
+多模态医学图像数据集
+脑肿瘤分割数据集[1] Menze B H, Jakab A, Bauer S, et al. The multimodal brain tumor image segme
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1468,13 +1455,11 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           2018.9.10
-暑假期间学习和看的论文：
-学习内容：
+          2018.9.10暑假期间学习和看的论文：学习内容：
 
 计算视觉CS131，完成了所有的homework的代码，然后传到了我的github上了。https://github.com/hjyai94/CS131_homework
 计算机视觉CS231看了一点，还没有看完。
-最近在看的深度学习和贝
+最近在看的深度学习和贝叶斯方
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1624,8 +1609,7 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           定义
-给定带有有限距的随机变量的列向量X=(x1,...,xn)TX = (x_1, ..., x_n)^TX=(x1​,...,xn​)T和Y=(y1,...,ym)TY = (y_1, ..., y_m)^TY=(y1​,...,ym​)T，我们可以定义互协方差矩阵ΣXY=cov(X,Y)\S
+          定义给定带有有限距的随机变量的列向量$X = (x_1, …, x_n)^T$和$Y = (y_1, …, y_m)^T$，我们可以定义互协方差矩阵$\Sigma_{XY} = cov(X, Y)$，为$n\times m$的矩阵，其中$(i, j)$是协方差矩阵$cov(x_i, y_j)$。实际
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1775,10 +1759,7 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           EM算法
-之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。
-EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。
-\begin{equation}\begin{split} log\ p
+          EM算法之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。\begin{equation}\begin{split} log\ p(X\m
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1897,7 +1878,7 @@ EM算法适用于存在隐变量的情况，或者说是假设存在因变量对
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
