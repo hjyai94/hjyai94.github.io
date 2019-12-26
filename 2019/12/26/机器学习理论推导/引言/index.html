@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习理论推导," />
 
 
 
@@ -93,16 +93,18 @@
 
 
 
-<meta name="description" content="HJY的装逼小站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HJY">
-<meta property="og:url" content="http://yoursite.com/tags/随笔/index.html">
+<meta name="description" content="本系列为本人推导机器学习算法的笔记，主要参考PRML[1]，西瓜书[2]，统计学习方法[3]，还有机器学习白板推导[4]。文章顺序和内容基本与B站机器学习白板推导顺序一致。[1] Bishop C M. Pattern recognition and machine learning[M]. springer, 200">
+<meta name="keywords" content="机器学习理论推导">
+<meta property="og:type" content="article">
+<meta property="og:title" content="引言">
+<meta property="og:url" content="http://yoursite.com/2019/12/26/机器学习理论推导/引言/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="HJY的装逼小站">
+<meta property="og:description" content="本系列为本人推导机器学习算法的笔记，主要参考PRML[1]，西瓜书[2]，统计学习方法[3]，还有机器学习白板推导[4]。文章顺序和内容基本与B站机器学习白板推导顺序一致。[1] Bishop C M. Pattern recognition and machine learning[M]. springer, 2006.[2] 周志华. 机器学习[M]. 清华大学出版社, 2016.[3] 李航">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-26T02:48:02.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HJY">
-<meta name="twitter:description" content="HJY的装逼小站">
+<meta name="twitter:title" content="引言">
+<meta name="twitter:description" content="本系列为本人推导机器学习算法的笔记，主要参考PRML[1]，西瓜书[2]，统计学习方法[3]，还有机器学习白板推导[4]。文章顺序和内容基本与B站机器学习白板推导顺序一致。[1] Bishop C M. Pattern recognition and machine learning[M]. springer, 2006.[2] 周志华. 机器学习[M]. 清华大学出版社, 2016.[3] 李航">
 
 
 
@@ -132,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/随笔/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/12/26/机器学习理论推导/引言/"/>
 
 
 
 
 
-  <title>标签: 随笔 | HJY</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>引言 | HJY</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -157,7 +159,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,82 +291,171 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>随笔<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/机器学习理论推导/引言/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/29/科研三境界/" itemprop="url">
-              
-                <span itemprop="name">科研三境界</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">引言</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-29T22:00:14+08:00"
-              content="2017-11-29" >
-          11-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-26T10:39:09+08:00">
+                2019-12-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/11/24/写在感冒之后/" itemprop="url">
-              
-                <span itemprop="name">写在感冒之后</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-24T22:20:14+08:00"
-              content="2017-11-24" >
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p><a href="www.hjy.cn/tags/机器学习理论推导">本系列</a>为本人推导机器学习算法的笔记，主要参考PRML[1]，西瓜书[2]，统计学习方法[3]，还有机器学习白板推导[4]。文章顺序和内容基本与B站机器学习白板推导顺序一致。<br>[1] Bishop C M. Pattern recognition and machine learning[M]. springer, 2006.<br>[2] 周志华. 机器学习[M]. 清华大学出版社, 2016.<br>[3] 李航. 统计学习方法[M]. 2012.<br>[4] <a href="https://www.bilibili.com/video/av70839977?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av70839977?p=1</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>非常感谢各位老板投喂！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习理论推导/" rel="tag"># 机器学习理论推导</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/05/机器学习理论推导/机器学习推导-频率与贝叶斯/" rel="next" title="频率学派与贝叶斯学派">
+                <i class="fa fa-chevron-left"></i> 频率学派与贝叶斯学派
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -372,6 +463,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -609,6 +704,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
