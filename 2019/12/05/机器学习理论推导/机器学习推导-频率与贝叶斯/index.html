@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="频率学派">
+<meta name="description" content="数据集$D=\left \lbrace x_i,y_i  \right \rbrace_{N \times p}$ $$\begin{aligned}X &amp;amp;=(\begin{array}{llll}{x_{1}} &amp;amp; {x_{2}} &amp;amp; {\cdots} &amp;amp">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="频率学派与贝叶斯学派">
 <meta property="og:url" content="http://yoursite.com/2019/12/05/机器学习理论推导/机器学习推导-频率与贝叶斯/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="频率学派">
+<meta property="og:description" content="数据集$D=\left \lbrace x_i,y_i  \right \rbrace_{N \times p}$ $$\begin{aligned}X &amp;amp;=(\begin{array}{llll}{x_{1}} &amp;amp; {x_{2}} &amp;amp; {\cdots} &amp;amp; {x_{N}}\end{array}){N \times p}^{\top} \&amp;amp;=(\lbrace">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-25T12:30:56.021Z">
+<meta property="og:updated_time" content="2019-12-26T01:24:49.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="频率学派与贝叶斯学派">
-<meta name="twitter:description" content="频率学派">
+<meta name="twitter:description" content="数据集$D=\left \lbrace x_i,y_i  \right \rbrace_{N \times p}$ $$\begin{aligned}X &amp;amp;=(\begin{array}{llll}{x_{1}} &amp;amp; {x_{2}} &amp;amp; {\cdots} &amp;amp; {x_{N}}\end{array}){N \times p}^{\top} \&amp;amp;=(\lbrace">
 
 
 
@@ -394,7 +394,18 @@
       
 
       
-        <h1 id="频率学派"><a href="#频率学派" class="headerlink" title="频率学派"></a>频率学派</h1>
+        <p>数据集$D=\left \lbrace x_i,y_i  \right \rbrace_{N \times p}$</p>
+<p>$$\begin{aligned}<br>X &amp;=(\begin{array}{llll}<br>{x_{1}} &amp; {x_{2}} &amp; {\cdots} &amp; {x_{N}}<br>\end{array})<em>{N \times p}^{\top} \<br>&amp;=(\lbrace array\rbrace{cccc}<br>{x</em>{11}} &amp; {x_{12}} &amp; {\cdots} &amp; {x_{1 p}} \<br>{x_{21}} &amp; {x_{22}} &amp; {\cdots} &amp; {x_{2 p}} \<br>{\vdots} &amp; {} &amp; {} &amp; {} \<br>{x_{N 1}} &amp; {x_{N 2}} &amp; {\cdots} &amp; {x_{N p}}<br>\end{array})_{N \times p}<br>\end{aligned}$$</p>
+<p>$\theta$为参数，$X\sim p(X|\theta)$</p>
+<h1 id="频率学派"><a href="#频率学派" class="headerlink" title="频率学派"></a>频率学派</h1><p>频率学派认为，$\theta$为未知的常量，X为随机变量。<br>频率学派常用最大似然估计：<br>$$\theta_{MLE} = \operatorname{argmax}_{\theta} log(p(X|\theta))$$</p>
+<h1 id="贝叶斯学派"><a href="#贝叶斯学派" class="headerlink" title="贝叶斯学派"></a>贝叶斯学派</h1><p>贝叶斯学派与频率学派不同，$\theta$为随机变量，$\theta~p(\theta)$<br>贝叶斯公式：</p>
+<p>$$p(\theta | x)=\frac{p(x | \theta) \cdot p(\theta)}{p(x)} \propto p(x | \theta) \cdot p(\theta)$$</p>
+<p>贝叶斯学派通常使用最大后验估计：</p>
+<p>$$\theta_{MAP}=\operatorname{argmax}<em>{\theta} P(\theta | X) = \operatorname{argmax}</em>{\theta} p(x | \theta) \cdot p(\theta)$$</p>
+<p>贝叶斯估计：${p(\theta | x)}=\frac{p(X | \theta) \cdot p(\theta)}{\int_{\theta} p(X | \theta) p(\theta) d \theta}$</p>
+<p>贝叶斯预测：$$p(\tilde{x}|X)=\int_{\theta}p(\tilde{x}, \theta | X) d \theta = \int_{\theta} p(\tilde{x} | \theta) {p(\theta | X)} d \theta$$</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>频率学派通常将问题转化为最优化问题，贝叶斯学派通常将为你转化为求边缘概率的积分问题。</p>
+
       
     </div>
     
@@ -602,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#频率学派"><span class="nav-number">1.</span> <span class="nav-text">频率学派</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#频率学派"><span class="nav-number">1.</span> <span class="nav-text">频率学派</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贝叶斯学派"><span class="nav-number">2.</span> <span class="nav-text">贝叶斯学派</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
