@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="数据$X$$$X = \begin{pmatrix}{a_{1}}&amp;amp;{a_{2}}&amp;amp;{\cdots}&amp;amp;{a_{N}}\end{pmatrix}^T= \begin{pmatrix}{a_{11}}&amp;amp;{a_{12}}&amp;amp;{\cdots}&amp">
+<meta name="description" content="数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;amp;{x_{2}}&amp;amp;{\cdots}&amp;amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;amp;{x_{12}}&amp;amp;{\cdots}&amp">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="频率学派与贝叶斯学派">
 <meta property="og:url" content="http://yoursite.com/2019/12/05/机器学习理论推导/机器学习推导-频率与贝叶斯/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="数据$X$$$X = \begin{pmatrix}{a_{1}}&amp;amp;{a_{2}}&amp;amp;{\cdots}&amp;amp;{a_{N}}\end{pmatrix}^T= \begin{pmatrix}{a_{11}}&amp;amp;{a_{12}}&amp;amp;{\cdots}&amp;amp;{a_{1p}}\\{a_{21}}&amp;amp;{a_{22}}&amp;amp;{\cdots}&amp;amp;{a_{2p}}\\">
+<meta property="og:description" content="数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;amp;{x_{2}}&amp;amp;{\cdots}&amp;amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;amp;{x_{12}}&amp;amp;{\cdots}&amp;amp;{x_{1p}}\\{x_{21}}&amp;amp;{x_{22}}&amp;amp;{\cdots}&amp;amp;{x_{2p}}\\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-26T02:29:15.279Z">
+<meta property="og:updated_time" content="2019-12-26T02:49:30.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="频率学派与贝叶斯学派">
-<meta name="twitter:description" content="数据$X$$$X = \begin{pmatrix}{a_{1}}&amp;amp;{a_{2}}&amp;amp;{\cdots}&amp;amp;{a_{N}}\end{pmatrix}^T= \begin{pmatrix}{a_{11}}&amp;amp;{a_{12}}&amp;amp;{\cdots}&amp;amp;{a_{1p}}\\{a_{21}}&amp;amp;{a_{22}}&amp;amp;{\cdots}&amp;amp;{a_{2p}}\\">
+<meta name="twitter:description" content="数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;amp;{x_{2}}&amp;amp;{\cdots}&amp;amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;amp;{x_{12}}&amp;amp;{\cdots}&amp;amp;{x_{1p}}\\{x_{21}}&amp;amp;{x_{22}}&amp;amp;{\cdots}&amp;amp;{x_{2p}}\\">
 
 
 
@@ -394,7 +394,7 @@
       
 
       
-        <p>数据$X$<br>$$<br>X = \begin{pmatrix}<br>{a_{1}}&amp;{a_{2}}&amp;{\cdots}&amp;{a_{N}}<br>\end{pmatrix}^T<br>= \begin{pmatrix}<br>{a_{11}}&amp;{a_{12}}&amp;{\cdots}&amp;{a_{1p}}\\<br>{a_{21}}&amp;{a_{22}}&amp;{\cdots}&amp;{a_{2p}}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{a_{N1}}&amp;{a_{N2}}&amp;{\cdots}&amp;{a_{Np}}\\<br>\end{pmatrix}$$</p>
+        <p>数据$X$<br>$$<br>X = \begin{pmatrix}<br>{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}<br>\end{pmatrix}^T<br>= \begin{pmatrix}<br>{x_{11}}&amp;{x_{12}}&amp;{\cdots}&amp;{x_{1p}}\\<br>{x_{21}}&amp;{x_{22}}&amp;{\cdots}&amp;{x_{2p}}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{x_{N1}}&amp;{x_{N2}}&amp;{\cdots}&amp;{x_{Np}}\\<br>\end{pmatrix}$$</p>
 <p>$\theta$为参数，$x\sim p(x|\theta)$</p>
 <h1 id="频率学派"><a href="#频率学派" class="headerlink" title="频率学派"></a>频率学派</h1><p>频率学派认为，$\theta$为未知的常量，X为随机变量。<br>频率学派常用最大似然估计：<br>$$\theta_{MLE} = \operatorname{argmax}_{\theta} log(p(X|\theta))$$</p>
 <h1 id="贝叶斯学派"><a href="#贝叶斯学派" class="headerlink" title="贝叶斯学派"></a>贝叶斯学派</h1><p>贝叶斯学派与频率学派不同，$\theta$为随机变量，$\theta\sim p(\theta)$<br>贝叶斯公式：</p>
