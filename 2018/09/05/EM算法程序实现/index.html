@@ -6,8 +6,8 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 
 <script>
     (function(){
@@ -20,8 +20,8 @@
     })();
 </script>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
 
 
-  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+  <meta name="baidu-site-verification" content="i0w0IGpafr">
 
 
 
@@ -54,7 +54,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -62,9 +62,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="deep bayes," />
+  <meta name="keywords" content="deep bayes,">
 
 
 
@@ -93,7 +93,7 @@
 
 
 
-<meta name="description" content="EM算法之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。\begin{equation}\begin{split} log\ p(X\mid \theta)">
+<meta name="description" content="EM算法之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。\begin{equation}\begin{split} log\ p(X\mid \theta) &amp;amp;= \int q(Z)log\ p(X\mid \theta)dZ">
 <meta name="keywords" content="deep bayes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EM算法实现">
@@ -106,7 +106,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E5%9B%BE%E7%89%87%E7%BB%93%E6%9E%84.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E4%BA%BA%E8%84%B81.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E8%83%8C%E6%99%AF1.png">
-<meta property="og:updated_time" content="2018-09-25T12:23:12.125Z">
+<meta property="og:updated_time" content="2018-09-25T12:23:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法实现">
 <meta name="twitter:description" content="EM算法之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。\begin{equation}\begin{split} log\ p(X\mid \theta) &amp;amp;= \int q(Z)log\ p(X\mid \theta)dZ">
@@ -140,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/05/EM算法程序实现/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/EM算法程序实现/">
 
 
 
@@ -174,7 +174,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">HJY</span>
         <span class="logo-line-after"><i></i></span>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -224,7 +224,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -234,7 +234,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -247,7 +247,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -315,7 +315,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -351,7 +351,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -400,8 +400,8 @@
       
 
       
-        <h1 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h1><p>之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。<br>EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。<br>\begin{equation}\begin{split} log\ p(X\mid \theta) &amp;= \int q(Z)log\ p(X\mid \theta)dZ \\<br>&amp;= \int q(Z)log \frac{p(X, Z\mid \theta)}{p(Z\mid X, \theta)}dZ \\<br>&amp;= \int q(Z)log \frac{p(X, Z\mid \theta)}{q(Z)}dZ + \int q(Z) log \frac{q(Z)}{p(Z\mid X, \theta)}dZ\\<br>&amp;= L(q, \theta) + KL(q\mid\mid p) \geqslant L(q, \theta)\\<br>\end{split}\end{equation}<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95.png" alt=""><br>E步是为了获得隐变量的最优值，M步是对参数求最大似然。</p>
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><a href="https://cw.fel.cvut.cz/old/courses/ae4b33rpz/labs/12_em/start" target="_blank" rel="noopener">问题描述</a></h1><p>有$K$张受噪声污染的图片，每张图片大小为$H\times W$，每张图片上都有$H\times w$大小的人脸，每张人脸的位置不固定，但是高度相同，都与图片的高度一样。如下图所示，每张图片都是受严重受噪声污染的，可以看成是高斯噪声。可以从这里得到<a href="https://drive.google.com/open?id=1NLOHNhqdDBG6rWk8lOjzm3u3vDyS_9WZ" target="_blank" rel="noopener">数据集</a>，该数据集为.mat格式，其中包含有500张$45\times 60$的图片，其中人脸大小为$45\times 36$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E5%99%AA%E5%A3%B0%E5%9B%BE%E7%89%87.png" alt=""><br>下图是图片的结构，其中$d_k$的位置是不固定的，$F$是不含噪声的人脸图片，$B$是不含噪声的背景图片。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E5%9B%BE%E7%89%87%E7%BB%93%E6%9E%84.png" alt=""><br>下面基于EM算法来思考该问题：<br>可观数据：$K$张受污染的图片，$X = \lbrace X_1, …, X_K \rbrace$<br>隐变量：$F$的位置，$d = \lbrace d_1, …, d_K \rbrace$<br>参数：$\theta = \lbrace B, F, s^2\rbrace$<br>似然函数：<br>$$ p(X_k\mid d_k, \theta) = \prod_{ij}\begin{cases} N(X_k[i, j]\mid F[i,j-d_k], s^2), &amp; \text {if $[i, j]\in faceArea(d_k)$} \\ N(X_k[i, j]\mid B[i, j], s^2), &amp; \text{otherwise} \end{cases} $$<br>因为每张图片中$F$和$B$部分减去对应的$F$和$B$，这样就是纯粹的噪声，我们将噪声看做是高斯分布，所以上式就是上面的形式。<br>以及先验：<br>$p(d_k\mid a) = a[d_k] $， $\sum_j a[j] = 1$,，$a\in R^{W-w+1}$<br>概率模型可以写成：<br>$$ p(X, d\mid \theta, a) = \prod_k p(X_k\mid d_k, \theta)p(d_k\mid a) $$<br>按照第一张图中的EM算法步骤，进行EM算法的推导：<br>E步：确定隐变量的最优值<br>\begin{equation}\begin{split} q(d) = p(d\mid X, \theta, a) &amp;= \prod_k p(d_k\mid x_k, \theta, a)\\<br>&amp;= \prod_k\frac{p(X_k, d_k\mid \theta, a)}{\sum_{d_k’} p(X_k, d_k’\mid \theta, a)} \\<br>&amp;= \prod_k\frac{p(X_k\mid d_k, theta)p(d_k\mid a)}{\sum_{d_k’} p(X_k\mid d_k’, theta)p(d_k’\mid a)} \\<br>\end{split}\end{equation}<br>M步：对参数求最大似然。<br>$$ Q(\theta, a) = E_{q(d)}log\ p(X, d\mid \theta, a) \rightarrow max_{\theta, a} $$<br>具体推导这里就不再详细的描述了，可以参照参考文献[1]中的推导过程，最后的推导结果如下：<br>$$a[j] = \frac{\sum_k q( d_k = j )}{\sum_{j’}  \sum_{k’} q( d_{k’} = j’)}$$<br>$$F[i, m] = \frac 1 K  \sum_k \sum_{d_k} q(d_k)\, X^k[i,\, m+d_k]$$<br>$$B[i, j] = \frac {\sum_k \sum_{ d_k:\, (i, \,j) \,\not\in faceArea(d_k)} q(d_k)\, X^k[i, j]}<br>          {\sum_k \sum_{d_k: \,(i, \,j)\, \not\in faceArea(d_k)} q(d_k)}$$<br>$$s^2 = \frac 1 {HWK}   \sum_k \sum_{d_k} q(d_k)<br>          \sum_{i,\, j}  (X^k[i, \,j] - Model^{d_k}[i, \,j])^2$$<br> 其中$Model^{d_k}[i, j]$表示由$F$和$B$组成的图片，其中$F$处于$d_k$位置。</p>
+        <h1 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h1><p>之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。<br>EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。<br>\begin{equation}\begin{split} log\ p(X\mid \theta) &amp;= \int q(Z)log\ p(X\mid \theta)dZ \\<br>&amp;= \int q(Z)log \frac{p(X, Z\mid \theta)}{p(Z\mid X, \theta)}dZ \\<br>&amp;= \int q(Z)log \frac{p(X, Z\mid \theta)}{q(Z)}dZ + \int q(Z) log \frac{q(Z)}{p(Z\mid X, \theta)}dZ\\<br>&amp;= L(q, \theta) + KL(q\mid\mid p) \geqslant L(q, \theta)\\<br>\end{split}\end{equation}<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95.png" alt><br>E步是为了获得隐变量的最优值，M步是对参数求最大似然。</p>
+<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><a href="https://cw.fel.cvut.cz/old/courses/ae4b33rpz/labs/12_em/start" target="_blank" rel="noopener">问题描述</a></h1><p>有$K$张受噪声污染的图片，每张图片大小为$H\times W$，每张图片上都有$H\times w$大小的人脸，每张人脸的位置不固定，但是高度相同，都与图片的高度一样。如下图所示，每张图片都是受严重受噪声污染的，可以看成是高斯噪声。可以从这里得到<a href="https://drive.google.com/open?id=1NLOHNhqdDBG6rWk8lOjzm3u3vDyS_9WZ" target="_blank" rel="noopener">数据集</a>，该数据集为.mat格式，其中包含有500张$45\times 60$的图片，其中人脸大小为$45\times 36$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E5%99%AA%E5%A3%B0%E5%9B%BE%E7%89%87.png" alt><br>下图是图片的结构，其中$d_k$的位置是不固定的，$F$是不含噪声的人脸图片，$B$是不含噪声的背景图片。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E5%9B%BE%E7%89%87%E7%BB%93%E6%9E%84.png" alt><br>下面基于EM算法来思考该问题：<br>可观数据：$K$张受污染的图片，$X = \lbrace X_1, …, X_K \rbrace$<br>隐变量：$F$的位置，$d = \lbrace d_1, …, d_K \rbrace$<br>参数：$\theta = \lbrace B, F, s^2\rbrace$<br>似然函数：<br>$$ p(X_k\mid d_k, \theta) = \prod_{ij}\begin{cases} N(X_k[i, j]\mid F[i,j-d_k], s^2), &amp; \text {if $[i, j]\in faceArea(d_k)$} \\ N(X_k[i, j]\mid B[i, j], s^2), &amp; \text{otherwise} \end{cases} $$<br>因为每张图片中$F$和$B$部分减去对应的$F$和$B$，这样就是纯粹的噪声，我们将噪声看做是高斯分布，所以上式就是上面的形式。<br>以及先验：<br>$p(d_k\mid a) = a[d_k] $， $\sum_j a[j] = 1$,，$a\in R^{W-w+1}$<br>概率模型可以写成：<br>$$ p(X, d\mid \theta, a) = \prod_k p(X_k\mid d_k, \theta)p(d_k\mid a) $$<br>按照第一张图中的EM算法步骤，进行EM算法的推导：<br>E步：确定隐变量的最优值<br>\begin{equation}\begin{split} q(d) = p(d\mid X, \theta, a) &amp;= \prod_k p(d_k\mid x_k, \theta, a)\\<br>&amp;= \prod_k\frac{p(X_k, d_k\mid \theta, a)}{\sum_{d_k’} p(X_k, d_k’\mid \theta, a)} \\<br>&amp;= \prod_k\frac{p(X_k\mid d_k, theta)p(d_k\mid a)}{\sum_{d_k’} p(X_k\mid d_k’, theta)p(d_k’\mid a)} \\<br>\end{split}\end{equation}<br>M步：对参数求最大似然。<br>$$ Q(\theta, a) = E_{q(d)}log\ p(X, d\mid \theta, a) \rightarrow max_{\theta, a} $$<br>具体推导这里就不再详细的描述了，可以参照参考文献[1]中的推导过程，最后的推导结果如下：<br>$$a[j] = \frac{\sum_k q( d_k = j )}{\sum_{j’}  \sum_{k’} q( d_{k’} = j’)}$$<br>$$F[i, m] = \frac 1 K  \sum_k \sum_{d_k} q(d_k)\, X^k[i,\, m+d_k]$$<br>$$B[i, j] = \frac {\sum_k \sum_{ d_k:\, (i, \,j) \,\not\in faceArea(d_k)} q(d_k)\, X^k[i, j]}<br>          {\sum_k \sum_{d_k: \,(i, \,j)\, \not\in faceArea(d_k)} q(d_k)}$$<br>$$s^2 = \frac 1 {HWK}   \sum_k \sum_{d_k} q(d_k)<br>          \sum_{i,\, j}  (X^k[i, \,j] - Model^{d_k}[i, \,j])^2$$<br> 其中$Model^{d_k}[i, j]$表示由$F$和$B$组成的图片，其中$F$处于$d_k$位置。</p>
 <h1 id="程序实现"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现</h1><p>下面用EM算法来是处理对受噪声污染影响的图片，从而恢复其中的人脸图像。<br>程序思路为</p>
 <ol>
 <li>实现对数似然；</li>
@@ -427,7 +427,7 @@
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">def run_m_step(X, <span class="keyword">q</span>, w):</span><br><span class="line">    <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">    Estimates F, B, s, a given esitmate of posteriors defined by q.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    X : array, shape (H, W, K)</span></span><br><span class="line"><span class="string">        K images of size H x W.</span></span><br><span class="line"><span class="string">    q  :</span></span><br><span class="line"><span class="string">        q[dw, k] - estimate of posterior of position dw</span></span><br><span class="line"><span class="string">                   of prankster's face given image Xk</span></span><br><span class="line"><span class="string">    w : int</span></span><br><span class="line"><span class="string">        Face mask width.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns</span></span><br><span class="line"><span class="string">    -------</span></span><br><span class="line"><span class="string">    F : array, shape (H, w)</span></span><br><span class="line"><span class="string">        Estimate of prankster's face.</span></span><br><span class="line"><span class="string">    B : array, shape (H, W)</span></span><br><span class="line"><span class="string">        Estimate of background.</span></span><br><span class="line"><span class="string">    s : float</span></span><br><span class="line"><span class="string">        Estimate of standard deviation of Gaussian noise.</span></span><br><span class="line"><span class="string">    a : array, shape (W-w+1)</span></span><br><span class="line"><span class="string">        Estimate of prior on position of face in any image.</span></span><br><span class="line"><span class="string">    "</span><span class="string">""</span></span><br><span class="line">    <span class="comment"># your code here</span></span><br><span class="line">    H, W, K = X.shape</span><br><span class="line">    F = np.zeros((H, w))</span><br><span class="line">    B = np.zeros((H, W))</span><br><span class="line">    <span class="keyword">s</span> = <span class="number">0</span>.<span class="number">0</span></span><br><span class="line">    <span class="comment"># a</span></span><br><span class="line">    a = np.sum(<span class="keyword">q</span>, axis=<span class="number">1</span>)/np.sum(<span class="keyword">q</span>)</span><br><span class="line">    <span class="comment"># F</span></span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">m</span> in range(w):</span><br><span class="line">        <span class="keyword">for</span> k in range(K):</span><br><span class="line">            F[:, <span class="keyword">m</span>] = (<span class="number">1</span>/K*np.sum(<span class="string">q[:, k]</span>*X[:, <span class="keyword">m</span>:W-w+<span class="number">1</span>+<span class="keyword">m</span>, k], axis=<span class="number">1</span>)) + F[:, <span class="keyword">m</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># B</span></span><br><span class="line">    B1 = np.zeros((H, W))</span><br><span class="line">    B2 = np.zeros((H, W))</span><br><span class="line">    <span class="keyword">for</span> dw in range(W-w+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k in range(K):</span><br><span class="line">            B1[:, :dw] = <span class="string">q[dw, k]</span> * X[:, :dw, k] + B1[:, :dw]</span><br><span class="line">            B1[:, dw+w:] = <span class="string">q[dw, k]</span> * X[:, dw+w:, k] + B1[:, dw+w:]</span><br><span class="line">            B2[:, :dw] = <span class="string">q[dw, k]</span> + B2[:, :dw]</span><br><span class="line">            B2[:, dw+w:] = <span class="string">q[dw, k]</span> + B2[:, dw+w:]</span><br><span class="line"></span><br><span class="line">    B = B1/B2</span><br><span class="line"></span><br><span class="line">    <span class="comment"># s</span></span><br><span class="line">    s_square = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> dw in range(W-w+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> k in range(K):</span><br><span class="line">            s_square = <span class="string">q[dw, k]</span> * (np.sum((X[:, :dw, k] - B[:, :dw])**<span class="number">2</span>) + np.sum((X[:, dw:dw+w, k] - F)**<span class="number">2</span>)+ \</span><br><span class="line">            np.sum((X[:, dw+w:, k] - B[:, dw+w:])**<span class="number">2</span>)) + s_square</span><br><span class="line">    <span class="keyword">s</span> = np.sqrt(<span class="number">1</span>/(K*W*H) *  s_square)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> F, B, <span class="keyword">s</span>, a</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>最终实验结果，人脸图片和背景图如下所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E4%BA%BA%E8%84%B81.png" alt="">  <img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E8%83%8C%E6%99%AF1.png" alt=""></p>
+<p>最终实验结果，人脸图片和背景图如下所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E4%BA%BA%E8%84%B81.png" alt>  <img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/EM%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/%E8%83%8C%E6%99%AF1.png" alt></p>
 <h1 id="问题与总结"><a href="#问题与总结" class="headerlink" title="问题与总结"></a>问题与总结</h1><p>变成中遇到了一个问题，就是求解q时会出现0的情况，这样就会导致$log\ 0$的情况出现，出现错误，不知道怎么结果，但是结果却可以跑出了，不过图片并不是特别清晰，我想如果用deep learning的方法训练估计可以达到一个比较好的结果。EM算法可以看成特殊的坐标下降发，对lower bound按照隐变量和参数进行坐标寻优。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1] <a href="http://deepbayes.ru/" target="_blank" rel="noopener">http://deepbayes.ru/</a> 主要来自其中的slide<br>[2] <a href="https://cw.fel.cvut.cz/old/courses/ae4b33rpz/labs/12_em/start" target="_blank" rel="noopener">https://cw.fel.cvut.cz/old/courses/ae4b33rpz/labs/12_em/start</a></p>
 
@@ -450,7 +450,7 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付"/>
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付">
         <p>微信支付</p>
       </div>
     
@@ -562,9 +562,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="HJY" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="HJY">
             
               <p class="site-author-name" itemprop="name">HJY</p>
               <p class="site-description motion-element" itemprop="description">HJY的装逼小站</p>
@@ -577,7 +575,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

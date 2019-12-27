@@ -6,8 +6,8 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 
 <script>
     (function(){
@@ -20,8 +20,8 @@
     })();
 </script>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
 
 
-  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+  <meta name="baidu-site-verification" content="i0w0IGpafr">
 
 
 
@@ -54,7 +54,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -62,9 +62,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="脑肿瘤分割," />
+  <meta name="keywords" content="脑肿瘤分割,">
 
 
 
@@ -93,7 +93,7 @@
 
 
 
-<meta name="description" content="前言本人一直研究脑肿瘤分割，脑肿瘤分割对于患者的后续治疗以及对疾病的检测有着重要的意义，同时也是人工智能处理医学图像的重要方向之一。目前开源的代码都比较复杂，不适合入门研究，另外 Pytorch 作为一个容易上手的深度学习框架，具有很强的灵活性，适合新手或者是科研工作者，所以本文的代码将使用深度学习框架 Pytorch">
+<meta name="description" content="前言本人一直研究脑肿瘤分割，脑肿瘤分割对于患者的后续治疗以及对疾病的检测有着重要的意义，同时也是人工智能处理医学图像的重要方向之一。目前开源的代码都比较复杂，不适合入门研究，另外 Pytorch 作为一个容易上手的深度学习框架，具有很强的灵活性，适合新手或者是科研工作者，所以本文的代码将使用深度学习框架 Pytorch1.0 和 Python3.6 进行编程构建卷积神经网络来进行脑肿瘤分割。卷积神">
 <meta name="keywords" content="脑肿瘤分割">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于卷积神经网络的脑肿瘤分割">
@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_sagittal.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_coronal.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/brain_tumor_segmentation_model.png">
-<meta property="og:updated_time" content="2019-04-07T11:23:12.265Z">
+<meta property="og:updated_time" content="2019-04-07T11:23:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于卷积神经网络的脑肿瘤分割">
 <meta name="twitter:description" content="前言本人一直研究脑肿瘤分割，脑肿瘤分割对于患者的后续治疗以及对疾病的检测有着重要的意义，同时也是人工智能处理医学图像的重要方向之一。目前开源的代码都比较复杂，不适合入门研究，另外 Pytorch 作为一个容易上手的深度学习框架，具有很强的灵活性，适合新手或者是科研工作者，所以本文的代码将使用深度学习框架 Pytorch1.0 和 Python3.6 进行编程构建卷积神经网络来进行脑肿瘤分割。卷积神">
@@ -148,7 +148,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/28/Brain-tumor-segmentation/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/Brain-tumor-segmentation/">
 
 
 
@@ -182,7 +182,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">HJY</span>
         <span class="logo-line-after"><i></i></span>
@@ -212,7 +212,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -222,7 +222,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -232,7 +232,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -242,7 +242,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -255,7 +255,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -323,7 +323,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -408,8 +408,8 @@
 <p>SimpleITK 读取的图片维度是通道优先的，所以图像的维度的第1位是医学图像的维数。另外我还使用到了 SimpleITK 将输出预测结果保存为医学图像格式，这部分代码如下：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">image</span> = sitk.GetImageFromArray(<span class="built_in">image</span>)</span><br><span class="line">sitk.WriteImage(<span class="built_in">image</span>, <span class="string">'image.mha'</span>)</span><br></pre></td></tr></table></figure></p>
 <h3 id="Nibabel"><a href="#Nibabel" class="headerlink" title="Nibabel"></a>Nibabel</h3><p>Nibabel 读取医学图像示例代码：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nibabel as nib </span><br><span class="line"><span class="built_in">image</span> = nib.load(<span class="string">'image.nii.gz'</span>).get_fdata()</span><br><span class="line"><span class="built_in">image</span> = <span class="built_in">image</span>.transpse(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></p>
 <p>不同于 SimpleITK， Nibabel 读取图像的维度的通道数位于最后 1 位，但是 Nibabel 将图像旋转了 $90^{\circ}$，可以使用上面代码的第三行旋转为一般维数分布方式。比如脑图中，如果不旋转变换转变 Nibabel 读取的方式，脑图就是横着的。</p>
-<h3 id="3D-Slicer-可视化"><a href="#3D-Slicer-可视化" class="headerlink" title="3D Slicer 可视化"></a>3D Slicer 可视化</h3><p>SimpleITK 和 Nibabel 是可以在程序中读取医学图像的包，灵活性不强，另外不适合了解医学图像的基本特性，下面我们使用 3D Slicer 来可视化我们的医学图像数据。<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_coronal.png" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/t1_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_coronal.png" alt=""></div></div></div></div><br>上图中，第一行为 FLAIR 模态，从左到有依次为横断面(Axis plane)，矢状面(Sagittal plane)，冠状面(Coronal plane)，第二行为 T1 模态，从左到右顺序与 FLAIR 相同，另外两个模态因为篇幅的关系不做具体地展示。下面是脑图的 mask 和手工分割肿瘤的真值(可以看做是金标准，但是个人认为还是有区别的)：<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_coronal.png" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_axis.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_sagittal.png" alt=""></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_coronal.png" alt=""></div></div></div></div><br>本人使用的数据库来自于项目[2] 中，具体如何得到的 mask 数据并不是很清楚，不过通过 3D slicer 可以手工生成mask数据，这里时间有限，不准备写了。上图中第二行是三个维度的真值图，其中外围浅蓝色为剔除肿瘤之外的区域(label 0)，绿色为 edema(label 2)，红色为 enhance tumor(label 4)，深蓝色区域为 necrosis(label 1)，黄色区域为 non-enhance tumor(label 3)。注：这里使用的 Brats 2015 采用了这5个标签，之后的该数据集进行了调整，将non-enhncing 和 necrosis 合并为 label 1。</p>
-<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>本文使用卷积神经网络，主要结构参考[1]中的结构，不同之处在于为了方便理解，我们只是用了一条通道。模型如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/brain_tumor_segmentation_model.png" alt=""><br>训练使用交叉熵作为损失函数，利用 RMSprop 作为优化器，学习率设为 $1e-3$，可以对学习率随着epoch进行调整，这里没有改变，读者可以根据自己的想法进行调整。具体代码可以在我的github[3]中查看，喜欢记得点个小星星。</p>
+<h3 id="3D-Slicer-可视化"><a href="#3D-Slicer-可视化" class="headerlink" title="3D Slicer 可视化"></a>3D Slicer 可视化</h3><p>SimpleITK 和 Nibabel 是可以在程序中读取医学图像的包，灵活性不强，另外不适合了解医学图像的基本特性，下面我们使用 3D Slicer 来可视化我们的医学图像数据。<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_axis.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_sagittal.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/FLAIR_coronal.png" alt></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_axis.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/t1_sagittal.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/T1_coronal.png" alt></div></div></div></div><br>上图中，第一行为 FLAIR 模态，从左到有依次为横断面(Axis plane)，矢状面(Sagittal plane)，冠状面(Coronal plane)，第二行为 T1 模态，从左到右顺序与 FLAIR 相同，另外两个模态因为篇幅的关系不做具体地展示。下面是脑图的 mask 和手工分割肿瘤的真值(可以看做是金标准，但是个人认为还是有区别的)：<br><div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_axis.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_sagittal.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/mask_coronal.png" alt></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_axis.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_sagittal.png" alt></div><div class="group-picture-column" style="width: 33.333333333333336%;"><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/ground_truth_coronal.png" alt></div></div></div></div><br>本人使用的数据库来自于项目[2] 中，具体如何得到的 mask 数据并不是很清楚，不过通过 3D slicer 可以手工生成mask数据，这里时间有限，不准备写了。上图中第二行是三个维度的真值图，其中外围浅蓝色为剔除肿瘤之外的区域(label 0)，绿色为 edema(label 2)，红色为 enhance tumor(label 4)，深蓝色区域为 necrosis(label 1)，黄色区域为 non-enhance tumor(label 3)。注：这里使用的 Brats 2015 采用了这5个标签，之后的该数据集进行了调整，将non-enhncing 和 necrosis 合并为 label 1。</p>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>本文使用卷积神经网络，主要结构参考[1]中的结构，不同之处在于为了方便理解，我们只是用了一条通道。模型如下图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/brain_tumor_segmentation_CNN/brain_tumor_segmentation_model.png" alt><br>训练使用交叉熵作为损失函数，利用 RMSprop 作为优化器，学习率设为 $1e-3$，可以对学习率随着epoch进行调整，这里没有改变，读者可以根据自己的想法进行调整。具体代码可以在我的github[3]中查看，喜欢记得点个小星星。</p>
 <h1 id="训练与测试"><a href="#训练与测试" class="headerlink" title="训练与测试"></a>训练与测试</h1><p>训练部分采用随机裁剪图片大小为 $75\times75\times75$ ，输入到神经网络中，最后得到$47\times47\times47$ (因为卷积中没有采用padding，所以出现了输出小于输入的情况)。测试部分使用完全大小的图像 $240 \times 240 \times 225$，输入到网络中得到大小为$212 \times 212 \times 197$，因为脑图的边缘是无效的信息，所以输出的大小与输入和真值维度不一致，不会有影响，只需要补全就行了。</p>
 <h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>最后网络在三个子区域的分割指标 Dice 为：Whole score 0.6764， Enhancing tumor 0.4478, Tumor core 0.4819，这个结果并不是非常的好，读者如需更高准确度的分割结果，可以调整测试时候的输入图像的维数，将其保持为与训练时输入的图像维数一致，另外可以参考最新的脑肿瘤分割的工作，对代码进行改进。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Kamnitsas K, Ledig C, Newcombe V F J, et al. Efficient multi-scale 3D CNN with fully connected CRF for accurate brain lesion segmentation[J]. Medical image analysis, 2017, 36: 61-78.<br>[2] <a href="https://github.com/yaq007/Autofocus-Layer" target="_blank" rel="noopener">https://github.com/yaq007/Autofocus-Layer</a><br>[3] <a href="https://github.com/hjyai94/Half_Pathway_DeepMedic" target="_blank" rel="noopener">https://github.com/hjyai94/Half_Pathway_DeepMedic</a></p>
@@ -433,7 +433,7 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付"/>
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付">
         <p>微信支付</p>
       </div>
     
@@ -545,9 +545,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="HJY" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="HJY">
             
               <p class="site-author-name" itemprop="name">HJY</p>
               <p class="site-description motion-element" itemprop="description">HJY的装逼小站</p>
@@ -560,7 +558,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

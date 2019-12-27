@@ -6,8 +6,8 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 
 <script>
     (function(){
@@ -20,8 +20,8 @@
     })();
 </script>
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,7 +44,7 @@
 
 
 
-  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+  <meta name="baidu-site-verification" content="i0w0IGpafr">
 
 
 
@@ -54,7 +54,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -62,9 +62,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="概率图模型," />
+  <meta name="keywords" content="概率图模型,">
 
 
 
@@ -93,7 +93,7 @@
 
 
 
-<meta name="description" content="精确推断精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。 精确推断有以下算法：  变量消除 消息传递 团树  近似推断有一下算法：  随机模拟 马尔可夫链的蒙特卡罗方法 变分算法  本文主要主要是针对精确推断算">
+<meta name="description" content="精确推断精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。 精确推断有以下算法：  变量消除 消息传递 团树  近似推断有一下算法：  随机模拟 马尔可夫链的蒙特卡罗方法 变分算法  本文主要主要是针对精确推断算法中的变量消除算法，计算变量的边际分布或条件分布是一个NP难问题，会随着极大团的">
 <meta name="keywords" content="概率图模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变量消除">
@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E6%97%A0%E5%90%91%E5%9B%BE.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%97%A0%E5%90%91%E5%9B%BE%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B.png">
-<meta property="og:updated_time" content="2018-09-22T06:32:08.286Z">
+<meta property="og:updated_time" content="2018-09-22T06:32:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="变量消除">
 <meta name="twitter:description" content="精确推断精确推断的实质是一种动态规划算法，它利用图模型所描述的条件独立性来削减计算目标所需的计算量。变量消去法是最直观的精确推断算法，也是构建其他精确推断算法的基础。 精确推断有以下算法：  变量消除 消息传递 团树  近似推断有一下算法：  随机模拟 马尔可夫链的蒙特卡罗方法 变分算法  本文主要主要是针对精确推断算法中的变量消除算法，计算变量的边际分布或条件分布是一个NP难问题，会随着极大团的">
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/03/变量消除/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/03/变量消除/">
 
 
 
@@ -173,7 +173,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">HJY</span>
         <span class="logo-line-after"><i></i></span>
@@ -203,7 +203,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -213,7 +213,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -223,7 +223,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -233,7 +233,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -246,7 +246,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -314,7 +314,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -350,7 +350,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -414,10 +414,10 @@
 </ul>
 <p>本文主要主要是针对精确推断算法中的变量消除算法，计算变量的边际分布或条件分布是一个NP难问题，会随着极大团的增长呈指数增长。近似推断是在较低的时间复杂度下，或者原问题的近似解，这种方法更有一般的实用性。</p>
 <h2 id="变量消除"><a href="#变量消除" class="headerlink" title="变量消除"></a>变量消除</h2><h3 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h3><p>考虑如下的有向图概率图模型，图中共有五个变量：A,B,C,D,E。如果我们假定每个变量有n个值，那么直接的概率描述就是联合概率密度，那么复杂度为$n^5$。如果我们计算$P(E=e)$，那么我们就要计算：<br>$$P(e)=\sum_{a,b,c,d}P(a,b,c,d,e)$$<br>可是这个计算过程需要对另外四个变量求和(边际化)，那么就需要$n^4$的复杂度。</p>
-<p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E7%A4%BA%E4%BE%8B-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E7%A4%BA%E4%BE%8B-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt></p>
 <p>我们可以将上面的联合概率密度$P(a,b,c,d,e)$进行因式分解：<br>$$P(e)=\sum_{a,b,c,d}P(a,b,c,d,e)=\sum_{a,b,c,d}P(a)P(b\mid a)P(c\mid b)P(d\mid c)P(e\mid d)$$<br>假设推断目标是计算边缘概率密度P(e)，那么P(c|b)，P(d|c)，P(e|d)与a无关，将P(a)和P(b|a)的乘积相加。<br>$$P(e)=\sum_{a,b,c,d}P(a)P(b\mid a)P(c\mid b)P(d\mid c)P(e\mid d)$$   $$=\sum_{b,c,d}P(c\mid b)P(d\mid c)P(e\mid d)\sum_a P(a)P(b\mid a)$$    $$=\sum_{b,c,d}P(c\mid b)P(d\mid c)P(e\mid d)P(b)$$<br>下面按照b,c,d的顺序进行求和，最后可以得到$P(e)=\sum_d P(e\mid d)P(d)$。使用该方法可以一次减少一个变量。每次只需要执行$O(n^2)$操作，最终复杂度为$O(kn^2)$。</p>
-<h3 id="在HMM上进行变量消除"><a href="#在HMM上进行变量消除" class="headerlink" title="在HMM上进行变量消除"></a>在HMM上进行变量消除</h3><p>参考[4]中笔记对于该例的介绍，主要是利用当前变量相关变量和非相关的变量进行变量消除，每步消除一个变量，最终复杂度为$O(Tn^2)$，其中T表示变量的个数。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B.png" alt=""></p>
-<h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>考虑如下的无向图概率图链模型，总共有五个变量A,B,C，D，E，计算联合概率密度P(e)。<br>$$ P(e)=\sum_{a,b,c,d}\frac{1}{Z}\phi(a,b)\phi(b,c)\phi(c,d)\phi(d,e)$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt=""><br>具体计算方法同有向图相似，超级长的公式，不想打，下面用截图来表示。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%97%A0%E5%90%91%E5%9B%BE%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B.png" alt=""><br>最后通过正则化可以获得最终的概率：<br>$$P(e)=\frac{m_d(e)}{\sum_e m_d(e)}$$</p>
+<h3 id="在HMM上进行变量消除"><a href="#在HMM上进行变量消除" class="headerlink" title="在HMM上进行变量消除"></a>在HMM上进行变量消除</h3><p>参考[4]中笔记对于该例的介绍，主要是利用当前变量相关变量和非相关的变量进行变量消除，每步消除一个变量，最终复杂度为$O(Tn^2)$，其中T表示变量的个数。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B.png" alt></p>
+<h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>考虑如下的无向图概率图链模型，总共有五个变量A,B,C，D，E，计算联合概率密度P(e)。<br>$$ P(e)=\sum_{a,b,c,d}\frac{1}{Z}\phi(a,b)\phi(b,c)\phi(c,d)\phi(d,e)$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt><br>具体计算方法同有向图相似，超级长的公式，不想打，下面用截图来表示。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%97%A0%E5%90%91%E5%9B%BE%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B.png" alt><br>最后通过正则化可以获得最终的概率：<br>$$P(e)=\frac{m_d(e)}{\sum_e m_d(e)}$$</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>[3] 周志华. 机器学习[M]. 清华大学出版社, 2016.<br>[4] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第4讲视频以及笔记，参考[2]中第9章，参考[3]中第14章，参考[4]中第3章。</p>
 
       
@@ -439,7 +439,7 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付"/>
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt="HJY 微信支付">
         <p>微信支付</p>
       </div>
     
@@ -551,9 +551,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="HJY" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="HJY">
             
               <p class="site-author-name" itemprop="name">HJY</p>
               <p class="site-description motion-element" itemprop="description">HJY的装逼小站</p>
@@ -566,7 +564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
