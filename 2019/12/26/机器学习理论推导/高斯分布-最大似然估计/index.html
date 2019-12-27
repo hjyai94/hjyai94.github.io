@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="最大似然估计数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;amp;{x_{2}}&amp;amp;{\cdots}&amp;amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;amp;{x_{12}}&amp;amp;{\cdots}&amp;amp;{x_{1p}}\\{x_{21}}&amp;amp;{x_{22}}&amp;amp;{\cdots}&amp;amp;{x_{">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-27T03:04:26.455Z">
+<meta property="og:updated_time" content="2019-12-27T03:06:45.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高斯分布-最大似然估计">
 <meta name="twitter:description" content="最大似然估计数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;amp;{x_{2}}&amp;amp;{\cdots}&amp;amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;amp;{x_{12}}&amp;amp;{\cdots}&amp;amp;{x_{1p}}\\{x_{21}}&amp;amp;{x_{22}}&amp;amp;{\cdots}&amp;amp;{x_{">
@@ -401,7 +401,7 @@
 <p>\begin{aligned}<br>\log P(X | \theta) &amp;=\log \prod_{i=1}^{N} p\left(x_{i} | \theta\right)=\sum_{i=1}^{N} \log p\left(x_{i} | \theta\right) \\<br>&amp;=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2 x} \sigma} \exp \left(-\frac{\left(x_{i} - \mu\right)^{2}}{2 \sigma^{2}}\right) \\<br>&amp;=\sum_{i=1}^{N}\left[\log \frac{1}{\sqrt{2\pi}}+{\log \frac{1}{\sigma}} -\frac{\left(x_{i}-\mu\right)^{2}}{2 \sigma^{2}}\right] \\<br>\end{aligned}</p>
 <p>\begin{aligned}<br>\mu_{MLE} &amp;=\arg\max_{\mu} \log P(X|\theta) \\<br>&amp;= \arg\max_{\mu} \sum_{i=1}^{N} - \frac{(x_{i}-\mu)^{2}}{2 \sigma^{2}} \\<br>&amp;= \arg\max_{\mu} \sum_{i=1}^{N}(x_{i}-\mu)^{2} \\<br>\end{aligned}</p>
 <p>对$\mu$求导，并令其为$0$，<br>$$\frac{\partial}{\partial \mu} \Sigma\left(x_{i}-\mu\right)^{2}=\sum_{i=1}^{N} 2 \cdot\left(x_{i}-\mu\right) \cdot(-1)=0$$<br>$$\sum_{i=1}^{N}\left(x_{i}-\mu\right)=0$$<br>$$\mu_{MLE} = \frac{1}{N}\sum_i^N x_i$$</p>
-<p>下面证明最大似然估计的均值无偏：<br>$$E[\mu_{MLE}] = E[\frac{1}{N}\sum_i^N x^i]=\mu$$</p>
+<p>下面证明最大似然估计的均值无偏：<br>$$E[\mu_{MLE}] = E[\frac{1}{N}\sum_i^N x_i]=\mu$$</p>
 <p>\begin{aligned}<br>\sigma^2_{MLE} &amp;= \arg\max_{\sigma} \log P(X|\theta) \\<br>&amp;=\arg\max_{\sigma} \sum_{i=1}^{N} \left(-\log \sigma -\frac{1}{2\sigma^2} \left(x_{i} - \mu\right)^{2}\right)\\<br>&amp;= \arg\max_{\sigma} \mathcal{L}(\sigma) \\<br>\end{aligned}</p>
 <p>对上式$\sigma$求导并令其为$0$，</p>
 <p>$$\frac{\partial \mathcal{L}} {\partial \sigma} = \sum_{i=1}^{N}\left[-\frac{1}{\sigma}+\frac{1}{2}\left(x_{i}-\mu\right)^{2} \cdot(+2) \sigma^{-3}\right]^{2} =0 $$</p>
