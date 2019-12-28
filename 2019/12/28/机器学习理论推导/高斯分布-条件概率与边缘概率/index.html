@@ -101,10 +101,12 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="多元高斯分布：$$x \sim N(\mu, \Sigma) = \frac{1}{ { (2 \pi)^{\frac{p}{2}} | {\Sigma}|^{\frac{1}{2}}}} \exp \left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^{\mathrm{T}} \mathbf{\Sigma}^{-1}(\mathbf{x}-\boldsy">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-28T06:02:34.446Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E4%B8%8E%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87.png">
+<meta property="og:updated_time" content="2019-12-28T06:48:30.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高斯分布-条件概率及边缘概率">
 <meta name="twitter:description" content="多元高斯分布：$$x \sim N(\mu, \Sigma) = \frac{1}{ { (2 \pi)^{\frac{p}{2}} | {\Sigma}|^{\frac{1}{2}}}} \exp \left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^{\mathrm{T}} \mathbf{\Sigma}^{-1}(\mathbf{x}-\boldsy">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E4%B8%8E%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87.png">
 
 
 
@@ -408,6 +410,10 @@
 <p>$$<br>x_{b \cdot a}=\left(\begin{array}{ll}<br>{-\Sigma_{b a} \Sigma_{a a}^{-1}} &amp; {I_{n}}\end{array}\right)\left(\begin{array}{l}<br>{x_{a}} \\<br>{x_{b}}<br>\end{array}\right)<br>$$</p>
 <p>$$<br>E\left[x_{b \cdot a}\right]=\left(\begin{array}{ll}<br>{-\Sigma_{b a} \Sigma_{a a}^{-1}} &amp; {I_{n}}\end{array}\right) \cdot\left(\begin{array}{l}<br>{\mu_{a}} \\<br>{\mu_{b}}<br>\end{array}\right)=\mu_{b}-\Sigma_{b a} \Sigma_{a a}^{-1} \mu_{a}=\mu_{b\cdot a}<br>$$</p>
 <p>$$<br>\begin{aligned}<br>\operatorname{Var}\left[x_{b\cdot a}\right]=\left(\begin{array}{ll}<br>{-\Sigma_{b a} \Sigma_{a a}^{-1}} &amp; {I_{n}}\end{array}\right)\left(\begin{array}{c}<br>{\Sigma_{a a}\  \Sigma_{a b}} \\<br>{\Sigma_{b a}\ \Sigma_{b b}}<br>\end{array}\right)\left(\begin{array}{cc}<br>{-\Sigma_{a a}^{-1} \Sigma_{b a}^T } \\ {I_{n}} \end{array}\right)=\Sigma_{b b}-\Sigma_{b a} \Sigma_{a a}^{-1} \Sigma_{a b}=\Sigma_{b b \cdot a}<br>\end{aligned}<br>$$</p>
+<p>$$x_{b\cdot a} \sim N\left(\mu_{b \cdot a}, \Sigma_{bb\cdot a} \right)\\$$<br>$$x_{b}=x_{b \cdot a} + \Sigma_{b a} \Sigma_{a a}^{-1} x_{a}$$</p>
+<p>$$<br>\begin{aligned}<br>&amp;E\left[x_{b} | x_{a}\right]=\mu_{b \cdot a} + \Sigma_{b a} \Sigma_{a a}^{-1} x_{a}\\<br>&amp;\operatorname{Var}\left[x_{b} | x_{a}\right]=\operatorname{Var}\left[x_{b\cdot a} \right]=\Sigma_{b b \cdot a}<br>\end{aligned}<br>$$</p>
+<p>$$ x_b | x_a \sim N \left(\mu_{b \cdot a} + \Sigma_{b a} \Sigma_{a a}^{-1} x_{a}, \Sigma_{b b \cdot a} \right) $$</p>
+<p>补充：$x_{b\cdot a}$与$x_a$独立：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E4%B8%8E%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87.png" alt></p>
 
       
     </div>
