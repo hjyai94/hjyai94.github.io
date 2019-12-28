@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x\\&amp;amp;\begin{array}{l}{y=w^{\top} x+\varepsilon} \\{y | x; w \sim N\left(w^{\top} x, \">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-28T14:14:44.933Z">
+<meta property="og:updated_time" content="2019-12-28T14:17:22.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归-最小二乘法-概率视角">
 <meta name="twitter:description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x\\&amp;amp;\begin{array}{l}{y=w^{\top} x+\varepsilon} \\{y | x; w \sim N\left(w^{\top} x, \">
@@ -398,7 +398,7 @@
 <p>$$\mathbb{L}(w)=\log P\left (Y|X ; w \right)=\log \prod_{i=1}^{N} p\left(y_{i} | x_{i} ; w\right)=\sum_{i=1}^{N} \log P\left(y_{i} | x_{i}\right)$$</p>
 <p>\begin{aligned}<br>&amp;=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2\pi}\sigma}+\log \operatorname{exp}\left\lbrace-\frac{\left(y_{i}-w^{\top} x_{i}\right)^{2}}{2\sigma^{2}}\right\rbrace \\<br>&amp;=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2 \pi} \sigma}-\frac{1}{2\sigma^{2}}\left(y_{i}-w^{\top} x_{i}\right)^{2}<br>\end{aligned}</p>
 <p>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} \mathbb{L}(w) \\<br>&amp;=\arg\max _{w} -\frac{1}{2 \sigma^2} \left(y_i-w^{\top} x_{i}\right)^2 \\<br>&amp;=\arg \min _{w}\left(y_i - w^{\top} x_{i}\right)^2 \Leftrightarrow \text{最小二乘估计}<br>\end{aligned} </p>
-<p>最小二乘法等价于带有均值为$0$，方差为$\sigma^2$的最大似然估计。</p>
+<p>带有均值为$0$，方差为$\sigma^2$的高斯噪声的最大似然估计等价于最小二乘法。</p>
 
       
     </div>
