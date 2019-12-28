@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x, y),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots, N\">
+<meta name="description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归-最小二乘法">
 <meta property="og:url" content="http://yoursite.com/2019/12/28/机器学习理论推导/线性回归-最小二乘法/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x, y),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots, N\">
+<meta property="og:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-28T13:27:03.848Z">
+<meta property="og:updated_time" content="2019-12-28T13:31:12.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归-最小二乘法">
-<meta name="twitter:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x, y),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots, N\">
+<meta name="twitter:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
 
 
 
@@ -394,7 +394,7 @@
       
 
       
-        <p>$$\begin{aligned}<br>&amp;D=\left\lbrace(x, y),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots, N<br>\end{aligned}$$</p>
+        <p>$$\begin{aligned}<br>&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots, N<br>\end{aligned}$$</p>
 <p>$$<br>X = \begin{pmatrix}<br>{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}<br>\end{pmatrix}^T<br>= \begin{pmatrix}<br>{x_{11}}&amp;{x_{12}}&amp;{\cdots}&amp;{x_{1p}}\\<br>{x_{21}}&amp;{x_{22}}&amp;{\cdots}&amp;{x_{2p}}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{x_{N1}}&amp;{x_{N2}}&amp;{\cdots}&amp;{x_{Np}}\\<br>\end{pmatrix}$$</p>
 <p>$$<br>Y=\left(\begin{array}{c}<br>{y_{1}} \\<br>{y_{2}} \\<br>{\vdots} \\<br>{y_{N}}<br>\end{array}\right)_{N \times 1}<br>$$</p>
 <p>最小二乘估计：<br>$$<br>\begin{aligned}<br>L(w) &amp;=\left(\sum_{i=1}^{N}\left|\left|w^{\top} x_{i}-y_{i}\right|\right|^{2}\right) \\<br>&amp;=\sum_{i=1}^{N}\left(w^{\top} x_{i}-y_{i}\right)^{2} \\<br>&amp;=\left( w^{\top} x_{1}-y_{1} \quad w^{\top} x_{2}-y_{2} \quad \cdots \quad w^{\top} x_{N}-y_{N} \right) \left(\begin{array}{c}<br>{w^{\top} x_{1}-y_{1}} \\<br>{w^{\top} x_{2}-y_{2}} \\<br>{\vdots} \\<br>{w^{\top} x_{N}-y_{N}}<br>\end{array}\right) \\<br>&amp;= \left(w^{\top} X^{\top} - Y^{\top} \right) \left(Xw - Y \right) \\<br>&amp;= w^{T} {X}^{\top} X w-2 w^{\top} X^{\top} Y+Y^{\top} Y<br>\end{aligned}<br>$$</p>
@@ -462,6 +462,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/28/机器学习理论推导/线性回归-最小二乘法-概率视角/" rel="prev" title="线性回归-最小二乘法-概率视角">
+                线性回归-最小二乘法-概率视角 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -531,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
