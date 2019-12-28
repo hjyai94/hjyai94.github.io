@@ -101,12 +101,10 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$求：$p(y)$，$p(x|y)$$$\begin{aligned}&amp;amp;y=A x+b+\varepsilon\\&amp;amp;\varepsilon \sim N\left(0, L^{-1}\right)\en">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://hjyai94.cn/2019/12/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E4%B8%8E%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87/">
-<meta property="og:updated_time" content="2019-12-28T11:50:58.563Z">
+<meta property="og:updated_time" content="2019-12-28T12:07:30.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高斯分布-联合概率">
 <meta name="twitter:description" content="已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$求：$p(y)$，$p(x|y)$$$\begin{aligned}&amp;amp;y=A x+b+\varepsilon\\&amp;amp;\varepsilon \sim N\left(0, L^{-1}\right)\en">
-<meta name="twitter:image" content="http://hjyai94.cn/2019/12/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E4%B8%8E%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87/">
 
 
 
@@ -400,7 +398,7 @@
 <p>$$<br>\begin{aligned}<br>E[y] &amp;=E[A x+b+\varepsilon]=E[A x+b]+E[\varepsilon] \\<br>&amp;=A \mu+b<br>\end{aligned}<br>$$</p>
 <p>$$\operatorname{Var}[y]=\operatorname{Var}[A x+b+\varepsilon]=<br>\operatorname{Var}[A x+b]+\operatorname{Var} [\varepsilon]<br>=A \Lambda^{-1} A^{\top}+L^{-1} $$</p>
 <p>$$y \sim N\left(A \mu+b, L^{-1}+A \Lambda^{-1} A^{\top}\right)$$</p>
-<p>$$<br>z=\left(\begin{array}{c}<br>{x} \\<br>{y}<br>\end{array}\right) \sim N\left(\left[\begin{array}{c}<br>{\mu} \\<br>{A \mu+b}<br>\end{array}\right],\left[\begin{array}{cc}<br>{\lambda^{-1}} &amp; {\Delta} \\<br>{\Delta^T} &amp; {L^{-1}+A \Lambda^{-1} A^{T}}<br>\end{array}\right]\right)<br>$$<br>直接套用 <img src="http://hjyai94.cn/2019/12/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83-%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87%E4%B8%8E%E8%BE%B9%E7%BC%98%E6%A6%82%E7%8E%87/" alt="上一篇博客条件概率公式">，可以直接使用得出$p(x|y)$。<br>下面求$\Delta$的值：</p>
+<p>$$<br>z=\left(\begin{array}{c}<br>{x} \\<br>{y}<br>\end{array}\right) \sim N\left(\left[\begin{array}{c}<br>{\mu} \\<br>{A \mu+b}<br>\end{array}\right],\left[\begin{array}{cc}<br>{\lambda^{-1}} &amp; {\Delta} \\<br>{\Delta^T} &amp; {L^{-1}+A \Lambda^{-1} A^{T}}<br>\end{array}\right]\right)<br>$$<br>直接套用上一篇博客条件概率公式，变可以得出$p(x|y)$。<br>下面求$\Delta$的值：<br>$$<br>\begin{aligned}<br>\Delta &amp;=\operatorname{Cov}(x, y) \\<br>&amp;=E[(x-E[x]) \cdot(y-E[y])^{T}] \\<br>&amp;=E[(x-\mu)(y-A \mu-b)^{T}] \\<br>&amp;=E\left[(x-\mu)({A x-A \mu}+\varepsilon)^{T}\right] \\<br>&amp;=E\left[(x-\mu)({A x-A \mu}+\varepsilon)^{T}\right] \\<br>&amp;=E\left[(x-\mu)(A x-A\mu)^{T}\right]+E\left[(x-\mu) \varepsilon^{T}\right] \\<br>&amp;=E\left[(x-\mu)(A x-A\mu)^{T}\right]+E\left[(x-\mu) \varepsilon^{T}\right] \\<br>&amp;=E\left[(x-\mu)(A x-A \mu)^{T}\right]\\<br>&amp;=E\left[(x-\mu)(x-\mu)^{T} \cdot A^{T}\right]\\<br>&amp;\begin{array}{l}<br>{=E\left[(x-\mu)(x-\mu)^{T}\right] \cdot A^{T}} \\<br>{=\operatorname{Var}[x] \cdot A^{T}}<br>\end{array}\\<br>&amp;=\Lambda^{-1} A^{T}<br>\end{aligned}<br>$$</p>
 
       
     </div>
