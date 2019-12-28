@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="多元高斯分布：$$x \sim N(\mu, \Sigma) = \frac{1}{ { (2 \pi)^{\frac{p}{2}} | {\Sigma}|^{\frac{1}{2}}}} \exp \left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^{\mathrm{T}} \mathbf{\Sigma}^{-1}(\mathbf{x}-\boldsy">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-28T05:13:32.326Z">
+<meta property="og:updated_time" content="2019-12-28T06:02:34.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高斯分布-条件概率及边缘概率">
 <meta name="twitter:description" content="多元高斯分布：$$x \sim N(\mu, \Sigma) = \frac{1}{ { (2 \pi)^{\frac{p}{2}} | {\Sigma}|^{\frac{1}{2}}}} \exp \left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^{\mathrm{T}} \mathbf{\Sigma}^{-1}(\mathbf{x}-\boldsy">
@@ -403,6 +403,11 @@
 <p>$$<br>\begin{aligned}<br>&amp;x_{a}= \left(\begin{array}{ll}<br>{I_{m}} &amp; {0_{n}}<br>\end{array}\right)\left(\begin{array}{l}<br>{x_{a}} \\<br>{x_{b}}<br>\end{array}\right)<br>\end{aligned}<br>$$</p>
 <p>$$<br>E\left[x_{a}\right]=\left(\begin{array}{ll}<br>{I_{m}} &amp; {0_{n}}<br>\end{array}\right)\left(\begin{array}{l}<br>{\mu_{a}} \\<br>{\mu_{b}}<br>\end{array}\right)=\mu_{a}<br>$$</p>
 <p>\begin{aligned}<br>Var\left[x_{a}\right] &amp;=\left(\begin{array}{ll}<br>{I_m } &amp; {0}<br>\end{array}\right)\left(\begin{array}{l}<br>{\Sigma_{a a}\ \Sigma_{a b}} \\<br>{\Sigma_{b a}\ \Sigma_{b b}}<br>\end{array}\right)\left(\begin{array}{l}<br>{I_m } \\<br>{0}<br>\end{array}\right) \\<br>&amp;=\Sigma_{a a}<br>\end{aligned}</p>
+<p>$$<br>x_{a} \sim N\left(\mu_{a}, \Sigma_{a a} \right)<br>$$</p>
+<p>下面求$x_b|x_a$<br>令\begin{cases} x_{b \cdot a}=x_{b}-\Sigma_{b a} \Sigma_{a a}^{-1} x_{a} \\ \mu_{b \cdot a}=\mu_{b}-\Sigma_{b a} \Sigma_{a a}^{-1} \mu_{a}\\ \Sigma_{b b \cdot a}=\Sigma_{b b}-\Sigma_{b a} \Sigma_{a a}^{-1} \Sigma_{a b} \end{cases}</p>
+<p>$$<br>x_{b \cdot a}=\left(\begin{array}{ll}<br>{-\Sigma_{b a} \Sigma_{a a}^{-1}} &amp; {I_{n}}\end{array}\right)\left(\begin{array}{l}<br>{x_{a}} \\<br>{x_{b}}<br>\end{array}\right)<br>$$</p>
+<p>$$<br>E\left[x_{b \cdot a}\right]=\left(\begin{array}{ll}<br>{-\Sigma_{b a} \Sigma_{a a}^{-1}} &amp; {I_{n}}\end{array}\right) \cdot\left(\begin{array}{l}<br>{\mu_{a}} \\<br>{\mu_{b}}<br>\end{array}\right)=\mu_{b}-\Sigma_{b a} \Sigma_{a a}^{-1} \mu_{a}=\mu_{b\cdot a}<br>$$</p>
+<p>$$<br>\begin{aligned}<br>\operatorname{Var}\left[x_{b\cdot a}\right]=\left(\begin{array}{ll}<br>{-\Sigma_{b a} \Sigma_{a a}^{-1}} &amp; {I_{n}}\end{array}\right)\left(\begin{array}{c}<br>{\Sigma_{a a}\  \Sigma_{a b}} \\<br>{\Sigma_{b a}\ \Sigma_{b b}}<br>\end{array}\right)\left(\begin{array}{cc}<br>{-\Sigma_{a a}^{-1} \Sigma_{b a}^T } \\ {I_{n}} \end{array}\right)=\Sigma_{b b}-\Sigma_{b a} \Sigma_{a a}^{-1} \Sigma_{a b}=\Sigma_{b b \cdot a}<br>\end{aligned}<br>$$</p>
 
       
     </div>
