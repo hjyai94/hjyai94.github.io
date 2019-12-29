@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-28T15:47:42.068Z">
+<meta property="og:updated_time" content="2019-12-29T06:24:51.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归-岭回归">
 <meta name="twitter:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
@@ -375,10 +375,13 @@
         <p>$$\begin{aligned}<br>&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots, N<br>\end{aligned}$$</p>
 <p>$$<br>X = \begin{pmatrix}<br>{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}<br>\end{pmatrix}^T<br>= \begin{pmatrix}<br>{x_{11}}&amp;{x_{12}}&amp;{\cdots}&amp;{x_{1p}}\\<br>{x_{21}}&amp;{x_{22}}&amp;{\cdots}&amp;{x_{2p}}\\<br>{\vdots}&amp;{\vdots}&amp;{\ddots}&amp;{\vdots}\\<br>{x_{N1}}&amp;{x_{N2}}&amp;{\cdots}&amp;{x_{Np}}\\<br>\end{pmatrix}$$</p>
 <p>$$<br>Y=\left(\begin{array}{c}<br>{y_{1}} \\<br>{y_{2}} \\<br>{\vdots} \\<br>{y_{N}}<br>\end{array}\right)_{N \times 1}<br>$$</p>
-<p>岭回归：</p>
-<h1 id="频率角度"><a href="#频率角度" class="headerlink" title="频率角度"></a>频率角度</h1><p>$$<br>\begin{aligned} J(w) &amp;=\sum_{i=1}^{N}\left|\left| w^{\top} x_{i}-y_{i}\right|\right|^{2}+\lambda w^{\top} w \\<br>&amp;=\left(w^{\top} X^{\top}-Y^{\top}\right)(X w-Y)+\lambda w^{\top} w \\<br>&amp;={w^{\top} \left(X^{\top} X  +\lambda I \right)w} -2 w^{\top} X^{\top} Y+Y^{\top} Y<br>\end{aligned}<br>$$     </p>
+<h1 id="岭回归"><a href="#岭回归" class="headerlink" title="岭回归"></a>岭回归</h1><h3 id="频率角度"><a href="#频率角度" class="headerlink" title="频率角度"></a>频率角度</h3><p>$$<br>\begin{aligned} J(w) &amp;=\sum_{i=1}^{N}\left|\left| w^{\top} x_{i}-y_{i}\right|\right|^{2}+\lambda w^{\top} w \\<br>&amp;=\left(w^{\top} X^{\top}-Y^{\top}\right)(X w-Y)+\lambda w^{\top} w \\<br>&amp;={w^{\top} \left(X^{\top} X  +\lambda I \right)w} -2 w^{\top} X^{\top} Y+Y^{\top} Y<br>\end{aligned}<br>$$     </p>
 <p>$$\hat{w}= \arg \min_w  J(w)$$<br>\begin{aligned}<br>\frac{\partial J(w)}{\partial w}=2\left(X^{\top} X+\lambda I\right) w &amp;-2 X^{\top} Y=0 \\<br>\hat{w}=\left(X^{\top} X+\lambda I\right)^{-1} X^{\top} Y<br>\end{aligned}</p>
-<h1 id="贝叶斯角度"><a href="#贝叶斯角度" class="headerlink" title="贝叶斯角度"></a>贝叶斯角度</h1>
+<h3 id="贝叶斯角度"><a href="#贝叶斯角度" class="headerlink" title="贝叶斯角度"></a>贝叶斯角度</h3><p>$$f(w)=w^{\top} x_i$$   $$y=f(w)+\varepsilon=w^{\top} x_i+\varepsilon$$   $$\varepsilon \sim N\left(0, \sigma^{2}\right)$$   $$y_i | x_i;w = N\left(w^{\top} x_i, \sigma^2 \right)$$</p>
+<p>$$p(y_i | w)=\frac{1}{\sqrt{2\pi} \sigma} \exp \left\lbrace-\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2\sigma^{2}}\right\rbrace$$   $$p(w)=\frac{1}{\sqrt{2 \pi} \sigma_{0}^{2}} \exp \lbrace-\frac{|| w ||^{2}}{2 \sigma_{0}^{2}}\rbrace$$  $$p(y_i | w) \cdot p(w)=\frac{1}{\sqrt{2\pi}\sigma} \cdot \frac{1}{\sqrt{2\pi} \sigma_0} \cdot \exp \left\lbrace-\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}}\right\rbrace$$</p>
+<p>最大后验概率估计MAP：<br>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} p(w | Y)  \\<br>&amp;=\arg\max_{w}\prod_{i=1}^N p(y_i | w) \cdot p(w) \\<br>&amp;=\arg \max_w \sum_{i=1}^N \log [p(y_i | w) \cdot p(w)] \\<br>&amp;= \arg \max_w \sum_{i=1}^N -\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}} \\<br>&amp;= \arg \min_w\sum_{i=1}^N {\left(y_i-w^{\top} x\right)^{2}}+\frac{\sigma^2 }{ \sigma_{0}^{2}} ||w||^{2}<br>\end{aligned}</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最小二乘估计等价于噪声为高斯分布的最大似然估计，二范数为正则项的最小二乘估计等价为先验为高斯分布的最大后验估计。</p>
+
       
     </div>
     
@@ -584,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#频率角度"><span class="nav-number">1.</span> <span class="nav-text">频率角度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贝叶斯角度"><span class="nav-number">2.</span> <span class="nav-text">贝叶斯角度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#岭回归"><span class="nav-number">1.</span> <span class="nav-text">岭回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#频率角度"><span class="nav-number">1.0.1.</span> <span class="nav-text">频率角度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯角度"><span class="nav-number">1.0.2.</span> <span class="nav-text">贝叶斯角度</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></div>
             
 
           </div>
