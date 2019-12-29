@@ -398,7 +398,8 @@
       
         
           
-          VGGNet模型结构VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研究员共同研究出的深度卷积神经网络。VGGNet使用的比较小的卷积核(3x3)以及2x2的最大池化层，通过增加层数增强非线性性能，同时相较于7x7的卷积核而言，减少了参数
+           VGGNet模型结构
+VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研究员共同研究出的深度卷积神经网络。VGGNet使用的比较小的卷积核(3x3)以及2x2的最大池化层，通过增加层数增强非线性性能，同时相较于7x7的卷积核而言，减少了
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -548,8 +549,11 @@
       
         
           
-          Point estimator当我们已经获得模型时，我们希望能够估计出模型的参数，这是可以使用点估计的方法。共轭先验：在给定似然函数的情况下，先验分布与后验分布时同种分布。
-MC方法为了进行估计复杂后验分布，通过采样的方法对后验概率进行估计。
+           Point estimator
+当我们已经获得模型时，我们希望能够估计出模型的参数，这是可以使用点估计的方法。
+共轭先验：在给定似然函数的情况下，先验分布与后验分布时同种分布。
+ MC方法
+为了进行估计复杂后验分布，通过采样的方法对后验概率进行估计。
 
           
           <!--noindex-->
@@ -700,7 +704,7 @@ MC方法为了进行估计复杂后验分布，通过采样的方法对后验概
       
         
           
-          # 
+           
 
           
           <!--noindex-->
@@ -852,7 +856,8 @@ MC方法为了进行估计复杂后验分布，通过采样的方法对后验概
         
           
           
-filteringForming a new image whose pixel values are transformed from original pixel values.
+filtering
+Forming a new image whose pixel values are transformed from original pixel values.
 
 
           
@@ -1004,8 +1009,9 @@ filteringForming a new image whose pixel values are transformed from original pi
       
         
           
-          执行sudo apt-get update 出错出现错误如下：E: Some index files failed to download, they have been ignored, or old ones used instead&#39;
-出现无法更新的情况，可以在/etc/apt/sou
+           执行sudo apt-get update 出错
+出现错误如下：
+E: Some index files failed to download, they have been ignored, or old ones used instead' 出现无法更新的情况，可以在/etc/apt/sour
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1155,8 +1161,10 @@ filteringForming a new image whose pixel values are transformed from original pi
       
         
           
-          简介不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。
-高斯图模型高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：$$ 
+           简介
+不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。
+ 高斯图模型
+高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1306,8 +1314,12 @@ filteringForming a new image whose pixel values are transformed from original pi
       
         
           
-          隐马尔可夫模型隐马尔可夫模型如下图所示：
-公式表达对于隐马尔可夫模型，通常有三组参数：$$ trasition\ probability\ matrix\ A: p(y_t^j = 1\mid y_{t-1}^i=1)=a_{i,j} $$   $$ initial\ probability: p(
+           隐马尔可夫模型
+隐马尔可夫模型如下图所示：
+
+ 公式表达
+对于隐马尔可夫模型，通常有三组参数：
+trasition\ probability\ matrix\ A: p(y_t^j = 1\mid y_{t-1}^i=1)=a_{i,j} $$   $$ initial\ probability:
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1457,7 +1469,10 @@ filteringForming a new image whose pixel values are transformed from original pi
       
         
           
-          混合高斯模型$$ p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) $$其中$\pi_k$是混合参数，$N(x\mid \mu_k, \Sigma_k)$是其对应的高斯分布。对于完全可观的独立同分布，对数似然可以分解为和的形式。$
+           混合高斯模型
+p(xn∣,Σ)=ΣkπkN(x∣μ,Σk)p(x_n\mid , \Sigma) = \Sigma_k \pi_k N(x\mid \mu, \Sigma_k) 
+p(xn​∣,Σ)=Σk​πk​N(x∣μ,Σk​)
+其中πk\pi_kπk​是混合参数，N(x∣μk,Σk)N(x\
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1735,7 +1750,10 @@ filteringForming a new image whose pixel values are transformed from original pi
       
         
           
-          最大似然结构学习连续型马尔科夫随机场给定高斯图模型，我们可以用一个伊辛模型来呈现。$$p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}|\Sigma|^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-
+           最大似然结构学习
+ 连续型马尔科夫随机场
+给定高斯图模型，我们可以用一个伊辛模型来呈现。
+p(x∣μ,Σ)=1(2π)k/2∣Σ∣12exp{−12(x−μ)TΣ−1(x−μ)}p(x\mid \mu,\Sigma)=\frac{1}{(2\pi)^{k/2}|\Sigma|^{\frac{1}{
           ...
           <!--noindex-->
           <div class="post-button text-center">
