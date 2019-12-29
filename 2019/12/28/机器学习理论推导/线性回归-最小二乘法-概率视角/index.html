@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x_i\\&amp;amp;\begin{array}{l}{y=w^{\top} x+\varepsilon} \\{y_i | x_i; w \sim N\left(w^{\top">
+<meta name="description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x_i\\&amp;amp;\begin{array}{l}{y_i=w^{\top} x_i+\varepsilon} \\{y_i | x_i; w \sim N\left(w^{">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归-最小二乘法-概率视角">
 <meta property="og:url" content="http://yoursite.com/2019/12/28/机器学习理论推导/线性回归-最小二乘法-概率视角/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x_i\\&amp;amp;\begin{array}{l}{y=w^{\top} x+\varepsilon} \\{y_i | x_i; w \sim N\left(w^{\top">
+<meta property="og:description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x_i\\&amp;amp;\begin{array}{l}{y_i=w^{\top} x_i+\varepsilon} \\{y_i | x_i; w \sim N\left(w^{">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-29T06:35:43.356Z">
+<meta property="og:updated_time" content="2019-12-29T06:43:09.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归-最小二乘法-概率视角">
-<meta name="twitter:description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x_i\\&amp;amp;\begin{array}{l}{y=w^{\top} x+\varepsilon} \\{y_i | x_i; w \sim N\left(w^{\top">
+<meta name="twitter:description" content="$$\begin{aligned}&amp;amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;amp;y=f(w)+\varepsilon\\&amp;amp;f(w)=w^{\top} x_i\\&amp;amp;\begin{array}{l}{y_i=w^{\top} x_i+\varepsilon} \\{y_i | x_i; w \sim N\left(w^{">
 
 
 
@@ -394,10 +394,10 @@
       
 
       
-        <p>$$<br>\begin{aligned}<br>&amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\<br>&amp;y=f(w)+\varepsilon\\<br>&amp;f(w)=w^{\top} x_i\\<br>&amp;\begin{array}{l}<br>{y=w^{\top} x+\varepsilon} \\<br>{y_i | x_i; w \sim N\left(w^{\top} x_i, \sigma^{2}\right)}<br>\end{array}<br>\end{aligned}<br>$$</p>
-<p>$$\mathbb{L}(w)=\log P\left (Y|X ; w \right)=\log \prod_{i=1}^{N} p\left(y_{i} | x_{i} ; w\right)=\sum_{i=1}^{N} \log P\left(y_{i} | x_{i}\right)$$</p>
+        <p>$$<br>\begin{aligned}<br>&amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\<br>&amp;y=f(w)+\varepsilon\\<br>&amp;f(w)=w^{\top} x_i\\<br>&amp;\begin{array}{l}<br>{y_i=w^{\top} x_i+\varepsilon} \\<br>{y_i | x_i; w \sim N\left(w^{\top} x_i, \sigma^{2}\right)}<br>\end{array}<br>\end{aligned}<br>$$</p>
+<p>$$\mathbb{L}(w)=\log P\left (Y|X ; w \right)=\log \prod_{i=1}^{N} p\left(y_{i} | x_{i} ; w\right)=\sum_{i=1}^{N} \log p\left(y_{i} | x_{i}\right)$$</p>
 <p>\begin{aligned}<br>&amp;=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2\pi}\sigma}+\log \operatorname{exp}\left\lbrace-\frac{\left(y_{i}-w^{\top} x_{i}\right)^{2}}{2\sigma^{2}}\right\rbrace \\<br>&amp;=\sum_{i=1}^{N} \log \frac{1}{\sqrt{2 \pi} \sigma}-\frac{1}{2\sigma^{2}}\left(y_{i}-w^{\top} x_{i}\right)^{2}<br>\end{aligned}</p>
-<p>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} \mathbb{L}(w) \\<br>&amp;=\arg\max <em>{w}\sum</em>{i=1}^{N} -\frac{1}{2 \sigma^2} \left(y_i-w^{\top} x_{i}\right)^2 \\<br>&amp;=\arg \min <em>{w}\sum</em>{i=1}^{N} \left(y_i - w^{\top} x_{i}\right)^2 \Leftrightarrow \text{最小二乘估计}<br>\end{aligned} </p>
+<p>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} \mathbb{L}(w) \\<br>&amp;=\arg\max_{w}\sum_{i=1}^{N}-\frac{1}{2\sigma^2} \left(y_i-w^{\top} x_{i}\right)^2 \\<br>&amp;=\arg\min_{w}\sum_{i=1}^{N}\left(y_i-w^{\top} x_{i}\right)^2<br>\end{aligned} </p>
 <p>带有均值为$0$，方差为$\sigma^2$的高斯噪声的最大似然估计等价于最小二乘法。</p>
 
       
