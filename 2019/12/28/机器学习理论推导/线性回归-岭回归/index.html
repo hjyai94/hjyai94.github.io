@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-29T06:24:51.432Z">
+<meta property="og:updated_time" content="2019-12-29T06:28:09.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归-岭回归">
 <meta name="twitter:description" content="$$\begin{aligned}&amp;amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \mathbb{R}, \quad i=1,2, \cdots">
@@ -379,7 +379,7 @@
 <p>$$\hat{w}= \arg \min_w  J(w)$$<br>\begin{aligned}<br>\frac{\partial J(w)}{\partial w}=2\left(X^{\top} X+\lambda I\right) w &amp;-2 X^{\top} Y=0 \\<br>\hat{w}=\left(X^{\top} X+\lambda I\right)^{-1} X^{\top} Y<br>\end{aligned}</p>
 <h3 id="贝叶斯角度"><a href="#贝叶斯角度" class="headerlink" title="贝叶斯角度"></a>贝叶斯角度</h3><p>$$f(w)=w^{\top} x_i$$   $$y=f(w)+\varepsilon=w^{\top} x_i+\varepsilon$$   $$\varepsilon \sim N\left(0, \sigma^{2}\right)$$   $$y_i | x_i;w = N\left(w^{\top} x_i, \sigma^2 \right)$$</p>
 <p>$$p(y_i | w)=\frac{1}{\sqrt{2\pi} \sigma} \exp \left\lbrace-\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2\sigma^{2}}\right\rbrace$$   $$p(w)=\frac{1}{\sqrt{2 \pi} \sigma_{0}^{2}} \exp \lbrace-\frac{|| w ||^{2}}{2 \sigma_{0}^{2}}\rbrace$$  $$p(y_i | w) \cdot p(w)=\frac{1}{\sqrt{2\pi}\sigma} \cdot \frac{1}{\sqrt{2\pi} \sigma_0} \cdot \exp \left\lbrace-\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}}\right\rbrace$$</p>
-<p>最大后验概率估计MAP：<br>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} p(w | Y)  \\<br>&amp;=\arg\max_{w}\prod_{i=1}^N p(y_i | w) \cdot p(w) \\<br>&amp;=\arg \max_w \sum_{i=1}^N \log [p(y_i | w) \cdot p(w)] \\<br>&amp;= \arg \max_w \sum_{i=1}^N -\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}} \\<br>&amp;= \arg \min_w\sum_{i=1}^N {\left(y_i-w^{\top} x\right)^{2}}+\frac{\sigma^2 }{ \sigma_{0}^{2}} ||w||^{2}<br>\end{aligned}</p>
+<p>最大后验概率估计MAP：<br>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} p(w | Y)  \\<br>&amp;=\arg\max_{w}\prod_{i=1}^N p(y_i | w) \cdot p(w) \\<br>&amp;=\arg \max_w \sum_{i=1}^N \log [p(y_i | w) \cdot p(w)] \\<br>&amp;= \arg \max_w \sum_{i=1}^N -\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}} \\<br>&amp;= \arg \min_w\sum_{i=1}^N {\left(y_i-w^{\top} x\right)^{2}}+\frac{N\sigma^2 }{ \sigma_{0}^{2}} ||w||^{2}<br>\end{aligned}</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最小二乘估计等价于噪声为高斯分布的最大似然估计，二范数为正则项的最小二乘估计等价为先验为高斯分布的最大后验估计。</p>
 
       
