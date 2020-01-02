@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1, 2, \ldots ,N\end{aligned}$$ Mean: $\bar{x}=\frac{1}{N} \sum_{i=1}^{N} x_{i}=\frac">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-01T13:02:01.721Z">
+<meta property="og:updated_time" content="2020-01-02T08:42:22.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="降维-PCA">
 <meta name="twitter:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1, 2, \ldots ,N\end{aligned}$$ Mean: $\bar{x}=\frac{1}{N} \sum_{i=1}^{N} x_{i}=\frac">
@@ -405,6 +405,10 @@
 <p>$$\hat{x}_i = \sum^q _{i=1} (x_i^T u_k) u_k$$  </p>
 <p>$$J=\frac{1}{N} \sum^N_{i=1} \left|\left|x_{i}-\hat{x}_i \right|\right|^2$$</p>
 <p>\begin{aligned}<br>&amp;=\frac{1}{N} \sum^N_{i=1} \left|\left|\sum^q_{q+1}\left(x_{i}^{T} u_{k}\right) u_{k}\right|\right|^{2} \\<br>&amp; \triangleq \frac{1}{N} \sum_{i=1}^{N}  \sum_{k={q+1}}^p \left( \left(x_{i}-\bar{x}\right)^T u_{k}\right) \\<br>&amp; =\sum_{i=1}^{N} \frac{1}{N} \sum_{k={q+1}}^p \left(\left(x_{i}-\bar{x}\right)^{T} u_{k}\right)^{2} \\<br>&amp; =\frac{1}{N} \sum_{i=1}^{N} \sum_{q+1}^{q}\left(x_{i}^{T} u_{k}\right)^{2} \\<br>&amp;=\sum_{k=q+1}^{p} u_{k}^T \cdot s \cdot u_{k} \\<br>&amp; \text{s.t.} \quad u_{k}^T u_{k}=1<br>\end{aligned}</p>
+<h1 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h1><p> 对协方差矩阵$s$进行特征分解。<br>$$s=G K G^{T} \quad G^{T} G=1, \quad K=\left[<br>\begin{matrix}<br>k_0 &amp; &amp; \\<br>&amp; k_1 &amp;\\<br>&amp; &amp; \ddots \\<br>&amp;&amp; &amp; k_p \\<br>\end{matrix}<br>\right] , \quad<br>k_0 \geq k_1\geq \cdots \geq k_p<br>$$</p>
+<p>对中心化后的数据进行SVD分解：<br>$$HX = U\Sigma V^T $$<br>其中：$U^T U = I, V^T V = I, \Sigma \text{对角} $</p>
+<p>$$s_{p\times p}=X^T H X=X^{\top} H^{\top}H X=V \Sigma {U}^{\top} \cdot {U} \Sigma V^{\top}= V \Sigma^2 V^{\top}$$<br>$$T_{N \times N}=H X X^{T} H=U \Sigma V^{\top} \cdot V \Sigma U^{T}=U \Sigma^{2} U^{T}$$</p>
+<p>$T$ 和$s$有相同的特征值。</p>
 
       
     </div>
@@ -611,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最大投影方差"><span class="nav-number">2.</span> <span class="nav-text">最大投影方差</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小重构代价"><span class="nav-number">3.</span> <span class="nav-text">最小重构代价</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最大投影方差"><span class="nav-number">2.</span> <span class="nav-text">最大投影方差</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小重构代价"><span class="nav-number">3.</span> <span class="nav-text">最小重构代价</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVD"><span class="nav-number">4.</span> <span class="nav-text">SVD</span></a></li></ol></div>
             
 
           </div>
