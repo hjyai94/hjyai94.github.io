@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&amp;lt; p $$$$x:\ \text{observed data}, z:\ \text{latent variable} $$ 线性高斯模型：\begin{cases}z \sim N\left(0, I_q\right) \\x=wz+\mu+\varepsilon \\\va">
+<meta name="description" content="定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&amp;lt; p $￥   $$x:\ \text{observed data}, z:\ \text{latent variable} $$ 线性高斯模型：\begin{cases}z \sim N\left(0, I_q\right) \\x=wz+\mu+\varepsilon \\">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="降维-概率PCA">
 <meta property="og:url" content="http://yoursite.com/2020/01/02/机器学习理论推导/降维-概率PCA/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&amp;lt; p $$$$x:\ \text{observed data}, z:\ \text{latent variable} $$ 线性高斯模型：\begin{cases}z \sim N\left(0, I_q\right) \\x=wz+\mu+\varepsilon \\\va">
+<meta property="og:description" content="定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&amp;lt; p $￥   $$x:\ \text{observed data}, z:\ \text{latent variable} $$ 线性高斯模型：\begin{cases}z \sim N\left(0, I_q\right) \\x=wz+\mu+\varepsilon \\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-02T11:06:29.036Z">
+<meta property="og:updated_time" content="2020-01-02T11:13:06.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="降维-概率PCA">
-<meta name="twitter:description" content="定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&amp;lt; p $$$$x:\ \text{observed data}, z:\ \text{latent variable} $$ 线性高斯模型：\begin{cases}z \sim N\left(0, I_q\right) \\x=wz+\mu+\varepsilon \\\va">
+<meta name="twitter:description" content="定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&amp;lt; p $￥   $$x:\ \text{observed data}, z:\ \text{latent variable} $$ 线性高斯模型：\begin{cases}z \sim N\left(0, I_q\right) \\x=wz+\mu+\varepsilon \\">
 
 
 
@@ -394,7 +394,7 @@
       
 
       
-        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&lt; p $$<br>$$x:\ \text{observed data}, z:\ \text{latent variable} $$</p>
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&lt; p $￥   $$x:\ \text{observed data}, z:\ \text{latent variable} $$</p>
 <p>线性高斯模型：<br>\begin{cases}<br>z \sim N\left(0, I_q\right) \\<br>x=wz+\mu+\varepsilon \\<br>\varepsilon \sim N\left(0, \sigma^{2} I_{p}\right)<br>\end{cases}</p>
 <p>求$z, x|z, x, z|x$</p>
 <ol>
@@ -405,7 +405,7 @@
 </ol>
 <p>\begin{aligned}<br>E[x]&amp;=E\left[w z+\mu+\varepsilon\right]=E\left[w z+\mu\right]+E[\varepsilon]=\mu \\<br>\operatorname{Var}[x] &amp;=\operatorname{Var}\left[w z+\mu+\varepsilon\right]=\operatorname{Var}[w z]+Var [\varepsilon]\\<br>&amp;= w \cdot I \cdot w^{\top}+\sigma^{2} I=w w^{\top}+\sigma^{2} I<br>\end{aligned}</p>
 <p>$$<br>\left(\begin{array}{l}<br>{x} \\<br>{z}<br>\end{array}\right) \sim N\left( \left[\begin{array}{l}<br>{\mu} \\<br>{0}<br>\end{array}\right],\left[\begin{array}{ll}<br>{ww^T + \sigma^2 I} &amp; {w} \\<br>{w^T} &amp; {I}<br>\end{array}\right] \right)<br>$$</p>
-<p>直接套用下面的公式可以得到 $z|x$的分布。</p>
+<p>直接套用补充的公式可以得到 $z|x$的分布。</p>
 <h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><p>$$x=\left(\begin{array}{l}{x_{a}} \\ {x_{b}}\end{array}\right), x \sim N\left(\left[\begin{array}{l}{\mu_{a}} \\ {\mu_{b}}\end{array}\right],\left[\begin{array}{ll}{\Sigma_{aa}} &amp; {\Sigma_{a b}} \\ {\Sigma_{ba}} &amp; {\Sigma_{b b}}\end{array}\right]\right)$$</p>
 <p>$$x_{b\cdot a}=x_{b}-\Sigma_{b a} \Sigma_{a a}^{-1} x_{a}$$ $$\mu_{b\cdot a}=\mu_{b}-\Sigma_{b a} \Sigma_{a a}^{-1} \mu_{a}$$ $$\Sigma_{b b\cdot a}=\Sigma_{b b}-\Sigma_{b a} \Sigma_{a a}^{-1} \Sigma_{a b} \quad$$  $$x_{b\cdot a} \sim N\left(\mu_{b a}, \Sigma_{bb\cdot a} \right)$$</p>
 <p>又$x_{b}=x_{b\cdot a}+\Sigma_{b a} \Sigma_{a a}^{-1} x_{a}$</p>
