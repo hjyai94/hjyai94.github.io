@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\ y_">
+<meta name="description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="支持向量机-硬间隔SVM">
 <meta property="og:url" content="http://yoursite.com/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\ y_">
+<meta property="og:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-03T14:05:54.285Z">
+<meta property="og:updated_time" content="2020-01-03T14:09:15.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机-硬间隔SVM">
-<meta name="twitter:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\ y_">
+<meta name="twitter:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\">
 
 
 
@@ -394,7 +394,7 @@
       
 
       
-        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>$$<br>\begin{aligned}<br>&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace<br>\end{aligned}<br>$$</p>
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>$$<br>\begin{aligned}<br>&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace<br>\end{aligned}<br>$$</p>
 <p>最大间隔分类器 $\max margin(w, b)$<br>$ \text{s.t.}\ y_i(w^Tx_i + b)&gt; 0, \text{for}\ \forall i=1, \ldots, N$</p>
 <p>$$margin(w, b) = \min distance(w, b, x_i) \\ =\min \frac{1}{||w||}|w^Tx_i +b|$$</p>
 <p>因为$y_i(w^Tx_i + b)&gt; 0$，所以$\exists r&gt;0, s.t. \min y_i(w^Tx_i + b)=r $<br>令$r=1$，<br>$$\max_{w,b} \min_{x_i} \frac{1}{||w||}(w^Tx_i +b) = \max_{w,b} \frac{1}{||w||} \min_{x_i}y_i(w^Tx_i +b) = \max_{w,b} \frac{1}{||w||}$$</p>
