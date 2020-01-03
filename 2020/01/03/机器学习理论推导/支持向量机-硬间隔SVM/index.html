@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="数据$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ Sigmoid Function$$\sigma(z)=\frac{1}{1+e^{-z">
+<meta name="description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\ y_">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性分类-逻辑回归">
-<meta property="og:url" content="http://yoursite.com/2019/12/29/机器学习理论推导/线性分类-逻辑回归/index.html">
+<meta property="og:title" content="支持向量机-硬间隔SVM">
+<meta property="og:url" content="http://yoursite.com/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="数据$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ Sigmoid Function$$\sigma(z)=\frac{1}{1+e^{-z">
+<meta property="og:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\ y_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-29T11:11:54.000Z">
+<meta property="og:updated_time" content="2020-01-03T13:59:21.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性分类-逻辑回归">
-<meta name="twitter:description" content="数据$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ Sigmoid Function$$\sigma(z)=\frac{1}{1+e^{-z">
+<meta name="twitter:title" content="支持向量机-硬间隔SVM">
+<meta name="twitter:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\ y_">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/29/机器学习理论推导/线性分类-逻辑回归/">
+  <link rel="canonical" href="http://yoursite.com/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/">
 
 
 
 
 
-  <title>线性分类-逻辑回归 | HJY</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>支持向量机-硬间隔SVM | HJY</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/29/机器学习理论推导/线性分类-逻辑回归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HJY">
@@ -322,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线性分类-逻辑回归</h1>
+          <h1 class="post-title" itemprop="name headline">支持向量机-硬间隔SVM</h1>
         
 
         <div class="post-meta">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-29T18:38:40+08:00">
-                2019-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-03T21:03:11+08:00">
+                2020-01-03
               </time>
             
 
@@ -394,11 +394,17 @@
       
 
       
-        <h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p>$$<br>\begin{aligned}<br>&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace<br>\end{aligned}<br>$$</p>
-<h1 id="Sigmoid-Function"><a href="#Sigmoid-Function" class="headerlink" title="Sigmoid Function"></a>Sigmoid Function</h1><p>$$<br>\sigma(z)=\frac{1}{1+e^{-z}}<br>$$</p>
-<p>$$<br>\begin{cases}<br>{p_{1}=p(y=1 | x)=\sigma\left(w^{\top} x\right)=\frac{1}{1+e^{-w^{T} x}}, \quad y=1} \\<br>{p_{0}=p(y=0 | x)=1-p(y=1| x)=\frac{e^{-w^{T} x}}{1+e^{-w^{T} x}}, \quad y=0}<br>\end{cases}<br>$$</p>
-<p>$$P(y | x)=p_1^{y}p_0^{1-y}$$</p>
-<p>最大似然估计MLE:<br>$$<br>\begin{aligned}<br>\hat{w}&amp;=\arg\max _{w} \log P(Y | X) \\<br>&amp;=\arg\max_w \log \prod_{i=1}^{N} p\left(y_{i} | x_{i}\right) \\<br>&amp;=\arg\max_w \sum_{i=1}^{N} \log p\left(y_{i} | x_{i}\right) \\<br>&amp;=\arg\max_w \sum_{i=1}^{N}\left(y_{i} \log p_{1}+\left(1-y_{i}\right) \log p_{0}\right) \\<br>&amp;=\arg\max_w \sum_{i=1}^{N} y_{i} \log \psi\left(x_{i}, w\right)+\left(1-y_{i}\right) \log \left(1-\psi\left(x_{i} ; w\right)\right)<br>\end{aligned}<br>$$</p>
+        <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>$$<br>\begin{aligned}<br>&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\<br>&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace<br>\end{aligned}<br>$$</p>
+<p>最大间隔分类器 $\max margin(w, b)$<br>$ \text{s.t.}\ y_i(w^Tx_i + b)&gt; 0, \text{for}\ \forall i=1, \ldots, N$</p>
+<p>$$margin(w, b) = \min distance(w, b, x_i) \\ =\min \frac{1}{||w||}|w^Tx_i +b|$$</p>
+<p>因为$y_i(w^Tx_i + b)&gt; 0$，所以$\exists r&gt;0, s.t. \min y_i(w^Tx_i + b)=r $<br>令$r=1$，<br>$$\max_{w,b} \min_{x_i} \frac{1}{||w||}(w^Tx_i +b) = \max_{w,b} \frac{1}{||w||} \min_{x_i}y_i(w^Tx_i +b) = \max_{w,b} \frac{1}{||w||}$$</p>
+<p>\begin{cases}<br>\max_{w,b}\ \frac{1}{||w||}  \\<br>s.t. \min y_i(w^Tx_i + b) = 1, i=1, \ldots, N<br>\end{cases}</p>
+<p>\begin{cases}<br>\min_{w,b}\ \frac{1}{2} w^T w \\<br>s.t. y_i(w^Tx_i + b) \geq 1, i=1, \ldots, N<br>\end{cases}</p>
+<h1 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h1><p>利用拉格朗日求解上面问题：<br>$$\mathbb{L}(w, b, \lambda)=\frac{1}{2}w^T w + \sum_{i=1}^N \lambda_i(1-y_i(w^T x_i + b)) $$<br>对上式求道并令其为$0$：<br>$$\frac{\partial \mathbb{L}}{\partial b} =0 \rightarrow \sum_{i=1}^{N} \lambda_{i} y_{i}=0$$<br>将上式带入$\mathbb{L}(w, b, \lambda)$</p>
+<p>$$<br>\begin{aligned}<br>\mathbb{L}(w, b, \lambda) &amp;=\frac{1}{2} w^{\top} w+\sum_{i=1}^{N} \lambda_{i}-\sum_{i=1}^{N} \lambda_{i} y_{i}\left(w^{\top} x_{i}+b\right) \\<br>&amp;=\frac{1}{2} w^{\top} w+\sum_{i=1}^{n} \lambda_{i}-\sum_{i=1}^{N} \lambda_{i} y_{i} w^{\top} x_{i}+\sum_{i=1}^{N} \lambda_{i} y_{i} b \\<br>&amp;=\frac{1}{2} w^{\top} w+\sum_{i=1}^{N} \lambda_{i}-\sum_{i=1}^{N} \lambda_{i} y_{i} w^{\top} x_{i}<br>\end{aligned}<br>$$</p>
+<p>$$\frac{\partial \mathbb{L}}{\partial w}=w -\sum_{i=1}^{n} \lambda_{i} y_{i} x_{i} \triangleq 0 \Rightarrow {w^{*}=\sum_{i=1}^{N} \lambda_{i} y_{i} x_{i}}$$</p>
+<p>将$w^{\star}, b^{\star}$带入 $\mathbb{L}(w, b, \lambda)$：<br>$$\mathbb{L}(w, b, \lambda) = -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \lambda_{i} \lambda_{j} y_{i} y_{j} x_{i}^{\top} x_{j}+\sum_{i=1}^{N} \lambda_{i}$$</p>
+<p>原问题的对偶问题为：<br>\begin{cases}<br>\max -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \lambda_{i} \lambda_{j} y_{i} y_{j} x_{i}^{\top} x_{j}+\sum_{i=1}^{N} \lambda_{i} \\<br>s.t. \lambda_i \geq 0<br>\end{cases}</p>
 
       
     </div>
@@ -453,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/29/机器学习理论推导/线性分类-线性判别分析/" rel="next" title="线性分类-线性判别分析">
-                <i class="fa fa-chevron-left"></i> 线性分类-线性判别分析
+              <a href="/2020/01/02/机器学习理论推导/降维-概率PCA/" rel="next" title="降维-概率PCA">
+                <i class="fa fa-chevron-left"></i> 降维-概率PCA
               </a>
             
           </div>
@@ -462,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/30/机器学习理论推导/线性分类-高斯判别分析/" rel="prev" title="线性分类-高斯判别分析">
-                线性分类-高斯判别分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -609,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据"><span class="nav-number">1.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sigmoid-Function"><span class="nav-number">2.</span> <span class="nav-text">Sigmoid Function</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求解"><span class="nav-number">2.</span> <span class="nav-text">求解</span></a></li></ol></div>
             
 
           </div>
