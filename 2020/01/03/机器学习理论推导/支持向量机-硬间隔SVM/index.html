@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-03T14:09:15.152Z">
+<meta property="og:updated_time" content="2020-01-04T04:03:12.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机-硬间隔SVM">
 <meta name="twitter:description" content="定义$$\begin{aligned}&amp;amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{aligned}$$ 最大间隔分类器 $\max margin(w, b)$$ \text{s.t.}\">
@@ -405,6 +405,7 @@
 <p>$$\frac{\partial \mathbb{L}}{\partial w}=w -\sum_{i=1}^{n} \lambda_{i} y_{i} x_{i} \triangleq 0 \Rightarrow {w^{*}=\sum_{i=1}^{N} \lambda_{i} y_{i} x_{i}}$$</p>
 <p>将$w^{\star}, b^{\star}$带入 $\mathbb{L}(w, b, \lambda)$：<br>$$\mathbb{L}(w, b, \lambda) = -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \lambda_{i} \lambda_{j} y_{i} y_{j} x_{i}^{\top} x_{j}+\sum_{i=1}^{N} \lambda_{i}$$</p>
 <p>原问题的对偶问题为：<br>\begin{cases}<br>\max -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \lambda_{i} \lambda_{j} y_{i} y_{j} x_{i}^{\top} x_{j}+\sum_{i=1}^{N} \lambda_{i} \\<br>s.t. \lambda_i \geq 0<br>\end{cases}</p>
+<h1 id="KKT条件"><a href="#KKT条件" class="headerlink" title="KKT条件"></a>KKT条件</h1><p>\begin{cases}<br>\frac{\partial \mathbb{L}}{\partial w}=0 \quad \frac{\partial \mathbb{L}}{\partial b}=0 \quad \frac{\partial \mathbb{L}}{\partial \lambda_i}=0  \\<br>1-y_{i}\left(w^T x_i+b\right)=0 \\<br>\lambda_i \geq 0 \\<br>1-y_{i}\left(w^{\top} x_{i}+b\right) \leqslant 0<br>\end{cases}</p>
 
       
     </div>
@@ -611,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求解"><span class="nav-number">2.</span> <span class="nav-text">求解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求解"><span class="nav-number">2.</span> <span class="nav-text">求解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KKT条件"><span class="nav-number">3.</span> <span class="nav-text">KKT条件</span></a></li></ol></div>
             
 
           </div>
