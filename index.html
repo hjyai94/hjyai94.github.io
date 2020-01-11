@@ -398,10 +398,7 @@
       
         
           
-          p(x | \eta)=h(x) \exp \left(\eta^{\top} \phi(x)-A(\eta)\right) \\\\
-\eta: 参数\ parameter \\\\
-\phi(x) 充分统计量\ sufficient\ statistics \\\\
-A(\eta)对数配分函数\
+          $$p(x | \eta)=h(x) \exp \left(\eta^{\top} \phi(x)-A(\eta)\right) \\\eta: 参数\ parameter \\\phi(x) 充分统计量\ sufficient\ statistics \\A(\eta)对数配分函数\ log\ p
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -551,10 +548,7 @@ A(\eta)对数配分函数\
       
         
           
-          P(x | \eta)=h(x) \exp \left(\eta^{\top} \phi(x)-A(\eta)\right) \\\\
-\eta: 参数\ parameter \\\\
-\phi(x) 充分统计量\ sufficient\ statistics \\\\
-A(\eta)对数配分函数\
+          $$P(x | \eta)=h(x) \exp \left(\eta^{\top} \phi(x)-A(\eta)\right) \\\eta: 参数\ parameter \\\phi(x) 充分统计量\ sufficient\ statistics \\A(\eta)对数配分函数\ log\ p
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -704,10 +698,7 @@ A(\eta)对数配分函数\
       
         
           
-           定义
-{(xi,yi)}i=1Nxi∈Rp,yi∈{−1,+1}\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i}
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{ali
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -857,10 +848,7 @@ A(\eta)对数配分函数\
       
         
           
-           定义
-{(xi,yi)}i=1Nxi∈Rp,yi∈{−1,+1}\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i}
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{ali
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1010,12 +998,8 @@ A(\eta)对数配分函数\
       
         
           
-           定义
-x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q线性高斯模型：
-\begin{cases}
-z \sim N\left(0, I_q\right) \\
-x=wz+\mu+\varepsilon \\
-\varepsilon \sim
+          定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&lt; p $$   $$x:\ \text{observed data}, z:\ \text{latent variable} $$
+线性高斯模型：\begin{cases}z \
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1165,10 +1149,8 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           定义
-{(xi,yi)}i=1Nxi∈Rp,i=1,2,…,N\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1,
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1, 2, \ldots ,N\end{aligned}$$
+Mea
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1318,10 +1300,7 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           定义
-{(xi,yi)}i=1Nxi∈Rp,yi∈{0,1}\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{align
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1471,10 +1450,7 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           数据
-{(xi,yi)}i=1Nxi∈Rp,yi∈{0,1}\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \
+          数据$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{align
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1624,13 +1600,7 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           定义
-X = \begin{pmatrix}
-{x_{1}}&{x_{2}}&{\cdots}&{x_{N}}
-\end{pmatrix}^T_{N\times p} 
-$$     
-Y=\left(\begin{array}{l}
-{y_{1}}  &amp; {y_{2}} &amp; {\
+          定义$$X = \begin{pmatrix}{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}\end{pmatrix}^T_{N\times p}$$     $$Y=\left(\begin{array}{l}{y_{1}}  &amp; {y_{2}} 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1780,10 +1750,7 @@ Y=\left(\begin{array}{l}
       
         
           
-          样本集：{(xi,yi)}i=1N\lbrace (x_i, y_i) \rbrace_{i=1}^N{(xi​,yi​)}i=1N​
-模型:
-\begin{aligned}
-&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_
+          样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$模型:\begin{aligned}&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \m
           ...
           <!--noindex-->
           <div class="post-button text-center">
