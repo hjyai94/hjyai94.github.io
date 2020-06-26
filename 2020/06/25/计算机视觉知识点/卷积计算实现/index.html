@@ -97,11 +97,11 @@
 <meta name="keywords" content="计算机视觉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="卷积运算和相关运算">
-<meta property="og:url" content="http://yoursite.com/2020/06/25/计算机视觉知识点/卷积神经网络实现/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/计算机视觉知识点/卷积计算实现/index.html">
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="卷积运算和相关运算在深度学习领域属于常见的运算，本文将从二者计算的公式和实现代码进行分析。 卷积运算给定一个图像$X\in \mathbb{R}^{M\times N}$，和滤波器$W\in \mathbb{R}^{m\times n}$，一般$m \ll M $，$n \ll N $，其卷积为：$$y_{ij} = \sum_{u=1}^m \sum_{v=1}^n w_{uv} \cdot x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-25T14:12:56.727Z">
+<meta property="og:updated_time" content="2020-06-25T14:22:38.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="卷积运算和相关运算">
 <meta name="twitter:description" content="卷积运算和相关运算在深度学习领域属于常见的运算，本文将从二者计算的公式和实现代码进行分析。 卷积运算给定一个图像$X\in \mathbb{R}^{M\times N}$，和滤波器$W\in \mathbb{R}^{m\times n}$，一般$m \ll M $，$n \ll N $，其卷积为：$$y_{ij} = \sum_{u=1}^m \sum_{v=1}^n w_{uv} \cdot x">
@@ -134,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/06/25/计算机视觉知识点/卷积神经网络实现/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/25/计算机视觉知识点/卷积计算实现/">
 
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/计算机视觉知识点/卷积神经网络实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/25/计算机视觉知识点/卷积计算实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HJY">
@@ -400,7 +400,7 @@
 <li>代码实现<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def conv(image, kernel):</span><br><span class="line">    <span class="string">""</span>" <span class="keyword">An</span> implementation of convolution filter. This function uses element-wise multiplication and np.<span class="built_in">sum</span>() to efficiently compute weighted <span class="keyword">sum</span> of neighborhood at each</span><br><span class="line">    pixel.</span><br><span class="line">    <span class="keyword">Args</span>:</span><br><span class="line">        image: numpy array of shape (Hi, Wi)</span><br><span class="line">        kernel: numpy array of shape (Hk, Wk)</span><br><span class="line">    Returns:</span><br><span class="line">        <span class="keyword">out</span>: numpy array of shape (Hi, Wi)</span><br><span class="line">    <span class="string">""</span>"</span><br><span class="line">    Hi, Wi = image.shape</span><br><span class="line">    Hk, Wk = kernel.shape</span><br><span class="line">    <span class="keyword">out</span> = np.zeros((Hi, Wi))</span><br><span class="line">    image = np.pad(image, (Hk<span class="comment">//2, Wk//2), 'constant', constant_values=0)</span></span><br><span class="line">    <span class="keyword">print</span>(image.shape)</span><br><span class="line">    kernel = np.flip(np.flip(kernel, 1), 0)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(Hi):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="keyword">range</span>(Wi):</span><br><span class="line">            <span class="keyword">out</span>[i, j] = <span class="built_in">sum</span>(</span><br><span class="line">                <span class="built_in">sum</span>(kernel * image[i:i + Hk, j:j + Wk]))</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">out</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="相关运算"><a href="#相关运算" class="headerlink" title="相关运算"></a>相关运算</h1><p>因为卷积运算需要对卷积核进行翻转，然而翻转对于深度卷积神经网络来说并不必须，所以通常深度学习框架，如pyrorch，Tensorboard采用相关运算取代卷积运算来避免不必要的运算复杂度的增加。<br>同样给定一个图像$X\in \mathbb{R}^{M\times N}$，和滤波器$W\in \mathbb{R}^{m\times n}$，一般$m \ll M $，$n \ll N $，其互相关为：<br>$$y_{ij} = \sum_{u=1}^m \sum_{v=1}^n w_{uv} \cdot x_{i+u-1, j+v-1}$$</p>
+<h1 id="相关运算"><a href="#相关运算" class="headerlink" title="相关运算"></a>相关运算</h1><p>因为卷积运算需要对卷积核进行翻转，然而翻转对于深度卷积神经网络来说并不必须，所以通常深度学习框架，如Pytorch，Tensorflow采用相关运算取代卷积运算来避免不必要的运算复杂度的增加。<br>同样给定一个图像$X\in \mathbb{R}^{M\times N}$，和滤波器$W\in \mathbb{R}^{m\times n}$，一般$m \ll M $，$n \ll N $，其互相关为：<br>$$y_{ij} = \sum_{u=1}^m \sum_{v=1}^n w_{uv} \cdot x_{i+u-1, j+v-1}$$</p>
 <ul>
 <li>代码实现<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cross_correlation</span><span class="params">(f, g)</span>:</span></span><br><span class="line">    <span class="string">""" Cross-correlation of f and g</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        f: numpy array of shape (Hf, Wf)</span></span><br><span class="line"><span class="string">        g: numpy array of shape (Hg, Wg)</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        out: numpy array of shape (Hf, Wf)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    out = <span class="keyword">None</span></span><br><span class="line">    g = np.flip(np.flip(g, <span class="number">0</span>), <span class="number">1</span>)</span><br><span class="line">    out = conv(f, g)</span><br><span class="line">    <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
 </li>
