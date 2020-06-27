@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="概率图模型按照概率图模型的作用，将概率图分为三类。$$\text{概率图} \left \lbrace\begin{matrix}&amp;amp; Representation(表示){ \left \lbrace \begin{matrix}有向图 Bayesian Network \\高斯图(连续)\\无向图 Markov Network\\\end{matrix} \right.}\\&amp;amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-27T09:01:44.943Z">
+<meta property="og:updated_time" content="2020-06-27T11:38:38.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图">
 <meta name="twitter:description" content="概率图模型按照概率图模型的作用，将概率图分为三类。$$\text{概率图} \left \lbrace\begin{matrix}&amp;amp; Representation(表示){ \left \lbrace \begin{matrix}有向图 Bayesian Network \\高斯图(连续)\\无向图 Markov Network\\\end{matrix} \right.}\\&amp;amp;">
@@ -395,29 +395,33 @@
 
       
         <h1 id="概率图模型"><a href="#概率图模型" class="headerlink" title="概率图模型"></a>概率图模型</h1><p>按照概率图模型的作用，将概率图分为三类。<br>$$\text{概率图} \left \lbrace<br>\begin{matrix}<br>&amp; Representation(表示){ \left \lbrace \begin{matrix}<br>有向图 Bayesian Network \\<br>高斯图(连续)\\<br>无向图 Markov Network\\<br>\end{matrix} \right.}<br>\\<br>&amp; Inference(推断)<br>{\left \lbrace \begin{matrix}<br>精确推断\\<br>近似推断{\left \lbrace \begin{matrix}<br>确定性近似(变分推断)\\<br>近似推断(MCMC)\\<br>\end{matrix}\right.}\\<br>\end{matrix}\right.}\\<br>&amp; Learning(学习){\left \lbrace \begin{matrix}<br>参数学习{\left \lbrace \begin{matrix}<br>完备数据\\<br>隐变量\\<br>\end{matrix}\right.}\\<br>结构学习\\<br>\end{matrix}\right.}\\<br>\end{matrix}<br>\right. $$</p>
-<p>对于高维的随机变量，我们需要确定它们的分布情况，下面总结一下随机变量分布的一些规则：<br>$$<br>\begin{align}<br>&amp;\text{Sum Rule:}\ p(x_1)=\int p(x_1,x_2)dx_2\\<br>&amp;\text{Product Rule:}\ p(x_1,x_2)=p(x_1|x_2)p(x_2)\\<br>&amp;\text{Chain Rule:}\ p(x_1,x_2,\cdots,x_p)=\prod\limits_{i=1}^pp(x_i|x_{i+1,x_{i+2} \cdots}x_p)\\<br>&amp;\text{Bayesian Rule:}\ p(x_1|x_2)=\frac{p(x_2|x_1)p(x_1)}{p(x_2)}<br>\end{align}<br>$$<br>可以看到，在链式法则中，如果数据维度特别高，那么的采样和计算非常困难，我们需要在一定程度上作出简化，在朴素贝叶斯中，作出了条件独立性假设。在 Markov 假设中，给定数据的维度是以时间顺序出现的，给定当前时间的维度，那么下一个维度与之前的维度独立。在 HMM 中，采用了齐次 Markov 假设。在 Markov 假设之上，更一般的，加入条件独立性假设，对维度划分集合 $A,B,C$，使得 $X_A\perp X_B|X_C$。</p>
-<h2 id="有向图-贝叶斯网络"><a href="#有向图-贝叶斯网络" class="headerlink" title="有向图-贝叶斯网络"></a>有向图-贝叶斯网络</h2><p>已知联合分布中，各个随机变量之间的依赖关系，那么可以通过拓扑排序（根据依赖关系）可以获得一个有向图。而如果已知一个图，也可以直接得到联合概率分布的因子分解：<br>$$<br>p(x_1,x_2,\cdots,x_p)=\prod\limits_{i=1}^pp(x_i|x_{parent(i)})<br>$$<br>那么实际的图中条件独立性是如何体现的呢？在局部任何三个节点，可以有三种结构：</p>
+<p>对于高维的随机变量，我们需要确定它们的分布情况，下面总结一下随机变量分布的一些规则：<br>$$<br>\begin{align}<br>&amp;\text{Sum Rule:}\ p(x_1)=\int p(x_1,x_2)dx_2\\<br>&amp;\text{Product Rule:}\ p(x_1,x_2)=p(x_1|x_2)p(x_2)\\<br>&amp;\text{Chain Rule:}\ p(x_1,x_2,\cdots,x_p)=p(x_1) \prod\limits_{i=2}^p p(x_i|x_{i+1,x_{i+2} \cdots}x_p)\\<br>&amp;\text{Bayesian Rule:}\ p(x_1|x_2)=\frac{p(x_2|x_1)p(x_1)}{p(x_2)}<br>\end{align}<br>$$<br>可以看到，在链式法则中，如果数据维度特别高，那么的采样和计算非常困难，我们需要在一定程度上作出简化，在朴素贝叶斯中，作出了条件独立性假设。在 Markov 假设中，给定数据的维度是以时间顺序出现的，给定当前时间的维度，那么下一个维度与之前的维度独立。在 HMM 中，采用了齐次 Markov 假设。在 Markov 假设之上，更一般的，加入条件独立性假设，对维度划分集合 $A,B,C$，使得 $X_A\perp X_B|X_C$。</p>
+<h2 id="有向图-贝叶斯网络"><a href="#有向图-贝叶斯网络" class="headerlink" title="有向图-贝叶斯网络"></a>有向图-贝叶斯网络</h2><p>已知联合分布中，各个随机变量之间的依赖关系，那么可以通过拓扑排序（根据依赖关系）可以获得一个有向图。而如果已知一个图，也可以直接得到联合概率分布的因子分解：<br>$$<br>p(x_1,x_2,\cdots,x_p)=\prod\limits_{i=1}^pp(x_i|x_{parent(i)})<br>$$<br>其中$x_{parent(i)}$是$x_i$的父节点集合。常见的概率图模型中三个节点的结构有如下三种：</p>
 <ol>
-<li><pre class="mermaid">    graph TB;
+<li></li>
+</ol>
+<pre class="mermaid">graph LR;
     A((A))-->B((B));
     B-->C((C));</pre>
 
-<p>$$<br>p(A,B,C)=p(A)p(B|A)p(C|B)=p(A)p(B|A)p(C|B,A)\\<br>\Longrightarrow p(C|B)=p(C|B,A)\\<br>\Leftrightarrow p(C|B)p(A|B)=p(C|A,B)p(A|B)=p(C,A|B)\\<br>\Longrightarrow C\perp A|B<br>$$</p>
-</li>
-<li><pre class="mermaid">    graph TB;
-    B((B))-->A((A));
+<p>$<br>p(A,B,C)=p(A)p(B|A)p(C|B)=p(A)p(B|A)p(C|B,A)\\<br>\Longrightarrow p(C|B)=p(C|B,A)\\<br>\Leftrightarrow p(C|B)p(A|B)=p(C|A,B)p(A|B)=p(C,A|B)\\<br>\Longrightarrow C\perp A|B<br>$</p>
+<ol start="2">
+<li></li>
+</ol>
+<pre class="mermaid">graph TD;
+    B((B))-->A((A))
     B-->C((C));</pre>
 
-<p>$$<br>p(A,B,C)=p(A|B)p(B)p(C|B)=p(B)p(A|B)p(C|A,B)\\<br>\Longrightarrow p(C|B)=p(C|B,A)\\<br>\Leftrightarrow p(C|B)p(A|B)=p(C|A,B)p(A|B)=p(C,A|B)\\<br>\Longrightarrow C\perp A|B<br>$$</p>
-</li>
-<li><pre class="mermaid">    graph TB;
+<p>$<br>p(A,B,C)=p(A|B)p(B)p(C|B)=p(B)p(A|B)p(C|A,B)\\<br>\Longrightarrow p(C|B)=p(C|B,A)\\<br>\Leftrightarrow p(C|B)p(A|B)=p(C|A,B)p(A|B)=p(C,A|B)\\<br>\Longrightarrow C\perp A|B<br>$</p>
+<ol start="3">
+<li></li>
+</ol>
+<pre class="mermaid">graph TB;
     A((A))-->B((B));
     C((C))-->B</pre>
 
-<p>$$<br>p(A,B,C)=p(A)p(C)p(B|C,A)=p(A)p(C|A)p(B|C,A)\\<br>\Longrightarrow p(C)=p(C|A)\\<br>\Leftrightarrow C\perp A\\<br>$$</p>
-<p>对这种结构，$A,C$ 不与 $B$ 条件独立。</p>
-</li>
-</ol>
+<p>$<br>p(A,B,C)=p(A)p(C)p(B|C,A)=p(A)p(C|A)p(B|C,A)\\<br>\Longrightarrow p(C)=p(C|A)\\<br>\Leftrightarrow C\perp A\\<br>$</p>
+<p>对于第3中结构，$A,C$ 独立与$B$无关。</p>
 <p>从整体的图来看，可以引入 D 划分的概念。对于类似上面图 1和图 2的关系，引入集合A，B，那么满足 $A\perp B|C$ 的 $C$ 集合中的点与 $A,B$  中的点的关系都满足图 1，2，满足图3 关系的点都不在 $C$ 中。D 划分应用在贝叶斯定理中：<br>$$<br>p(x_i|x_{-i})=\frac{p(x)}{\int p(x)dx_{i}}=\frac{\prod\limits_{j=1}^pp(x_j|x_{parents(j)})}{\int\prod\limits_{j=1}^pp(x_j|x_{parents(j)})dx_i}<br>$$<br>可以发现，上下部分可以分为两部分，一部分是和 $x_i$ 相关的，另一部分是和 $x_i$ 无关的，而这个无关的部分可以相互约掉。于是计算只涉及和 $x_i$ 相关的部分。</p>
 <p>与 $x_i$ 相关的部分可以写成：<br>$$<br>p(x_i|x_{parents(i)})p(x_{child(i)}|x_i)<br>$$<br>这些相关的部分又叫做 Markov 毯。</p>
 <p>实际应用的模型中，对这些条件独立性作出了假设，从单一到混合，从有限到无限（时间，空间）可以分为：</p>
@@ -701,10 +705,13 @@
 
 
 
+
   <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
   <script>
     if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
+      mermaid.initialize({theme: 'neutral', 
+      flowchart: {useMaxWidth: False, htmlLabels: true}
+  });
     }
   </script>
 
