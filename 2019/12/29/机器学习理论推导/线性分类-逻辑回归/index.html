@@ -399,7 +399,7 @@
 <p>$$<br>\begin{cases}<br>{p_{1}=p(y=1 | x)=\sigma\left(w^{\top} x\right)=\frac{1}{1+e^{-w^{T} x}}, \quad y=1} \\<br>{p_{0}=p(y=0 | x)=1-p(y=1| x)=\frac{e^{-w^{T} x}}{1+e^{-w^{T} x}}, \quad y=0}<br>\end{cases}<br>$$</p>
 <p>$$P(y | x)=p_1^{y}p_0^{1-y}$$</p>
 <p>最大似然估计MLE:<br>$$<br>\begin{aligned}<br>\hat{w}&amp;=\arg\max _{w} \log P(Y | X) \\<br>&amp;=\arg\max_w \log \prod_{i=1}^{N} p\left(y_{i} | x_{i}\right) \\<br>&amp;=\arg\max_w \sum_{i=1}^{N} \log p\left(y_{i} | x_{i}\right) \\<br>&amp;=\arg\max_w \sum_{i=1}^{N}\left(y_{i} \log p_{1}+\left(1-y_{i}\right) \log p_{0}\right) \\<br>&amp;=\arg\max_w \sum_{i=1}^{N} y_{i} \log \psi\left(x_{i}, w\right)+\left(1-y_{i}\right) \log \left(1-\psi\left(x_{i} ; w\right)\right)<br>\end{aligned}<br>$$</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -544,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -658,6 +658,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

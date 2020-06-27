@@ -421,7 +421,7 @@
 <h1 id="利用脚本绘图"><a href="#利用脚本绘图" class="headerlink" title="利用脚本绘图"></a>利用脚本绘图</h1><p>聪明的你一定在想，难道我每次都需要一行一行的输入命令吗？其实我们完全可以使用脚本，将前面的命令写进脚本中，然后一次运行就可以得到我们最终的绘图结果了。首先我们需要建立一个文件，文件名为$loss.gnu$，将这个放置在于数据相同的文件夹内，我们这里是<code>E:\plot</code>。<br>脚本的内容如下：<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> encoding <span class="comment">utf8</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">term wxt enhanced</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> <span class="comment">xtics font</span> <span class="comment">'times.ttf,10'</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">ytics font</span> <span class="comment">'times.ttf,10'</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">xlabel</span> <span class="comment">'Epoch'</span><span class="comment"> font</span> <span class="comment">'times.ttf,14'</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">ylabel</span> <span class="comment">'Cross Entropy'</span><span class="comment"> font</span> <span class="comment">'times.ttf,14'</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">title</span> <span class="comment">'Traing Loss'</span><span class="comment"> font</span> <span class="comment">'times.ttf,14'</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key font</span> <span class="comment">'times.ttf,12'</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key center at 42,0.09</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key box</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key reverse</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key width 2</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key height 1</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key Left</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">key samplen 2</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">grid</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">yrange [0.04:0.10]</span></span><br><span class="line"><span class="keyword">set</span> <span class="comment">style line 1 lw 1.5 lc rgb</span> <span class="comment">"#F62217"</span></span><br><span class="line"></span><br><span class="line">file <span class="comment">=</span> <span class="comment">"loss.dat"</span></span><br><span class="line">plot <span class="comment">file using 1:2 with lines ls 1 smooth bezier title</span> <span class="comment">"CNN"</span></span><br></pre></td></tr></table></figure></p>
 <p>我们在命令行里面输入<code>load loss.gnu</code>运行整个脚本，得到我们最后想要的图片了。<br>至此，我们关于使用gnuplot绘制SCI论文图的方法就介绍完毕了，如果大家有需要可以参考文献[1]的内容了解更多。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://vision.ouc.edu.cn/zhenghaiyong/courses/tutorials/gnuplot/gnuplot-zh.pdf" target="_blank" rel="noopener">http://vision.ouc.edu.cn/zhenghaiyong/courses/tutorials/gnuplot/gnuplot-zh.pdf</a><br>[2] Dolz J, Gopinath K, Yuan J, et al. HyperDense-Net: A hyper-densely connected CNN for multi-modal image segmentation[J]. IEEE transactions on medical imaging, 2018.</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -566,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -680,6 +680,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

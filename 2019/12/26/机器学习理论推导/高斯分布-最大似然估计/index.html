@@ -409,7 +409,7 @@
 <p>方差有偏:<br>\begin{aligned}<br>E\left[\sigma_{MLE}^{2}\right]=\frac{1}{N} E\left[\sum_{i=1}^{N}\left(x_{i}-\mu_{MLE}\right)^{2}\right] &amp;= E\left[\frac{1}{N} \sum_{i=1}^N x_{i}^{2} -2\frac{1}{N}\sum_{i=1}^N x_i \mu_{MLE} +\mu_{MLE}^{2} \right] \\<br>&amp;= E\left[\frac{1}{N} \sum_{i=1}^N x_{i}^{2} -\mu_{MLE}^{2} \right] \\<br>\end{aligned}</p>
 <p>\begin{aligned}<br>E[\sigma_{MLE}^2] &amp;=E\left[\frac{1}{N}\sum_{i=1}^{N} x_{i}^{2}-\mu^{2}+\mu^{2}-\mu_{MLE}^{2}\right] \\<br>&amp;=E\left[\frac{1}{N} \sum_{i=1}^{N} x_{i}^{2}-\mu^{2}\right]+E\left[\mu^{2}-\mu_{MLE}^{2}\right] \\<br>&amp;=E\left[\frac{1}{N} \sum_{i=1}^{N}\left(x_{i}^{2}-\mu^{2}\right)\right]-E\left[\mu_{MLE}^{2} - \mu^{2}\right] \\<br>&amp;= \sigma^2 - (E[\mu_{MLE}^2] - E[\mu^2]) \\<br>&amp;= \sigma^2 - (E[\mu_{MLE}^2] - E^2 [\mu_{MLE}]) \\<br>&amp;= \sigma^2 - Var[\mu_{MLE}] \\<br>&amp;= \frac{(N-1)\sigma^2}{N}<br>\end{aligned}</p>
 <p>\begin{aligned}<br>Var[ \mu_{M L E}] &amp;=\operatorname{Var}\left[\frac{1}{N} \sum_{i=1}^{N} x_{i}\right] \\<br>&amp;= \frac{1}{N^{2}} \sum_{i=1}^{N} Var\left[x_{i}\right] \\<br>&amp;=\frac{\sigma^{2}}{N}<br>\end{aligned}</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -554,7 +554,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -668,6 +668,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

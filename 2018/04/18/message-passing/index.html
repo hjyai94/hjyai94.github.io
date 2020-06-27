@@ -400,7 +400,7 @@
 <h1 id="Elimination-on-a-tree"><a href="#Elimination-on-a-tree" class="headerlink" title="Elimination on a tree"></a>Elimination on a tree</h1><p>将从i开始的变量消除记作$m_{ji}(x_i)$，并且是$x_i$的函数。<br>$$m_{ji}(x_i)=\sum_{x_j}(\psi(x_j) \psi(x_i,x_j)\prod_{k\in N(j)\j} m_{kj}(x_j))$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/elimination%20on%20a%20tree.png" alt><br>$m_{ji}(x_i)$能够表示从$x_j$到$x_i$的置信。</p>
 <h1 id="Two-pass-Algorithm"><a href="#Two-pass-Algorithm" class="headerlink" title="Two-pass Algorithm"></a>Two-pass Algorithm</h1><p>算法的实施的具体步骤，确定一个根节点，从其他节点中收集信息到这个根节点，然后回到分布的信息。直到某一节点中包含了除却继续传播节点的所有信息，这样就计算信息，然后传播到剩下的节点。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第5讲视频以及笔记，参考[2]中第4章。</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -545,7 +545,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -659,6 +659,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

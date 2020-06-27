@@ -406,7 +406,7 @@
 <p>将$w^{\star}, b^{\star}$带入 $\mathbb{L}(w, b, \lambda)$：<br>$$\mathbb{L}(w, b, \lambda) = -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \lambda_{i} \lambda_{j} y_{i} y_{j} x_{i}^{\top} x_{j}+\sum_{i=1}^{N} \lambda_{i}$$</p>
 <p>原问题的对偶问题为：<br>\begin{cases}<br>\max -\frac{1}{2} \sum_{i=1}^{N} \sum_{j=1}^{N} \lambda_{i} \lambda_{j} y_{i} y_{j} x_{i}^{\top} x_{j}+\sum_{i=1}^{N} \lambda_{i} \\<br>s.t. \lambda_i \geq 0<br>\end{cases}</p>
 <h1 id="KKT条件"><a href="#KKT条件" class="headerlink" title="KKT条件"></a>KKT条件</h1><p>\begin{cases}<br>\frac{\partial \mathbb{L}}{\partial w}=0 \quad \frac{\partial \mathbb{L}}{\partial b}=0 \quad \frac{\partial \mathbb{L}}{\partial \lambda_i}=0  \\<br>1-y_{i}\left(w^T x_i+b\right)=0 \\<br>\lambda_i \geq 0 \\<br>1-y_{i}\left(w^{\top} x_{i}+b\right) \leqslant 0<br>\end{cases}</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -551,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -665,6 +665,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

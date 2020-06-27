@@ -381,7 +381,7 @@
 <p>$$p(y_i | w)=\frac{1}{\sqrt{2\pi} \sigma} \exp \left\lbrace-\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2\sigma^{2}}\right\rbrace$$   $$p(w)=\frac{1}{\sqrt{2 \pi} \sigma_{0}^{2}} \exp \lbrace-\frac{|| w ||^{2}}{2 \sigma_{0}^{2}}\rbrace$$  $$p(y_i | w) \cdot p(w)=\frac{1}{\sqrt{2\pi}\sigma} \cdot \frac{1}{\sqrt{2\pi} \sigma_0} \cdot \exp \left\lbrace-\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}}\right\rbrace$$</p>
 <p>最大后验概率估计MAP：<br>\begin{aligned}<br>\hat{w} &amp;=\arg\max_{w} p(w | Y)  \\<br>&amp;=\arg\max_{w}\prod_{i=1}^N p(y_i | w) \cdot p(w) \\<br>&amp;=\arg \max_w \sum_{i=1}^N \log [p(y_i | w) \cdot p(w)] \\<br>&amp;= \arg \max_w \sum_{i=1}^N -\frac{\left(y_i-w^{\top} x_i\right)^{2}}{2 \sigma^{2}}-\frac{||w||^{2}}{2 \sigma_{0}^{2}} \\<br>&amp;= \arg \min_w\sum_{i=1}^N {\left(y_i-w^{\top} x\right)^{2}}+\frac{N\sigma^2 }{ \sigma_{0}^{2}} ||w||^{2}<br>\end{aligned}</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>最小二乘估计等价于噪声为高斯分布的最大似然估计，二范数为正则项的最小二乘估计等价为先验为高斯分布的最大后验估计。</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -526,7 +526,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -640,6 +640,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

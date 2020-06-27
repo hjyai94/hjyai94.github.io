@@ -397,7 +397,7 @@
         <p>样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$<br>模型:<br>\begin{aligned}<br>&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\<br>&amp;\operatorname{sign}(a)=\begin{cases} +1,\quad a&gt;0 \\{-1,  \quad a&lt;0 }<br>\end{cases}<br>\end{aligned}</p>
 <p>策略：构造损失函数<br>\begin{array}{c}<br>L(w)=\sum_{i=1}^{N} I\lbrace y_{i} w^{\top} x_{i}&lt;0\rbrace \\<br>{ L(w)=\sum_{x_{i} \in D}-y_{i} w^{\top} x_{i}} \\<br>{\nabla_{w} L=-y_{i} x_{i}}<br>\end{array}</p>
 <p>算法：随机梯度SGD<br>\begin{aligned}<br>W^{(t+1)} &amp; \leftarrow w^{(t)}-\lambda \nabla_{w} L \\<br>&amp; w^{(t)}+\lambda y_{i} x_{i}<br>\end{aligned}</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -533,7 +533,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,6 +631,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

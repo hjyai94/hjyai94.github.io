@@ -399,7 +399,7 @@
 <p>$$\operatorname{Var}[y]=\operatorname{Var}[A x+b+\varepsilon]=<br>\operatorname{Var}[A x+b]+\operatorname{Var} [\varepsilon]<br>=A \Lambda^{-1} A^{\top}+L^{-1} $$</p>
 <p>$$y \sim N\left(A \mu+b, L^{-1}+A \Lambda^{-1} A^{\top}\right)$$</p>
 <p>$$<br>z=\left(\begin{array}{c}<br>{x} \\<br>{y}<br>\end{array}\right) \sim N\left(\left[\begin{array}{c}<br>{\mu} \\<br>{A \mu+b}<br>\end{array}\right],\left[\begin{array}{cc}<br>{\lambda^{-1}} &amp; {\Delta} \\<br>{\Delta^T} &amp; {L^{-1}+A \Lambda^{-1} A^{T}}<br>\end{array}\right]\right)<br>$$<br>直接套用上一篇博客条件概率公式，变可以得出$p(x|y)$。<br>下面求$\Delta$的值：<br>$$<br>\begin{aligned}<br>\Delta &amp;=\operatorname{Cov}(x, y) \\<br>&amp;=E[(x-E[x]) \cdot(y-E[y])^{T}] \\<br>&amp;=E[(x-\mu)(y-A \mu-b)^{T}] \\<br>&amp;=E\left[(x-\mu)({A x-A \mu}+\varepsilon)^{T}\right] \\<br>&amp;=E\left[(x-\mu)({A x-A \mu}+\varepsilon)^{T}\right] \\<br>&amp;=E\left[(x-\mu)(A x-A\mu)^{T}\right]+E\left[(x-\mu) \varepsilon^{T}\right] \\<br>&amp;=E\left[(x-\mu)(A x-A\mu)^{T}\right]+E\left[(x-\mu) \varepsilon^{T}\right] \\<br>&amp;=E\left[(x-\mu)(A x-A \mu)^{T}\right]\\<br>&amp;=E\left[(x-\mu)(x-\mu)^{T} \cdot A^{T}\right]\\<br>&amp;\begin{array}{l}<br>{=E\left[(x-\mu)(x-\mu)^{T}\right] \cdot A^{T}} \\<br>{=\operatorname{Var}[x] \cdot A^{T}}<br>\end{array}\\<br>&amp;=\Lambda^{-1} A^{T}<br>\end{aligned}<br>$$</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -535,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,6 +633,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

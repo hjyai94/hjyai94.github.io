@@ -419,7 +419,7 @@
 <h3 id="在HMM上进行变量消除"><a href="#在HMM上进行变量消除" class="headerlink" title="在HMM上进行变量消除"></a>在HMM上进行变量消除</h3><p>参考[4]中笔记对于该例的介绍，主要是利用当前变量相关变量和非相关的变量进行变量消除，每步消除一个变量，最终复杂度为$O(Tn^2)$，其中T表示变量的个数。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%9A%90%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B.png" alt></p>
 <h3 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h3><p>考虑如下的无向图概率图链模型，总共有五个变量A,B,C，D，E，计算联合概率密度P(e)。<br>$$ P(e)=\sum_{a,b,c,d}\frac{1}{Z}\phi(a,b)\phi(b,c)\phi(c,d)\phi(d,e)$$<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4-%E6%97%A0%E5%90%91%E5%9B%BE.png" alt><br>具体计算方法同有向图相似，超级长的公式，不想打，下面用截图来表示。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E6%97%A0%E5%90%91%E5%9B%BE%E5%8F%98%E9%87%8F%E6%B6%88%E9%99%A4%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B.png" alt><br>最后通过正则化可以获得最终的概率：<br>$$P(e)=\frac{m_d(e)}{\sum_e m_d(e)}$$</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html" target="_blank" rel="noopener">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>[2] Koller D, Friedman N. Probabilistic graphical models: principles and techniques[M]. MIT press, 2009.<br>[3] 周志华. 机器学习[M]. 清华大学出版社, 2016.<br>[4] <a href="http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A" target="_blank" rel="noopener">http://people.eecs.berkeley.edu/~jordan/prelims/?C=N;O=A</a><br>注：本文主要参考[1]中第4讲视频以及笔记，参考[2]中第9章，参考[3]中第14章，参考[4]中第3章。</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -564,7 +564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -678,6 +678,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

@@ -1940,7 +1940,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #13ff3b;
+  background: #2bff77;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3384,4 +3384,7 @@ pre .javascript .function {
 }
 .feed-link a {
   display: inline-block;
+}
+.mermaid {
+  background: transparent;
 }

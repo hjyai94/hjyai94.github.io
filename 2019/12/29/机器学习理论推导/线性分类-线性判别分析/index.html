@@ -411,7 +411,7 @@
 <p>$ S_b $ : between-class 类间方差 $p\times p$<br>$ S_w $ : within-class 类内方差 $p\times p$</p>
 <p>对$J(w)$求导，并令其为$0$，<br>\begin{aligned}<br>\frac{\partial J(w)}{\partial w} &amp;=2 S_{b} w\left(w^{\top} S_{w} w\right)^{-1}+w^{\top} S_{b} w \cdot(-1) \cdot\left(w^{\top} S_{w} w\right)^{-2} \\<br>&amp;=0<br>\end{aligned}</p>
 <p>\begin{aligned}<br>\hat{w} &amp;=\frac{w^{\top} S w}{w^{\top} S_{b} w} S_{w}^{-1} \cdot S_{b} \cdot w\\<br>&amp;\propto S_w^{-1} \cdot S_{b} \cdot w \\<br>&amp;= S_w^{-1} \cdot (\bar{x}_{c_1} - \bar{x}_{c_2})(\bar{x}_{c_1} - \bar{x}_{c_2})^{\top} \cdot w \\<br>&amp;\propto S_w^{-1} \cdot (\bar{x}_{c_1} - \bar{x}_{c_2})<br>\end{aligned}</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -556,7 +556,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,6 +670,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

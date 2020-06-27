@@ -411,7 +411,7 @@
 <li>SVD<br>令$ U = \Sigma_{XX}^{-\frac{1}{2}} u$，$V = \Sigma_{YY}^{-\frac{1}{2}} v $。<br>由$U^T \Sigma_{XX} U = I$和$ V^T \Sigma_{YY} V= I$，可以得出：$ u^T u = I $ $v^T v = I $<br>将原本的最优化问题转化为这样的形式：<br>\begin{cases}<br>argmax_{u, v} = u^T\Sigma_{XX}^{-\frac{1}{2}} \Sigma_{XY} \Sigma_{YY}^{-\frac{1}{2}} v \\<br>\text{s.t.}\ u^T u = I, v^T v = I  \\<br>\end{cases}<br>使用$SVD$就是通过最大化对应的奇异值的特征向量，就是对应的$u$和$v$的结果。<br>$$ T = \Sigma_{XX}^{-\frac{1}{2}}\Sigma_{XY} \Sigma_{YY}^{-\frac{1}{2}}  $$<br>$$ (U^{\star}, V^{\star}) = (\Sigma_{XX}^{-\frac{1}{2}}U_{SVD}, \Sigma_{YY}^{-\frac{1}{2}} V_{SVD}) $$</li>
 </ul>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1] <a href="https://zh.wikipedia.org/wiki/典型相关" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/典型相关</a><br>[2] <a href="https://blog.csdn.net/Mbx8X9u/article/details/78824216" target="_blank" rel="noopener">https://blog.csdn.net/Mbx8X9u/article/details/78824216</a></p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -556,7 +556,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,6 +670,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

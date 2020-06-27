@@ -399,7 +399,7 @@
         <p>本文将聚焦于FP、TP、TN、FN、准确率和召回率，F-score等指标，并解释这些指标，另外介绍医学图像分割任务中常用的损失函数。<br>如下图所示，我们仍然以肿瘤为例，红色圈以内为真值区域(肿瘤的真实位置)，蓝色圈以内为预测结果(预测肿瘤的位置)。其中TP表示预测结果与真值相重叠的一部分，FP也就是常称的假阳性，FN常称为假阴性，TN表示为预测负样本结果与真值负样本结果重叠面积。<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/TPandFP.png" alt></p>
 <h1 id="Dice"><a href="#Dice" class="headerlink" title="Dice"></a>Dice</h1><p>Dice 指标是我们在医学图像分割领域中常用的评价指标，它是采用预测结果与真值结果的重叠面积所占比例来表征分割性能的优劣。<br>$$ Dice(P, G) = \frac{2|PG|}{|P|+|G|} = \frac{2TP}{2TP + FP + FN}$$<br>Dice 这个指标同时也是F1-score，它是准确率和召回率的调和平均数，也是倒数平均数。准确率和召回率的公式如下：<br>$$ precision = \frac{TP}{TP + FP} $$<br>准确率可以看做是预测准确的正样本占所有预测正样本的比例。<br>$$ recall = \frac{TP}{TP + FN} $$<br>召回率可以看作是预测准确的正样本占所有真值正样本的比例。</p>
 <h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>下面我们来总结医学图像分割中常用的损失函数，医学图像分割同自然图像分割一样，交叉熵损失函数都是常用的损失函数，交叉熵损失函数</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -544,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -658,6 +658,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

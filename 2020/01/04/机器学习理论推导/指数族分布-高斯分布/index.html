@@ -398,7 +398,7 @@
 <p>$$\begin{aligned}<br>P(x | \theta) &amp;=\frac{1}{\sqrt{2 \pi} \sigma} \exp \left\lbrace-\frac{(x-\mu)^{2}}{2\sigma^{2}}\right\rbrace \quad \theta=\left(\mu, \sigma^{2}\right)\\<br>&amp;=\frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp\left\lbrace-\frac{1}{2\sigma^{2}}\left(x^{2}-2 \mu x+\mu^{2}\right)\right\rbrace  \\<br>&amp;=\exp \log \left(2 \pi \sigma^{2}\right)^{-\frac{1}{2}} \cdot \exp\left\lbrace -\frac{1}{2\sigma^{2}}\left(-2\mu \quad 1\right)\left(\begin{array}{l}{x} \\ {x^{2}}\end{array}\right)-\frac{\mu^{2}}{2\sigma^{2}}\right\rbrace \\<br>&amp;= \exp\left\lbrace \left(\frac{\mu}{\sigma^2}\quad -\frac{1}{2\sigma^{2}}\right)  \left(\begin{array}{l}{x} \\ {x^{2}}\end{array}\right)  -\left(\frac{\mu^2}{2\sigma^2}+\frac{1}{2} \log 2 \pi \sigma^2\right) \right\rbrace \\<br>&amp;=  \exp \left(\eta^{\top} \phi(x)-A(\eta)\right)<br>\end{aligned}$$   </p>
 <p>$$<br>\eta=\left(\begin{array}{l}<br>{\eta_{1}} \\<br>{\eta_2}<br>\end{array}\right)=\left(\begin{array}{c}<br>{\frac{\mu}{\sigma^{2}}} \\<br>{-\frac{1}{2 \sigma^{2}}}<br>\end{array}\right)<br>$$</p>
 <p>\begin{aligned}<br>A(\eta) &amp;=-\frac{\eta_{1}^{2}}{4 \eta_{2}}+\frac{1}{2} \log \left(2\pi \cdot - \frac{1}{2 \eta_{2}}\right) \\<br>&amp;=-\frac{\eta_{1}^{2}}{4 \eta_{2}}+\frac{1}{2} \log \left(-\frac{\pi}{\eta_{2}}\right)<br>\end{aligned}</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -534,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -632,6 +632,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

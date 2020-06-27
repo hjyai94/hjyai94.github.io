@@ -399,7 +399,7 @@
 <p>$$<br>Y=\left(\begin{array}{c}<br>{y_{1}} \\<br>{y_{2}} \\<br>{\vdots} \\<br>{y_{N}}<br>\end{array}\right)_{N \times 1}<br>$$</p>
 <p>最小二乘估计：<br>$$<br>\begin{aligned}<br>L(w) &amp;=\left(\sum_{i=1}^{N}\left|\left|w^{\top} x_{i}-y_{i}\right|\right|^{2}\right) \\<br>&amp;=\sum_{i=1}^{N}\left(w^{\top} x_{i}-y_{i}\right)^{2} \\<br>&amp;=\left( w^{\top} x_{1}-y_{1} \quad w^{\top} x_{2}-y_{2} \quad \cdots \quad w^{\top} x_{N}-y_{N} \right) \left(\begin{array}{c}<br>{w^{\top} x_{1}-y_{1}} \\<br>{w^{\top} x_{2}-y_{2}} \\<br>{\vdots} \\<br>{w^{\top} x_{N}-y_{N}}<br>\end{array}\right) \\<br>&amp;= \left(w^{\top} X^{\top} - Y^{\top} \right) \left(Xw - Y \right) \\<br>&amp;= w^{T} {X}^{\top} X w-2 w^{\top} X^{\top} Y+Y^{\top} Y<br>\end{aligned}<br>$$</p>
 <p>对上式求导，并令其为$0$：<br>$$\hat{w}=\arg \min L(w) $$   $$\frac{\partial L(w)}{\partial w}=2 X^{\top} X w-2 X^{\top} Y = 0$$   $$ \hat{w} = \left( X^{\top} X \right)^{-1} X^{\top} Y $$</p>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
     
@@ -535,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -633,6 +633,14 @@
 
 
 
+
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 
