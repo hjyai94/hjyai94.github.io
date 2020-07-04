@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="HJY">
 <meta property="og:description" content="概率图模型按照概率图模型的作用，将概率图分为三类。$$\text{概率图} \left \lbrace\begin{matrix}&amp;amp; Representation(表示){ \left \lbrace \begin{matrix}有向图 Bayesian Network \\高斯图(连续)\\无向图 Markov Network\\\end{matrix} \right.}\\&amp;amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-27T11:38:38.711Z">
+<meta property="og:updated_time" content="2020-07-04T07:07:04.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="概率图">
 <meta name="twitter:description" content="概率图模型按照概率图模型的作用，将概率图分为三类。$$\text{概率图} \left \lbrace\begin{matrix}&amp;amp; Representation(表示){ \left \lbrace \begin{matrix}有向图 Bayesian Network \\高斯图(连续)\\无向图 Markov Network\\\end{matrix} \right.}\\&amp;amp;">
@@ -422,14 +422,14 @@
 
 <p>$<br>p(A,B,C)=p(A)p(C)p(B|C,A)=p(A)p(C|A)p(B|C,A)\\<br>\Longrightarrow p(C)=p(C|A)\\<br>\Leftrightarrow C\perp A\\<br>$</p>
 <p>对于第3中结构，$A,C$ 独立与$B$无关。</p>
-<p>从整体的图来看，可以引入 D 划分的概念。对于类似上面图 1和图 2的关系，引入集合A，B，那么满足 $A\perp B|C$ 的 $C$ 集合中的点与 $A,B$  中的点的关系都满足图 1，2，满足图3 关系的点都不在 $C$ 中。D 划分应用在贝叶斯定理中：<br>$$<br>p(x_i|x_{-i})=\frac{p(x)}{\int p(x)dx_{i}}=\frac{\prod\limits_{j=1}^pp(x_j|x_{parents(j)})}{\int\prod\limits_{j=1}^pp(x_j|x_{parents(j)})dx_i}<br>$$<br>可以发现，上下部分可以分为两部分，一部分是和 $x_i$ 相关的，另一部分是和 $x_i$ 无关的，而这个无关的部分可以相互约掉。于是计算只涉及和 $x_i$ 相关的部分。</p>
-<p>与 $x_i$ 相关的部分可以写成：<br>$$<br>p(x_i|x_{parents(i)})p(x_{child(i)}|x_i)<br>$$<br>这些相关的部分又叫做 Markov 毯。</p>
-<p>实际应用的模型中，对这些条件独立性作出了假设，从单一到混合，从有限到无限（时间，空间）可以分为：</p>
+<h3 id="D-分离"><a href="#D-分离" class="headerlink" title="D 分离"></a>D 分离</h3><p>所谓D 分离就是我们希望对于集合A，B再特定有向图中满足 $A\perp B|C$ 的条件独立性假设。<br>$$<br>p(x_i|x_{-i})=\frac{p(x)}{\int p(x)dx_{i}}=\frac{\prod\limits_{j=1}^pp(x_j|x_{parents(j)})}{\int\prod\limits_{j=1}^pp(x_j|x_{parents(j)})dx_i}<br>$$<br>可以发现，上下部分可以分为两部分，一部分是和 $x_i$ 相关的，另一部分是和 $x_i$ 无关的，而这个无关的部分可以相互约掉。于是计算只涉及和 $x_i$ 相关的部分。</p>
+<p>与 $x_i$ 相关的部分可以写成：<br>$$<br>p(x_i|x_{parents(i)})p(x_{child(i)}|x_i)<br>$$<br>这些由父节点、子节点和共同父母组成的结合称为 Markov 毯。</p>
+<h3 id="贝叶斯网络例子"><a href="#贝叶斯网络例子" class="headerlink" title="贝叶斯网络例子"></a>贝叶斯网络例子</h3><p>下面根据条件独立性假设，我们举一些贝叶斯网络例子：</p>
 <ol>
 <li>朴素贝叶斯，单一的条件独立性假设 $p(x|y)=\prod\limits_{i=1}^pp(x_i|y)$，在 D 划分后，所有条件依赖的集合就是单个元素。</li>
-<li>高斯混合模型：混合的条件独立。引入多类别的隐变量 $z_1, z_2,\cdots,z_k$， $p(x|z)=\mathcal{N}(\mu,\Sigma)$，条件依赖集合为多个元素。</li>
+<li>高斯混合模型：混合的条件独立。引入离散变量 $z_1, z_2,\cdots,z_k$， $p(x|z)=\mathcal{N}(\mu,\Sigma)$，条件依赖集合为多个元素。</li>
 <li>与时间相关的条件依赖<ol>
-<li>Markov 链</li>
+<li>Markov Chain</li>
 <li>高斯过程（无限维高斯分布）</li>
 </ol>
 </li>
@@ -654,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概率图模型"><span class="nav-number">1.</span> <span class="nav-text">概率图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有向图-贝叶斯网络"><span class="nav-number">1.1.</span> <span class="nav-text">有向图-贝叶斯网络</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概率图模型"><span class="nav-number">1.</span> <span class="nav-text">概率图模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有向图-贝叶斯网络"><span class="nav-number">1.1.</span> <span class="nav-text">有向图-贝叶斯网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#D-分离"><span class="nav-number">1.1.1.</span> <span class="nav-text">D 分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贝叶斯网络例子"><span class="nav-number">1.1.2.</span> <span class="nav-text">贝叶斯网络例子</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
