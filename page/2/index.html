@@ -398,8 +398,12 @@
       
         
           
-          定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&lt; p $$   $$x:\ \text{observed data}, z:\ \text{latent variable} $$
-线性高斯模型：\begin{cases}z \
+           定义
+x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q线性高斯模型：
+\begin{cases}
+z \sim N\left(0, I_q\right) \\
+x=wz+\mu+\varepsilon \\
+\varepsilon \sim
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -549,8 +553,10 @@
       
         
           
-          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1, 2, \ldots ,N\end{aligned}$$
-Mea
+           定义
+{(xi,yi)}i=1Nxi∈Rp,i=1,2,…,N\begin{aligned}
+&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
+&amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1,
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -700,7 +706,10 @@ Mea
       
         
           
-          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{align
+           定义
+{(xi,yi)}i=1Nxi∈Rp,yi∈{0,1}\begin{aligned}
+&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
+&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -850,7 +859,10 @@ Mea
       
         
           
-          数据$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{align
+           数据
+{(xi,yi)}i=1Nxi∈Rp,yi∈{0,1}\begin{aligned}
+&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
+&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1000,7 +1012,13 @@ Mea
       
         
           
-          定义$$X = \begin{pmatrix}{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}\end{pmatrix}^T_{N\times p}$$     $$Y=\left(\begin{array}{l}{y_{1}}  &amp; {y_{2}} 
+           定义
+X = \begin{pmatrix}
+{x_{1}}&{x_{2}}&{\cdots}&{x_{N}}
+\end{pmatrix}^T_{N\times p} 
+$$     
+Y=\left(\begin{array}{l}
+{y_{1}}  &amp; {y_{2}} &amp; {\
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1150,7 +1168,10 @@ Mea
       
         
           
-          样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$模型:\begin{aligned}&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \m
+          样本集：{(xi,yi)}i=1N\lbrace (x_i, y_i) \rbrace_{i=1}^N{(xi​,yi​)}i=1N​
+模型:
+\begin{aligned}
+&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1278,7 +1299,8 @@ Mea
       
         
           
-          $$\begin{aligned}&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;x_{i} \in \mathbb{R}^{p
+          D={(x1,y1),(x2,y2),⋯,(xN,yN)}xi∈Rp,yi∈R,i=1,2,⋯,N\begin{aligned}
+&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\ri
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1428,7 +1450,9 @@ Mea
       
         
           
-          $$\begin{aligned}&amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;y=f(w)+\varepsilon\\&amp;f(w)=w^{\top} x_i\\&amp;\begin{array}{l}{y_i=w^{\top
+          ε∼N(0,σ2)y=f(w)+εf(w)=w⊤xiyi=w⊤xi+εyi∣xi;w∼N(w⊤xi,σ2)\begin{aligned}
+&amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\\\
+&amp;y=f(w)+\varepsilon\\\\
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1578,7 +1602,8 @@ Mea
       
         
           
-          $$\begin{aligned}&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;x_{i} \in \mathbb{R}^{p
+          D={(x1,y1),(x2,y2),⋯,(xN,yN)}xi∈Rp,yi∈R,i=1,2,⋯,N\begin{aligned}
+&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\ri
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1728,7 +1753,9 @@ Mea
       
         
           
-          已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$求：$p(y)$，$p(x|y)$$$\begin{aligned}&amp;y=A x+b+\varepsilon
+          已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$
+求：p(y)p(y)p(y)，p(x∣y)p(x|y)p(x∣y)
+y=Ax+b+εε∼N(0,L−1)\begi
           ...
           <!--noindex-->
           <div class="post-button text-center">
