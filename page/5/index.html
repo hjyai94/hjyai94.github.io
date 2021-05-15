@@ -398,10 +398,8 @@
       
         
           
-           写在前面的话
-本文主要是基于Pytorch给出的官方Tutorial，然后我按照自己的喜好编辑成Jupyter文档，后转成本博客，用来作为自己的日常参照材料。
- Pytorch
-Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习更加简单，比较适合科研型的或者是实现一些想法的入门级选手。
+          写在前面的话本文主要是基于Pytorch给出的官方Tutorial，然后我按照自己的喜好编辑成Jupyter文档，后转成本博客，用来作为自己的日常参照材料。
+PytorchPytorch给我的感觉是：它是基于更高级的封装，实现深度学习更加简单，比较适合科研型的或者是实现一些想法的入门级选手。Tens
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -551,14 +549,9 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           多模态机器学习
-下面是我参考文章[1]总结出来多模态机器学习中存在的挑战，以及目前所使用的方法的思维导图。
-
- 多模态医学图像数据集
-
-
-脑肿瘤分割数据集
-[1] Menze B H, Jakab A, Bauer S, et al. The multimodal brain tumor imag
+          多模态机器学习下面是我参考文章[1]总结出来多模态机器学习中存在的挑战，以及目前所使用的方法的思维导图。
+多模态医学图像数据集
+脑肿瘤分割数据集[1] Menze B H, Jakab A, Bauer S, et al. The multimodal brain tumor image segme
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -708,13 +701,11 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           2018.9.10
-暑假期间学习和看的论文：
-学习内容：
+          2018.9.10暑假期间学习和看的论文：学习内容：
 
 计算视觉CS131，完成了所有的homework的代码，然后传到了我的github上了。https://github.com/hjyai94/CS131_homework
 计算机视觉CS231看了一点，还没有看完。
-最近在看的深度学习和贝
+最近在看的深度学习和贝叶斯方
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -864,8 +855,7 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           定义
-给定带有有限距的随机变量的列向量X=(x1,...,xn)TX = (x_1, ..., x_n)^TX=(x1​,...,xn​)T和Y=(y1,...,ym)TY = (y_1, ..., y_m)^TY=(y1​,...,ym​)T，我们可以定义互协方差矩阵ΣXY=cov(X,Y)\S
+          定义给定带有有限距的随机变量的列向量$X = (x_1, …, x_n)^T$和$Y = (y_1, …, y_m)^T$，我们可以定义互协方差矩阵$\Sigma_{XY} = cov(X, Y)$，为$n\times m$的矩阵，其中$(i, j)$是协方差矩阵$cov(x_i, y_j)$。实际
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1015,10 +1005,7 @@ Pytorch给我的感觉是：它是基于更高级的封装，实现深度学习�
       
         
           
-           EM算法
-之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。
-EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。
-\begin{equation}\begin{split} log\ p
+          EM算法之前在看概率图模型的时候，写过关于EM算法的内容，不过已经忘记差不多了，最近在看[1]中的材料，感觉有了新的理解，特将这些内容整理成这篇博客。EM算法适用于存在隐变量的情况，或者说是假设存在因变量对系统进行推导。\begin{equation}\begin{split} log\ p(X\m
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1168,8 +1155,7 @@ EM算法适用于存在隐变量的情况，或者说是假设存在因变量对
       
         
           
-           VGGNet模型结构
-VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研究员共同研究出的深度卷积神经网络。VGGNet使用的比较小的卷积核(3x3)以及2x2的最大池化层，通过增加层数增强非线性性能，同时相较于7x7的卷积核而言，减少了
+          VGGNet模型结构VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研究员共同研究出的深度卷积神经网络。VGGNet使用的比较小的卷积核(3x3)以及2x2的最大池化层，通过增加层数增强非线性性能，同时相较于7x7的卷积核而言，减少了参数
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1319,11 +1305,8 @@ VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研
       
         
           
-           Point estimator
-当我们已经获得模型时，我们希望能够估计出模型的参数，这是可以使用点估计的方法。
-共轭先验：在给定似然函数的情况下，先验分布与后验分布时同种分布。
- MC方法
-为了进行估计复杂后验分布，通过采样的方法对后验概率进行估计。
+          Point estimator当我们已经获得模型时，我们希望能够估计出模型的参数，这是可以使用点估计的方法。共轭先验：在给定似然函数的情况下，先验分布与后验分布时同种分布。
+MC方法为了进行估计复杂后验分布，通过采样的方法对后验概率进行估计。
 
           
           <!--noindex-->
@@ -1474,7 +1457,7 @@ VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研
       
         
           
-           
+          # 
 
           
           <!--noindex-->
@@ -1626,8 +1609,7 @@ VGGNet是牛津大学视觉组(Visual Geometry Group)和Google DeepMind公司研
         
           
           
-filtering
-Forming a new image whose pixel values are transformed from original pixel values.
+filteringForming a new image whose pixel values are transformed from original pixel values.
 
 
           
@@ -1779,9 +1761,8 @@ Forming a new image whose pixel values are transformed from original pixel value
       
         
           
-           执行sudo apt-get update 出错
-出现错误如下：
-E: Some index files failed to download, they have been ignored, or old ones used instead' 出现无法更新的情况，可以在/etc/apt/sour
+          执行sudo apt-get update 出错出现错误如下：E: Some index files failed to download, they have been ignored, or old ones used instead&#39;
+出现无法更新的情况，可以在/etc/apt/sou
           ...
           <!--noindex-->
           <div class="post-button text-center">
