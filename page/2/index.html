@@ -305,6 +305,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/" itemprop="url">支持向量机-硬间隔SVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-03T21:03:11+08:00">
+                2020-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace -1,+1\rbrace\end{ali
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/03/机器学习理论推导/支持向量机-硬间隔SVM/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2020/01/02/机器学习理论推导/降维-概率PCA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -398,12 +548,8 @@
       
         
           
-           定义
-x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q线性高斯模型：
-\begin{cases}
-z \sim N\left(0, I_q\right) \\
-x=wz+\mu+\varepsilon \\
-\varepsilon \sim
+          定义$$x \in \mathbb{R}^p, \quad z \in \mathbb{R}^q, \quad q&lt; p $$   $$x:\ \text{observed data}, z:\ \text{latent variable} $$
+线性高斯模型：\begin{cases}z \
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -553,10 +699,8 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           定义
-{(xi,yi)}i=1Nxi∈Rp,i=1,2,…,N\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1,
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad i = 1, 2, \ldots ,N\end{aligned}$$
+Mea
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -706,10 +850,7 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           定义
-{(xi,yi)}i=1Nxi∈Rp,yi∈{0,1}\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \
+          定义$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{align
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -859,10 +1000,7 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           数据
-{(xi,yi)}i=1Nxi∈Rp,yi∈{0,1}\begin{aligned}
-&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\\\
-&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \
+          数据$$\begin{aligned}&amp;\lbrace\left(x_{i}, y_{i}\right)\rbrace_{i=1}^{N}\\&amp;x_{i} \in \mathbb{R}^{p}, \quad y_{i} \in \lbrace 0,1\rbrace\end{align
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1012,13 +1150,7 @@ x=wz+\mu+\varepsilon \\
       
         
           
-           定义
-X = \begin{pmatrix}
-{x_{1}}&{x_{2}}&{\cdots}&{x_{N}}
-\end{pmatrix}^T_{N\times p} 
-$$     
-Y=\left(\begin{array}{l}
-{y_{1}}  &amp; {y_{2}} &amp; {\
+          定义$$X = \begin{pmatrix}{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}\end{pmatrix}^T_{N\times p}$$     $$Y=\left(\begin{array}{l}{y_{1}}  &amp; {y_{2}} 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1168,10 +1300,7 @@ Y=\left(\begin{array}{l}
       
         
           
-          样本集：{(xi,yi)}i=1N\lbrace (x_i, y_i) \rbrace_{i=1}^N{(xi​,yi​)}i=1N​
-模型:
-\begin{aligned}
-&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_
+          样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$模型:\begin{aligned}&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \m
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1299,8 +1428,7 @@ Y=\left(\begin{array}{l}
       
         
           
-          D={(x1,y1),(x2,y2),⋯,(xN,yN)}xi∈Rp,yi∈R,i=1,2,⋯,N\begin{aligned}
-&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\ri
+          $$\begin{aligned}&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;x_{i} \in \mathbb{R}^{p
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1450,9 +1578,7 @@ Y=\left(\begin{array}{l}
       
         
           
-          ε∼N(0,σ2)y=f(w)+εf(w)=w⊤xiyi=w⊤xi+εyi∣xi;w∼N(w⊤xi,σ2)\begin{aligned}
-&amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\\\
-&amp;y=f(w)+\varepsilon\\\\
+          $$\begin{aligned}&amp;\varepsilon \sim N\left(0, \sigma^{2}\right)\\&amp;y=f(w)+\varepsilon\\&amp;f(w)=w^{\top} x_i\\&amp;\begin{array}{l}{y_i=w^{\top
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1602,164 +1728,11 @@ Y=\left(\begin{array}{l}
       
         
           
-          D={(x1,y1),(x2,y2),⋯,(xN,yN)}xi∈Rp,yi∈R,i=1,2,⋯,N\begin{aligned}
-&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\ri
+          $$\begin{aligned}&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;x_{i} \in \mathbb{R}^{p
           ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/12/28/机器学习理论推导/线性回归-最小二乘法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2019/12/28/机器学习理论推导/高斯分布-联合概率/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/28/机器学习理论推导/高斯分布-联合概率/" itemprop="url">高斯分布-联合概率</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-28T19:22:45+08:00">
-                2019-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$
-求：p(y)p(y)p(y)，p(x∣y)p(x|y)p(x∣y)
-y=Ax+b+εε∼N(0,L−1)\begi
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/12/28/机器学习理论推导/高斯分布-联合概率/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1850,7 +1823,7 @@ y=Ax+b+εε∼N(0,L−1)\begi
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1872,7 +1845,7 @@ y=Ax+b+εε∼N(0,L−1)\begi
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
