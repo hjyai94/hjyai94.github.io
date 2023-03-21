@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。">
+<meta name="description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。  常见Python问题及知识点 赋值、浅拷贝和深拷贝的区别？(1) 在 Python 中，对象">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python知识点总结">
 <meta property="og:url" content="http://hjyai94.cn/2023/03/21/面试知识点总结/Python知识点总结/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。">
+<meta property="og:description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。  常见Python问题及知识点 赋值、浅拷贝和深拷贝的区别？(1) 在 Python 中，对象">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-03-21T11:46:50.543Z">
+<meta property="og:updated_time" content="2023-03-21T12:33:27.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python知识点总结">
-<meta name="twitter:description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。">
+<meta name="twitter:description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。  常见Python问题及知识点 赋值、浅拷贝和深拷贝的区别？(1) 在 Python 中，对象">
 
 
 
@@ -398,7 +398,18 @@
 <li>有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。</li>
 <li>代码运行之前不需要编译解释执行。</li>
 <li>动态类型语言，在声明变量时，不需要说明变量的类型。</li>
+<li>面向对象的编程，支持通过组合与继承的方式定义类。</li>
+<li>函数是第一类对象。</li>
+<li>Python 代码编写快，但是运行速度比编译型语言通常要慢。</li>
 </ul>
+<h1 id="常见Python问题及知识点"><a href="#常见Python问题及知识点" class="headerlink" title="常见Python问题及知识点"></a>常见Python问题及知识点</h1><ol>
+<li>赋值、浅拷贝和深拷贝的区别？<br>(1) 在 Python 中，对象的赋值就是简单的对象引用，这点和 C++不同。如下情况:<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">"hello"</span>,[<span class="string">'python'</span>, <span class="string">'C++'</span>]]</span><br><span class="line"><span class="attr">b</span> = a</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>a和b指向同一片内存，b是a的引用。可以通过<code>b is a</code>和<code>id(a) == id(b)</code>判断，两个列表的地址相同。<br>赋值操作(包括对象作为参数、返回值)不会开辟新的内存空间，它只是复制了对象的引用。也就是说除了 b 这个名字之外，没有其他的内存开销。修改了 a，也就影响了 b，同理，修改了 b，也就影响了 a。</p>
+<p>(2) 浅拷贝会创建新对象，其内容非原对象本身的引用，而是原对象内第一层对象的引用。浅拷贝有三种形式:切片操作、工厂函数、copy 模块中的 copy 函数。<br>比如上述的列表 a，切片操作：b = a[:] 或者 b = [x for x in a]；<br>工厂函数：b = list(a)；<br>copy 函数：b = copy.copy(a)；<br>在这种情况下，列表 a 和 b 是不同的对象，修改列表 b 理论上不会影响到列表 a。</p>
+<p>但是要注意的是，浅拷贝之所以称之为浅拷贝，是它仅仅只拷贝了一层，在列表 a 中有一个嵌套的 list，如果我们修改了它，情况就不一样了。</p>
+<p>比如：a[3].append(‘java’)，查看列表 b，会发现列表 b 也发生了变化，这是因为，我们修改了嵌套的 list，修改外层元素，会修改它的引用，让它们指向别的位置，修改嵌套列表中的元素，列表的地址并未发生变化，指向的都是用一个位置。</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -605,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python简介"><span class="nav-number">1.</span> <span class="nav-text">Python简介</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python简介"><span class="nav-number">1.</span> <span class="nav-text">Python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见Python问题及知识点"><span class="nav-number">2.</span> <span class="nav-text">常见Python问题及知识点</span></a></li></ol></div>
             
 
           </div>
