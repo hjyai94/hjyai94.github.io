@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。  常见Python问题及知识点赋值、浅拷贝和深拷贝的区别？ 在 Python 中，对象的赋值就">
+<meta name="description" content="Python简介  有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。   常见Python问题及知识点  赋值、浅拷贝和深拷贝的区别？  在 Python 中，">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python知识点总结">
 <meta property="og:url" content="http://hjyai94.cn/2023/03/21/面试知识点总结/Python知识点总结/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。  常见Python问题及知识点赋值、浅拷贝和深拷贝的区别？ 在 Python 中，对象的赋值就">
+<meta property="og:description" content="Python简介  有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。   常见Python问题及知识点  赋值、浅拷贝和深拷贝的区别？  在 Python 中，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2023-03-22T09:03:47.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python知识点总结">
-<meta name="twitter:description" content="Python简介 有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。  常见Python问题及知识点赋值、浅拷贝和深拷贝的区别？ 在 Python 中，对象的赋值就">
+<meta name="twitter:description" content="Python简介  有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。 代码运行之前不需要编译解释执行。 动态类型语言，在声明变量时，不需要说明变量的类型。 面向对象的编程，支持通过组合与继承的方式定义类。 函数是第一类对象。 Python 代码编写快，但是运行速度比编译型语言通常要慢。   常见Python问题及知识点  赋值、浅拷贝和深拷贝的区别？  在 Python 中，">
 
 
 
@@ -394,7 +394,8 @@
       
 
       
-        <h1 id="Python简介"><a href="#Python简介" class="headerlink" title="Python简介"></a>Python简介</h1><ul>
+        <h1 id="python简介"><a class="markdownIt-Anchor" href="#python简介"></a> Python简介</h1>
+<ul>
 <li>有对象、模块、线程、异常处理和自动内存管理，可以加入其他语言的对比。</li>
 <li>代码运行之前不需要编译解释执行。</li>
 <li>动态类型语言，在声明变量时，不需要说明变量的类型。</li>
@@ -402,81 +403,154 @@
 <li>函数是第一类对象。</li>
 <li>Python 代码编写快，但是运行速度比编译型语言通常要慢。</li>
 </ul>
-<h1 id="常见Python问题及知识点"><a href="#常见Python问题及知识点" class="headerlink" title="常见Python问题及知识点"></a>常见Python问题及知识点</h1><h2 id="赋值、浅拷贝和深拷贝的区别？"><a href="#赋值、浅拷贝和深拷贝的区别？" class="headerlink" title="赋值、浅拷贝和深拷贝的区别？"></a>赋值、浅拷贝和深拷贝的区别？</h2><ol>
-<li>在 Python 中，对象的赋值就是简单的对象引用，这点和 C++不同。如下情况:<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">"hello"</span>,[<span class="string">'python'</span>, <span class="string">'C++'</span>]]</span><br><span class="line"><span class="attr">b</span> = a</span><br></pre></td></tr></table></figure>
-</li>
+<h1 id="常见python问题及知识点"><a class="markdownIt-Anchor" href="#常见python问题及知识点"></a> 常见Python问题及知识点</h1>
+<h2 id="赋值-浅拷贝和深拷贝的区别"><a class="markdownIt-Anchor" href="#赋值-浅拷贝和深拷贝的区别"></a> 赋值、浅拷贝和深拷贝的区别？</h2>
+<ol>
+<li>在 Python 中，对象的赋值就是简单的对象引用，这点和 C++不同。如下情况:</li>
 </ol>
-<p>a和b指向同一片内存，b是a的引用。可以通过<code>b is a</code>和<code>id(a) == id(b)</code>判断，两个列表的地址相同。<br>赋值操作(包括对象作为参数、返回值)不会开辟新的内存空间，它只是复制了对象的引用。也就是说除了 b 这个名字之外，没有其他的内存开销。修改了 a，也就影响了 b，同理，修改了 b，也就影响了 a。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span> = [<span class="number">1</span>,<span class="number">2</span>,<span class="string">"hello"</span>,[<span class="string">'python'</span>, <span class="string">'C++'</span>]]</span><br><span class="line"><span class="attr">b</span> = a</span><br></pre></td></tr></table></figure>
+<p>a和b指向同一片内存，b是a的引用。可以通过<code>b is a</code>和<code>id(a) == id(b)</code>判断，两个列表的地址相同。<br>
+赋值操作(包括对象作为参数、返回值)不会开辟新的内存空间，它只是复制了对象的引用。也就是说除了 b 这个名字之外，没有其他的内存开销。修改了 a，也就影响了 b，同理，修改了 b，也就影响了 a。</p>
 <ol start="2">
-<li>浅拷贝会创建新对象，其内容非原对象本身的引用，而是原对象内第一层对象的引用。浅拷贝有三种形式:切片操作、工厂函数、copy 模块中的 copy 函数。<br>比如上述的列表 a，切片操作：b = a[:] 或者 b = [x for x in a]；<br>工厂函数：b = list(a)；<br>copy 函数：b = copy.copy(a)；<br>在这种情况下，列表 a 和 b 是不同的对象，修改列表 b 理论上不会影响到列表 a。</li>
+<li>浅拷贝会创建新对象，其内容非原对象本身的引用，而是原对象内第一层对象的引用。浅拷贝有三种形式:切片操作、工厂函数、copy 模块中的 copy 函数。<br>
+比如上述的列表 a，切片操作：b = a[:] 或者 b = [x for x in a]；<br>
+工厂函数：b = list(a)；<br>
+copy 函数：b = copy.copy(a)；<br>
+在这种情况下，列表 a 和 b 是不同的对象，修改列表 b 理论上不会影响到列表 a。</li>
 </ol>
-<p>但是要注意的是，浅拷贝之所以称之为浅拷贝，是它仅仅只拷贝了一层，在列表 a 中有一个嵌套的 list，如果我们修改了它，情况就不一样了。<br>比如：a[3].append(‘java’)，查看列表 b，会发现列表 b 也发生了变化，这是因为，我们修改了嵌套的 list，修改外层元素，会修改它的引用，让它们指向别的位置，修改嵌套列表中的元素，列表的地址并未发生变化，指向的都是用一个位置。</p>
+<p>但是要注意的是，浅拷贝之所以称之为浅拷贝，是它仅仅只拷贝了一层，在列表 a 中有一个嵌套的 list，如果我们修改了它，情况就不一样了。<br>
+比如：a[3].append(‘java’)，查看列表 b，会发现列表 b 也发生了变化，这是因为，我们修改了嵌套的 list，修改外层元素，会修改它的引用，让它们指向别的位置，修改嵌套列表中的元素，列表的地址并未发生变化，指向的都是用一个位置。</p>
 <ol start="3">
 <li>深拷贝只有一种形式，copy 模块中的 deepcopy() 函数。</li>
-<li>注意<br>对于非容器类型，如数字、字符，以及其他的“原子”类型，没有拷贝一说，产生的都是原对象的引用。</li>
+<li>注意<br>
+对于非容器类型，如数字、字符，以及其他的“原子”类型，没有拷贝一说，产生的都是原对象的引用。</li>
 </ol>
-<h2 id="init-和-new-的区别"><a href="#init-和-new-的区别" class="headerlink" title="__init__ 和 __new__ 的区别"></a>__init__ 和 __new__ 的区别</h2><p>当我们使用「类名()」创建对象的时候，Python 解释器会帮我们做两件事情：1.为对象在内存分配空间，2.为对象进行初始化。分配空间是__new__  方法，初始化是__init__方法。<br>__new__  方法在内部做两件事情：1.对象分配空间。2.把对象的引用返回给 Python 解释器。当 Python 的解释器拿到了对象的引用之后，就会把对象的引用传递给__init__的第一个参数 self，__init__拿到对象的引用之后，就可以在方法的内部，针对对象来定义实例属性。<br>之所以要学习 __new__ 方法，就是因为需要对分配空间的方法进行改造，改造的目的就是为了当使用「类名()」创建对象的时候，无论执行多少次，在内存中永远只会创造出一个对象的实例，这样就可以达到单例设计模式的目的。</p>
-<h2 id="Python的变量、对象以及引用？"><a href="#Python的变量、对象以及引用？" class="headerlink" title="Python的变量、对象以及引用？"></a>Python的变量、对象以及引用？</h2><ol>
+<h2 id="__init__-和-__new__-的区别"><a class="markdownIt-Anchor" href="#__init__-和-__new__-的区别"></a> __init__ 和 __new__ 的区别</h2>
+<p>当我们使用「类名()」创建对象的时候，Python 解释器会帮我们做两件事情：1.为对象在内存分配空间，2.为对象进行初始化。分配空间是__new__  方法，初始化是__init__方法。<br>
+__new__  方法在内部做两件事情：1.对象分配空间。2.把对象的引用返回给 Python 解释器。当 Python 的解释器拿到了对象的引用之后，就会把对象的引用传递给__init__的第一个参数 self，__init__拿到对象的引用之后，就可以在方法的内部，针对对象来定义实例属性。<br>
+之所以要学习 __new__ 方法，就是因为需要对分配空间的方法进行改造，改造的目的就是为了当使用「类名()」创建对象的时候，无论执行多少次，在内存中永远只会创造出一个对象的实例，这样就可以达到单例设计模式的目的。</p>
+<h2 id="python的变量-对象以及引用"><a class="markdownIt-Anchor" href="#python的变量-对象以及引用"></a> Python的变量、对象以及引用？</h2>
+<ol>
 <li>变量是到内存空间的一个指针，也就是拥有指向对象连接的空间；</li>
 <li>对象是一块内存，表示它们所代表的值；</li>
 <li>引用就是自动形成的从变量到对象的指针。</li>
 </ol>
-<h2 id="Python-是强语言类型还是弱语言类型？"><a href="#Python-是强语言类型还是弱语言类型？" class="headerlink" title="Python 是强语言类型还是弱语言类型？"></a>Python 是强语言类型还是弱语言类型？</h2><p>Python 是强类型的动态脚本语言。</p>
+<h2 id="python-是强语言类型还是弱语言类型"><a class="markdownIt-Anchor" href="#python-是强语言类型还是弱语言类型"></a> Python 是强语言类型还是弱语言类型？</h2>
+<p>Python 是强类型的动态脚本语言。</p>
 <ol>
 <li>强类型：不允许不同类型相加。</li>
 <li>动态：不使用显示数据类型声明，且确定一个变量的类型是在第一次给它赋值的时候。</li>
 <li>脚本语言：一般也是解释型语言，运行代码只需要一个解释器，不需要编译。</li>
 </ol>
-<h2 id="Python中的作用域？"><a href="#Python中的作用域？" class="headerlink" title="Python中的作用域？"></a>Python中的作用域？</h2><p>Python 中，一个变量的作用域总是由在代码中被赋值的地方所决定。当 Python 遇到一个变量的话它会按照这的顺序进行搜索：</p>
-<h2 id="什么是-Python-自省？"><a href="#什么是-Python-自省？" class="headerlink" title="什么是 Python 自省？"></a>什么是 Python 自省？</h2><p>自省就是面向对象的语言所写的程序在运行时，能够知道对象的类型。</p>
-<h2 id="什么是Python的命名空间？"><a href="#什么是Python的命名空间？" class="headerlink" title="什么是Python的命名空间？"></a>什么是Python的命名空间？</h2><p>命名空间是对作用域的一种特殊的抽象</p>
-<h2 id="dict-的-items-方法与-iteritems-方法的不同？"><a href="#dict-的-items-方法与-iteritems-方法的不同？" class="headerlink" title="dict 的 items() 方法与 iteritems() 方法的不同？"></a>dict 的 items() 方法与 iteritems() 方法的不同？</h2><p>items方法将所有的字典以列表方式返回，其中项在返回时没有特殊的顺序。iteritems方法有相似的作用，但是返回一个迭代器对象。</p>
-<h2 id="os-path和sys-path的区别？"><a href="#os-path和sys-path的区别？" class="headerlink" title="os.path和sys.path的区别？"></a>os.path和sys.path的区别？</h2><p>os.path是操作系统的指定文件的路径，sys.path指python解释器的路径</p>
-<h2 id="Python-中的-os-模块常见方法？"><a href="#Python-中的-os-模块常见方法？" class="headerlink" title="Python 中的 os 模块常见方法？"></a>Python 中的 os 模块常见方法？</h2><p>os.remove() 删除文件<br>os.rename() 重命名文件<br>os.walk() 生成目录树下的所有文件<br>os.chdir() 改变目录<br>os.mkdir/makedirs 创建目录/多层目录<br>os.rmdir/removedirs 删除目录/多层目录<br>os.listdir() 列出指定目录的文件<br>os.getcwd() 取得当前工作目录<br>os.chmod() 改变目录权限<br>os.path.basename() 去掉目录路径，返回文件名<br>os.path.dirname() 去掉文件名，返回目录路径<br>os.path.join() 将分离的各部分组合成一个路径名<br>os.path.split() 返回（dirname(),basename())元组<br>os.path.splitext() 返回(filename,extension)元组<br>os.path.getatime\ctime\mtime 分别返回最近访问、创建、修改时间<br>os.path.getsize() 返回文件大小<br>os.path.exists() 是否存在<br>os.path.isabs() 是否为绝对路径<br>os.path.isdir() 是否为目录<br>os.path.isfile() 是否为文件</p>
-<h2 id="字典和-json-的区别？"><a href="#字典和-json-的区别？" class="headerlink" title="字典和 json 的区别？"></a>字典和 json 的区别？</h2><p>典是一种数据结构，json 是一种数据的表现形式。</p>
-<h2 id="什么是可变、不可变类型？"><a href="#什么是可变、不可变类型？" class="headerlink" title="什么是可变、不可变类型？"></a>什么是可变、不可变类型？</h2><p>可变不可变指的是内存中的值是否可以被改变，不可变类型指的是对象所在内存块里面的值不可以改变，有数值、字符串、元组；可变类型则是可以改变，主要有列表、字典。</p>
-<h2 id="如何理解-Python-中字符串中的-字符？"><a href="#如何理解-Python-中字符串中的-字符？" class="headerlink" title="如何理解 Python 中字符串中的\字符？"></a>如何理解 Python 中字符串中的\字符？</h2><ol>
+<h2 id="python中的作用域"><a class="markdownIt-Anchor" href="#python中的作用域"></a> Python中的作用域？</h2>
+<p>Python 中，一个变量的作用域总是由在代码中被赋值的地方所决定。当 Python 遇到一个变量的话它会按照这的顺序进行搜索：</p>
+<h2 id="什么是-python-自省"><a class="markdownIt-Anchor" href="#什么是-python-自省"></a> 什么是 Python 自省？</h2>
+<p>自省就是面向对象的语言所写的程序在运行时，能够知道对象的类型。</p>
+<h2 id="什么是python的命名空间"><a class="markdownIt-Anchor" href="#什么是python的命名空间"></a> 什么是Python的命名空间？</h2>
+<p>命名空间是对作用域的一种特殊的抽象</p>
+<h2 id="dict-的-items-方法与-iteritems-方法的不同"><a class="markdownIt-Anchor" href="#dict-的-items-方法与-iteritems-方法的不同"></a> dict 的 items() 方法与 iteritems() 方法的不同？</h2>
+<p>items方法将所有的字典以列表方式返回，其中项在返回时没有特殊的顺序。iteritems方法有相似的作用，但是返回一个迭代器对象。</p>
+<h2 id="ospath和syspath的区别"><a class="markdownIt-Anchor" href="#ospath和syspath的区别"></a> os.path和sys.path的区别？</h2>
+<p>os.path是操作系统的指定文件的路径，sys.path指python解释器的路径</p>
+<h2 id="python-中的-os-模块常见方法"><a class="markdownIt-Anchor" href="#python-中的-os-模块常见方法"></a> Python 中的 os 模块常见方法？</h2>
+<p>os.remove() 删除文件<br>
+os.rename() 重命名文件<br>
+os.walk() 生成目录树下的所有文件<br>
+os.chdir() 改变目录<br>
+os.mkdir/makedirs 创建目录/多层目录<br>
+os.rmdir/removedirs 删除目录/多层目录<br>
+os.listdir() 列出指定目录的文件<br>
+os.getcwd() 取得当前工作目录<br>
+os.chmod() 改变目录权限<br>
+os.path.basename() 去掉目录路径，返回文件名<br>
+os.path.dirname() 去掉文件名，返回目录路径<br>
+os.path.join() 将分离的各部分组合成一个路径名<br>
+os.path.split() 返回（dirname(),basename())元组<br>
+os.path.splitext() 返回(filename,extension)元组<br>
+os.path.getatime\ctime\mtime 分别返回最近访问、创建、修改时间<br>
+os.path.getsize() 返回文件大小<br>
+os.path.exists() 是否存在<br>
+os.path.isabs() 是否为绝对路径<br>
+os.path.isdir() 是否为目录<br>
+os.path.isfile() 是否为文件</p>
+<h2 id="字典和-json-的区别"><a class="markdownIt-Anchor" href="#字典和-json-的区别"></a> 字典和 json 的区别？</h2>
+<p>典是一种数据结构，json 是一种数据的表现形式。</p>
+<h2 id="什么是可变-不可变类型"><a class="markdownIt-Anchor" href="#什么是可变-不可变类型"></a> 什么是可变、不可变类型？</h2>
+<p>可变不可变指的是内存中的值是否可以被改变，不可变类型指的是对象所在内存块里面的值不可以改变，有数值、字符串、元组；可变类型则是可以改变，主要有列表、字典。</p>
+<h2 id="如何理解-python-中字符串中的字符"><a class="markdownIt-Anchor" href="#如何理解-python-中字符串中的字符"></a> 如何理解 Python 中字符串中的\字符？</h2>
+<ol>
 <li>转义字符</li>
 <li>路径名中用来连接路径名</li>
 <li>编写太长代码手动软换行</li>
 </ol>
-<h2 id="常用的-Python-标准库都有哪些？"><a href="#常用的-Python-标准库都有哪些？" class="headerlink" title="常用的 Python 标准库都有哪些？"></a>常用的 Python 标准库都有哪些？</h2><p>random, time, os, threading, multiprocessing</p>
-<h2 id="如何在Python中管理内存？"><a href="#如何在Python中管理内存？" class="headerlink" title="如何在Python中管理内存？"></a>如何在Python中管理内存？</h2><p>python中的内存管理由Python私有堆空间管理。所有Python对象和数据结构都位于私有堆中。程序员无权访问此私有堆。python解释器负责处理这个问题。Python还有一个内置的垃圾收集器，它可以回收所有未使用的内存，并使其可用于堆空间。</p>
-<h2 id="介绍一下-except-的作用和用法？"><a href="#介绍一下-except-的作用和用法？" class="headerlink" title="介绍一下 except 的作用和用法？"></a>介绍一下 except 的作用和用法？</h2><p>except   捕获所有异常<br>except:&lt;异常名&gt;   捕获指定异常<br>except:&lt;异常名 1, 异常名 2&gt;   捕获异常 1 或者异常 2<br>except:&lt;异常名&gt;,&lt;数据&gt;   捕获指定异常及其附加的数据<br>except:&lt;异常名 1,异常名 2&gt;:&lt;数据&gt;   捕获异常名 1 或者异常名 2,及附加的数据</p>
-<h2 id="介绍一下raise用法？"><a href="#介绍一下raise用法？" class="headerlink" title="介绍一下raise用法？"></a>介绍一下raise用法？</h2><p>raise [exceptionName [(reason)]]<br>raise ZeroDivisionError(“除数不能为零”)<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">raise</span> <span class="type">Exception</span>(<span class="string">"数字大于2了"</span>)</span><br><span class="line"><span class="keyword">except</span> <span class="type">Exception</span> <span class="keyword">as</span> ret:</span><br><span class="line">    print(ret)</span><br></pre></td></tr></table></figure></p>
-<h2 id="read、readline-和-readlines-的区别？"><a href="#read、readline-和-readlines-的区别？" class="headerlink" title="read、readline 和 readlines 的区别？"></a>read、readline 和 readlines 的区别？</h2><p>read:读取整个文件。<br>readline：读取下一行，使用生成器方法。<br>readlines：读取整个文件到一个迭代器以供我们遍历。</p>
-<h2 id="range-和-xrange-的区别？"><a href="#range-和-xrange-的区别？" class="headerlink" title="range 和 xrange 的区别？"></a>range 和 xrange 的区别？</h2><p>两者用法相同，不同的是 range 返回的结果是一个列表，而 xrange 的结果是一个生成器，前者是直接开辟一块内存空间来保存列表，后者是边循环边使用，只有使用时才会开辟内存空间，所以当列表很长时，使用 xrange 性能要比 range 好。</p>
-<h2 id="一行代码实现"><a href="#一行代码实现" class="headerlink" title="一行代码实现"></a>一行代码实现</h2><ol>
-<li><p>一行代码实现字符串整数列表变成整数列表</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>]</span><br><span class="line"><span class="function"><span class="title">list</span><span class="params">(map(lambda a: int(a)</span></span>, a))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一行代码删除列表中重复的值</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="type">list</span>(set(lst))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一行代码找出两个列表中相同的元素</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line">b = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>] </span><br><span class="line">set(a) &amp; set(b)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一行代码合并两个字典</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">des = &#123;<span class="string">'name'</span>: <span class="string">'Rock'</span>&#125;</span><br><span class="line">age = &#123;<span class="string">'age'</span>: <span class="string">'18'</span>&#125;</span><br><span class="line">des.<span class="keyword">update</span>(age)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一行代码实现字典键从小到大排序</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">des = &#123;<span class="string">'name'</span>: <span class="string">'Rock'</span>, <span class="string">'age'</span>: <span class="string">'18'</span>&#125;</span><br><span class="line"><span class="function"><span class="title">sorted</span><span class="params">(des.items()</span></span>, key=lambda x: x[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="常用的-python-标准库都有哪些"><a class="markdownIt-Anchor" href="#常用的-python-标准库都有哪些"></a> 常用的 Python 标准库都有哪些？</h2>
+<p>random, time, os, threading, multiprocessing</p>
+<h2 id="如何在python中管理内存"><a class="markdownIt-Anchor" href="#如何在python中管理内存"></a> 如何在Python中管理内存？</h2>
+<p>python中的内存管理由Python私有堆空间管理。所有Python对象和数据结构都位于私有堆中。程序员无权访问此私有堆。python解释器负责处理这个问题。Python还有一个内置的垃圾收集器，它可以回收所有未使用的内存，并使其可用于堆空间。</p>
+<h2 id="介绍一下-except-的作用和用法"><a class="markdownIt-Anchor" href="#介绍一下-except-的作用和用法"></a> 介绍一下 except 的作用和用法？</h2>
+<p>except   捕获所有异常<br>
+except:&lt;异常名&gt;   捕获指定异常<br>
+except:&lt;异常名 1, 异常名 2&gt;   捕获异常 1 或者异常 2<br>
+except:&lt;异常名&gt;,&lt;数据&gt;   捕获指定异常及其附加的数据<br>
+except:&lt;异常名 1,异常名 2&gt;:&lt;数据&gt;   捕获异常名 1 或者异常名 2,及附加的数据</p>
+<h2 id="介绍一下raise用法"><a class="markdownIt-Anchor" href="#介绍一下raise用法"></a> 介绍一下raise用法？</h2>
+<p>raise [exceptionName [(reason)]]<br>
+raise ZeroDivisionError(“除数不能为零”)</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">if</span> i &gt; <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">raise</span> <span class="type">Exception</span>(<span class="string">"数字大于2了"</span>)</span><br><span class="line"><span class="keyword">except</span> <span class="type">Exception</span> <span class="keyword">as</span> ret:</span><br><span class="line">    print(ret)</span><br></pre></td></tr></table></figure>
+<h2 id="read-readline-和-readlines-的区别"><a class="markdownIt-Anchor" href="#read-readline-和-readlines-的区别"></a> read、readline 和 readlines 的区别？</h2>
+<p>read:读取整个文件。<br>
+readline：读取下一行，使用生成器方法。<br>
+readlines：读取整个文件到一个迭代器以供我们遍历。</p>
+<h2 id="range-和-xrange-的区别"><a class="markdownIt-Anchor" href="#range-和-xrange-的区别"></a> range 和 xrange 的区别？</h2>
+<p>两者用法相同，不同的是 range 返回的结果是一个列表，而 xrange 的结果是一个生成器，前者是直接开辟一块内存空间来保存列表，后者是边循环边使用，只有使用时才会开辟内存空间，所以当列表很长时，使用 xrange 性能要比 range 好。</p>
+<h2 id="一行代码实现"><a class="markdownIt-Anchor" href="#一行代码实现"></a> 一行代码实现</h2>
+<ol>
+<li>一行代码实现字符串整数列表变成整数列表</li>
 </ol>
-<h2 id="Python-函数调用的时候参数的传递方式是值传递还是引用传递？"><a href="#Python-函数调用的时候参数的传递方式是值传递还是引用传递？" class="headerlink" title="Python 函数调用的时候参数的传递方式是值传递还是引用传递？"></a>Python 函数调用的时候参数的传递方式是值传递还是引用传递？</h2><p>不可变参数用值传递(整数，字符串),可变参数是引用传递的（列表，字典）。<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def func(d):</span><br><span class="line">    d[<span class="string">'a'</span>] = <span class="number">10</span></span><br><span class="line">    d[<span class="string">'b'</span>] = <span class="number">20</span>            </span><br><span class="line">    d = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>&#125;</span><br><span class="line">d = &#123;&#125;                    # <span class="number">1</span></span><br><span class="line">func(d)                   # <span class="number">2</span></span><br><span class="line">print(d)</span><br><span class="line">########打印结果########</span><br><span class="line">&#123;<span class="string">'a'</span>: <span class="number">10</span>, <span class="string">'b'</span>: <span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="对缺省参数的理解？"><a href="#对缺省参数的理解？" class="headerlink" title="对缺省参数的理解？"></a>对缺省参数的理解？</h2><p>缺省参数指在调用函数的时候没有传入参数的情况下，调用默认的参数，在调用函数的同时赋值时，所传入的参数会替代默认参数。<br>*args 是不定长参数，他可以表示输入参数是不确定的，可以是任意多个。<br>**kwargs 是关键字参数，赋值的时候是以键 = 值的方式，参数是可以任意多对在定义函数的时候不确定会有多少参数会传入时，就可以使用两个参数。</p>
-<h2 id="面向对象中super的作用？"><a href="#面向对象中super的作用？" class="headerlink" title="面向对象中super的作用？"></a>面向对象中super的作用？</h2><p>super() 函数是用于调用父类(超类)的一个方法。super 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种问题。</p>
-<h2 id="是否使用过functools中的函数？其作用是什么？"><a href="#是否使用过functools中的函数？其作用是什么？" class="headerlink" title="是否使用过functools中的函数？其作用是什么？"></a>是否使用过functools中的函数？其作用是什么？</h2><p>简单地说，就是基于已有的函数定义新的函数。所谓高阶函数，就是以函数作为输入参数，返回也是函数。</p>
-<h2 id="什么是断言？应用场景？"><a href="#什么是断言？应用场景？" class="headerlink" title="什么是断言？应用场景？"></a>什么是断言？应用场景？</h2><p>assert断言——声明其布尔值必须为真判定，发生异常则为假。</p>
-<h2 id="有用过with-statement吗？它的好处是什么？"><a href="#有用过with-statement吗？它的好处是什么？" class="headerlink" title="有用过with statement吗？它的好处是什么？"></a>有用过with statement吗？它的好处是什么？</h2><p>with语句的作用是通过某种方式简化异常处理，它是所谓的上下文管理器的一种</p>
-<h2 id="setattr-，-getattr-，-delattr-函数使用详解？"><a href="#setattr-，-getattr-，-delattr-函数使用详解？" class="headerlink" title="__setattr__，__getattr__，__delattr__函数使用详解？"></a>__setattr__，__getattr__，__delattr__函数使用详解？</h2><ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> = [<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>]</span><br><span class="line"><span class="function"><span class="title">list</span><span class="params">(map(lambda a: int(a)</span></span>, a))</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>一行代码删除列表中重复的值</li>
+</ol>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="type">list</span>(set(lst))</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>一行代码找出两个列表中相同的元素</li>
+</ol>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line">b = [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>] </span><br><span class="line">set(a) &amp; set(b)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>一行代码合并两个字典</li>
+</ol>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">des = &#123;<span class="string">'name'</span>: <span class="string">'Rock'</span>&#125;</span><br><span class="line">age = &#123;<span class="string">'age'</span>: <span class="string">'18'</span>&#125;</span><br><span class="line">des.<span class="keyword">update</span>(age)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>一行代码实现字典键从小到大排序</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">des = &#123;<span class="string">'name'</span>: <span class="string">'Rock'</span>, <span class="string">'age'</span>: <span class="string">'18'</span>&#125;</span><br><span class="line"><span class="function"><span class="title">sorted</span><span class="params">(des.items()</span></span>, key=lambda x: x[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="python-函数调用的时候参数的传递方式是值传递还是引用传递"><a class="markdownIt-Anchor" href="#python-函数调用的时候参数的传递方式是值传递还是引用传递"></a> Python 函数调用的时候参数的传递方式是值传递还是引用传递？</h2>
+<p>不可变参数用值传递(整数，字符串),可变参数是引用传递的（列表，字典）。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def func(d):</span><br><span class="line">    d[<span class="string">'a'</span>] = <span class="number">10</span></span><br><span class="line">    d[<span class="string">'b'</span>] = <span class="number">20</span>            </span><br><span class="line">    d = &#123;<span class="string">'a'</span>: <span class="number">1</span>, <span class="string">'b'</span>: <span class="number">2</span>&#125;</span><br><span class="line">d = &#123;&#125;                    # <span class="number">1</span></span><br><span class="line">func(d)                   # <span class="number">2</span></span><br><span class="line">print(d)</span><br><span class="line">########打印结果########</span><br><span class="line">&#123;<span class="string">'a'</span>: <span class="number">10</span>, <span class="string">'b'</span>: <span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="对缺省参数的理解"><a class="markdownIt-Anchor" href="#对缺省参数的理解"></a> 对缺省参数的理解？</h2>
+<p>缺省参数指在调用函数的时候没有传入参数的情况下，调用默认的参数，在调用函数的同时赋值时，所传入的参数会替代默认参数。<br>
+*args 是不定长参数，他可以表示输入参数是不确定的，可以是任意多个。<br>
+**kwargs 是关键字参数，赋值的时候是以键 = 值的方式，参数是可以任意多对在定义函数的时候不确定会有多少参数会传入时，就可以使用两个参数。</p>
+<h2 id="面向对象中super的作用"><a class="markdownIt-Anchor" href="#面向对象中super的作用"></a> 面向对象中super的作用？</h2>
+<p>super() 函数是用于调用父类(超类)的一个方法。super 是用来解决多重继承问题的，直接用类名调用父类方法在使用单继承的时候没问题，但是如果使用多继承，会涉及到查找顺序（MRO）、重复调用（钻石继承）等种种问题。</p>
+<h2 id="是否使用过functools中的函数其作用是什么"><a class="markdownIt-Anchor" href="#是否使用过functools中的函数其作用是什么"></a> 是否使用过functools中的函数？其作用是什么？</h2>
+<p>简单地说，就是基于已有的函数定义新的函数。所谓高阶函数，就是以函数作为输入参数，返回也是函数。</p>
+<h2 id="什么是断言应用场景"><a class="markdownIt-Anchor" href="#什么是断言应用场景"></a> 什么是断言？应用场景？</h2>
+<p>assert断言——声明其布尔值必须为真判定，发生异常则为假。</p>
+<h2 id="有用过with-statement吗它的好处是什么"><a class="markdownIt-Anchor" href="#有用过with-statement吗它的好处是什么"></a> 有用过with statement吗？它的好处是什么？</h2>
+<p>with语句的作用是通过某种方式简化异常处理，它是所谓的上下文管理器的一种</p>
+<h2 id="__setattr____getattr____delattr__函数使用详解"><a class="markdownIt-Anchor" href="#__setattr____getattr____delattr__函数使用详解"></a> __setattr__，__getattr__，__delattr__函数使用详解？</h2>
+<ol>
 <li>setattr(self,name,value)：如果想要给 name 赋值的话，就需要调用这个方法。</li>
 <li>getattr(self,name)：如果 name 被访问且它又不存在，那么这个方法将被调用。</li>
 <li>delattr(self,name)：如果要删除 name 的话，这个方法就要被调用了。</li>
 </ol>
-<h2 id="请描述抽象类和接口类的区别和联系？"><a href="#请描述抽象类和接口类的区别和联系？" class="headerlink" title="请描述抽象类和接口类的区别和联系？"></a>请描述抽象类和接口类的区别和联系？</h2><ol>
-<li>抽象类<br>规定了一系列的方法，并规定了必须由继承类实现的方法。由于有抽象方法的存在，所以抽象类不能实例化。可以将抽象类理解为毛坯房，门窗、墙面的样式由你自己来定，所以抽象类与作为基类的普通类的区别在于约束性更强。</li>
-<li>接口类<br>与抽象类很相似，表现在接口中定义的方法，必须由引用类实现，但他与抽象类的根本区别在于用途：与不同个体间沟通的规则（方法），你要进宿舍需要有钥匙，这个钥匙就是你与宿舍的接口，你的同室也有这个接口，所以他也能进入宿舍，你用手机通话，那么手机就是你与他人交流的接口。</li>
+<h2 id="请描述抽象类和接口类的区别和联系"><a class="markdownIt-Anchor" href="#请描述抽象类和接口类的区别和联系"></a> 请描述抽象类和接口类的区别和联系？</h2>
+<ol>
+<li>抽象类<br>
+规定了一系列的方法，并规定了必须由继承类实现的方法。由于有抽象方法的存在，所以抽象类不能实例化。可以将抽象类理解为毛坯房，门窗、墙面的样式由你自己来定，所以抽象类与作为基类的普通类的区别在于约束性更强。</li>
+<li>接口类<br>
+与抽象类很相似，表现在接口中定义的方法，必须由引用类实现，但他与抽象类的根本区别在于用途：与不同个体间沟通的规则（方法），你要进宿舍需要有钥匙，这个钥匙就是你与宿舍的接口，你的同室也有这个接口，所以他也能进入宿舍，你用手机通话，那么手机就是你与他人交流的接口。</li>
 <li>区别和关联</li>
 </ol>
 <ul>
@@ -488,19 +562,42 @@
 <li>可以在一个类中同时实现多个接口。</li>
 <li>接口的使用方式通过 implements 关键字进行，抽象类则是通过继承 extends 关键字进行。</li>
 </ul>
-<h2 id="请描述方法重载与方法重写？"><a href="#请描述方法重载与方法重写？" class="headerlink" title="请描述方法重载与方法重写？"></a>请描述方法重载与方法重写？</h2><p>(1)方法重载<br>是在一个类里面，方法名字相同，而参数不同。返回类型呢？可以相同也可以不同。重载是让类以统一的方式处理不同类型数据的一种手段。</p>
-<p>(2) 方法重写<br>子类不想原封不动地继承父类的方法，而是想作一定的修改，这就需要采用方法的重写。方法重写又称方法覆盖。</p>
-<h2 id="Python-中-is-和-的区别？"><a href="#Python-中-is-和-的区别？" class="headerlink" title="Python 中 is 和==的区别？"></a>Python 中 is 和==的区别？</h2><p>is 判断的是 a 对象是否就是 b 对象，是通过 id 来判断的。==判断的是 a 对象的值是否和 b 对象的值相等，是通过 value 来判断的。</p>
-<h2 id="谈谈你对面向对象的理解？"><a href="#谈谈你对面向对象的理解？" class="headerlink" title="谈谈你对面向对象的理解？"></a>谈谈你对面向对象的理解？</h2><p>面向对象是相对于面向过程而言的。面向过程语言是一种基于功能分析的、以算法为中心的程序设计方法。面向对象是一种基于结构分析的、以数据为中心的程序设计思想。在面向对象语言中有一个有很重要东西，叫做类。面向对象有三大特性：封装、继承、多态。</p>
-<h2 id="Python-中的进程与线程的使用场景？"><a href="#Python-中的进程与线程的使用场景？" class="headerlink" title="Python 中的进程与线程的使用场景？"></a>Python 中的进程与线程的使用场景？</h2><p>多进程适合在 CPU 密集型操作(cpu 操作指令比较多，如位数多的浮点运算)。多线程适合在 IO 密集型操作(读写数据操作较多的，比如爬虫)。</p>
-<h2 id="简述多线程、多进程"><a href="#简述多线程、多进程" class="headerlink" title="简述多线程、多进程"></a>简述多线程、多进程</h2><p>进程：<br>1、操作系统进行资源分配和调度的基本单位，多个进程之间相互独立<br>2、稳定性好，如果一个进程崩溃，不影响其他进程，但是进程消耗资源大，开启的进程数量有限制<br>线程：<br>1、CPU进行资源分配和调度的基本单位，线程是进程的一部分，是比进程更小的能独立运行的基本单位，一个进程下的多个线程可以共享该进程的所有资源<br>2、如果IO操作密集，则可以多线程运行效率高，缺点是如果一个线程崩溃，都会造成进程的崩溃</p>
-<h2 id="列出几种魔法方法并简要介绍用途"><a href="#列出几种魔法方法并简要介绍用途" class="headerlink" title="列出几种魔法方法并简要介绍用途"></a>列出几种魔法方法并简要介绍用途</h2><p>__init__:对象初始化方法<br>__new__:创建对象时候执行的方法，单列模式会用到<br>__str__:当使用print输出对象的时候，只要自己定义了<strong>str</strong>(self)方法，那么就会打印从在这个方法中return的数据<br>__del__:删除对象执行的方法</p>
-<h2 id="x-”abc”-y-”def”-z-“d”-”e”-”f”-分别求出x-join-y-和x-join-z-返回的结果"><a href="#x-”abc”-y-”def”-z-“d”-”e”-”f”-分别求出x-join-y-和x-join-z-返回的结果" class="headerlink" title="x=”abc”,y=”def”,z=[“d”,”e”,”f”],分别求出x.join(y)和x.join(z)返回的结果"></a>x=”abc”,y=”def”,z=[“d”,”e”,”f”],分别求出x.join(y)和x.join(z)返回的结果</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">"abc"</span></span><br><span class="line">y = <span class="string">"def"</span></span><br><span class="line">z = [<span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span>]</span><br><span class="line">m = x.join(y)</span><br><span class="line">n = x.join(z)</span><br><span class="line">print(m, n)</span><br><span class="line">dabceabcf dabceabcf</span><br></pre></td></tr></table></figure>
-<h2 id="举例说明异常模块中try-except-else-finally的相关意义"><a href="#举例说明异常模块中try-except-else-finally的相关意义" class="headerlink" title="举例说明异常模块中try except else finally的相关意义"></a>举例说明异常模块中try except else finally的相关意义</h2><p>try..except..else没有捕获到异常，执行else语句<br>try..except..finally不管是否捕获到异常，都执行finally语句</p>
-<h2 id="1-2-3-4-5-6-的结果是多少？"><a href="#1-2-3-4-5-6-的结果是多少？" class="headerlink" title="[1,2,3]+[4,5,6]的结果是多少？"></a>[1,2,3]+[4,5,6]的结果是多少？</h2><p>两个列表相加，等价于extend</p>
-<h2 id="递归求和"><a href="#递归求和" class="headerlink" title="递归求和"></a>递归求和</h2><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def get_sum(<span class="built_in">num</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">num</span> &gt;= <span class="number">1</span>:</span><br><span class="line">        res = <span class="built_in">num</span> + get_sum(<span class="built_in">num</span> - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">return</span> res </span><br><span class="line">res = get_sum(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="python垃圾回收机制"><a href="#python垃圾回收机制" class="headerlink" title="python垃圾回收机制"></a>python垃圾回收机制</h2><p>python垃圾回收主要以引用计数为主，标记-清除和分代清除为辅的机制，其中标记-清除和分代回收主要是为了处理循环引用的难题。</p>
-<h2 id="关于多继承问题，扩展需要了解-MRO"><a href="#关于多继承问题，扩展需要了解-MRO" class="headerlink" title="关于多继承问题，扩展需要了解 MRO"></a>关于多继承问题，扩展需要了解 MRO</h2><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">A</span>(<span class="title">object</span>):</span></span><br><span class="line"><span class="class">    x = 3</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">B</span>(<span class="type">A</span>):</span></span><br><span class="line"><span class="class">    pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">C</span>(<span class="type">A</span>):</span></span><br><span class="line"><span class="class">    pass</span></span><br><span class="line"><span class="class">print(<span class="type">A</span>.<span class="title">x</span>, <span class="type">B</span>.<span class="title">x</span>, <span class="type">C</span>.<span class="title">x</span>)  # 3 3 3</span></span><br><span class="line"><span class="class"><span class="type">B</span>.x = 4</span></span><br><span class="line"><span class="class">print(<span class="type">A</span>.<span class="title">x</span>, <span class="type">B</span>.<span class="title">x</span>, <span class="type">C</span>.<span class="title">x</span>)  # 3 4 3</span></span><br><span class="line"><span class="class"><span class="type">A</span>.x = 5</span></span><br><span class="line"><span class="class">print(<span class="type">A</span>.<span class="title">x</span>, <span class="type">B</span>.<span class="title">x</span>, <span class="type">C</span>.<span class="title">x</span>)  # 5 4 5</span></span><br></pre></td></tr></table></figure>
+<h2 id="请描述方法重载与方法重写"><a class="markdownIt-Anchor" href="#请描述方法重载与方法重写"></a> 请描述方法重载与方法重写？</h2>
+<p>(1)方法重载<br>
+是在一个类里面，方法名字相同，而参数不同。返回类型呢？可以相同也可以不同。重载是让类以统一的方式处理不同类型数据的一种手段。</p>
+<p>(2) 方法重写<br>
+子类不想原封不动地继承父类的方法，而是想作一定的修改，这就需要采用方法的重写。方法重写又称方法覆盖。</p>
+<h2 id="python-中-is-和的区别"><a class="markdownIt-Anchor" href="#python-中-is-和的区别"></a> Python 中 is 和==的区别？</h2>
+<p>is 判断的是 a 对象是否就是 b 对象，是通过 id 来判断的。==判断的是 a 对象的值是否和 b 对象的值相等，是通过 value 来判断的。</p>
+<h2 id="谈谈你对面向对象的理解"><a class="markdownIt-Anchor" href="#谈谈你对面向对象的理解"></a> 谈谈你对面向对象的理解？</h2>
+<p>面向对象是相对于面向过程而言的。面向过程语言是一种基于功能分析的、以算法为中心的程序设计方法。面向对象是一种基于结构分析的、以数据为中心的程序设计思想。在面向对象语言中有一个有很重要东西，叫做类。面向对象有三大特性：封装、继承、多态。</p>
+<h2 id="python-中的进程与线程的使用场景"><a class="markdownIt-Anchor" href="#python-中的进程与线程的使用场景"></a> Python 中的进程与线程的使用场景？</h2>
+<p>多进程适合在 CPU 密集型操作(cpu 操作指令比较多，如位数多的浮点运算)。多线程适合在 IO 密集型操作(读写数据操作较多的，比如爬虫)。</p>
+<h2 id="简述多线程-多进程"><a class="markdownIt-Anchor" href="#简述多线程-多进程"></a> 简述多线程、多进程</h2>
+<p>进程：<br>
+1、操作系统进行资源分配和调度的基本单位，多个进程之间相互独立<br>
+2、稳定性好，如果一个进程崩溃，不影响其他进程，但是进程消耗资源大，开启的进程数量有限制<br>
+线程：<br>
+1、CPU进行资源分配和调度的基本单位，线程是进程的一部分，是比进程更小的能独立运行的基本单位，一个进程下的多个线程可以共享该进程的所有资源<br>
+2、如果IO操作密集，则可以多线程运行效率高，缺点是如果一个线程崩溃，都会造成进程的崩溃</p>
+<h2 id="列出几种魔法方法并简要介绍用途"><a class="markdownIt-Anchor" href="#列出几种魔法方法并简要介绍用途"></a> 列出几种魔法方法并简要介绍用途</h2>
+<p>__init__:对象初始化方法<br>
+__new__:创建对象时候执行的方法，单列模式会用到<br>
+__str__:当使用print输出对象的时候，只要自己定义了__str__(self)方法，那么就会打印从在这个方法中return的数据<br>
+__del__:删除对象执行的方法</p>
+<h2 id="xabcydefzdef分别求出xjoiny和xjoinz返回的结果"><a class="markdownIt-Anchor" href="#xabcydefzdef分别求出xjoiny和xjoinz返回的结果"></a> x=“abc”,y=“def”,z=[“d”,“e”,“f”],分别求出x.join(y)和x.join(z)返回的结果</h2>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">"abc"</span></span><br><span class="line">y = <span class="string">"def"</span></span><br><span class="line">z = [<span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span>]</span><br><span class="line">m = x.join(y)</span><br><span class="line">n = x.join(z)</span><br><span class="line">print(m, n)</span><br><span class="line">dabceabcf dabceabcf</span><br></pre></td></tr></table></figure>
+<h2 id="举例说明异常模块中try-except-else-finally的相关意义"><a class="markdownIt-Anchor" href="#举例说明异常模块中try-except-else-finally的相关意义"></a> 举例说明异常模块中try except else finally的相关意义</h2>
+<p>try…except…else没有捕获到异常，执行else语句<br>
+try…except…finally不管是否捕获到异常，都执行finally语句</p>
+<h2 id="123456的结果是多少"><a class="markdownIt-Anchor" href="#123456的结果是多少"></a> [1,2,3]+[4,5,6]的结果是多少？</h2>
+<p>两个列表相加，等价于extend</p>
+<h2 id="递归求和"><a class="markdownIt-Anchor" href="#递归求和"></a> 递归求和</h2>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def get_sum(<span class="built_in">num</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">num</span> &gt;= <span class="number">1</span>:</span><br><span class="line">        res = <span class="built_in">num</span> + get_sum(<span class="built_in">num</span> - <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">return</span> res </span><br><span class="line">res = get_sum(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="python垃圾回收机制"><a class="markdownIt-Anchor" href="#python垃圾回收机制"></a> python垃圾回收机制</h2>
+<p>python垃圾回收主要以引用计数为主，标记-清除和分代清除为辅的机制，其中标记-清除和分代回收主要是为了处理循环引用的难题。</p>
+<h2 id="关于多继承问题扩展需要了解-mro"><a class="markdownIt-Anchor" href="#关于多继承问题扩展需要了解-mro"></a> 关于多继承问题，扩展需要了解 MRO</h2>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">A</span>(<span class="title">object</span>):</span></span><br><span class="line"><span class="class">    x = 3</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">B</span>(<span class="type">A</span>):</span></span><br><span class="line"><span class="class">    pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">C</span>(<span class="type">A</span>):</span></span><br><span class="line"><span class="class">    pass</span></span><br><span class="line"><span class="class">print(<span class="type">A</span>.<span class="title">x</span>, <span class="type">B</span>.<span class="title">x</span>, <span class="type">C</span>.<span class="title">x</span>)  # 3 3 3</span></span><br><span class="line"><span class="class"><span class="type">B</span>.x = 4</span></span><br><span class="line"><span class="class">print(<span class="type">A</span>.<span class="title">x</span>, <span class="type">B</span>.<span class="title">x</span>, <span class="type">C</span>.<span class="title">x</span>)  # 3 4 3</span></span><br><span class="line"><span class="class"><span class="type">A</span>.x = 5</span></span><br><span class="line"><span class="class">print(<span class="type">A</span>.<span class="title">x</span>, <span class="type">B</span>.<span class="title">x</span>, <span class="type">C</span>.<span class="title">x</span>)  # 5 4 5</span></span><br></pre></td></tr></table></figure>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -707,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python简介"><span class="nav-number">1.</span> <span class="nav-text">Python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见Python问题及知识点"><span class="nav-number">2.</span> <span class="nav-text">常见Python问题及知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值、浅拷贝和深拷贝的区别？"><span class="nav-number">2.1.</span> <span class="nav-text">赋值、浅拷贝和深拷贝的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#init-和-new-的区别"><span class="nav-number">2.2.</span> <span class="nav-text">__init__ 和 __new__ 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python的变量、对象以及引用？"><span class="nav-number">2.3.</span> <span class="nav-text">Python的变量、对象以及引用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-是强语言类型还是弱语言类型？"><span class="nav-number">2.4.</span> <span class="nav-text">Python 是强语言类型还是弱语言类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中的作用域？"><span class="nav-number">2.5.</span> <span class="nav-text">Python中的作用域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-Python-自省？"><span class="nav-number">2.6.</span> <span class="nav-text">什么是 Python 自省？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Python的命名空间？"><span class="nav-number">2.7.</span> <span class="nav-text">什么是Python的命名空间？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dict-的-items-方法与-iteritems-方法的不同？"><span class="nav-number">2.8.</span> <span class="nav-text">dict 的 items() 方法与 iteritems() 方法的不同？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os-path和sys-path的区别？"><span class="nav-number">2.9.</span> <span class="nav-text">os.path和sys.path的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-中的-os-模块常见方法？"><span class="nav-number">2.10.</span> <span class="nav-text">Python 中的 os 模块常见方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典和-json-的区别？"><span class="nav-number">2.11.</span> <span class="nav-text">字典和 json 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是可变、不可变类型？"><span class="nav-number">2.12.</span> <span class="nav-text">什么是可变、不可变类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何理解-Python-中字符串中的-字符？"><span class="nav-number">2.13.</span> <span class="nav-text">如何理解 Python 中字符串中的\字符？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的-Python-标准库都有哪些？"><span class="nav-number">2.14.</span> <span class="nav-text">常用的 Python 标准库都有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在Python中管理内存？"><span class="nav-number">2.15.</span> <span class="nav-text">如何在Python中管理内存？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一下-except-的作用和用法？"><span class="nav-number">2.16.</span> <span class="nav-text">介绍一下 except 的作用和用法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一下raise用法？"><span class="nav-number">2.17.</span> <span class="nav-text">介绍一下raise用法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read、readline-和-readlines-的区别？"><span class="nav-number">2.18.</span> <span class="nav-text">read、readline 和 readlines 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#range-和-xrange-的区别？"><span class="nav-number">2.19.</span> <span class="nav-text">range 和 xrange 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一行代码实现"><span class="nav-number">2.20.</span> <span class="nav-text">一行代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-函数调用的时候参数的传递方式是值传递还是引用传递？"><span class="nav-number">2.21.</span> <span class="nav-text">Python 函数调用的时候参数的传递方式是值传递还是引用传递？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对缺省参数的理解？"><span class="nav-number">2.22.</span> <span class="nav-text">对缺省参数的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象中super的作用？"><span class="nav-number">2.23.</span> <span class="nav-text">面向对象中super的作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是否使用过functools中的函数？其作用是什么？"><span class="nav-number">2.24.</span> <span class="nav-text">是否使用过functools中的函数？其作用是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是断言？应用场景？"><span class="nav-number">2.25.</span> <span class="nav-text">什么是断言？应用场景？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有用过with-statement吗？它的好处是什么？"><span class="nav-number">2.26.</span> <span class="nav-text">有用过with statement吗？它的好处是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setattr-，-getattr-，-delattr-函数使用详解？"><span class="nav-number">2.27.</span> <span class="nav-text">__setattr__，__getattr__，__delattr__函数使用详解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请描述抽象类和接口类的区别和联系？"><span class="nav-number">2.28.</span> <span class="nav-text">请描述抽象类和接口类的区别和联系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请描述方法重载与方法重写？"><span class="nav-number">2.29.</span> <span class="nav-text">请描述方法重载与方法重写？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-中-is-和-的区别？"><span class="nav-number">2.30.</span> <span class="nav-text">Python 中 is 和==的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谈谈你对面向对象的理解？"><span class="nav-number">2.31.</span> <span class="nav-text">谈谈你对面向对象的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-中的进程与线程的使用场景？"><span class="nav-number">2.32.</span> <span class="nav-text">Python 中的进程与线程的使用场景？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述多线程、多进程"><span class="nav-number">2.33.</span> <span class="nav-text">简述多线程、多进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列出几种魔法方法并简要介绍用途"><span class="nav-number">2.34.</span> <span class="nav-text">列出几种魔法方法并简要介绍用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x-”abc”-y-”def”-z-“d”-”e”-”f”-分别求出x-join-y-和x-join-z-返回的结果"><span class="nav-number">2.35.</span> <span class="nav-text">x=”abc”,y=”def”,z=[“d”,”e”,”f”],分别求出x.join(y)和x.join(z)返回的结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例说明异常模块中try-except-else-finally的相关意义"><span class="nav-number">2.36.</span> <span class="nav-text">举例说明异常模块中try except else finally的相关意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-3-4-5-6-的结果是多少？"><span class="nav-number">2.37.</span> <span class="nav-text">[1,2,3]+[4,5,6]的结果是多少？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归求和"><span class="nav-number">2.38.</span> <span class="nav-text">递归求和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python垃圾回收机制"><span class="nav-number">2.39.</span> <span class="nav-text">python垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于多继承问题，扩展需要了解-MRO"><span class="nav-number">2.40.</span> <span class="nav-text">关于多继承问题，扩展需要了解 MRO</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#python简介"><span class="nav-number">1.</span> <span class="nav-text"> Python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见python问题及知识点"><span class="nav-number">2.</span> <span class="nav-text"> 常见Python问题及知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值-浅拷贝和深拷贝的区别"><span class="nav-number">2.1.</span> <span class="nav-text"> 赋值、浅拷贝和深拷贝的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#__init__-和-__new__-的区别"><span class="nav-number">2.2.</span> <span class="nav-text"> __init__ 和 __new__ 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python的变量-对象以及引用"><span class="nav-number">2.3.</span> <span class="nav-text"> Python的变量、对象以及引用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-是强语言类型还是弱语言类型"><span class="nav-number">2.4.</span> <span class="nav-text"> Python 是强语言类型还是弱语言类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python中的作用域"><span class="nav-number">2.5.</span> <span class="nav-text"> Python中的作用域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-python-自省"><span class="nav-number">2.6.</span> <span class="nav-text"> 什么是 Python 自省？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是python的命名空间"><span class="nav-number">2.7.</span> <span class="nav-text"> 什么是Python的命名空间？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dict-的-items-方法与-iteritems-方法的不同"><span class="nav-number">2.8.</span> <span class="nav-text"> dict 的 items() 方法与 iteritems() 方法的不同？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ospath和syspath的区别"><span class="nav-number">2.9.</span> <span class="nav-text"> os.path和sys.path的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-中的-os-模块常见方法"><span class="nav-number">2.10.</span> <span class="nav-text"> Python 中的 os 模块常见方法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典和-json-的区别"><span class="nav-number">2.11.</span> <span class="nav-text"> 字典和 json 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是可变-不可变类型"><span class="nav-number">2.12.</span> <span class="nav-text"> 什么是可变、不可变类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何理解-python-中字符串中的字符"><span class="nav-number">2.13.</span> <span class="nav-text"> 如何理解 Python 中字符串中的\字符？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的-python-标准库都有哪些"><span class="nav-number">2.14.</span> <span class="nav-text"> 常用的 Python 标准库都有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在python中管理内存"><span class="nav-number">2.15.</span> <span class="nav-text"> 如何在Python中管理内存？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一下-except-的作用和用法"><span class="nav-number">2.16.</span> <span class="nav-text"> 介绍一下 except 的作用和用法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍一下raise用法"><span class="nav-number">2.17.</span> <span class="nav-text"> 介绍一下raise用法？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read-readline-和-readlines-的区别"><span class="nav-number">2.18.</span> <span class="nav-text"> read、readline 和 readlines 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#range-和-xrange-的区别"><span class="nav-number">2.19.</span> <span class="nav-text"> range 和 xrange 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一行代码实现"><span class="nav-number">2.20.</span> <span class="nav-text"> 一行代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-函数调用的时候参数的传递方式是值传递还是引用传递"><span class="nav-number">2.21.</span> <span class="nav-text"> Python 函数调用的时候参数的传递方式是值传递还是引用传递？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对缺省参数的理解"><span class="nav-number">2.22.</span> <span class="nav-text"> 对缺省参数的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象中super的作用"><span class="nav-number">2.23.</span> <span class="nav-text"> 面向对象中super的作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是否使用过functools中的函数其作用是什么"><span class="nav-number">2.24.</span> <span class="nav-text"> 是否使用过functools中的函数？其作用是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是断言应用场景"><span class="nav-number">2.25.</span> <span class="nav-text"> 什么是断言？应用场景？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有用过with-statement吗它的好处是什么"><span class="nav-number">2.26.</span> <span class="nav-text"> 有用过with statement吗？它的好处是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#__setattr____getattr____delattr__函数使用详解"><span class="nav-number">2.27.</span> <span class="nav-text"> __setattr__，__getattr__，__delattr__函数使用详解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请描述抽象类和接口类的区别和联系"><span class="nav-number">2.28.</span> <span class="nav-text"> 请描述抽象类和接口类的区别和联系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请描述方法重载与方法重写"><span class="nav-number">2.29.</span> <span class="nav-text"> 请描述方法重载与方法重写？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-中-is-和的区别"><span class="nav-number">2.30.</span> <span class="nav-text"> Python 中 is 和==的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谈谈你对面向对象的理解"><span class="nav-number">2.31.</span> <span class="nav-text"> 谈谈你对面向对象的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-中的进程与线程的使用场景"><span class="nav-number">2.32.</span> <span class="nav-text"> Python 中的进程与线程的使用场景？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述多线程-多进程"><span class="nav-number">2.33.</span> <span class="nav-text"> 简述多线程、多进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列出几种魔法方法并简要介绍用途"><span class="nav-number">2.34.</span> <span class="nav-text"> 列出几种魔法方法并简要介绍用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xabcydefzdef分别求出xjoiny和xjoinz返回的结果"><span class="nav-number">2.35.</span> <span class="nav-text"> x=“abc”,y=“def”,z=[“d”,“e”,“f”],分别求出x.join(y)和x.join(z)返回的结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例说明异常模块中try-except-else-finally的相关意义"><span class="nav-number">2.36.</span> <span class="nav-text"> 举例说明异常模块中try except else finally的相关意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#123456的结果是多少"><span class="nav-number">2.37.</span> <span class="nav-text"> [1,2,3]+[4,5,6]的结果是多少？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归求和"><span class="nav-number">2.38.</span> <span class="nav-text"> 递归求和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python垃圾回收机制"><span class="nav-number">2.39.</span> <span class="nav-text"> python垃圾回收机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于多继承问题扩展需要了解-mro"><span class="nav-number">2.40.</span> <span class="nav-text"> 关于多继承问题，扩展需要了解 MRO</span></a></li></ol></li></ol></div>
             
 
           </div>
