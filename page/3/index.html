@@ -305,6 +305,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2019/12/28/机器学习理论推导/线性回归-最小二乘法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HJY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/28/机器学习理论推导/线性回归-最小二乘法/" itemprop="url">线性回归-最小二乘法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-28T20:13:11+08:00">
+                2019-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          $$\begin{aligned}&amp;D=\left\lbrace(x_1, y_1),\left(x_{2}, y_{2}\right), \cdots,\left(x_{N}, y_{N}\right)\right\rbrace \\&amp;x_{i} \in \mathbb{R}^{p
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/28/机器学习理论推导/线性回归-最小二乘法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2019/12/28/机器学习理论推导/高斯分布-联合概率/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -398,9 +548,7 @@
       
         
           
-          已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$
-求：p(y)p(y)p(y)，p(x∣y)p(x|y)p(x∣y)
-y=Ax+b+εε∼N(0,L−1)\begi
+          已知：$$p(x)=N\left(x | \mu, \Lambda^{-1}\right)$$ $$p(y | x)=N\left(y | A x+b, L^{-1}\right)$$求：$p(y)$，$p(x|y)$$$\begin{aligned}&amp;y=A x+b+\varepsilon
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -550,8 +698,7 @@ y=Ax+b+εε∼N(0,L−1)\begi
       
         
           
-          多元高斯分布：
-x∼N(μ,Σ)=1(2π)p2∣Σ∣12exp⁡(−12(x−μ)TΣ−1(x−μ))x \sim N(\mu, \Sigma) = \frac{1}{ { (2 \pi)^{\frac{p}{2}} | {\Sigma}|^{\frac{1}{2}}}} \exp \left(-
+          多元高斯分布：$$x \sim N(\mu, \Sigma) = \frac{1}{ { (2 \pi)^{\frac{p}{2}} | {\Sigma}|^{\frac{1}{2}}}} \exp \left(-\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^{\
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -701,12 +848,7 @@ x∼N(μ,Σ)=1(2π)p2∣Σ∣12exp⁡(−12(x−μ)TΣ−1(x−μ))x \sim N(\mu,
       
         
           
-           最大似然估计
-数据XXX
-X=(x1x2⋯xN)T=(x11x12⋯x1px21x22⋯x2p⋮⋮⋱⋮xN1xN2⋯xNp)X = \begin{pmatrix}
-{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}
-\end{pmatrix}^T 
-= \be
+          最大似然估计数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;{x_{12}}&amp;{\cdots}&amp;{x_
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -856,11 +998,7 @@ X=(x1x2⋯xN)T=(x11x12⋯x1px21x22⋯x2p⋮⋮⋱⋮xN1xN2⋯xNp)X = \begin{pmat
       
         
           
-          数据XXX
-X=(x1x2⋯xN)T=(x11x12⋯x1px21x22⋯x2p⋮⋮⋱⋮xN1xN2⋯xNp)X = \begin{pmatrix}
-{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}
-\end{pmatrix}^T 
-= \begin{pmat
+          数据$X$$$X = \begin{pmatrix}{x_{1}}&amp;{x_{2}}&amp;{\cdots}&amp;{x_{N}}\end{pmatrix}^T= \begin{pmatrix}{x_{11}}&amp;{x_{12}}&amp;{\cdots}&amp;{x_{1p}}\
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -988,8 +1126,7 @@ X=(x1x2⋯xN)T=(x11x12⋯x1px21x22⋯x2p⋮⋮⋱⋮xN1xN2⋯xNp)X = \begin{pmat
       
         
           
-          本系列为本人推导机器学习算法的笔记，主要参考PRML[1]，西瓜书[2]，统计学习方法[3]，还有机器学习白板推导[4]。文章顺序和内容基本与B站机器学习白板推导顺序一致。
-[1] Bishop C M. Pattern recognition and machine learning[M]. sp
+          本系列为本人推导机器学习算法的笔记，主要参考PRML[1]，西瓜书[2]，统计学习方法[3]，还有机器学习白板推导[4]。文章顺序和内容基本与B站机器学习白板推导顺序一致。[1] Bishop C M. Pattern recognition and machine learning[M]. spr
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1139,8 +1276,7 @@ X=(x1x2⋯xN)T=(x11x12⋯x1px21x22⋯x2p⋮⋮⋱⋮xN1xN2⋯xNp)X = \begin{pmat
       
         
           
-           高斯过程
-高斯过程(Gaussian Process)是观测值出现在一个连续域（例如时间或空间）的随机过程。在高斯过程中，连续输入空间中每个点都是与一个正态分布的随机变量相关联。此外，这些随机变量的每个有限集合都有一个多元正态分布，换句话说他们的任意有限线性组合是一个正态分布。高斯过程的分布是所有
+          高斯过程高斯过程(Gaussian Process)是观测值出现在一个连续域（例如时间或空间）的随机过程。在高斯过程中，连续输入空间中每个点都是与一个正态分布的随机变量相关联。此外，这些随机变量的每个有限集合都有一个多元正态分布，换句话说他们的任意有限线性组合是一个正态分布。高斯过程的分布是所有那些
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1290,16 +1426,12 @@ X=(x1x2⋯xN)T=(x11x12⋯x1px21x22⋯x2p⋮⋮⋱⋮xN1xN2⋯xNp)X = \begin{pmat
       
         
           
-           Shell简介
-Shell是用户与操作系统之间的壳，同时也是操作系统与用户交互的接口，GUI和CLI都可以算作Shell。Bash是Ubuntu里默认的Shell。
- 运行Shell脚本方法
-
+          Shell简介Shell是用户与操作系统之间的壳，同时也是操作系统与用户交互的接口，GUI和CLI都可以算作Shell。Bash是Ubuntu里默认的Shell。
+运行Shell脚本方法
 作为可运行程序
-
 12chmod +x ./test.sh./test.sh
 
-作为解释器参数
-/bin
+作为解释器参数/bin/sh te
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1449,12 +1581,8 @@ Shell是用户与操作系统之间的壳，同时也是操作系统与用户交
       
         
           
-           医学图像处理技术
- 图像二值化以及最优二值化方法
-图像的二值化方法来源于图像的灰度直方图，它是图像灰度级分布的统计，反应图像每种灰度出现的频率。
-所谓的图像的二值化是将确定图像的阈值，将图像分为前景和背景。
- 图像的卷积(Convolution)和相关(Correlation)
-给定输入图片f(x
+          医学图像处理技术图像二值化以及最优二值化方法图像的二值化方法来源于图像的灰度直方图，它是图像灰度级分布的统计，反应图像每种灰度出现的频率。所谓的图像的二值化是将确定图像的阈值，将图像分为前景和背景。
+图像的卷积(Convolution)和相关(Correlation)给定输入图片$f(x, y)$，
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1605,163 +1733,11 @@ Shell是用户与操作系统之间的壳，同时也是操作系统与用户交
         
           
           小同学，也许你在看论文时也困惑过别人的图为何画的如此的美，如此的精细，不用担心，这里教你SCI级别的论文绘图方法，一看就会，动手就忘（划掉，当然，你可以联系我帮你画，价格好商量）。
- 软件介绍
-我们这里使用的软件叫做gnuplot，这是命令行驱动的绘图工具，可以讲数学函数或数值资料以平面图或者立体图
+软件介绍我们这里使用的软件叫做gnuplot，这是命令行驱动的绘图工具，可以讲数学函数或数值资料以平面图或者立体图的形
           ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/06/13/SCI论文绘图方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2019/05/23/医学图像分析中的常用评价指标与损失函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HJY">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HJY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/23/医学图像分析中的常用评价指标与损失函数/" itemprop="url">医学图像分析中的常用评价指标与损失函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T10:33:37+08:00">
-                2019-05-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          本文将聚焦于FP、TP、TN、FN、准确率和召回率，F-score等指标，并解释这些指标，另外介绍医学图像分割任务中常用的损失函数。
-如下图所示，我们仍然以肿瘤为例，红色圈以内为真值区域(肿瘤的真实位置)，蓝色圈以内为预测结果(预测肿瘤的位置)。其中TP表示预测结果与真值相重叠的一部分，FP也就是常
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/23/医学图像分析中的常用评价指标与损失函数/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1852,7 +1828,7 @@ Shell是用户与操作系统之间的壳，同时也是操作系统与用户交
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1874,7 +1850,7 @@ Shell是用户与操作系统之间的壳，同时也是操作系统与用户交
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

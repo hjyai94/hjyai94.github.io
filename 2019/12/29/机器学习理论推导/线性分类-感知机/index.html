@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="样本集：{(xi,yi)}i=1N\lbrace (x_i, y_i) \rbrace_{i=1}^N{(xi​,yi​)}i=1N​ 模型: \begin{aligned} &amp;amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\ &amp;amp;">
+<meta name="description" content="样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$模型:\begin{aligned}&amp;amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\&amp;amp;\operatorname{sign}(a)=\begin{c">
 <meta name="keywords" content="机器学习理论推导">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性分类-感知机">
 <meta property="og:url" content="http://hjyai94.cn/2019/12/29/机器学习理论推导/线性分类-感知机/index.html">
 <meta property="og:site_name" content="HJY">
-<meta property="og:description" content="样本集：{(xi,yi)}i=1N\lbrace (x_i, y_i) \rbrace_{i=1}^N{(xi​,yi​)}i=1N​ 模型: \begin{aligned} &amp;amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\ &amp;amp;">
+<meta property="og:description" content="样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$模型:\begin{aligned}&amp;amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\&amp;amp;\operatorname{sign}(a)=\begin{c">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2021-05-15T07:31:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性分类-感知机">
-<meta name="twitter:description" content="样本集：{(xi,yi)}i=1N\lbrace (x_i, y_i) \rbrace_{i=1}^N{(xi​,yi​)}i=1N​ 模型: \begin{aligned} &amp;amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\ &amp;amp;">
+<meta name="twitter:description" content="样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$模型:\begin{aligned}&amp;amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\&amp;amp;\operatorname{sign}(a)=\begin{c">
 
 
 
@@ -394,24 +394,9 @@
       
 
       
-        <p>样本集：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>{</mo><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>i</mi></msub><mo>)</mo><msubsup><mo>}</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup></mrow><annotation encoding="application/x-tex">\lbrace (x_i, y_i) \rbrace_{i=1}^N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:1.0999949999999998em;vertical-align:-0.258664em;"></span><span class="base"><span class="mopen">{</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mpunct">,</span><span class="mord rule" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"></span></span></span></span></span><span class="mclose">)</span><span class="mclose"><span class="mclose">}</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413309999999999em;"><span style="top:-2.441336em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">N</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.258664em;"></span></span></span></span></span></span></span></span><br>
-模型:<br>
-\begin{aligned}<br>
-&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\<br>
-&amp;\operatorname{sign}(a)=\begin{cases} +1,\quad a&gt;0 \\{-1,  \quad a&lt;0 }<br>
-\end{cases}<br>
-\end{aligned}</p>
-<p>策略：构造损失函数<br>
-\begin{array}{c}<br>
-L(w)=\sum_{i=1}^{N} I\lbrace y_{i} w^{\top} x_{i}&lt;0\rbrace \\<br>
-{ L(w)=\sum_{x_{i} \in D}-y_{i} w^{\top} x_{i}} \\<br>
-{\nabla_{w} L=-y_{i} x_{i}}<br>
-\end{array}</p>
-<p>算法：随机梯度SGD<br>
-\begin{aligned}<br>
-W^{(t+1)} &amp; \leftarrow w^{(t)}-\lambda \nabla_{w} L \\<br>
-&amp; w^{(t)}+\lambda y_{i} x_{i}<br>
-\end{aligned}</p>
+        <p>样本集：$\lbrace (x_i, y_i) \rbrace_{i=1}^N$<br>模型:<br>\begin{aligned}<br>&amp;f(x)=\operatorname{sign}\left(w^{\top} x\right), \quad x_i \in \mathbb{R}^{p}, w \in \mathbb{R}^{p}\\<br>&amp;\operatorname{sign}(a)=\begin{cases} +1,\quad a&gt;0 \\{-1,  \quad a&lt;0 }<br>\end{cases}<br>\end{aligned}</p>
+<p>策略：构造损失函数<br>\begin{array}{c}<br>L(w)=\sum_{i=1}^{N} I\lbrace y_{i} w^{\top} x_{i}&lt;0\rbrace \\<br>{ L(w)=\sum_{x_{i} \in D}-y_{i} w^{\top} x_{i}} \\<br>{\nabla_{w} L=-y_{i} x_{i}}<br>\end{array}</p>
+<p>算法：随机梯度SGD<br>\begin{aligned}<br>W^{(t+1)} &amp; \leftarrow w^{(t)}-\lambda \nabla_{w} L \\<br>&amp; w^{(t)}+\lambda y_{i} x_{i}<br>\end{aligned}</p>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kity@2.0.4/dist/kity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text/javascript" src="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/hexo-simple-mindmap@0.2.0/dist/mindmap.min.css">
       
     </div>
@@ -548,7 +533,7 @@ W^{(t+1)} &amp; \leftarrow w^{(t)}-\lambda \nabla_{w} L \\<br>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -570,7 +555,7 @@ W^{(t+1)} &amp; \leftarrow w^{(t)}-\lambda \nabla_{w} L \\<br>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
