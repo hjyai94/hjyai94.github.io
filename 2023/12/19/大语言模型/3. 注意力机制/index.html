@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文主要参考transformers教程， 包括了一些自己的思考。  AttentionNLP 神经网络模型的本质就是对输入文本进行编码，常规的做法是首先对句子进行分词，然后将每个词语 (token) 都转化为对应的词向量 (token embeddings)，这样文本就转换为一个由词语向量组成的矩阵 $\boldsymbol{X}&#x3D;\left(\boldsymbol{x}_1, \b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="注意力机制">
+<meta property="og:url" content="http://hjyai94.cn/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/3.%20%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="HJY">
+<meta property="og:description" content="本文主要参考transformers教程， 包括了一些自己的思考。  AttentionNLP 神经网络模型的本质就是对输入文本进行编码，常规的做法是首先对句子进行分词，然后将每个词语 (token) 都转化为对应的词向量 (token embeddings)，这样文本就转换为一个由词语向量组成的矩阵 $\boldsymbol{X}&#x3D;\left(\boldsymbol{x}_1, \b">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-12-19T01:54:35.200Z">
+<meta property="article:modified_time" content="2023-12-19T08:40:18.547Z">
+<meta property="article:author" content="HJY">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hjyai94.cn/2023/12/19/大语言模型/3. 注意力机制/"/>
+
+
+
+
+
+  <title>注意力机制 | HJY</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">昨夜西风凋碧树，独上高楼，望尽天涯路。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/3.%20%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">注意力机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-19T09:54:35+08:00">
+                2023-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文主要参考<a href="https://transformers.run/back/attention/">transformers教程</a>， 包括了一些自己的思考。</p>
+</blockquote>
+<h1 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h1><p>NLP 神经网络模型的本质就是对输入文本进行编码，常规的做法是首先对句子进行分词，然后将每个词语 (token) 都转化为对应的词向量 (token embeddings)，这样文本就转换为一个由词语向量组成的矩阵 $\boldsymbol{X}&#x3D;\left(\boldsymbol{x}_1, \boldsymbol{x}_2, \ldots, \boldsymbol{x}_n\right)$ ，其中 $\boldsymbol{x}_i$就表示第 $i$ 个词语的词向量，维度为 $d$ ，故 $\boldsymbol{X} \in \mathbb{R}^{n \times d}$ 。<br>在 Transformer 模型提出之前，对 token 序列 $\boldsymbol{X}$ 的常规编码方式是通过循环网络 (RNNs) 和卷积网络 (CNNs)。</p>
+<ul>
+<li>RNN (例如 LSTM) 的方案很简单，每一个词语 $\boldsymbol{x}_t$ 对应的编码结果 $\boldsymbol{y}_t$ 通过递归地计算得到:<br>$$<br>\boldsymbol{y}<em>t&#x3D;f\left(\boldsymbol{y}</em>{t-1}, \boldsymbol{x}_t\right)<br>$$<br>RNN 的序列建模方式虽然与人类阅读类似，但是递归的结构导致其无法并行计算，因此速度较慢。而且 RNN 本质是一个马尔科夫决策过程，难以学习到全局的结构信息；</li>
+<li>CNN 则通过滑动窗口基于局部上下文来编码文本，例如核尺寸为 3 的卷积操作就是使用每一个词自身以及前一个和后一个词来生成嵌入式表示:<br>$$<br>\boldsymbol{y}<em>t&#x3D;f\left(\boldsymbol{x}</em>{t-1}, \boldsymbol{x}<em>t, \boldsymbol{x}</em>{t+1}\right)<br>$$<br>Google《Attention is All You Need》提供了第三个方案：<strong>直接使用 Attention 机制编码整个文本</strong>。相比 RNN 要逐步递归才能获得全局信息（因此一般使用双向 RNN），而 CNN 实际只能获取局部信息，需要通过层叠来增大感受野，Attention 机制一步到位获取了全局信息：<br>$$<br>\boldsymbol{y}_t&#x3D;f\left(\boldsymbol{x}_t, \boldsymbol{A}, \boldsymbol{B}\right)<br>$$</li>
+</ul>
+<p>其中 $\boldsymbol{A}, \boldsymbol{B}$ 是另外的词语序列（矩阵），如果取 $\boldsymbol{A}&#x3D;\boldsymbol{B}&#x3D;\boldsymbol{X}$ 就称为 Self-Attention，即直接将 $\boldsymbol{x}_t$ 与自身序列中的每个词语进行比较，最后算出 $\boldsymbol{y}_t$ 。</p>
+<h1 id="Scaled-Dot-product-Attention"><a href="#Scaled-Dot-product-Attention" class="headerlink" title="Scaled Dot-product Attention"></a>Scaled Dot-product Attention</h1><p>虽然 Attention 有许多种实现方式，但是最常见的还是 Scaled Dot-product Attention。<br>![[Pasted image 20231120153510.png|300]]<br>Scaled Dot-product Attention 共包含 2 个主要步骤：</p>
+<ol>
+<li><p><strong>计算注意力权重</strong>：使用某种相似度函数度量每一个 query 向量和所有 key 向量之间的关联程度。对于长度为 $m$ 的 Query 序列和长度为 $n$ 的 Key 序列，该步骤会生成一个尺寸为 $m\times n$ 的注意力分数矩阵。</p>
+<p> 特别地，Scaled Dot-product Attention 使用点积作为相似度函数，这样相似的 queries 和 keys 会具有较大的点积。</p>
+</li>
+</ol>
+<blockquote>
+<p>注意：使用常数项进行放缩而不使用余弦相似度，很可能是为了减少计算复杂度。</p>
+</blockquote>
+<ol start="2">
+<li><strong>更新 token embeddings</strong>: 将权重 $w_{i j}$ 与对应的 value 向量 $\boldsymbol{v}_1, \ldots, \boldsymbol{v}_n$ 相乘以获得第 $i$ 个 query 向量更新后的语义表示 $\boldsymbol{x}<em>i^{\prime}&#x3D;\sum_j w</em>{i j} \boldsymbol{v}_j$ 。<br>形式化表示为:<br>$$<br>\operatorname{Attention}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})&#x3D;\operatorname{softmax}\left(\frac{\boldsymbol{Q} \boldsymbol{K}^{\top}}{\sqrt{d_k}}\right) \boldsymbol{V}<br>$$<br>其中 $\boldsymbol{Q} \in \mathbb{R}^{m \times d_k}, \boldsymbol{K} \in \mathbb{R}^{n \times d_k}, \boldsymbol{V} \in \mathbb{R}^{n \times d_v}$ 分别是 query、key、value 向量序列。如果忽略 softmax 激活函数，实际上它就是三个 $m \times d_k, d_k \times n, n \times d_v$ 矩阵相乘，得到一个 $m \times d_v$ 的矩阵，也就是将 $m \times d_k$ 的序列 $\boldsymbol{Q}$ 编码成了一个新的 $m \times d_v$ 的序列。</li>
+</ol>
+<p>将上面的公式拆开来看更加清楚:<br>$$<br>\operatorname{Attention}\left(\boldsymbol{q}<em>t, \boldsymbol{K}, \boldsymbol{V}\right)&#x3D;\sum</em>{s&#x3D;1}^m \frac{1}{Z} \exp \left(\frac{\left\langle\boldsymbol{q}_t, \boldsymbol{k}_s\right\rangle}{\sqrt{d_k}}\right) \boldsymbol{v}_s<br>$$</p>
+<p>其中 $Z$ 是归一化因子， $\boldsymbol{K}, \boldsymbol{V}$ 是一一对应的 key 和 value 向量序列， Scaled Dot-product Attention 就是通过 $\boldsymbol{q}_t$ 这个 query 与各个 $\boldsymbol{k}_s$ 内积并 softmax 的方式来得到 $\boldsymbol{q}_t$ 与各个 $\boldsymbol{v}_s$ 的相似度，然后加权求和，得到一个 $d_v$ 维的向量。其中因子 $\sqrt{d_k}$ 起到调节作用，使得内积不至于太大。</p>
+<p>下面我们通过 Pytorch 来手工实现 Scaled Dot-product Attention：</p>
+<p>首先需要将文本分词为词语 (token) 序列，然后将每一个词语转换为对应的词向量 (embedding)。Pytorch 提供了 <code>torch.nn.Embedding</code> 层来完成该操作，即构建一个从 token ID 到 token embedding 的映射表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoConfig</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer</span><br><span class="line"></span><br><span class="line">model_ckpt = <span class="string">&quot;bert-base-uncased&quot;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_ckpt)</span><br><span class="line"></span><br><span class="line">text = <span class="string">&quot;time flies like an arrow&quot;</span></span><br><span class="line">inputs = tokenizer(text, return_tensors=<span class="string">&quot;pt&quot;</span>, add_special_tokens=<span class="literal">False</span>)</span><br><span class="line"><span class="built_in">print</span>(inputs.input_ids)</span><br><span class="line"></span><br><span class="line">config = AutoConfig.from_pretrained(model_ckpt)</span><br><span class="line">token_emb = nn.Embedding(config.vocab_size, config.hidden_size)</span><br><span class="line"><span class="built_in">print</span>(token_emb)</span><br><span class="line"></span><br><span class="line">inputs_embeds = token_emb(inputs.input_ids)</span><br><span class="line"><span class="built_in">print</span>(inputs_embeds.size())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([[ <span class="number">2051</span>, <span class="number">10029</span>,  <span class="number">2066</span>,  <span class="number">2019</span>,  <span class="number">8612</span>]])</span><br><span class="line">Embedding(<span class="number">30522</span>, <span class="number">768</span>)</span><br><span class="line">torch.Size([<span class="number">1</span>, <span class="number">5</span>, <span class="number">768</span>])</span><br></pre></td></tr></table></figure>
+<p>可以看到，BERT-base-uncased 模型对应的词表大小为 30522，每个词语的词向量维度为 768。Embedding 层把输入的词语序列映射到了尺寸为 <code>[batch_size, seq_len, hidden_dim]</code> 的张量。</p>
+<p>接下来就是创建 query、key、value 向量序列 $Q,K,V,$ 并且使用点积作为相似度函数来计算注意力分数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line">Q = K = V = inputs_embeds</span><br><span class="line">dim_k = K.size(-<span class="number">1</span>)</span><br><span class="line">scores = torch.bmm(Q, K.transpose(<span class="number">1</span>,<span class="number">2</span>)) / sqrt(dim_k)</span><br><span class="line"><span class="built_in">print</span>(scores.size()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([<span class="number">1</span>, <span class="number">5</span>, <span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<p>这里$Q,K$ 的序列长度都为5，因此生成了 $5 \times 5$ 的注意力分数矩阵，接下来就是应用 Softmax 标准化注意力权重：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line">weights = F.softmax(scores, dim=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(weights.<span class="built_in">sum</span>(dim=-<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor([[<span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>, <span class="number">1.</span>]], grad_fn=&lt;SumBackward1&gt;)</span><br></pre></td></tr></table></figure>
+<p>最后将注意力权重和value序列相乘：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">attn_outputs = torch.bmm(weights, V)</span><br><span class="line"><span class="built_in">print</span>(attn_outputs.shape)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([<span class="number">1</span>, <span class="number">5</span>, <span class="number">768</span>])</span><br></pre></td></tr></table></figure>
+<p>这样就形成了一个比较简单版本的Scaled Dot-product Attention。可以将上面这些操作封装为函数以方便后续调用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">scaled_dot_product_attention</span>(<span class="params">query, key, value, query_mask=<span class="literal">None</span>, key_mask=<span class="literal">None</span>, mask=<span class="literal">None</span></span>):</span><br><span class="line">    dim_k = query.size(-<span class="number">1</span>)</span><br><span class="line">    scores = torch.bmm(query, key.transpose(<span class="number">1</span>, <span class="number">2</span>)) / sqrt(dim_k)</span><br><span class="line">    <span class="keyword">if</span> query_mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> key_mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        mask = torch.bmm(query_mask.unsqueeze(-<span class="number">1</span>), key_mask.unsqueeze(<span class="number">1</span>))</span><br><span class="line">    <span class="keyword">if</span> mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        scores = scores.masked_fill(mask == <span class="number">0</span>, -<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>))</span><br><span class="line">    weights = F.softmax(scores, dim=-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> torch.bmm(weights, value)</span><br></pre></td></tr></table></figure>
+<p>上面的代码还考虑了 $\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}$ 序列的 Mask。填充 (padding) 字符不应该参与计算，因此将对应的注意力分数设置为 $-\infty$ ，这样 softmax 之后其对应的注意力权重就为 0 了 $\left(e^{-\infty}&#x3D;0\right)$ 。</p>
+<p>注意！上面的做法会带来一个问题：当 $\boldsymbol{Q}$ 和 $\boldsymbol{K}$ 序列相同时，注意力机制会为上下文中的相同单词分配非常大的分数（点积为 1)，而在实践中，相关词往往比相同词更重要。例如对于上面的例子，只有关注“time”和“arrow”才能够确认“flies”的含义。<br>因此，多头注意力 (Multi-head Attention) 出现了！</p>
+<h1 id="Multi-head-Attention"><a href="#Multi-head-Attention" class="headerlink" title="Multi-head Attention"></a>Multi-head Attention</h1><p>Multi-head Attention 首先通过线性映射将 $\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V}$ 序列映射到特征空间，每一组线性投影后的向量表示称为一个头 (head)，然后在每组映射后的序列上再应用 Scaled Dot-product Attention:<br>![[Pasted image 20231120172444.png|300]]<br>形式化表示为：<br>$$<br>\begin{gathered}<br>\text { head }_i&#x3D;\operatorname{Attention}\left(\boldsymbol{Q} \boldsymbol{W}_i^Q, \boldsymbol{K} \boldsymbol{W}_i^K, \boldsymbol{V} \boldsymbol{W}_i^V\right) \<br>\operatorname{MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})&#x3D;\operatorname{Concat}\left(\text { head }_1, \ldots, \text { head }_h\right)<br>\end{gathered}<br>$$</p>
+<p>其中 $\boldsymbol{W}_i^Q \in \mathbb{R}^{d_k \times \tilde{d}_k}, \boldsymbol{W}_i^K \in \mathbb{R}^{d_k \times \tilde{d}_k}, \boldsymbol{W}_i^V \in \mathbb{R}^{d_v \times \tilde{d}_v}$ 是映射矩阵， $h$ 是注意力头的数量。最后，将多头的结果拼接起来就得到最终 $m \times h \tilde{d}_v$ 的结果序列。所谓的“多头” (Multi-head)，其实就是多做几次 Scaled Dot-product Attention，然后把结果拼接。<br>下面我们首先实现一个注意力头：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AttentionHead</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embed_dim, head_dim</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.q = nn.Linear(embed_dim, head_dim)</span><br><span class="line">        self.k = nn.Linear(embed_dim, head_dim)</span><br><span class="line">        self.v = nn.Linear(embed_dim, head_dim)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, query, key, value, query_mask=<span class="literal">None</span>, key_mask=<span class="literal">None</span>, mask=<span class="literal">None</span></span>):</span><br><span class="line">        attn_outputs = scaled_dot_product_attention(</span><br><span class="line">            self.q(query), self.k(key), self.v(value), query_mask, key_mask, mask)</span><br><span class="line">        <span class="keyword">return</span> attn_outputs</span><br></pre></td></tr></table></figure>
+
+<p>每个头都会初始化三个独立的线性层，负责将 $Q, K, V$ 序列映射到尺寸为 <code>[batch_size, seq_len, head_dim]</code> 的张量，其中 <code>head_dim</code> 是映射到的向量维度。</p>
+<blockquote>
+<p>实践中一般将 <code>head_dim</code> 设置为 <code>embed_dim</code> 的因数，这样 token 嵌入式表示的维度就可以保持不变，例如 BERT 有 12 个注意力头，因此每个头的维度被设置为 $768&#x2F;12&#x3D;64$。****</p>
+</blockquote>
+<p>最后只需要拼接多个注意力头的输出就可以构建出 Multi-head Attention 层了（这里在拼接后还通过一个线性变换来生成最终的输出张量）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MultiHeadAttention</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        embed_dim = config.hidden_size</span><br><span class="line">        num_heads = config.num_attention_heads</span><br><span class="line">        head_dim = embed_dim // num_heads</span><br><span class="line">        self.heads = nn.ModuleList(</span><br><span class="line">            [AttentionHead(embed_dim, head_dim) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(num_heads)]</span><br><span class="line">        )</span><br><span class="line">        self.output_linear = nn.Linear(embed_dim, embed_dim)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, query, key, value, query_mask=<span class="literal">None</span>, key_mask=<span class="literal">None</span>, mask=<span class="literal">None</span></span>):</span><br><span class="line">        x = torch.cat([</span><br><span class="line">            h(query, key, value, query_mask, key_mask, mask) <span class="keyword">for</span> h <span class="keyword">in</span> self.heads</span><br><span class="line">        ], dim=-<span class="number">1</span>)</span><br><span class="line">        x = self.output_linear(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<p>这里使用 BERT-base-uncased 模型的参数初始化 Multi-head Attention 层，并且将之前构建的输入送入模型以验证是否工作正常：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoConfig</span><br><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> AutoTokenizer</span><br><span class="line"></span><br><span class="line">model_ckpt = <span class="string">&quot;bert-base-uncased&quot;</span></span><br><span class="line">tokenizer = AutoTokenizer.from_pretrained(model_ckpt)</span><br><span class="line"></span><br><span class="line">text = <span class="string">&quot;time flies like an arrow&quot;</span></span><br><span class="line">inputs = tokenizer(text, return_tensors=<span class="string">&quot;pt&quot;</span>, add_special_tokens=<span class="literal">False</span>)</span><br><span class="line">config = AutoConfig.from_pretrained(model_ckpt)</span><br><span class="line">token_emb = nn.Embedding(config.vocab_size, config.hidden_size)</span><br><span class="line">inputs_embeds = token_emb(inputs.input_ids)</span><br><span class="line"></span><br><span class="line">multihead_attn = MultiHeadAttention(config)</span><br><span class="line">query = key = value = inputs_embeds</span><br><span class="line">attn_output = multihead_attn(query, key, value)</span><br><span class="line"><span class="built_in">print</span>(attn_output.size())</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Transformer-Encoder"><a href="#Transformer-Encoder" class="headerlink" title="Transformer Encoder"></a>Transformer Encoder</h1><p>回忆一下上一章中介绍过的标准 Transformer 结构，Encoder 负责将输入的词语序列转换为词向量序列，Decoder 则基于 Encoder 的隐状态来迭代地生成词语序列作为输出，每次生成一个词语。<br>![[Pasted image 20231120212826.png|500]]<br>其中，Encoder 和 Decoder 都各自包含有多个 building blocks。下图展示了一个翻译任务的例子：<br>![[Pasted image 20231120212941.png]]</p>
+<p>可以看到：</p>
+<ul>
+<li>输入的词语首先被转换为词向量。由于注意力机制无法捕获词语之间的位置关系，因此还通过 positional embeddings 向输入中添加位置信息；</li>
+<li>Encoder 由一堆 encoder layers (blocks) 组成，类似于图像领域中的堆叠卷积层。同样地，在 Decoder 中也包含有堆叠的 decoder layers；</li>
+<li>Encoder 的输出被送入到 Decoder 层中以预测概率最大的下一个词，然后当前的词语序列又被送回到 Decoder 中以继续生成下一个词，重复直至出现序列结束符 EOS 或者超过最大输出长度。</li>
+</ul>
+<h1 id="The-Feed-Forward-Layer"><a href="#The-Feed-Forward-Layer" class="headerlink" title="The Feed-Forward Layer"></a>The Feed-Forward Layer</h1><p>Transformer Encoder&#x2F;Decoder 中的前馈子层实际上就是两层全连接神经网络，它单独地处理序列中的每一个词向量，也被称为 position-wise feed-forward layer。常见做法是让第一层的维度是词向量大小的 4 倍，然后以 GELU 作为激活函数。<br>下面实现一个简单的 Feed-Forward Layer：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FeedForward</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.linear_1 = nn.Linear(config.hidden_size, config.intermediate_size)</span><br><span class="line">        self.linear_2 = nn.Linear(config.intermediate_size, config.hidden_size)</span><br><span class="line">        self.gelu = nn.GELU()</span><br><span class="line">        self.dropout = nn.Dropout(config.hidden_dropout_prob)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        x = self.linear_1(x)</span><br><span class="line">        x = self.gelu(x)</span><br><span class="line">        x = self.linear_2(x)</span><br><span class="line">        x = self.dropout(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<p>将前面注意力层的输出送入到该层中以测试是否符合我们的预期：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">feed_forward = FeedForward(config)</span><br><span class="line">ff_outputs = feed_forward(attn_output)</span><br><span class="line"><span class="built_in">print</span>(ff_outputs.size())</span><br></pre></td></tr></table></figure>
+
+<p>至此创建完整 Transformer Encoder 的所有要素都已齐备，只需要再加上 Skip Connections 和 Layer Normalization 就大功告成了。</p>
+<h1 id="Layer-Normalization"><a href="#Layer-Normalization" class="headerlink" title="Layer Normalization"></a>Layer Normalization</h1><p>Layer Normalization 负责将一批 (batch) 输入中的每一个都标准化为均值为零且具有单位方差；Skip Connections 则是将张量直接传递给模型的下一层而不进行处理，并将其添加到处理后的张量中。<br>向 Transformer Encoder&#x2F;Decoder 中添加 Layer Normalization 目前共有两种做法：<br>![[Pasted image 20231120213719.png]]<br>本章采用第二种方式来构建 Transformer Encoder 层：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TransformerEncoderLayer</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.layer_norm_1 = nn.LayerNorm(config.hidden_size)</span><br><span class="line">        self.layer_norm_2 = nn.LayerNorm(config.hidden_size)</span><br><span class="line">        self.attention = MultiHeadAttention(config)</span><br><span class="line">        self.feed_forward = FeedForward(config)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, mask=<span class="literal">None</span></span>):</span><br><span class="line">        <span class="comment"># Apply layer normalization and then copy input into query, key, value</span></span><br><span class="line">        hidden_state = self.layer_norm_1(x)</span><br><span class="line">        <span class="comment"># Apply attention with a skip connection</span></span><br><span class="line">        x = x + self.attention(hidden_state, hidden_state, hidden_state, mask=mask)</span><br><span class="line">        <span class="comment"># Apply feed-forward layer with a skip connection</span></span><br><span class="line">        x = x + self.feed_forward(self.layer_norm_2(x))</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<h1 id="Positional-Embeddings"><a href="#Positional-Embeddings" class="headerlink" title="Positional Embeddings"></a>Positional Embeddings</h1><p>前面讲过，由于注意力机制无法捕获词语之间的位置信息，因此 Transformer 模型还使用 Positional Embeddings 添加了词语的位置信息。</p>
+<p>Positional Embeddings 基于一个简单但有效的想法：<strong>使用与位置相关的值模式来增强词向量。</strong></p>
+<p>如果预训练数据集足够大，那么最简单的方法就是让模型自动学习位置嵌入。下面本章就以这种方式创建一个自定义的 Embeddings 模块，它同时将词语和位置映射到嵌入式表示，最终的输出是两个表示之和：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Embeddings</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.token_embeddings = nn.Embedding(config.vocab_size,</span><br><span class="line">                                             config.hidden_size)</span><br><span class="line">        self.position_embeddings = nn.Embedding(config.max_position_embeddings,</span><br><span class="line">                                                config.hidden_size)</span><br><span class="line">        self.layer_norm = nn.LayerNorm(config.hidden_size, eps=<span class="number">1e-12</span>)</span><br><span class="line">        self.dropout = nn.Dropout()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, input_ids</span>):</span><br><span class="line">        <span class="comment"># Create position IDs for input sequence</span></span><br><span class="line">        seq_length = input_ids.size(<span class="number">1</span>)</span><br><span class="line">        position_ids = torch.arange(seq_length, dtype=torch.long).unsqueeze(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># Create token and position embeddings</span></span><br><span class="line">        token_embeddings = self.token_embeddings(input_ids)</span><br><span class="line">        position_embeddings = self.position_embeddings(position_ids)</span><br><span class="line">        <span class="comment"># Combine token and position embeddings</span></span><br><span class="line">        embeddings = token_embeddings + position_embeddings</span><br><span class="line">        embeddings = self.layer_norm(embeddings)</span><br><span class="line">        embeddings = self.dropout(embeddings)</span><br><span class="line">        <span class="keyword">return</span> embeddings</span><br><span class="line"></span><br><span class="line">embedding_layer = Embeddings(config)</span><br><span class="line"><span class="built_in">print</span>(embedding_layer(inputs.input_ids).size())</span><br></pre></td></tr></table></figure>
+
+<p>除此以外，Positional Embeddings 还有一些替代方案：</p>
+<p><strong>绝对位置表示</strong>：使用由调制的正弦和余弦信号组成的静态模式来编码位置。 当没有大量训练数据可用时，这种方法尤其有效；</p>
+<p><strong>相对位置表示</strong>：在生成某个词语的词向量时，一般距离它近的词语更为重要，因此也有工作采用相对位置编码。因为每个词语的相对嵌入会根据序列的位置而变化，这需要在模型层面对注意力机制进行修改，而不是通过引入嵌入层来完成，例如 DeBERTa 等模型。</p>
+<p>下面将所有这些层结合起来构建完整的 Transformer Encoder：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TransformerEncoder</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.embeddings = Embeddings(config)</span><br><span class="line">        self.layers = nn.ModuleList([TransformerEncoderLayer(config)</span><br><span class="line">                                     <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(config.num_hidden_layers)])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x, mask=<span class="literal">None</span></span>):</span><br><span class="line">        x = self.embeddings(x)</span><br><span class="line">        <span class="keyword">for</span> layer <span class="keyword">in</span> self.layers:</span><br><span class="line">            x = layer(x, mask=mask)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<p>同样地，我们对该层进行简单的测试：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">encoder = TransformerEncoder(config)</span><br><span class="line"><span class="built_in">print</span>(encoder(inputs.input_ids).size())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([<span class="number">1</span>, <span class="number">5</span>, <span class="number">768</span>])</span><br></pre></td></tr></table></figure>
+
+<h1 id="Transformer-Decoder"><a href="#Transformer-Decoder" class="headerlink" title="Transformer Decoder"></a>Transformer Decoder</h1><p>Transformer Decoder 与 Encoder 最大的不同在于 Decoder 有两个注意力子层，如下图所示：<br>![[Pasted image 20231120214318.png]]<br><strong>Masked multi-head self-attention layer</strong>：确保在每个时间步生成的词语仅基于过去的输出和当前预测的词，否则 Decoder 相当于作弊了；<br><strong>Encoder-decoder attention layer</strong>：以解码器的中间表示作为 queries，对 encoder stack 的输出 key 和 value 向量执行 Multi-head Attention。通过这种方式，Encoder-Decoder Attention Layer 就可以学习到如何关联来自两个不同序列的词语，例如两种不同的语言。 解码器可以访问每个 block 中 Encoder 的 keys 和 values。<br>与 Encoder 中的 Mask 不同，Decoder 的 Mask 是一个下三角矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">seq_len = inputs.input_ids.size(-<span class="number">1</span>)</span><br><span class="line">mask = torch.tril(torch.ones(seq_len, seq_len)).unsqueeze(<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(mask[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tensor(<span class="comment">[<span class="comment">[1., 0., 0., 0., 0.]</span>,</span></span><br><span class="line"><span class="comment">        <span class="comment">[1., 1., 0., 0., 0.]</span>,</span></span><br><span class="line"><span class="comment">        <span class="comment">[1., 1., 1., 0., 0.]</span>,</span></span><br><span class="line"><span class="comment">        <span class="comment">[1., 1., 1., 1., 0.]</span>,</span></span><br><span class="line"><span class="comment">        <span class="comment">[1., 1., 1., 1., 1.]</span>]</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这里使用 PyTorch 自带的 <code>tril()</code> 函数来创建下三角矩阵，然后同样地，通过 <code>Tensor.masked_fill()</code> 将所有零替换为负无穷大来防止注意力头看到未来的词语而造成信息泄露：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scores.masked_fill(mask == <span class="number">0</span>, -<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tensor([[[<span class="number">26.8082</span>,    -inf,    -inf,    -inf,    -inf],</span><br><span class="line">         [-<span class="number">0.6981</span>, <span class="number">26.9043</span>,    -inf,    -inf,    -inf],</span><br><span class="line">         [-<span class="number">2.3190</span>,  <span class="number">1.2928</span>, <span class="number">27.8710</span>,    -inf,    -inf],</span><br><span class="line">         [-<span class="number">0.5897</span>,  <span class="number">0.3497</span>, -<span class="number">0.3807</span>, <span class="number">27.5488</span>,    -inf],</span><br><span class="line">         [ <span class="number">0.5275</span>,  <span class="number">2.0493</span>, -<span class="number">0.4869</span>,  <span class="number">1.6100</span>, <span class="number">29.0893</span>]]],</span><br><span class="line">       grad_fn=&lt;MaskedFillBackward0&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>更具体的学习Transformer模型结构可以参考<a href="https://github.com/karpathy/nanoGPT">nano GPT项目</a>。</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>非常感谢各位老板投喂！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt=" 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/2.%20Transformer%E6%A8%A1%E5%9E%8B/" rel="next" title="Transformer模型">
+                <i class="fa fa-chevron-left"></i> Transformer模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/4.%20Transformers%E7%9A%84%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%88%86%E7%B1%BB/" rel="prev" title="4. Transformers的模型与分类">
+                4. Transformers的模型与分类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/hjyai94" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention"><span class="nav-number">1.</span> <span class="nav-text">Attention</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Scaled-Dot-product-Attention"><span class="nav-number">2.</span> <span class="nav-text">Scaled Dot-product Attention</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multi-head-Attention"><span class="nav-number">3.</span> <span class="nav-text">Multi-head Attention</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer-Encoder"><span class="nav-number">4.</span> <span class="nav-text">Transformer Encoder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Feed-Forward-Layer"><span class="nav-number">5.</span> <span class="nav-text">The Feed-Forward Layer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Layer-Normalization"><span class="nav-number">6.</span> <span class="nav-text">Layer Normalization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Positional-Embeddings"><span class="nav-number">7.</span> <span class="nav-text">Positional Embeddings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Transformer-Decoder"><span class="nav-number">8.</span> <span class="nav-text">Transformer Decoder</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

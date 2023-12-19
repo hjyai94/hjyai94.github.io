@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="LLM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文主要参考transformers教程， 包括了一些自己的思考。  如何建模语言？发展流程统计语言模型-&gt;NNLM-&gt;Word2Vec-&gt;LSTM-&gt;ELMO-&gt;Bert 统计语言模型统计语言模型的思路是 判断一个文字序列是否构成人类能理解并且有意义的句子。IBM实验室Jelinek提出一个文字序列 $w_1, w_2, \ldots, w_n$ 是否合理，就看这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大语言模型的前世今生">
+<meta property="og:url" content="http://hjyai94.cn/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/1.%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/index.html">
+<meta property="og:site_name" content="HJY">
+<meta property="og:description" content="本文主要参考transformers教程， 包括了一些自己的思考。  如何建模语言？发展流程统计语言模型-&gt;NNLM-&gt;Word2Vec-&gt;LSTM-&gt;ELMO-&gt;Bert 统计语言模型统计语言模型的思路是 判断一个文字序列是否构成人类能理解并且有意义的句子。IBM实验室Jelinek提出一个文字序列 $w_1, w_2, \ldots, w_n$ 是否合理，就看这">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-12-19T01:54:35.177Z">
+<meta property="article:modified_time" content="2023-12-19T08:40:18.550Z">
+<meta property="article:author" content="HJY">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hjyai94.cn/2023/12/19/大语言模型/1. 大语言模型的前世今生/"/>
+
+
+
+
+
+  <title>大语言模型的前世今生 | HJY</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">昨夜西风凋碧树，独上高楼，望尽天涯路。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/1.%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">大语言模型的前世今生</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-12-19T09:54:35+08:00">
+                2023-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文主要参考<a href="https://transformers.run/back/attention/">transformers教程</a>， 包括了一些自己的思考。</p>
+</blockquote>
+<h1 id="如何建模语言？"><a href="#如何建模语言？" class="headerlink" title="如何建模语言？"></a>如何建模语言？</h1><h1 id="发展流程"><a href="#发展流程" class="headerlink" title="发展流程"></a>发展流程</h1><p>统计语言模型-&gt;NNLM-&gt;Word2Vec-&gt;LSTM-&gt;ELMO-&gt;Bert</p>
+<h2 id="统计语言模型"><a href="#统计语言模型" class="headerlink" title="统计语言模型"></a>统计语言模型</h2><p>统计语言模型的思路是 判断一个文字序列是否构成人类能理解并且有意义的句子。<br>IBM实验室Jelinek提出一个文字序列 $w_1, w_2, \ldots, w_n$ 是否合理，就看这个句子 $S$ 出现的概率 $P(S)$ 如何，出现概率越大的句子越合理:<br>$$<br>P(S)&#x3D;P\left(w_1, w_2, \ldots, w_n\right)&#x3D;P\left(w_1\right) P\left(w_2 \mid w_1\right) P\left(w_3 \mid w_1, w_2\right) \ldots P\left(w_n \mid w_1, w_2, \ldots, w_{n-1}\right)<br>$$<br>任意一个词语 $w_n$ 的出现概率都取决于它前面出现的所有词（理论上也可以引入后面的词语共同预测单词的出现概率）。但是，随着文本长度的增加，条件概率 $P\left(w_n \mid w_1, w_2, \ldots, w_{n-1}\right)$ 会变得越来难计算，因而实际计算时会假设每个词语 $w_i$ 的出现概率仅与它前面的 $N-1$ 个词语有关，即:<br>$$<br>P\left(w_i \mid w_1, w_2, \ldots, w_{i-1}\right)&#x3D;P\left(w_i \mid w_{i-N+1}, w_{i-N+2}, \ldots, w_{i-1}\right)<br>$$<br>这种假设被称为马尔可夫假设，对应的语言模型被称为 $N$ 元 (N-Gram) 模型。特别地， $N&#x3D;2$ 时，任意词语 $w_i$ 的出现概率只与它前面的词语 $w_{i-1}$ 有关，被称为二元 (Bigram) 模型；显然， $N&#x3D;1$ 时的一元模型实际上就是一个上下文无关模型。由于 $N$ 元模型的空间和时间复杂度都几乎是 $N$ 的指数函数，因此实际应用中最常见的是 $N&#x3D;3$ 的三元模型。<br>但是，即使是三元、四元甚至是更高阶的语言模型，依然无法覆盖所有的语言现象。<strong>在自然语言中，上下文之间的相关性可能跨度非常大，比如从一个段落跨到另一个段落，这是马尔可夫假设解决不了的。</strong> 此时就需要使用 LSTM、Transformer 等模型来捕获词语之间的长程依赖性 (long distance dependency) 了。</p>
+<h2 id="NNLM"><a href="#NNLM" class="headerlink" title="NNLM"></a>NNLM</h2><p>2003 年，Bengio 提出了神经网络语言模型 (NNLM, <a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">Neural Network Language Model</a>)，可惜它生不逢时，在之后的十年中都没有引起太大的反响。直到 2013 年，随着越来越多的研究使用深度学习模型进行 NLP 任务，NNLM 才被重新发掘，并成为使用神经网络建模语言的经典范例。<br>NNLM 的思路非常接近于前面介绍的统计语言模型，它通过输入前面的 $n-1$ 个词来预测当前词。<br>![[Pasted image 20231117162017.png|500]]</p>
+<p>首先通过查表 $C$ 得到要预测词语 $w_t$ 前面的 $n-1$ 个词对应的词向量 $C\left(w_{t-n+1}\right), \ldots, C\left(w_{t-2}\right), C\left(w_{t-1}\right)$ ，然后将这些词向量拼接后输入到带有激活函数的隐藏层中，最后通过 Softmax 函数预测概率。<br>特别地，包含所有词向量的矩阵 $C$ 也是模型的参数，需要通过学习获得。<strong>因此 NNLM 不仅能够能够根据上文预测后接的词语是什么，同时获得了所有词语的词向量 (Word Embedding)。</strong></p>
+<h2 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h2><p>真正将神经网络语言模型发扬光大的是 2013 年 Google 提出的 <a href="https://arxiv.org/pdf/1301.3781.pdf">Word2Vec</a>，这个模型提供的词向量在很长一段时间里都是 NLP 模型的标配，即使是后来出现的 Glove 模型也难掩它的光芒。<br>Word2Vec 的模型结构和 NNLM 基本一致，只是训练方法有所不同，分为 CBOW (Continuous Bag-of-Words) 和 Skip-gram 两种。<br>![[Pasted image 20231117162559.png|500]]<br>其中 CBOW 使用待预测词语周围的词语 $w(t-2), w(t-1), w(t+1), w(t+2)$ 来进行预测 $w(t)$ ， Skip-gram 则正好相反，它使用当前词语 $w(t)$ 来预测它的周围词语。</p>
+<p>可以看到，与严格参照统计语言模型设计的 NNLM 不同 (每个词语的出现概率只与它前面的词语有关)，Word2Vec 在结构上更加自由，训练目标也更多地是为获得词向量服务。特别是其提出的同时通过上文和下文来预测当前词语的 CBOW 训练方法，打破了语言模型的固定思维，为后续一系列神经语言模型的发展奠定了基础。<br>虽然 Word2Vec 取得了巨大的成功，但是有一片乌云一直笼罩在词向量的上空——多义词问题。一词多义正是语言灵活性和高效性的体现，但 Word2Vec 却对此束手无策，无论词语的上下文如何，Word2Vec 对于一个词语只能提供一个词向量，即多义词被编码到了完全相同的参数空间。</p>
+<p>而事实上，早在上世纪 90 年代初，Yarowsky 就给出了一个非常简单又有效的解决方案——运用词语之间的<strong>互信息</strong>。具体地，对于一个多义词，分别从大量文本中找出这个词在表示不同语义时，同时出现的互信息最大的一些词。当在判别词语语义时，只需要看看上下文中哪些词语出现的多就可以了，即通过上下文来判断这个词语当前表达的语义。<br>因此，在后来的几年中，标准 NLP 流程都是将 Word2Vec 预训练好的词向量作为模型的输入，然后通过 LSTM、CNN 等模型来重新对句子中的词语进行编码，以便捕获到词语的上下文信息。</p>
+<h2 id="ELMO"><a href="#ELMO" class="headerlink" title="ELMO"></a>ELMO</h2><p>2018 年 <a href="https://arxiv.org/pdf/1802.05365.pdf">ELMO</a> 模型的提出，直接在词向量端给出了一种简洁优雅的解决方案。与 Word2Vec 训练好之后就固定了的静态词向量不同，ELMO 会自动地根据词语的上下文信息去动态调整词语的词向量，因此自然就解决了多义词问题。<br>![[Pasted image 20231117164058.png|500]]</p>
+<p>具体地，ELMO 首先利用语言模型进行预训练，然后在实际使用时，从预训练网络中提取各层的词向量拼接起来作为新的词向量。<br>但是 ELMO 也依然存在缺陷，首先它使用 LSTM 作为编码器，而不是特征提取能力更强的 Transformer，其次直接通过拼接来融合双向抽取特征的方法也不够优美。</p>
+<p>随后将 ELMO 中的 LSTM 更换为 Transformer 的 <a href="https://www.cs.ubc.ca/~amuham01/LING530/papers/radford2018improving.pdf">GPT</a> 模型也很快出现了。但是 GPT 又再次追随了 NNLM 的脚步，只通过词语的上文来进行预测，这在很大程度上限制了模型的应用场景。例如阅读理解这种任务，如果预训练时候不把词语的下文嵌入到词向量中，会白白丢掉很多信息。</p>
+<h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><p>2018 年底随着 <a href="https://arxiv.org/pdf/1810.04805.pdf">BERT</a> 的提出，这一阶段神经语言模型的发展终于出现了一位集大成者，它在 11 个 NLP 任务上都达到了最好性能。</p>
+<p>BERT 在模型大框架上采用和 GPT 完全相同的两阶段模型，首先是语言模型预训练，然后使用微调模式解决下游任务。BERT 不仅像 GPT 模型一样采用 Transformer 作为编码器，而且在预训练阶段采用了类似 ELMO 的双向语言模型。<br>![[Pasted image 20231117163934.png|300]]<br>因此 BERT 不仅编码能力强大，而且对各种下游任务，Bert 都可以简单地通过改造输入输出部分来完成。但是 BERT 的优点同样也是它的缺陷，由于 BERT 构建的是双向语言模型，因而无法直接用于文本生成任务。</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>非常感谢各位老板投喂！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt=" 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LLM/" rel="tag"># LLM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/04/08/%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/C++%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="next" title="C++知识点总结">
+                <i class="fa fa-chevron-left"></i> C++知识点总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/2.%20Transformer%E6%A8%A1%E5%9E%8B/" rel="prev" title="Transformer模型">
+                Transformer模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/hjyai94" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">如何建模语言？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">发展流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">统计语言模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NNLM"><span class="nav-number">2.2.</span> <span class="nav-text">NNLM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word2Vec"><span class="nav-number">2.3.</span> <span class="nav-text">Word2Vec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELMO"><span class="nav-number">2.4.</span> <span class="nav-text">ELMO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BERT"><span class="nav-number">2.5.</span> <span class="nav-text">BERT</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
