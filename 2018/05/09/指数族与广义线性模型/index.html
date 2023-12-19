@@ -1,37 +1,916 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="概率图模型," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="指数族将随机变量X写成指数族的形式：$$p(X&#x3D;x;\eta)&#x3D;h(x)exp(\eta^T T(x)-A(\eta))$$其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。 例子指数族可以包括许多的例子，比如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指数族与广义线性模型">
+<meta property="og:url" content="http://hjyai94.cn/2018/05/09/%E6%8C%87%E6%95%B0%E6%97%8F%E4%B8%8E%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="HJY">
+<meta property="og:description" content="指数族将随机变量X写成指数族的形式：$$p(X&#x3D;x;\eta)&#x3D;h(x)exp(\eta^T T(x)-A(\eta))$$其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。 例子指数族可以包括许多的例子，比如">
+<meta property="og:locale">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%A2%91%E7%8E%87%E5%AD%A6%E6%B4%BE%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E6%B4%BE.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F.png">
+<meta property="article:published_time" content="2018-05-09T02:30:15.000Z">
+<meta property="article:modified_time" content="2021-05-15T07:31:45.000Z">
+<meta property="article:author" content="HJY">
+<meta property="article:tag" content="概率图模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hjyai94.cn/2018/05/09/指数族与广义线性模型/"/>
+
+
+
+
+
+  <title>指数族与广义线性模型 | HJY</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">昨夜西风凋碧树，独上高楼，望尽天涯路。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2018/05/09/%E6%8C%87%E6%95%B0%E6%97%8F%E4%B8%8E%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">指数族与广义线性模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-09T10:30:15+08:00">
+                2018-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="指数族"><a href="#指数族" class="headerlink" title="指数族"></a>指数族</h1><p>将随机变量X写成指数族的形式：<br>$$p(X&#x3D;x;\eta)&#x3D;h(x)exp(\eta^T T(x)-A(\eta))$$<br>其中：$\eta$是自然参数向量（natural paramater），T(x)是充分统计量（sufficient statistic），$A(\eta)$是对数判分函数（log partition function）。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>指数族可以包括许多的例子，比如高斯分布，伯努利分布，多项式分布等。</p>
+<h3 id="多元正态分布"><a href="#多元正态分布" class="headerlink" title="多元正态分布"></a>多元正态分布</h3><p>令向量$X\in R^k$<br>$$p(x\mid \mu,\Sigma)&#x3D;\frac{1}{(2\pi)^{k&#x2F;2}|\Sigma|^{\frac{1}{2}}}exp \lbrace  -\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu) \rbrace$$<br>$$&#x3D;\frac{1}{(2\pi)^{k&#x2F;2}} exp\lbrace -\frac{1}{2} tr(\Sigma^{-1}x x^T) + \mu^T \Sigma^{-1}x^T- \frac{1}{2}\mu^T \Sigma^{-1}\mu - log|\Sigma|\rbrace$$<br>对应的指数族表示：<br>$$\eta &#x3D; [\Sigma^{-1}\mu; -\frac{1}{2}vec(\Sigma^{-1})]$$  $$ T(x)&#x3D;[x;vec(xx^T)]$$  $$ A(\eta)&#x3D;\frac{1}{2} \mu^T \Sigma^{-1} \mu + log|\Sigma| $$  $$ h(x)&#x3D; \frac{1} { {2\pi}^{k&#x2F;2} } $$</p>
+<h3 id="伯努利分布"><a href="#伯努利分布" class="headerlink" title="伯努利分布"></a>伯努利分布</h3><p>$$ p(x;\phi) $$  $$ &#x3D; \phi^x(1-\phi)^{1-x} $$  $$ &#x3D; exp(log(\phi^x(1-\phi)^{1-x}) $$  $$ &#x3D; exp(log(\phi^x)+log((1-\phi)^{1-x})) $$  $$ &#x3D; exp(xlog(\phi) + (1-x)log(1-\phi)) $$  $$ &#x3D; exp(xlog(\frac{\phi}{1-\phi})+log(1-\phi))$$<br>对应于指数族：<br>$$ \eta &#x3D; log(\frac{\phi}{1-\phi}) $$  $$ T(x) &#x3D; x $$  $$ A(\eta) &#x3D; -log(1-\phi) $$  $$ h(x) &#x3D; 1 $$</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>很多的分布可以看做是指数族：单变量高斯分布（the univariate Gaussian)，泊松分布（Poisson）， 多项分布（multinomial），线性回归（linear regression），伊辛模型（Ising model），受限波尔兹曼机机（restricted Boltzmann machines），还有条件随机场（contional random field，CRFs）。</p>
+<h4 id="条件随机场"><a href="#条件随机场" class="headerlink" title="条件随机场"></a>条件随机场</h4><p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/CRF.png"><br>条件随机场是基于上面图的无向图模型，势函数是定义在成对输出上面的。<br>$$ p_\theta(y\mid x)&#x3D;\frac{1}{Z(x)}exp(\Sigma_{e\in E,k} \lambda_k f_k(e,y\mid_e, x) + \Sigma_{v\in V,k} \mu_k g_k(v,y\mid_v, x))$$<br>其中$f_k$和$g_k$是固定的，$g_k$是波尔顶点特征，$f_k$是波尔边特征。</p>
+<h2 id="指数族特性"><a href="#指数族特性" class="headerlink" title="指数族特性"></a>指数族特性</h2><p>指数族具有如下的特性：</p>
+<ol>
+<li>对数配分函数的第d阶导数，是充分统计量的第d阶中心距。<br>比如：对数配分函数的一阶导数是T(X)的均值，其二阶导是T(X)的方差。</li>
+<li>因为对数配分函数的二阶导是正的，所以对数配分函数是凸的，因此方差总是非负的。</li>
+<li>我们可以将对数配分函数的一阶导看成自然参数的函数，然后令其为零，反过来利用距参数就可以解决自然参数，记作：$\eta &#x3D; \psi(\mu)$ 。</li>
+<li>在指数族上进行最大似然估计与矩匹配是一致的。</li>
+</ol>
+<ul>
+<li>写出一般指数族的对数似然函数:<br>  $$ const + \eta^T (\Sigma_{i&#x3D;1}^n T(x_i)) - nA(\eta) $$</li>
+<li>求似然函数的梯度：<br>  $$ \Sigma_{i&#x3D;1}^n T(x_i)) - n\Delta_\eta A(\eta) $$</li>
+<li>令$\Delta_\eta A$为零：<br>  $$ \Delta_\eta A &#x3D; \frac{1}{n}\Sigma_{i&#x3D;1}^T T(x_i) \Rightarrow \mu &#x3D; \frac{1}{n}\Sigma_{i&#x3D;1}^T T(x_i) \Rightarrow 矩估计&#x3D;样本距 $$</li>
+</ul>
+<h3 id="充分统计量"><a href="#充分统计量" class="headerlink" title="充分统计量"></a>充分统计量</h3><p><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E9%A2%91%E7%8E%87%E5%AD%A6%E6%B4%BE%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AD%A6%E6%B4%BE.png"><br>从贝叶斯的观点出发：如果T具备了我们预测参数$\theta$的所有信息（即T是充分统计量），那么$\theta \perp X \mid T \Rightarrow P(\theta \mid X, T)&#x3D;P(\theta\mid T)$。<br>从频率学派的角度出发：如果T已知的用来产生数据的参数，那么$ X \perp \theta \mid T \Rightarrow P(X\mid T;\theta) &#x3D; P(X\mid T) $<br>从马尔科夫随机场的角度进行考虑：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F.png"></p>
+<h2 id="贝叶斯"><a href="#贝叶斯" class="headerlink" title="贝叶斯"></a>贝叶斯</h2><p>重新从贝叶斯的角度出发，写出给定自然参数的似然函数，我们选择了一个自然参数先验，然后计算出自然参数的后验概率。<br>比如：<br>$$ p(x\mid \eta) \propto exp(\eta^ T T(x) - A(\eta))$$<br>$$ p(\eta) \propto exp(\xi^T T(\eta) - A(\xi)) $$<br>$$ p(\eta\mid x, \xi) \propto exp(\eta^T T(x) + \xi^T T(\eta) + A(\eta) + A(\xi)) $$<br>如果$\eta &#x3D; T(\eta)$ ，那么后验概率变为：<br>$$ p(\eta\mid x, \xi) \propto exp(T(\eta)(T(x) + \xi)+ A(\eta) + A(\xi)) $$<br>当$ \eta &#x3D; T(\eta)$ ，我们指定$\eta ~exponentialFamily$，这是先验就是共轭先验。</p>
+<h1 id="广义线性模型"><a href="#广义线性模型" class="headerlink" title="广义线性模型"></a>广义线性模型</h1><p>广义线性模型可以将分类和回归问题进行统一，使用相同的统计框架。<br>假定：<br>$$ Y \sim exponentialFamily $$<br>$$ \eta &#x3D; \psi(\mu&#x3D;f(\xi &#x3D; \theta^T x)) $$<br>其中Y是响应，x是固定输入，$\theta$是需要学习的参数，$f$（响应函数，response function），$\psi$增加了一定的灵活性，f经常被设定为$\psi^{-1}$（canonical response function）。</p>
+<h1 id="广义线性模型的批学习"><a href="#广义线性模型的批学习" class="headerlink" title="广义线性模型的批学习"></a>广义线性模型的批学习</h1><p>考虑通过求导的方法来解决最小二乘问题，就是使代价函数达到极小：<br>$$ J(\theta) &#x3D; \frac{1}{2} \Sigma_{i&#x3D;1}^n (x_i^T\theta - y_i)^2 &#x3D; \frac{1}{2} (X\theta-y) $$<br>$x_i$表示第i个输入样本，$y_i$表示第i个输出样本。<br>对$J(\theta)$求一阶导并令其为零，可以得到取得极小值时的$\theta$。<br>$$ \triangledown J(\theta) &#x3D; X^T X\theta - X^T y &#x3D; 0 \Rightarrow \theta^* &#x3D; (X^T X)^{-1} X^T y $$<br>使用牛顿法进行迭代寻找最优解，牛顿法更新参数更新准则：<br>$$ \theta^{t+1} &#x3D; \theta^t - H^{-1}\triangledown J(\theta) $$</p>
+<p>对数似然函数$l &#x3D; \Sigma_n logh(y_n) + \Sigma_n(\theta^T x_n y_n - A(\eta))$<br>下面获得Hessian阵：<br>\begin{equation}\begin{split} H&amp;&#x3D;\frac{d^2 l}{d\theta d\theta^T}\\<br>&amp; &#x3D; \frac{d}{d\theta^T}\Sigma_n(y_n-\mu_n)x_n\\<br>&amp; &#x3D; \Sigma_n x_n \frac{d\mu_n}{d\theta^T}\\<br>&amp; &#x3D; -\Sigma_n X_n \frac{d\mu_n}{d\eta_n} \frac{d\eta_n}{d\theta^T}\\<br>&amp; &#x3D; -\Sigma_n X_n \frac{d\mu_n}{d\eta_n} x_n^T \   因为\eta_n &#x3D; \theta^T x_n\\<br>&amp; &#x3D; -X^T W X<br>\end{split}\end{equation}<br>其中$X &#x3D; [x_n^T]$，$W &#x3D; diag[\frac{d\mu_1}{d\eta_1},…,\frac{d\mu_N}{d\eta_N}]$。W可以同过计算$A(\eta)$的二阶导来计算。<br>代换上式中的$\triangledown J(\theta)$和H，可以得到：<br>$$ \theta^{t+1} &#x3D; (X^T W^t X)^{-1} X^T W^t z^t $$<br>其中$z^t &#x3D; X\theta^ t + (W^t)^{-1}(y - \mu^t)$。因为W是对角阵，所有该式子具有解耦的作用。</p>
+<h3 id="对数几率回归"><a href="#对数几率回归" class="headerlink" title="对数几率回归"></a>对数几率回归</h3><p>条件概率分布如下（伯努利分布）：<br>$$ p(y \mid x) &#x3D; \mu(x)^y (1-\mu(x))^{1-y} $$<br>其中$\mu$是logistic函数<br>$$ \mu(x) &#x3D; \frac{1}{1 + e^{-\eta(x)}} $$</p>
+<p>由于$p(y\mid x)$是指数族，<br>均值：<br>$$ E[y\mid x] &#x3D; \mu &#x3D; \frac{1}{1 + e^{-\eta(x)}} $$<br>canonical response  function:<br>$$ \eta &#x3D; \xi &#x3D; \theta^T x $$<br>利用上面的方法广义线性模型中的方法求W：<br>$$ \frac{d\mu}{d\eta} &#x3D; \mu (1 - \mu) $$<br>$$ W &#x3D;<br>\begin{pmatrix}<br>\mu_1 (1 - \mu_1)\\<br>&amp;\ddots \\<br>&amp; &amp; \mu_N (1-\mu_N) \\<br>\end{pmatrix}<br>$$<br>其中N是训练样本的数量，d是输入样本的维度。上面的方法每代复杂度为$O(Nd^3)$。可以利用拟牛顿法来近似计算Hessian阵来减小运算成本。<br>共轭梯度每代的复杂度为$O(N d)$，在实际中使用效果更好。dang样本数量较大时，也可以采用随机梯度下降。</p>
+<h3 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h3><p>条件概率分布为：<br>$$p(y\mid x,\theta,\Sigma)&#x3D;\frac{1}{(2\pi)^{k&#x2F;2}\Sigma^{\frac{1}{2}}}exp \lbrace  \frac{1}{2}(y-\mu)^T\Sigma^{-1}(y - \mu) \rbrace$$<br>从上面多元正态分布中，可以写成指数族的形式。<br>利用上面的方法广义线性模型中的方法求W：<br>$$ \frac{d\mu}{d\eta} &#x3D; 1 $$<br>$$ W &#x3D; 1 $$<br>更新规则如下：<br>$$ \theta^{t+1} &#x3D; \theta^t + (X^T X)^{-1} X^T(y - \mu^t) $$</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>对于指数族分布，最大似然估计等价于矩估计。</li>
+<li>广义线性模型是图模型的实际应用中的重要组成部分。</li>
+<li>要选择合适的独立性以及合适的先验。</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html">http://www.cs.cmu.edu/~epxing/Class/10708-14/lecture.html</a><br>注：本文主要参考[1]中第6讲视频以及笔记。</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>非常感谢各位老板投喂！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt=" 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" rel="tag"># 概率图模型</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/25/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="next" title="概率论知识点">
+                <i class="fa fa-chevron-left"></i> 概率论知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/12/%E5%8F%AF%E8%A7%82%E8%B4%9D%E5%8F%B6%E6%96%AF%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E5%AD%A6%E4%B9%A0%E9%97%AE%E9%A2%98/" rel="prev" title="可观贝叶斯网络中的学习问题">
+                可观贝叶斯网络中的学习问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/hjyai94" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E6%97%8F"><span class="nav-number">1.</span> <span class="nav-text">指数族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.1.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="nav-number">1.1.1.</span> <span class="nav-text">多元正态分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AF%E5%8A%AA%E5%88%A9%E5%88%86%E5%B8%83"><span class="nav-number">1.1.2.</span> <span class="nav-text">伯努利分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.1.3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E9%9A%8F%E6%9C%BA%E5%9C%BA"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">条件随机场</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E6%97%8F%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">指数族特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%85%E5%88%86%E7%BB%9F%E8%AE%A1%E9%87%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">充分统计量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF"><span class="nav-number">1.3.</span> <span class="nav-text">贝叶斯</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">广义线性模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%89%B9%E5%AD%A6%E4%B9%A0"><span class="nav-number">3.</span> <span class="nav-text">广义线性模型的批学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E5%87%A0%E7%8E%87%E5%9B%9E%E5%BD%92"><span class="nav-number">3.0.1.</span> <span class="nav-text">对数几率回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="nav-number">3.0.2.</span> <span class="nav-text">线性回归</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

@@ -1,37 +1,894 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="i0w0IGpafr" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="概率图模型," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。 高斯图模型高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：$$ p(x\mid \mu, \Sigma) &#x3D; \frac{1}{(2\pi)^{n&amp;#x2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高斯图模型图和伊辛图模型">
+<meta property="og:url" content="http://hjyai94.cn/2018/06/10/%E9%AB%98%E6%96%AF%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9B%BE%E5%92%8C%E4%BC%8A%E8%BE%9B%E5%9B%BE%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="HJY">
+<meta property="og:description" content="简介不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。 高斯图模型高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：$$ p(x\mid \mu, \Sigma) &#x3D; \frac{1}{(2\pi)^{n&amp;#x2">
+<meta property="og:locale">
+<meta property="og:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png">
+<meta property="og:image" content="http://hjyai94.cn/">
+<meta property="article:published_time" content="2018-06-10T03:01:03.000Z">
+<meta property="article:modified_time" content="2021-05-15T07:31:45.000Z">
+<meta property="article:author" content="HJY">
+<meta property="article:tag" content="概率图模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hjyai94.cn/2018/06/10/高斯图模型图和伊辛图模型/"/>
+
+
+
+
+
+  <title>高斯图模型图和伊辛图模型 | HJY</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HJY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">昨夜西风凋碧树，独上高楼，望尽天涯路。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hjyai94.cn/2018/06/10/%E9%AB%98%E6%96%AF%E5%9B%BE%E6%A8%A1%E5%9E%8B%E5%9B%BE%E5%92%8C%E4%BC%8A%E8%BE%9B%E5%9B%BE%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HJY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高斯图模型图和伊辛图模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T11:01:03+08:00">
+                2018-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>不同于最大似然估计对于贝叶斯网的估计，有向图中，网络结构通常是已知的，我们需要做的是将参数学习出来或者是对于变量进行推断。无向图中则并不是这样，无向图中，很多模型的结构并不是完全清楚的，需要我们队模型结构进行推断。</p>
+<h1 id="高斯图模型"><a href="#高斯图模型" class="headerlink" title="高斯图模型"></a>高斯图模型</h1><p>高斯图模型是马尔科夫随机场的成对形式，同样也是满足高斯正态分布：<br>$$ p(x\mid \mu, \Sigma) &#x3D; \frac{1}{(2\pi)^{n&#x2F;2}|\Sigma|^{1&#x2F;2}}exp[-\frac{1}{2}(x-\mu)^T \Sigma^{-T}(x-\mu)] $$<br>其中$\mu$是均值，$\Sigma$是协方差矩阵。令$\mu&#x3D;0$和精度矩阵为$Q&#x3D;\Sigma^{-1}$，有：<br>$$ p(x_1, x_2, …, x_p\mid \mu&#x3D;0, Q) &#x3D; \frac{|Q|^{1&#x2F;2}}{(2\pi)^{n&#x2F;2}}exp[-\frac{1}{2}\sum_i q_{ii}(x_i)^2 - \sum_{i&lt;j}q_{ij}x_ix_j] $$<br>这就是条件随机场，定义于成对边和节点上。</p>
+<h1 id="协方差矩阵与精度矩阵"><a href="#协方差矩阵与精度矩阵" class="headerlink" title="协方差矩阵与精度矩阵"></a>协方差矩阵与精度矩阵</h1><p>协方差矩阵有一个重要的性质是：当$\Sigma_{i,j}&#x3D;0$有$x_i\perp x_j$；逆协方差矩阵（精度矩阵）的对应的性质为：当$\Sigma_{i,j}^{-1}&#x3D;0$时$x_i\perp x_j\mid x_{-ij}$。</p>
+<h1 id="利用LASSO进行网络学习"><a href="#利用LASSO进行网络学习" class="headerlink" title="利用LASSO进行网络学习"></a>利用LASSO进行网络学习</h1><h2 id="LASSO回归"><a href="#LASSO回归" class="headerlink" title="LASSO回归"></a>LASSO回归</h2><p>对于网络结构的学习，我们通常是假设网络是稀疏的。LASSO回归可以用于网络的近邻选择，去除不必要的节点之间的连接。<br>$$\hat{\beta_1} &#x3D; argmin_{\beta_1}\parallel Y - X\beta_1\parallel^2 + \lambda\parallel\beta_1\parallel_1$$<br>其中，$\beta_1$是节点1的参数，Y是是对节点1的独立观测值。<br>具体过程如图所示：<br><img src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/LASSO%E5%9B%9E%E5%BD%92.png"></p>
+<h2 id="理论条件"><a href="#理论条件" class="headerlink" title="理论条件"></a>理论条件</h2><ul>
+<li>Dependency Condition: Relevant Covariates are not overly dependent</li>
+<li>Incoherence Condition: Large number of irrelevant covariates can’t be too correlated with relevant covariates</li>
+<li>Strong concentration bounds: Sample quantities coverge to expected values quickly</li>
+</ul>
+<h1 id="时变网络"><a href="#时变网络" class="headerlink" title="时变网络"></a>时变网络</h1><h2 id="KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression"><a href="#KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression" class="headerlink" title="KELLER: Kernel Weightd $L_1$-regularized logistic Regression"></a>KELLER: Kernel Weightd $L_1$-regularized logistic Regression</h2><p>对时变网络的结构进行估计，可以采用KELLER的方法解决：<br>$$ \hat{\theta_i^t} &#x3D; argmain_{\theta_i^t}l_w(\theta_i^t) + \lambda_1\parallel\theta_t^t \parallel_1 $$<br>其中$l_w(\theta_i^t) &#x3D; \sum_{t’&#x3D;1}^T w(x^{t’}; x^t)log\ P(x_i^{t’}\mid x_{-i} x^{t’}, \theta_i^t)$。权值$w(x^{t’}; x^t)$决定了在时间$t’$和$t$之间的关系，我们可以将其建模为一个分布(如下图)。<br><img src="/"><br>给定时间$t^{\ast}$，权值可以写成：<br>$$ w_t(t^{\ast}) &#x3D; \frac{K_{h_n}(t-t^{\ast})}{\sigma_{t’\in T^n} K_{h_n}(t’-t^{\ast})} $$<br>对于一些平滑的核$K_{h_n}$。</p>
+<h2 id="TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression"><a href="#TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression" class="headerlink" title="TESLA: Temporally Smoothed $L_1$-regularized logistic regression"></a>TESLA: Temporally Smoothed $L_1$-regularized logistic regression</h2><p>TESLA对于一个节点的参数优化是基于所有的时间步的：<br>$$ \hat{\theta_i^T}, …, \hat{\theta_i^T} &#x3D; argmin\sum_{i&#x3D;1}^T l_{avg}(\theta_i^t) + \lambda_1 \sum_{t&#x3D;1}^T \parallel\theta_{-1}^t \parallel_1 + \lambda_2\sum_{t&#x3D;1}^T \parallel \theta_i^t - \theta_i^{t-1} \parallel $$<br>其中，$l_{avg}(\theta_i^t) &#x3D; \frac{1}{N^t}\sum_{d&#x3D;1}^{N^t} log\ P(x_{d,i}^t\mid x_{d, -i}^t, \theta_i^t) $是条件对数似然。不同于KELLER，当节点数达到5000时，这里我们不需要平滑Kernels，这里可以接受突变。</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>非常感谢各位老板投喂！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://raw.githubusercontent.com/hjyai94/Blog/master/source/uploads/%E5%BE%AE%E4%BF%A1%E6%89%93%E8%B5%8F.png" alt=" 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" rel="tag"># 概率图模型</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/31/HMM%E5%92%8CCRF/" rel="next" title="HMM和CRF">
+                <i class="fa fa-chevron-left"></i> HMM和CRF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/14/Ubuntu%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="记录Ubuntu中出现的问题及解决方案">
+                记录Ubuntu中出现的问题及解决方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">77</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/hjyai94" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E5%9B%BE%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">高斯图模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5%E4%B8%8E%E7%B2%BE%E5%BA%A6%E7%9F%A9%E9%98%B5"><span class="nav-number">3.</span> <span class="nav-text">协方差矩阵与精度矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%A9%E7%94%A8LASSO%E8%BF%9B%E8%A1%8C%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">利用LASSO进行网络学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LASSO%E5%9B%9E%E5%BD%92"><span class="nav-number">4.1.</span> <span class="nav-text">LASSO回归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%9D%A1%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">理论条件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E5%8F%98%E7%BD%91%E7%BB%9C"><span class="nav-number">5.</span> <span class="nav-text">时变网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KELLER-Kernel-Weightd-L-1-regularized-logistic-Regression"><span class="nav-number">5.1.</span> <span class="nav-text">KELLER: Kernel Weightd $L_1$-regularized logistic Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TESLA-Temporally-Smoothed-L-1-regularized-logistic-regression"><span class="nav-number">5.2.</span> <span class="nav-text">TESLA: Temporally Smoothed $L_1$-regularized logistic regression</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HJY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
