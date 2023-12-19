@@ -1033,6 +1033,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://hjyai94.cn/tags/LLM/</loc>
+    <lastmod>2023-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hjyai94.cn/tags/chatglm2/</loc>
+    <lastmod>2023-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
